@@ -1,5 +1,7 @@
 package announcement.dto;
 
+import java.sql.Date;
+
 public class AnnouncementDTO {
     // 멤버 변수 선언
     private String num;
@@ -10,7 +12,7 @@ public class AnnouncementDTO {
     private String visitcount;
     private String name;
     
-    
+	
 	public String getNum() {
 		return num;
 	}

@@ -22,7 +22,7 @@ public class MemberDAO extends JDBCConnect{
 	public List<MemberDTO> selectList(){
 		List<MemberDTO> members = new ArrayList<>();
 		
-		String sql = "select id, pass, name, regidate from member order by regidate desc";
+		String sql = "select id,pass,name,grade,nickname,location,phone_number from member";
 		
 		try {
 			stmt = con.createStatement();
@@ -32,9 +32,11 @@ public class MemberDAO extends JDBCConnect{
 				String id = rs.getString("id");
 				String pass = rs.getString("pass");
 				String name = rs.getString("name");
-				String regidate = rs.getString("regidate");
-				//out.print(String.format("%s,%s,%s,%s <br>", id, pass, name, regidate));
-				MemberDTO dto = new MemberDTO(id, pass, name, regidate);
+				int grade = rs.getInt("grade");
+				String nickname = rs.getString("nickname");
+				String location = rs.getString("location");
+				int phone_number = rs.getInt("phone_number");
+				MemberDTO dto = new MemberDTO(id,pass,name,grade,nickname,location,phone_number);
 				members.add(dto);
 			}	
 		} catch (SQLException e) {
@@ -83,7 +85,7 @@ public class MemberDAO extends JDBCConnect{
 
 	public MemberDTO selectView(String id) {
 		MemberDTO member = null;
-		String sql = "select id, pass, name, regidate from member where id = ?";
+		String sql = "select id, pass, name from member where id = ?";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, id);
@@ -91,8 +93,7 @@ public class MemberDAO extends JDBCConnect{
 			if (rs.next()) {
 				String pass = rs.getString("pass");
 				String name = rs.getString("name");
-				String regidate = rs.getString("regidate");
-				member = new MemberDTO(id, pass, name, regidate);
+				member = new MemberDTO();
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -15,6 +15,10 @@ public class AnnouncementDAO extends JDBCConnect{
 		super(application);
 	}
 
+	public AnnouncementDAO() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// 검색 조건에 맞는 게시물의 개수를 반환합니다.
     public int selectCount(Map<String, String> map) {
         int totalCount = 0; // 결과(게시물 수)를 담을 변수
@@ -50,17 +54,17 @@ public class AnnouncementDAO extends JDBCConnect{
     		query += " LIKE concat('%',?,'%')";
     	}
     	query += " ORDER BY num DESC ";
-    	
+    	query += " LIMIT ? OFFSET ?";
 		try {
 			//stmt = con.createStatement();
         	psmt = con.prepareStatement(query);
         	if (map.get("searchWord") != null) {
         		psmt.setString(1, map.get("searchWord"));
-//        		psmt.setInt(2, Integer.parseInt(map.get("limit")));
-//        		psmt.setInt(3, Integer.parseInt(map.get("offset")));
+        		psmt.setInt(2, Integer.parseInt(map.get("limit")));
+        		psmt.setInt(3, Integer.parseInt(map.get("offset")));
         	}else {
-//        		psmt.setInt(1, Integer.parseInt(map.get("limit")));
-//        		psmt.setInt(2, Integer.parseInt(map.get("offset")));
+        		psmt.setInt(1, Integer.parseInt(map.get("limit")));
+        		psmt.setInt(2, Integer.parseInt(map.get("offset")));
         	}
         	rs = psmt.executeQuery();  // 쿼리 실행
         	

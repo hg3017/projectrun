@@ -38,8 +38,8 @@ member = dao.selectView(id);
 			<td><%=member.getName() %></td>
 		</tr>
 		<tr>
-			<td>REGIDATE</td>
-			<td><%=member.getRegidate()%></td>
+			<td>LOCATION</td>
+			<td><%=member.getLocation()%></td>
 		</tr>
 		<tr>
 			<td colspan="2">

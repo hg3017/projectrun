@@ -28,14 +28,14 @@ dao.close();
 		<th width="25%">ID</th>
 		<th width="25%">PASS</th>
 		<th width="25%">NAME</th>
-		<th width="25%">REGIDATE</th>
+		<th width="25%">LOCATION</th>
 	</tr>
 <%for(MemberDTO member : members) {%>	
 	<tr>
 		<td><a href="View.jsp?id=<%=member.getId()%>"><%=member.getId() %></a></td>
 		<td><%=member.getPass() %></td>
 		<td><%=member.getName() %></td>
-		<td><%=member.getRegidate() %></td>
+		<td><%=member.getLocation() %></td>
 	</tr>
 <%} %>	
 	<tr><td colspan="4"><a href="Write.jsp">회원가입</a></td></tr>

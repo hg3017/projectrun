@@ -4,29 +4,24 @@ public class MemberDTO {
 	private String id;
 	private String pass;
 	private String name;
-	private String regidate;
-	private String email;
-	private int age;
+	private int grade;
+	private String nickname;
+	private String location;
+	private int phone_number;
 	
 	public MemberDTO() {
 	}
 
-	public MemberDTO(String id, String pass, String name, String regidate) {
+	public MemberDTO(String id, String pass, String name, int grade, String nickname, String location,
+			int phone_number) {
 		super();
 		this.id = id;
 		this.pass = pass;
 		this.name = name;
-		this.regidate = regidate;
-	}
-
-	public MemberDTO(String id, String pass, String name, String regidate, String email, int age) {
-		super();
-		this.id = id;
-		this.pass = pass;
-		this.name = name;
-		this.regidate = regidate;
-		this.email = email;
-		this.age = age;
+		this.grade = grade;
+		this.nickname = nickname;
+		this.location = location;
+		this.phone_number = phone_number;
 	}
 
 	public String getId() {
@@ -53,34 +48,43 @@ public class MemberDTO {
 		this.name = name;
 	}
 
-	public String getRegidate() {
-		return regidate;
+	public int getGrade() {
+		return grade;
 	}
 
-	public void setRegidate(String regidate) {
-		this.regidate = regidate;
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getNickname() {
+		return nickname;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
 	}
 
-	public int getAge() {
-		return age;
+	public String getLocation() {
+		return location;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setLocation(String location) {
+		this.location = location;
+	}
+
+	public int getPhone_number() {
+		return phone_number;
+	}
+
+	public void setPhone_number(int phone_number) {
+		this.phone_number = phone_number;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDTO [id=" + id + ", pass=" + pass + ", name=" + name + ", regidate=" + regidate + ", email="
-				+ email + ", age=" + age + "]";
-	}	
+		return "MemberDTO [id=" + id + ", pass=" + pass + ", name=" + name + ", grade=" + grade + ", nickname="
+				+ nickname + ", location=" + location + ", phone_number=" + phone_number + "]";
+	}
+
 	
 }

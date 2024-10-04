@@ -9,8 +9,12 @@
 String id = request.getParameter("id");
 String pass = request.getParameter("pass");
 String name = request.getParameter("name");
+int grade = Integer.getInteger("grade");
+String nickname = request.getParameter("nickname");
+String location = request.getParameter("location");
+int phone_number  = Integer.getInteger("phone_number");
 out.print(id + "," + pass + "," + name);
-MemberDTO dto = new MemberDTO(id, pass, name, null);
+MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);
 
 JDBCConnect jdbc = new JDBCConnect();
 

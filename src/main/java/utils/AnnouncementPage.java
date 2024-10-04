@@ -5,7 +5,7 @@ public class AnnouncementPage {
 	public static String pagingStr(int totalCount, int pageSize, int blockPage, int pageNum, String reqUrl) {
 		String pagingStr = "";
 		
-		int totalPages = (int)(Math.ceil((totalCount / (double)pageSize)));
+		int totalPages = (int)(Math.ceil(((double)totalCount / pageSize)));
 		
 		int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1; // 1, 11, 21, ...
 		
@@ -25,8 +25,8 @@ public class AnnouncementPage {
 			blockCount++;
 		}
 		if(pageTemp <= totalPages) {
-			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[Next]</a>", reqUrl, pageTemp+1);
-			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[End]</a>", reqUrl, totalPages); 
+			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[Next]</a>", reqUrl, pageTemp);
+//			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[End]</a>", reqUrl, totalPages); 
 		} 
 	return pagingStr;
 	}
