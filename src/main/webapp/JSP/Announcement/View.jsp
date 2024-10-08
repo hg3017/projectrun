@@ -29,7 +29,8 @@ function deletePost() {
 </script>
 </head>
 <body>
-<h2>회원제 게시판 - 상세 보기(View)</h2>
+<jsp:include page= '../Common/Header.jsp' />
+<h2>View</h2>
 <form name="writeFrm">
     <input type="hidden" name="num" value="<%= num %>" />  <!-- 공통 링크 -->
 
@@ -75,5 +76,6 @@ function deletePost() {
         </tr>
     </table>
 </form>
+<jsp:include page= '../Common/Footer.jsp' />
 </body>
 </html>

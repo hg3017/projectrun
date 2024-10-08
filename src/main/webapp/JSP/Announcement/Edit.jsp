@@ -35,22 +35,22 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page="../Common/Menu2.jsp" />
-<h2>수정하기(Edit)</h2>
+<jsp:include page= '../Common/Header.jsp' />
+<h2>Edit</h2>
 <form name="writeFrm" method="post" action="EditProcess.jsp"
       onsubmit="return validateForm(this);">
     <input type="hidden" name="num" value="<%= dto.getNum() %>" /> 
     <table border="1" width="90%">
         <tr>
-            <td>제목</td>
-            <td>
+            <td align="center">제목</td>
+            <td colspan="2">
                 <input type="text" name="title" style="width: 90%;" 
                        value="<%= dto.getTitle() %>"/> 
             </td>
         </tr>
         <tr>
-            <td>내용</td>
-            <td>
+            <td align="center">내용</td>
+            <td colspan="2">
                 <textarea name="content" style="width: 90%; height: 100px;"><%= dto.getContent() %></textarea>
             </td>
         </tr>
@@ -64,5 +64,6 @@ function validateForm(form) {  // 폼 내용 검증
         </tr>
     </table>
 </form>
+<jsp:include page= '../Common/Footer.jsp' />
 </body>
 </html>

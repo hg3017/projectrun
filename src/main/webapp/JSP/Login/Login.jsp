@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglibprefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglibprefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     
 <!DOCTYPE html>
@@ -25,7 +25,11 @@
 		<input type="submit" value="로그인">	
 	</form>
 	
-	<a href='../Register/Register.jsp' > 회원가입 </a>   
+	<a href='../Register/Register.jsp' > 회원가입 </a>
+	
+	<a href="LoginKAKAO.jsp"><img src="<c:url value="/img/kakao_login_medium_narrow.png"/>" style="width: 200px"></a>
+		
+		
 	                  		
 </body>
 </html>

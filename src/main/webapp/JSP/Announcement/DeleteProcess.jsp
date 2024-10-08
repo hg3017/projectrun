@@ -1,4 +1,3 @@
-<%@page import="Utils.JSFunction"%>
 <%@page import="DAO.AnnouncementDAO"%>
 <%@page import="DTO.AnnouncementDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

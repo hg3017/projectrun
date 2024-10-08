@@ -42,6 +42,8 @@
     
     <jsp:include page= '../Common/Header.jsp' />
 
+
+ 
       <section class="main_crew">
         <div class="inner">
           <div class="head_wrap">
@@ -160,6 +162,7 @@
           </div>
         </div>
       </section>
+
     
     
     <jsp:include page= '../Common/Footer.jsp' />
