@@ -103,10 +103,10 @@ else {
     // 게시물이 있을 때 
 /*     int virtualNum = 0; // 화면상에서의 게시물 번호
     for (AnnouncementDTO dto : amtLists) {
-    	virtualNum = totalCount--;   // 전체 게시물 수에서 시작해 1씩 감소 */
+    	virtualNum = totalCount--;   // 전체 게시물 수에서 시작해 1씩 감소 */ 
     	int virtualNum = totalCount - (pageNum - 1) * pageSize; // 페이지에 맞춰 가상번호 계산
     	for (AnnouncementDTO dto : amtLists) {
-    	    virtualNum--;   // 가상번호는 1씩 감소
+    	   totalCount = virtualNum--;   // 가상번호는 1씩 감소 
 %>
 		<tr align="center">
 			<td><%= virtualNum %></td>

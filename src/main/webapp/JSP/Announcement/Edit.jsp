@@ -7,7 +7,7 @@
 String num = request.getParameter("num");  // 일련번호 받기 
 AnnouncementDAO dao = new AnnouncementDAO();  // DAO 생성
 AnnouncementDTO dto = dao.selectView(num);        // 게시물 가져오기 
-//String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
+String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
 /* if (!sessionId.equals(dto.getId())) {      // 본인인지 확인
     JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
     return;
