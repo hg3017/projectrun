@@ -10,8 +10,8 @@
 <header id="header">
       <div class="inner">
           <h1 class="logo">
-            <a href="Index.jsp">
-              <img src="../resources/images/free-icon-trail-running-3163782.png" alt="러닝메이트">
+            <a href="<%=request.getContextPath() %>/JSP/Index.jsp">
+              <img src="<%=request.getContextPath() %>/resources/images/free-icon-trail-running-3163782.png" alt="러닝메이트">
               <!-- <img src="ProjectRun/src/main/webapp/resources/images/free-icon-trail-running-3163782.png" alt="러닝메이트">  -->
               <span class="blind">러닝메이트</span>
             </a>
@@ -54,7 +54,7 @@
                 </ul>
               </li>
               <li>
-                <a href="Announcement/List.jsp">고객센터</a>
+                <a href="<%=request.getContextPath() %>/JSP/Announcement/List.jsp">고객센터</a>
                 <ul class="depth2">
                   <li><a href="/center/service"></a></li>
                   <li><a href="/center/supply?prod_cat_idx=1"></a></li>
@@ -66,7 +66,7 @@
             </ul>
           </nav>
           <div class="btn_wrap">
-            <a class="login_btn" href="Login/Login.jsp">로그인</a>  
+            <a class="login_btn" href="<%=request.getContextPath() %>/JSP/Login/Login.jsp">로그인</a>  
             <button type="button" class="sitemap_btn">
               <span class="blind">사이트맵 열기</span>
               <i></i>
@@ -107,7 +107,7 @@
               </ul>
             </li>
             <li>
-              <a href="#">고객센터</a>
+              <a href="<%=request.getContextPath() %>/JSP/Announcement/List.jsp">고객센터</a>
               <ul class="depth2">
                 <li><a href="investment/inquiry.do"></a></li>
                 <li><a href="investment/inquiry.do"></a></li>
@@ -117,6 +117,11 @@
         </div>
       </aside>
     </header>
+    <main id="container">
+      <section class="main_visual">
+   	   <h2 class="blind">메인슬라이더</h2>
+      </section>
+     </main>
    
 </body>
 </html>
