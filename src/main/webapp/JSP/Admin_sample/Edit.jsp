@@ -11,6 +11,7 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 <head>
 <meta charset="UTF-8">
 <title>Edit.jsp</title>
+
 </head>
 <body>
 <!-- Menu -->

@@ -1,0 +1,68 @@
+:root {
+  --point-color1: #e0462e;
+  --point-color2: #ed1c24;
+  --point-color3: #ed1c24;
+  --gray-400: #1b1b1b;
+  --gray-500: #1f1f1f;
+  --gray-600: #000;
+}
+#wrap {
+  height: 1500px;
+}
+#header {
+	padding: 40px 0;
+	width:100%;
+}
+#header>.inner {
+	width: 1720px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction:row;
+}
+
+.header_left .inner {
+	padding: 0px 0px;
+}
+.header_left .inner>a {
+	display: flex;
+	flex-direction: row;
+}
+.header_left a>img {
+	width:70px;
+}
+.header_left .inner h2 {
+	padding-left : 10px;
+	font-size : 25px;
+	line-height: 60px;
+}
+
+.header_right {
+	padding-left:30px;
+}
+.header_right > .inner {
+}
+.header_right .inner p {
+	line-height:66px;
+}
+#container {
+	width: 1720px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction:row;
+}
+
+#container >.inner {
+	display: flex;
+	flex-direction: row;
+}
+
+.contents .inner {
+
+}
+
+#footer {
+	width: 1720px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: row;
+}
