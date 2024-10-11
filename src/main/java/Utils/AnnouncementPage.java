@@ -5,7 +5,6 @@ public class AnnouncementPage {
 	public static String pagingStr(int totalCount, int pageSize, int blockPage, int pageNum, String reqUrl) {
 		String pagingStr = "";
 		
-		System.out.println("AnnouncementPage-pagingStr-CheckPoint");
 		
 		int totalPages = (int)(Math.ceil(((double)totalCount / pageSize)));
 		
@@ -16,7 +15,6 @@ public class AnnouncementPage {
 			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[Prev]</a>", reqUrl, pageTemp-1);
 
 		}
-		System.out.println("AnnouncementPage-pagingStr-CheckPoint1");
 		int blockCount = 1;
 		while(blockCount <= blockPage && pageTemp <= totalPages){
 			if(pageNum == pageTemp ) {
@@ -27,7 +25,6 @@ public class AnnouncementPage {
 			pageTemp++;
 			blockCount++;
 		}
-		System.out.println("AnnouncementPage-pagingStr-CheckPoint2");
 		if(pageTemp <= totalPages) {
 			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[Next]</a>", reqUrl, pageTemp);
 //			pagingStr += String.format("<a href=\"%s?pageNum=%s\">[End]</a>", reqUrl, totalPages); 

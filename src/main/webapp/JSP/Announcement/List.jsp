@@ -43,7 +43,7 @@ List<AnnouncementDTO> amtLists = dao.selectList(ann);  // 게시물 목록 받�
 dao.close();  // DB 연결 닫기
 %>
 <%
-String message = session.getAttribute("message").toString();
+String message = (String) session.getAttribute("message");
 if (message != null) {
     out.println("<script>alert('" + message + "');</script>");
     session.removeAttribute("message");  // 메시지를 한 번 출력 후 삭제

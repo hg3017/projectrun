@@ -1,6 +1,7 @@
 package Service;
 
 import java.util.List;
+import java.util.Map;
 
 import DAO.FreeBoardDAO;
 import DTO.FreeBoardDTO;
@@ -16,9 +17,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	}
 
 	@Override
-	public List<FreeBoardDTO> selectList() {
+	public List<FreeBoardDTO> selectList(Map<String, String> map) {
 		
-		return dao.selectList(null);
+		return dao.selectList(map);
 	}
 
 	@Override
@@ -36,6 +37,12 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	public int updateEdit(FreeBoardDTO dto) {
 		
 		return dao.updateEdit(dto);
+	}
+
+	@Override
+	public int deletePost(FreeBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.deletePost(dto);
 	}
 
 

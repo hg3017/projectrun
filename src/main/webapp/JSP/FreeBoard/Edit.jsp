@@ -1,12 +1,12 @@
-<%@page import="DTO.AnnouncementDTO"%>
-<%@page import="DAO.AnnouncementDAO"%>
+<%@page import="DTO.FreeBoardDTO"%>
+<%@page import="DAO.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%> 
 <%
 String num = request.getParameter("num");  // 일련번호 받기 
-AnnouncementDAO dao = new AnnouncementDAO();  // DAO 생성
-AnnouncementDTO dto = dao.selectView(num);        // 게시물 가져오기 
+FreeBoardDAO dao = new FreeBoardDAO();  // DAO 생성
+FreeBoardDTO dto = dao.selectView(num);        // 게시물 가져오기 
 String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
 /* if (!sessionId.equals(dto.getId())) {      // 본인인지 확인
     JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
@@ -37,7 +37,7 @@ function validateForm(form) {  // 폼 내용 검증
 <body>
 <jsp:include page= '../Common/Header.jsp' />
 <h2>Edit</h2>
-<form name="writeFrm" method="post" action="EditProcess.jsp"
+<form name="writeFrm" method="post" action="EditProcess.free"
       onsubmit="return validateForm(this);">
     <input type="hidden" name="num" value="<%= dto.getNum() %>" /> 
     <table border="1" width="90%">
@@ -57,7 +57,6 @@ function validateForm(form) {  // 폼 내용 검증
         <tr>
             <td colspan="2" align="right">
                 <button type="submit">작성 완료</button>
-                <button type="reset">다시 입력</button>
                 <button type="button" onclick="location.href='List.jsp';">
                     목록 보기</button>
             </td>

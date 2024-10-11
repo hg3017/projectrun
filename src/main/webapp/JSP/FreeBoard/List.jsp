@@ -1,25 +1,25 @@
-<%@page import="Utils.AnnouncementPage"%>
-<%@page import="DTO.AnnouncementDTO"%>
+<%@page import="Utils.FreeBoardPage"%>
+<%@page import="DTO.FreeBoardDTO"%>
+<%@page import="DAO.FreeBoardDAO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="java.util.Map"%>
-<%@page import="DAO.AnnouncementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <%
-AnnouncementDAO dao = new AnnouncementDAO();
+FreeBoardDAO dao = new FreeBoardDAO();
 
 //사용자가 입력한 검색 조건을 Map에 저장
-Map<String, String> ann = new HashMap<String, String>(); 
+Map<String, String> fb = new HashMap<String, String>(); 
 String searchField = request.getParameter("searchField");
 String searchWord = request.getParameter("searchWord");
 if (searchWord != null) {
- ann.put("searchField", searchField);
- ann.put("searchWord", searchWord);
+ fb.put("searchField", searchField);
+ fb.put("searchWord", searchWord);
 }
 
-int totalCount = dao.selectCount(ann);  // 게시물 수 확인
+int totalCount = dao.selectCount(fb);  // 게시물 수 확인
 
 
 
@@ -34,13 +34,20 @@ if(pageTemp != null && !pageTemp.equals(""))
 	pageNum =Integer.parseInt(pageTemp);
 
 int limit = pageSize;
-int offset = (pageNum - 1) * pageSize + 1; // 1 ~ 10 , 11 ~ 20
-ann.put("limit", String.valueOf(pageSize));
-ann.put("offset", String.valueOf(offset)); 
+int offset = (pageNum - 1) * pageSize; // 1 ~ 10 , 11 ~ 20
+fb.put("limit", String.valueOf(pageSize));
+fb.put("offset", String.valueOf(offset)); 
 
 
-List<AnnouncementDTO> amtLists = dao.selectList(ann);  // 게시물 목록 받기
+List<FreeBoardDTO> fbLists = dao.selectList(fb);  // 게시물 목록 받기
 dao.close();  // DB 연결 닫기
+%>
+<%
+String message = (String) session.getAttribute("message");
+if (message != null) {
+    out.println("<script>alert('" + message + "');</script>");
+    session.removeAttribute("message");  // 메시지를 한 번 출력 후 삭제
+}
 %>
 <!DOCTYPE html>
 <html>
@@ -68,6 +75,7 @@ alter(${pageContext.request.contextPath});
 </head>
 <body>
     <jsp:include page= '../Common/Header.jsp' />
+    <h1 style="font-size:24px">자유게시판</h1>
 	<!-- 검색 -->
 	<form method="get">
 		<table width="50%" style="border-collapse: collapse">
@@ -91,7 +99,7 @@ alter(${pageContext.request.contextPath});
 			<th width="15%">작성일</th>
 		</tr>
 		<%
-if (amtLists.isEmpty()) {
+if (fbLists.isEmpty()) {
     // 게시물이 하나도 없을 때 
 %>
 		<tr>
@@ -101,12 +109,8 @@ if (amtLists.isEmpty()) {
 }
 else {
     // 게시물이 있을 때 
-/*     int virtualNum = 0; // 화면상에서의 게시물 번호
-    for (AnnouncementDTO dto : amtLists) {
-    	virtualNum = totalCount--;   // 전체 게시물 수에서 시작해 1씩 감소 */ 
-    	int virtualNum = totalCount - (pageNum - 1) * pageSize; // 페이지에 맞춰 가상번호 계산
-    	for (AnnouncementDTO dto : amtLists) {
-    	   totalCount = virtualNum--;   // 가상번호는 1씩 감소 
+        int virtualNum = totalCount - (pageNum - 1) * pageSize; //
+        for (FreeBoardDTO dto : fbLists) {
 %>
 		<tr align="center">
 			<td><%= virtualNum %></td>
@@ -121,12 +125,13 @@ else {
 			<td align="center"><%= dto.getPostdate() %></td>
 			<!--작성일-->
 		</tr>
-		<%}
-    }%>
+		<%
+        	virtualNum--;
+        }}%>
 	</table>
 	<table width="50%" style="border-collapse: collapse">
 		<tr align="right">
-			<td align="center"><%=AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
+ 			<td align="center"><%=FreeBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
 			<td>
 				<button type="button" onclick="location.href='Write.jsp';">글쓰기</button>
 			</td>

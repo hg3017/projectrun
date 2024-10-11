@@ -55,7 +55,6 @@ public class AnnouncementDAO extends JDBConnect {
     	query += " LIMIT ? OFFSET ?";
     	
 		try {
-			//stmt = con.createStatement();
         	psmt = con.prepareStatement(query.toString());
         	int paramIndex = 1;
         	if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {

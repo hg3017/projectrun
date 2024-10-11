@@ -44,26 +44,24 @@ public class FreeBoardDAO extends JDBConnect {
     }
     
     public List<FreeBoardDTO> selectList(Map<String, String> map) {
-    	List<FreeBoardDTO> amt = new ArrayList<FreeBoardDTO>();
+    	List<FreeBoardDTO> fb = new ArrayList<FreeBoardDTO>();
     	
     	String query = "SELECT * FROM freeboard";
     	if (map.get("searchWord") != null) {
-    		query += " WHERE " + map.get("searchField") + " ";
-    		query += " LIKE concat('%',?,'%')";
+    		query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
     	}
     	query += " ORDER BY num DESC ";
     	query += " LIMIT ? OFFSET ?";
 		try {
-			//stmt = con.createStatement();
-        	psmt = con.prepareStatement(query);
-        	if (map.get("searchWord") != null) {
-        		psmt.setString(1, map.get("searchWord"));
-        		psmt.setInt(2, Integer.parseInt(map.get("limit")));
-        		psmt.setInt(3, Integer.parseInt(map.get("offset")));
-        	}else {
-        		psmt.setInt(1, Integer.parseInt(map.get("limit")));
-        		psmt.setInt(2, Integer.parseInt(map.get("offset")));
-        	}
+        	psmt = con.prepareStatement(query.toString());
+        	int paramIndex = 1;
+        	if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+        		psmt.setString(paramIndex++, map.get("searchWord"));
+        		
+        	} 
+        		psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
+        		psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
+        	
         	rs = psmt.executeQuery();  // 쿼리 실행
         	
         	
@@ -78,19 +76,19 @@ public class FreeBoardDAO extends JDBConnect {
                 dto.setId(rs.getString("id"));            // 작성자 아이디
                 dto.setVisitcount(rs.getString("visitcount"));  // 조회수
 
-                amt.add(dto);  // 결과 목록에 저장
+                fb.add(dto);  // 결과 목록에 저장
             }
         } 
         catch (Exception e) {
             System.out.println("게시물 조회 중 예외 발생");
             e.printStackTrace();
         }
-		return amt;
+		return fb;
     }
     
     // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
     public List<FreeBoardDTO> selectListPage(Map<String, Object> map) {
-        List<FreeBoardDTO> amt = new Vector<FreeBoardDTO>();  // 결과(게시물 목록)를 담을 변수
+        List<FreeBoardDTO> fb = new Vector<FreeBoardDTO>();  // 결과(게시물 목록)를 담을 변수
         
         // 쿼리문 템플릿  
         String query = " SELECT * FROM freeboard ";
@@ -120,7 +118,7 @@ public class FreeBoardDAO extends JDBConnect {
                 dto.setVisitcount(rs.getString("visitcount"));
 
                 // 반환할 결과 목록에 게시물 추가
-                amt.add(dto);
+                fb.add(dto);
             }
         } 
         catch (Exception e) {
@@ -129,7 +127,7 @@ public class FreeBoardDAO extends JDBConnect {
         }
         
         // 목록 반환
-        return amt;
+        return fb;
     }
     
     // 게시글 데이터를 받아 DB에 추가합니다. 
