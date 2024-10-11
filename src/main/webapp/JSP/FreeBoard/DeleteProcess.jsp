@@ -1,4 +1,4 @@
-<%-- <%@page import="DAO.AnnouncementDAO"%>
+<%@page import="DAO.AnnouncementDAO"%>
 <%@page import="DTO.AnnouncementDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -36,4 +36,4 @@ else {
 
     return;
 }
-%> --%>
+%>

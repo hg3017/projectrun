@@ -34,20 +34,13 @@ if(pageTemp != null && !pageTemp.equals(""))
 	pageNum =Integer.parseInt(pageTemp);
 
 int limit = pageSize;
-int offset = (pageNum - 1) * pageSize; // 1 ~ 10 , 11 ~ 20
+int offset = (pageNum - 1) * pageSize + 1; // 1 ~ 10 , 11 ~ 20
 ann.put("limit", String.valueOf(pageSize));
 ann.put("offset", String.valueOf(offset)); 
 
 
 List<AnnouncementDTO> amtLists = dao.selectList(ann);  // 게시물 목록 받기
 dao.close();  // DB 연결 닫기
-%>
-<%
-String message = session.getAttribute("message").toString();
-if (message != null) {
-    out.println("<script>alert('" + message + "');</script>");
-    session.removeAttribute("message");  // 메시지를 한 번 출력 후 삭제
-}
 %>
 <!DOCTYPE html>
 <html>
@@ -75,7 +68,6 @@ alter(${pageContext.request.contextPath});
 </head>
 <body>
     <jsp:include page= '../Common/Header.jsp' />
-    <h1 style="font-size:24px">공지사항</h1>
 	<!-- 검색 -->
 	<form method="get">
 		<table width="50%" style="border-collapse: collapse">
@@ -109,8 +101,12 @@ if (amtLists.isEmpty()) {
 }
 else {
     // 게시물이 있을 때 
-        int virtualNum = totalCount - (pageNum - 1) * pageSize; //
-        for (AnnouncementDTO dto : amtLists) {
+/*     int virtualNum = 0; // 화면상에서의 게시물 번호
+    for (AnnouncementDTO dto : amtLists) {
+    	virtualNum = totalCount--;   // 전체 게시물 수에서 시작해 1씩 감소 */ 
+    	int virtualNum = totalCount - (pageNum - 1) * pageSize; // 페이지에 맞춰 가상번호 계산
+    	for (AnnouncementDTO dto : amtLists) {
+    	   totalCount = virtualNum--;   // 가상번호는 1씩 감소 
 %>
 		<tr align="center">
 			<td><%= virtualNum %></td>
@@ -125,9 +121,8 @@ else {
 			<td align="center"><%= dto.getPostdate() %></td>
 			<!--작성일-->
 		</tr>
-		<%
-        	virtualNum--;
-        }}%>
+		<%}
+    }%>
 	</table>
 	<table width="50%" style="border-collapse: collapse">
 		<tr align="right">

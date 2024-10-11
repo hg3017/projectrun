@@ -1,10 +1,10 @@
 package Service;
 
 import java.util.List;
+import java.util.Map;
 
 import DAO.AnnouncementDAO;
 import DTO.AnnouncementDTO;
-
 
 public class AnnouncementServiceImpl implements AnnouncementService{
 	
@@ -15,9 +15,9 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	}
 
 	@Override
-	public List<AnnouncementDTO> selectList() {
+	public List<AnnouncementDTO> selectList(Map<String, String> map) {
 		
-		return dao.selectList(null);
+		return dao.selectList(map);
 	}
 
 	@Override
@@ -35,6 +35,11 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	public int updateEdit(AnnouncementDTO dto) {
 		
 		return dao.updateEdit(dto);
+	}
+
+	@Override
+	public int deletePost(AnnouncementDTO dto) {
+		return dao.deletePost(dto);
 	}
 
 

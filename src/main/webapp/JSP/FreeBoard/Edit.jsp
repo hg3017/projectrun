@@ -37,7 +37,7 @@ function validateForm(form) {  // 폼 내용 검증
 <body>
 <jsp:include page= '../Common/Header.jsp' />
 <h2>Edit</h2>
-<form name="writeFrm" method="post" action="EditProcess.an"
+<form name="writeFrm" method="post" action="EditProcess.jsp"
       onsubmit="return validateForm(this);">
     <input type="hidden" name="num" value="<%= dto.getNum() %>" /> 
     <table border="1" width="90%">
@@ -57,6 +57,7 @@ function validateForm(form) {  // 폼 내용 검증
         <tr>
             <td colspan="2" align="right">
                 <button type="submit">작성 완료</button>
+                <button type="reset">다시 입력</button>
                 <button type="button" onclick="location.href='List.jsp';">
                     목록 보기</button>
             </td>

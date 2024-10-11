@@ -22,10 +22,10 @@ function validateForm(form) {
 </script>
 </head>
 <body>
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page="../Common/Menu2.jsp" />
 
 <h1>글쓰기 - Write</h1>
-<form name="writeFrm" method="post" action="WriteProcess.an" onsubmit="return validateForm(this);">
+<form name="writeFrm" method="post" action="WriteProcess.jsp" onsubmit="return validateForm(this);">
 	<table border="1" width="50%" style="border-collapse: collapse">
 		<tr align="center">
 			<td>제목</td>
@@ -48,6 +48,5 @@ function validateForm(form) {
         </tr>
 	</table>
 </form>
-<jsp:include page= '../Common/Footer.jsp' /> 
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%-- <%@page import="Utils.JSFunction"%>
+<%@page import="Utils.JSFunction"%>
 <%@page import="DAO.AnnouncementDAO"%>
 <%@page import="DTO.AnnouncementDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,10 +18,12 @@ dto.setId(session.getAttribute("UserId").toString());
 // DAO 객체를 통해 DB에 DTO 저장
 AnnouncementDAO dao = new AnnouncementDAO();
 int iResult = 0;
-
+for(int i=1; i<2; i++){
+	dto.setTitle(title);
 	iResult = dao.insertWrite(dto);
 	//System.out.println("Insert result for iteration " + i + ": " + iResult);
 	
+ }
 dao.close();
 
 // 성공 or 실패? 
@@ -30,4 +32,4 @@ if (iResult == 1) {
 }else {
     JSFunction.alertBack("글쓰기에 실패하였습니다.", out);
 }
-%> --%>
+%>

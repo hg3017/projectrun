@@ -1,4 +1,4 @@
-<%-- <%@page import="DAO.AnnouncementDAO"%>
+<%@page import="DAO.AnnouncementDAO"%>
 <%@page import="DTO.AnnouncementDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -29,4 +29,4 @@ else {
     // 실패 시 이전 페이지로 이동
     JSFunction.alertBack("수정하기에 실패하였습니다.", out);
 }
-%> --%>
+%>

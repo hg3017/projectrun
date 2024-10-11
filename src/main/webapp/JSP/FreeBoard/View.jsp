@@ -22,7 +22,7 @@ function deletePost() {
     if (confirmed) {
         var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
         form.method = "post";               // 전송 방식 
-        form.action = "DeleteProcess.an";  // 전송 경로
+        form.action = "DeleteProcess.jsp";  // 전송 경로
         form.submit();                      // 폼값 전송
     }
 }
@@ -36,20 +36,25 @@ function deletePost() {
 
     <table border="1" width="90%" style="border-collapse: collapse">
         <tr>
-            <td align="center">작성자</td>
+            <td>번호</td>
+            <td><%= dto.getNum() %></td>
+            <td>작성자</td>
             <td><%= dto.getName() %></td>
-            <td align="center">작성일</td>
-            <td><%= dto.getPostdate() %></td>
         </tr>
         <tr>
-            <td align="center">제목</td>
+            <td>작성일</td>
+            <td><%= dto.getPostdate() %></td>
+            <td>조회수</td>
+            <td><%= dto.getVisitcount() %></td>
+        </tr>
+        <tr>
+            <td>제목</td>
             <td colspan="3"><%= dto.getTitle() %></td>
         </tr>
         <tr>
-            <td align="center">내용</td>
+            <td>내용</td>
             <td colspan="3" height="100px">
-                 <%= dto.getContent() != null ? dto.getContent().replace("\r\n", "<br/>") : "내용없음"%></td>
-                 <%-- <%= dto.getContent()%></td> --%>
+                <%-- <%= dto.getContent().replace("\r\n", "<br/>")%></td> --%>
         </tr>
         <tr>
             <td colspan="4" align="right">
