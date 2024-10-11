@@ -64,7 +64,7 @@
 }
 
 #container {
-/* 	width: 1720px; */
+	width: 1810px;
 /* 	margin: 0 auto; */
 	display: flex;
 	flex-direction:row;
@@ -72,20 +72,20 @@
 }
 
 #container >.inner {
+	width: 100%;
 	display: flex;
 	flex-direction: row;
 }
 
 .contents .inner {
-
+	width : 100%;
 }
 
 .side_menu {
-	width :330px;
 	/* height : 100%; */
 	height : 900px;
 	background:#A4B7D1;
-	
+	width : 300px;
 }
 
 .side_menu .menu_inner {
@@ -105,7 +105,7 @@
 }
 
 .board_search_wrap_admin {
-	display : none;
+	/* display : none; */
 }
 
 .board_search_wrap_admin .board_search_admin {
@@ -119,7 +119,8 @@
 .menu_wrap {
 }
 
-#container .contents {
+/* position relative, position absolute로 설정하는 법 */
+/* #container .contents {
 	position: relative;
 }
 
@@ -131,24 +132,47 @@
   width: 600px;
   height: 200px; 
   z-index: 200;	
+} */
+
+/* section 개념으로 나누어야 될거같다. */
+#container .contents {
+	width : 100%;
 }
 
-.board_list_admin >table {
-	width: auto;
-	
+/* 위아래 패딩을 준다. */
+#container .contents .inner .board_search_wrap_admin {
+	padding : 50px 0;
 }
-.board_list_admin table thead tr {
+
+/* 가로 길이를 정하고 maring : 0 auto; 한다. */
+#container .contents .inner .board_search_wrap_admin form {
+	max-width : 1200px;
+	margin : 0 auto;
+}
+
+/* 위아래 패딩을 준다. */
+#container .contents .inner .board_list_admin {
+	padding : 50px 0;
+}
+
+/* 가로 길이를 정하고 margin : 0 auto; 한다. */
+#container .contents .inner table {
+	max-width : 1200px;
+	margin : 0 auto;
+}
+
+.board_list_admin table thead >tr {
 	border-top: 2px solid black;
 }
-.board_list_admin table thead th {
+.board_list_admin table thead >th {
 	width :160px;
 	height: 50px;
 	font-size: 15px;
 }
-.board_list_admin table tbody tr {
+.board_list_admin table tr {
 	
 }
-.board_list_admin table tbody th {
+.board_list_admin table th {
 	
 }
 
