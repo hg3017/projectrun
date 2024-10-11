@@ -114,7 +114,7 @@
 								</fieldset>
 							</form>
 						</div>
-						<div class="board_list_admin">
+						<div class="board_list">
 							<table>
 								<thead>
 									<tr>
