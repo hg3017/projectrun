@@ -65,7 +65,6 @@
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
 					</div>
-					</h1>
 				</div>
 				<div class="header_right">
 					<div class=inner>
@@ -74,72 +73,74 @@
 				</div>
 			</div>
 		</header>
-		<main id="container">
-			<div class="inner">
-				<div class="side_menu">
-					<aside class="menu_wrap">
-						<div class="menu_inner">
-							<h2>
-								<span class="blind">administer</span>
-							</h2>
-							<ul class="menu">
-								<li><a href="#">dashboard</a></li>
-								<li><a href="#">member</a></li>
-								<li><a href="#">crew</a></li>
-								<li><a href="#">setting<a></li>
-							</ul>
-						</div>
-					</aside>
-				</div>
-				<div class="contents">
-					<div class="inner">
-						<div class="board_search_wrap">
-							<form>
-								<fieldset>
-									<legend>게시물 검색</legend>
-									<div class="board_search">
-										<select>
-											<option>아이디</option>
-											<option>닉네임</option>
-											<option>지역</option>
-										</select>
-									</div>
-									<div class="input_wrap">
-										<input type="search" placeholder="검색어를 입력해주세요"
-											title="검색어를 입력해주세요">
-										<button type="submit" class="search_btn">
-											<span class="blind">게시물 검색</span>
-										</button>
-									</div>
-								</fieldset>
-							</form>
-						</div>
-						<div class="board_list">
-							<table>
-								<thead>
+		<div id="container_wrapper">
+			<main id="container">
+				<div class="inner">
+					<div class="side_menu">
+						<aside class="menu_wrap">
+							<div class="menu_inner">
+								<h2>
+									<span class="blind">administer</span>
+								</h2>
+								<ul class="menu">
+									<li><a href="#">dashboard</a></li>
+									<li><a href="#">member</a></li>
+									<li><a href="#">crew</a></li>
+									<li><a href="#">setting<a></li>
+								</ul>
+							</div>
+						</aside>
+					</div>
+					<div class="contents">
+						<div class="inner">
+							<div class="board_search_wrap_admin">
+								<form>
+									<fieldset>
+										<legend>게시물 검색</legend>
+										<div class="board_search_admin">
+											<select>
+												<option>아이디</option>
+												<option>닉네임</option>
+												<option>지역</option>
+											</select>
+										</div>
+										<div class="input_wrap_admin">
+											<input type="search" placeholder="검색어를 입력해주세요"
+												title="검색어를 입력해주세요">
+											<button type="submit" class="search_btn">
+												<span class="blind">게시물 검색</span>
+											</button>
+										</div>
+									</fieldset>
+								</form>
+							</div>
+							<div class="board_list_admin">
+								<table>
+									<thead>
+										<tr>
+											<th class="col1">id</th>
+											<th class="col2">name</th>
+											<th class="col3">grade</th>
+											<th class="col4">nickname</th>
+											<th class="col5">location</th>
+											<th class="col6">regidate</th>
+										</tr>
+									</thead>
 									<tr>
-										<th class="col1">id</th>
-										<th class="col2">name</th>
-										<th class="col3">grade</th>
-										<th class="col4">nickname</th>
-										<th class="col5">location</th>
-										<th class="col6">regidate</th>
-									</tr>
-								</thead>
-								<tr>
-									<td>id자리</td>
-									<td>name자리</td>
-									<td>grade자리</td>
-									<td>nickname자리</td>
-									<td>location자리</td>
-									<td>regidate자리</td>
-								<tr>
-							</table>
+										<td>id자리</td>
+										<td>name자리</td>
+										<td>grade자리</td>
+										<td>nickname자리</td>
+										<td>location자리</td>
+										<td>regidate자리</td>
+									<tr>
+								</table>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</main>
+			</main>
+		</div>
 		<footer id="footer">
 			<a href="#" class="top_btn">Top</a>
 		</footer>
