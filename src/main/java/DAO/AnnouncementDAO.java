@@ -89,7 +89,7 @@ public class AnnouncementDAO extends JDBConnect {
     }
     
     // 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
-    public List<AnnouncementDTO> selectListPage(Map<String, Object> map) {
+    public List<AnnouncementDTO> selectListPage(Map<String, String> map) {
         List<AnnouncementDTO> amt = new Vector<AnnouncementDTO>();  // 결과(게시물 목록)를 담을 변수
         
         // 쿼리문 템플릿  
@@ -171,12 +171,12 @@ public class AnnouncementDAO extends JDBConnect {
 
             // 결과 처리
             if (rs.next()) {
-                dto.setNum(rs.getString(1)); 
-                dto.setTitle(rs.getString(2));
+                dto.setNum(rs.getString("num")); 
+                dto.setTitle(rs.getString("title"));
                 dto.setContent(rs.getString("content"));
                 dto.setPostdate(rs.getDate("postdate"));
                 dto.setId(rs.getString("id"));
-                dto.setVisitcount(rs.getString(6));
+                dto.setVisitcount(rs.getString("visitcount"));
                 dto.setName(rs.getString("name")); 
             }
         } 
@@ -253,4 +253,5 @@ public class AnnouncementDAO extends JDBConnect {
         
         return result; // 결과 반환
     }
+   
 }

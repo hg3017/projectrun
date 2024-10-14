@@ -11,8 +11,7 @@ public class AnnouncementDTO {
     private java.sql.Date postdate;
     private String visitcount;
     private String name;
-    
-	
+
 	public String getNum() {
 		return num;
 	}
@@ -55,6 +54,6 @@ public class AnnouncementDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-    
+
     
 }

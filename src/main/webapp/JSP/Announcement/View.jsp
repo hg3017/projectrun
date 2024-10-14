@@ -1,16 +1,8 @@
-<%@page import="DTO.AnnouncementDTO"%>
-<%@page import="DAO.AnnouncementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="./IsLoggedIn.jsp"%>
-<%
-String num = request.getParameter("num");  // 일련번호 받기 
 
-AnnouncementDAO dao = new AnnouncementDAO();  // DAO 생성 
-dao.updateVisitCount(num);                 // 조회수 증가 
-AnnouncementDTO dto = dao.selectView(num);        // 게시물 가져오기 
-dao.close();                               // DB 연결 해제
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,51 +18,58 @@ function deletePost() {
         form.submit();                      // 폼값 전송
     }
 }
+
 </script>
 </head>
 <body>
 <jsp:include page= '../Common/Header.jsp' />
 <h2>View</h2>
 <form name="writeFrm">
-    <input type="hidden" name="num" value="<%= num %>" />  <!-- 공통 링크 -->
+    <input type="hidden" name="num" value="${board.num }" />  <!-- 공통 링크 -->
 
     <table border="1" width="90%" style="border-collapse: collapse">
         <tr>
             <td align="center">작성자</td>
-            <td><%= dto.getName() %></td>
+            <td>${board.name }</td>
             <td align="center">작성일</td>
-            <td><%= dto.getPostdate() %></td>
+            <td>${board.postdate }</td>
         </tr>
         <tr>
             <td align="center">제목</td>
-            <td colspan="3"><%= dto.getTitle() %></td>
+            <td colspan="3">${board.title }</td>
         </tr>
         <tr>
             <td align="center">내용</td>
             <td colspan="3" height="100px">
-                 <%= dto.getContent() != null ? dto.getContent().replace("\r\n", "<br/>") : "내용없음"%></td>
-                 <%-- <%= dto.getContent()%></td> --%>
+            	<c:if test="${empty board.content }">내용없음</c:if>
+            	<c:if test="${not empty board.content }">${board.content }</c:if>
+            </td>
         </tr>
         <tr>
             <td colspan="4" align="right">
-            <%
-            if (session.getAttribute("UserId") != null
-                && session.getAttribute("UserId").toString().equals(dto.getId())) {
-            %>
-                <button type="button"
-                        onclick="location.href='Edit.jsp?num=<%= dto.getNum() %>';">
-                    수정하기</button>
-                <button type="button" onclick="deletePost();">삭제하기</button> 
-            <%
-            }
-            %>
-                <button type="button" onclick="location.href='List.jsp';">
+            	<c:if test="${UserId eq board.id }">
+            	<button type="button" onclick="location.href='Edit.an?num=${board.num}';">수정하기</button>
+            	<button type="button" onclick="deletePost()">삭제하기</button>
+            	</c:if>
+                <button type="button" onclick="location.href='List.an';">
                     목록 보기
                 </button>
             </td>
         </tr>
     </table>
 </form>
+<table border="1" style="width:100%;">
+ <tr>
+  <td><input id="writer" placeholder="이름"></td>
+  <td rowspan="2">
+   <button id="btnSave" type="button">확인</button>
+  </td>
+ </tr>
+ <tr>
+  <td><textarea rows="5" cols="80" placeholder="내용을 입력하세요" id="content"></textarea></td>
+ </tr>
+</table>
+
 <jsp:include page= '../Common/Footer.jsp' />
 </body>
 </html>

@@ -1,6 +1,4 @@
-/Common/
-/Controller/
 /DAO/
+/Servlet/
 /DTO/
-/Service/
-/Utils/
+/Controller/

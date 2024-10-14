@@ -1,19 +1,7 @@
-<%@page import="DTO.AnnouncementDTO"%>
-<%@page import="DAO.AnnouncementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="./IsLoggedIn.jsp"%> 
-<%
-String num = request.getParameter("num");  // 일련번호 받기 
-AnnouncementDAO dao = new AnnouncementDAO();  // DAO 생성
-AnnouncementDTO dto = dao.selectView(num);        // 게시물 가져오기 
-String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
-/* if (!sessionId.equals(dto.getId())) {      // 본인인지 확인
-    JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
-    return;
-} */
-dao.close();  // DB 연결 해제
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,30 +27,35 @@ function validateForm(form) {  // 폼 내용 검증
 <h2>Edit</h2>
 <form name="writeFrm" method="post" action="EditProcess.an"
       onsubmit="return validateForm(this);">
-    <input type="hidden" name="num" value="<%= dto.getNum() %>" /> 
+    <input type="hidden" name="num" value="${board.num }" /> 
+    <c:if test="${not empty board}">
     <table border="1" width="90%">
         <tr>
             <td align="center">제목</td>
             <td colspan="2">
                 <input type="text" name="title" style="width: 90%;" 
-                       value="<%= dto.getTitle() %>"/> 
+                       value="${board.title }"/> 
             </td>
         </tr>
         <tr>
             <td align="center">내용</td>
             <td colspan="2">
-                <textarea name="content" style="width: 90%; height: 100px;"><%= dto.getContent() %></textarea>
+                <textarea name="content" style="width: 90%; height: 100px;">${board.content }</textarea>
             </td>
         </tr>
         <tr>
             <td colspan="2" align="right">
                 <button type="submit">작성 완료</button>
-                <button type="button" onclick="location.href='List.jsp';">
+                <button type="button" onclick="location.href='List.an';">
                     목록 보기</button>
             </td>
         </tr>
     </table>
+    </c:if>
 </form>
+<c:if test="${empty board}">
+    <p>게시물 데이터를 찾을 수 없습니다.</p> <!-- board 값이 null인 경우 경고 -->
+</c:if>
 <jsp:include page= '../Common/Footer.jsp' />
 </body>
 </html>

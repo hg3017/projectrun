@@ -1,54 +1,7 @@
-<%@page import="Utils.AnnouncementPage"%>
-<%@page import="DTO.AnnouncementDTO"%>
-<%@page import="java.util.List"%>
-<%@page import="java.util.HashMap"%>
-<%@page import="java.util.Map"%>
-<%@page import="DAO.AnnouncementDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%
-AnnouncementDAO dao = new AnnouncementDAO();
-
-//사용자가 입력한 검색 조건을 Map에 저장
-Map<String, String> ann = new HashMap<String, String>(); 
-String searchField = request.getParameter("searchField");
-String searchWord = request.getParameter("searchWord");
-if (searchWord != null) {
- ann.put("searchField", searchField);
- ann.put("searchWord", searchWord);
-}
-
-int totalCount = dao.selectCount(ann);  // 게시물 수 확인
-
-
-
-//paging
-int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
-int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
-int totalPage = (int)Math.ceil((double)totalCount/pageSize);
-
-int pageNum = 1;
-String pageTemp = request.getParameter("pageNum");
-if(pageTemp != null && !pageTemp.equals(""))
-	pageNum =Integer.parseInt(pageTemp);
-
-int limit = pageSize;
-int offset = (pageNum - 1) * pageSize; // 1 ~ 10 , 11 ~ 20
-ann.put("limit", String.valueOf(pageSize));
-ann.put("offset", String.valueOf(offset)); 
-
-
-List<AnnouncementDTO> amtLists = dao.selectList(ann);  // 게시물 목록 받기
-dao.close();  // DB 연결 닫기
-%>
-<%
-String message = (String) session.getAttribute("message");
-if (message != null) {
-    out.println("<script>alert('" + message + "');</script>");
-    session.removeAttribute("message");  // 메시지를 한 번 출력 후 삭제
-}
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -98,42 +51,34 @@ alter(${pageContext.request.contextPath});
 			<th width="10%">조회수</th>
 			<th width="15%">작성일</th>
 		</tr>
-		<%
-if (amtLists.isEmpty()) {
-    // 게시물이 하나도 없을 때 
-%>
+	<c:if test="${empty boards}">
 		<tr>
 			<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
-		</tr>
-<%
-}
-else {
-    // 게시물이 있을 때 
-        int virtualNum = totalCount - (pageNum - 1) * pageSize; //
-        for (AnnouncementDTO dto : amtLists) {
-%>
+		</tr> 
+	</c:if>
+	
+		<c:forEach var="board" items="${boards }" varStatus="status">
 		<tr align="center">
-			<td><%= virtualNum %></td>
+			<td>${boards.size() - status.index}</td>
 			<!--게시물 번호-->
 			<td align="left">
-				<!--제목(+ 하이퍼링크)--> <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>
+				<!--제목(+ 하이퍼링크)--> <a href="View.an?num=${board.num }">${board.title }</a>
 			</td>
-			<td align="center"><%= dto.getId() %></td>
+			<td align="center">${board.id }</td>
 			<!--작성자 아이디-->
-			<td align="center"><%= dto.getVisitcount() %></td>
+			<td align="center">${board.visitcount }</td>
 			<!--조회수-->
-			<td align="center"><%= dto.getPostdate() %></td>
-			<!--작성일-->
+			<td align="center">${board.postdate }</td>
+			<!--작성일--> 
 		</tr>
-		<%
-        	virtualNum--;
-        }}%>
+		</c:forEach>
 	</table>
 	<table width="50%" style="border-collapse: collapse">
 		<tr align="right">
-			<td align="center"><%=AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
 			<td>
-				<button type="button" onclick="location.href='Write.jsp';">글쓰기</button>
+			<c:if test="${UserId eq 'hong01' }">
+				<button type="button" onclick="location.href='Write.an';">글쓰기</button>
+			</c:if>
 			</td>
 		</tr>
 	</table>

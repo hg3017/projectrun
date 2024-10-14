@@ -60,7 +60,7 @@
                 </ul>
               </li>
               <li>
-                <a href="<%=request.getContextPath() %>/JSP/Announcement/List.jsp">게시판</a>
+                <a href="<%=request.getContextPath() %>/List.an">게시판</a>
                 <ul class="depth2">
                   <li><a href="/esg/esg"></a></li>
                   <li><a href="/esg/eco"></a></li>
@@ -72,7 +72,7 @@
                 </ul>
               </li>
               <li>
-                <a href="<%=request.getContextPath() %>/JSP/FreeBoard/List.jsp">고객센터</a>
+                <a href="<%=request.getContextPath() %>/List.free">고객센터</a>
                 <ul class="depth2">
                   <li><a href="/center/service"></a></li>
                   <li><a href="/center/supply?prod_cat_idx=1"></a></li>
@@ -116,7 +116,7 @@
               </ul>
             </li>
             <li>
-              <a href="<%=request.getContextPath() %>/JSP/Announcement/List.jsp">게시판</a>
+              <a href="<%=request.getContextPath() %>/List.an">게시판</a>
               <ul class="depth2">
                 <li><a href="investment/inquiry.do"></a></li>
                 <li><a href="investment/inquiry.do"></a></li>
@@ -125,7 +125,7 @@
               </ul>
             </li>
             <li>
-              <a href="<%=request.getContextPath() %>/JSP/FreeBoard/List.jsp">고객센터</a>
+              <a href="<%=request.getContextPath() %>/List.free">고객센터</a>
               <ul class="depth2">
                 <li><a href="investment/inquiry.do"></a></li>
                 <li><a href="investment/inquiry.do"></a></li>
