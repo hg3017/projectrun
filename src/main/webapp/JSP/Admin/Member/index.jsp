@@ -7,8 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	request객체의 ContextPath() 주소입니다. : <%=request.getContextPath() %>
-	<br>
-	request객체의 ContextPath() 주소입니다. : ${pageContext.request.contextPath}
+
 </body>
 </html>
+
