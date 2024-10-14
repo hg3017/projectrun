@@ -39,10 +39,10 @@
 	href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <link
-	href="${pageContext.request.contextPath}/resources/css/sub.css?v=<?php echo time(); ?>"
+	href="${pageContext.request.contextPath}/resources/css/admin_main.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <link
-	href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>"
+	href="${pageContext.request.contextPath}/resources/css/admin_sub.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <link
 	href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>"
@@ -57,76 +57,85 @@
 	<div id="wrap">
 		<header id="header">
 			<div class="inner">
-				<h1 class="logo">
-					<a href="index.html"> <span class="blind">administer</span>
-					</a>
-				</h1>
-			</div>
-			<div class="catchphrase">
-				<inner>
-				<p>For a day when everyone runs happy</p>
-				</inner>
+				<div class="header_left">
+					<div class="inner">
+						<a href="index.jsp"> <img
+							src='${pageContext.request.contextPath}/resources/images/logo.png'
+							alt="러닝메이트">
+							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
+						</a>
+					</div>
+					</h1>
+				</div>
+				<div class="header_right">
+					<div class=inner>
+						<p>For a day when everyone runs happy</p>
+					</div>
+				</div>
 			</div>
 		</header>
 		<main id="container">
-			<div id="side_menu">
-				<aside class="menu_wrap">
-					<div class="menu_inner">
-						<h2>
-							<span class="blind">administer</span>
-						</h2>
-						<ul class="menu">
-							<li><a href="#">dashboard</a></li>
-							<li><a href="#">member</a></li>
-							<li><a href="#">crew</a></li>
-							<li><a href="#">setting<a></li>
-						</ul>
-					</div>
-				</aside>
-			</div>
-			<div class="contents">
-				<div class="inner">
-					<div class="board_search_wrap">
-						<form>
-							<fieldset>
-								<legend>게시물 검색</legend>
-								<div class="board_search">
-									<select>
-										<option>아이디</option>
-										<option>닉네임</option>
-										<option>지역</option>
-									</select>
-								</div>
-								<div class="input_wrap">
-									<input type="search" placeholder="검색어를 입력해주세요"
-										title="검색어를 입력해주세요">
-									<button type="submit" class="search_btn">
-										<span class="blind">게시물 검색</span>
-									</button>
-								</div>
-						</form>
-					</div>
-					<div class="board_list">
-						<table>
-							<thead>
+			<div class="inner">
+				<div class="side_menu">
+					<aside class="menu_wrap">
+						<div class="menu_inner">
+							<h2>
+								<span class="blind">administer</span>
+							</h2>
+							<ul class="menu">
+								<li><a href="#">dashboard</a></li>
+								<li><a href="#">member</a></li>
+								<li><a href="#">crew</a></li>
+								<li><a href="#">setting<a></li>
+							</ul>
+						</div>
+					</aside>
+				</div>
+				<div class="contents">
+					<div class="inner">
+						<div class="board_search_wrap">
+							<form>
+								<fieldset>
+									<legend>게시물 검색</legend>
+									<div class="board_search">
+										<select>
+											<option>아이디</option>
+											<option>닉네임</option>
+											<option>지역</option>
+										</select>
+									</div>
+									<div class="input_wrap">
+										<input type="search" placeholder="검색어를 입력해주세요"
+											title="검색어를 입력해주세요">
+										<button type="submit" class="search_btn">
+											<span class="blind">게시물 검색</span>
+										</button>
+									</div>
+								</fieldset>
+							</form>
+						</div>
+						<div class="board_list">
+							<table>
+								<thead>
+									<tr>
+										<th class="col1">id</th>
+										<th class="col2">name</th>
+										<th class="col3">grade</th>
+										<th class="col4">nickname</th>
+										<th class="col5">location</th>
+										<th class="col6">regidate</th>
+									</tr>
+								</thead>
 								<tr>
-									<th class="col1">id</th>
-									<th class="col2">name</th>
-									<th class="col3">grade</th>
-									<th class="col4">nickname</th>
-									<th class="col5">location</th>
-									<th class="col6">regidate</th>
-								</tr>
-							</thead>
-							<tr>
-								<td>id자리</td>
-								<td>name자리</td>
-								<td>grade자리</td>
-								<td>nickname자리</td>
-								<td>location자리</td>
-								<td>regidate자리</td>
-							<tr>
-						</table>
+									<td>id자리</td>
+									<td>name자리</td>
+									<td>grade자리</td>
+									<td>nickname자리</td>
+									<td>location자리</td>
+									<td>regidate자리</td>
+								<tr>
+							</table>
+						</div>
 					</div>
 				</div>
 			</div>
