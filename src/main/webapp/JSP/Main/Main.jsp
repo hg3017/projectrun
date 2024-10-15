@@ -162,7 +162,9 @@
           </div>
         </div>
       </section>
-    </main>
+
+   
+    
     <jsp:include page= '../Common/Footer.jsp' />
   </div>
 </body>

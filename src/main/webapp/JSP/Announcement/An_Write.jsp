@@ -25,7 +25,7 @@ function validateForm(form) {
 <jsp:include page= '../Common/Header.jsp' />
 
 <h1>글쓰기 - Write</h1>
-<form name="writeFrm" method="post" action="WriteProcess.an" onsubmit="return validateForm(this);">
+<form name="writeFrm" method="post" action="An_WriteProcess.an" onsubmit="return validateForm(this);">
 	<table border="1" style="width:100%; border-collapse: collapse">
 		<tr align="center">
 			<td>제목</td>
@@ -43,7 +43,7 @@ function validateForm(form) {
             <td colspan="2" align="right">
             <input type="hidden" name="id" value="${userId}">
                 <button type="submit">작성 완료</button>
-                <button type="button" onclick="location.href='List.an';">
+                <button type="button" onclick="location.href='An_List.an';">
                     목록 보기</button>
             </td>
         </tr>
