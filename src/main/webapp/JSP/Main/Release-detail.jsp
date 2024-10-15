@@ -178,15 +178,15 @@
         <div class="inner">
           <div class="view_head">
             <div class="txt_wrap">
-              <p>활동지역</p>
+              <p class="location">활동지역</p>
               <span class="atxt">한강</span>
             </div>
             <div class="txt_wrap">
-              <p>시간</p>
+              <p class="clock">시간</p>
               <span class="btxt">오전 / 오후</span>
             </div>
             <div class="txt_wrap">
-              <p>정기런</p>
+              <p class="cal">정기런</p>
               <span class="ctxt">토요일</span>
             </div>
           </div>
