@@ -9,7 +9,7 @@
 <body>
 <%@page import="DTO.MemberDTO"%>
 <!-- Menu  -->
-<jsp:include page= './Menu.jsp' />
+<jsp:include page= './Member_menu.jsp' />
 <!-- Contents -->
 <h1>Write</h1>
 <form name="writeFrm" method="post" action="WriteProcess.do">

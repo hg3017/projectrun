@@ -14,7 +14,7 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 <body>
 <%@page import="DTO.MemberDTO"%>
 <!-- Menu -->
-<jsp:include page= './Menu.jsp' />
+<jsp:include page= './Member_menu.jsp' />
 <!-- Contents -->
 <h1>View</h1>
 <% out.println("member 객체 : "+ member); %>
