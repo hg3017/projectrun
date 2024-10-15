@@ -64,13 +64,13 @@
   width: 20px;
   height: 20px;
   display: inline-block;
-  background: url(../images/icon_locat_slide.svg) no-repeat 50% 50%;
+  background: url(/images/icon_locat_slide.svg) no-repeat 50% 50%;
   vertical-align: middle;
 }
 
 .sub_visual {
   height: 400px;
-  background: url(../images/bg_aside04.png) no-repeat 50% 50% / cover;
+  background: url(/images/bg_aside04.png) no-repeat 50% 50% / cover;
   padding-top: 200px;
 }
 .sub_visual .inner {

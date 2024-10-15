@@ -25,7 +25,7 @@ function validateForm(form) {  // 폼 내용 검증
 <body>
 <jsp:include page= '../Common/Header.jsp' />
 <h2>Edit</h2>
-<form name="writeFrm" method="post" action="EditProcess.an"
+<form name="writeFrm" method="post" action="An_EditProcess.an"
       onsubmit="return validateForm(this);">
     <input type="hidden" name="num" value="${board.num }" /> 
     <c:if test="${not empty board}">

@@ -14,7 +14,7 @@ function deletePost() {
     if (confirmed) {
         var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
         form.method = "post";               // 전송 방식 
-        form.action = "DeleteProcess.an";  // 전송 경로
+        form.action = "An_DeleteProcess.an";  // 전송 경로
         form.submit();                      // 폼값 전송
     }
 }
@@ -48,10 +48,10 @@ function deletePost() {
         <tr>
             <td colspan="4" align="right">
             	<c:if test="${UserId eq board.id }">
-            	<button type="button" onclick="location.href='Edit.an?num=${board.num}';">수정하기</button>
+            	<button type="button" onclick="location.href='An_Edit.an?num=${board.num}';">수정하기</button>
             	<button type="button" onclick="deletePost()">삭제하기</button>
             	</c:if>
-                <button type="button" onclick="location.href='List.an';">
+                <button type="button" onclick="location.href='An_List.an';">
                     목록 보기
                 </button>
             </td>

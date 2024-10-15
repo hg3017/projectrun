@@ -7,9 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>List</title>
-<script>
-alter(${pageContext.request.contextPath});
-</script>
+
   <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
   <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
@@ -62,7 +60,7 @@ alter(${pageContext.request.contextPath});
 			<td>${boards.size() - status.index}</td>
 			<!--게시물 번호-->
 			<td align="left">
-				<!--제목(+ 하이퍼링크)--> <a href="View.an?num=${board.num }">${board.title }</a>
+				<!--제목(+ 하이퍼링크)--> <a href="An_View.an?num=${board.num }">${board.title }</a>
 			</td>
 			<td align="center">${board.id }</td>
 			<!--작성자 아이디-->
@@ -74,10 +72,13 @@ alter(${pageContext.request.contextPath});
 		</c:forEach>
 	</table>
 	<table width="50%" style="border-collapse: collapse">
+		<tr align="center">
+	        <td>${pagingStr}</td>  <!-- 페이징 링크 표시 -->
+	    </tr>
 		<tr align="right">
 			<td>
 			<c:if test="${UserId eq 'hong01' }">
-				<button type="button" onclick="location.href='Write.an';">글쓰기</button>
+				<button type="button" onclick="location.href='An_Write.an';">글쓰기</button>
 			</c:if>
 			</td>
 		</tr>

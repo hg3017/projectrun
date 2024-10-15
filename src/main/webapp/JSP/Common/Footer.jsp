@@ -7,15 +7,15 @@
 <title>Insert title here</title>
 </head>
 <body>
- <footer id="footer">
+	<footer id="footer">
       <div class="inner">
         <div class="footer_top">
-          <h2><img src="<%=request.getContextPath() %>/resources/images/free-icon-trail-running-3163782.png" alt="러닝크루"></h2>
+          <h2><img src="${pageContext.request.contextPath}/resources/images/logo.png" alt="러닝메이트"></h2>
           <div class="menu">
             <p><a href="#">개인정보처리방침</a></p>
             <p><a href="#">문의하기</a></p>
-          </div>
-        </div>
+       	  </div>
+      	</div>
         <div class="footer_bottom">
           <h2>
             <span class="blind">러닝크루</span>

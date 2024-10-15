@@ -51,7 +51,11 @@
                 </ul>
               </li>
               <li>
+<<<<<<< HEAD
+                <a href="<%=request.getContextPath() %>/An_List.an">게시판</a>
+=======
                 <a href="<%=request.getContextPath() %>/JSP/Main/List_boardcrew.jsp">크루게시판</a>
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
                 <ul class="depth2">
                   <li><a href="/esg/esg"></a></li>
                   <li><a href="/esg/eco"></a></li>
@@ -63,6 +67,9 @@
                 </ul>
               </li>
               <li>
+<<<<<<< HEAD
+                <a href="<%=request.getContextPath() %>/Fb_List.free">고객센터</a>
+=======
                 <a href="<%=request.getContextPath() %>/JSP/Main/List_board.jsp">자유게시판</a>
                 <ul class="depth2">
                   <li><a href="/esg/esg"></a></li>
@@ -85,6 +92,7 @@
               </li>
               <li>
                 <a href="<%=request.getContextPath() %>/JSP/Main/List_cs.jsp">고객센터</a>
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
                 <ul class="depth2">
                   <li><a href="/center/service"></a></li>
                   <li><a href="/center/supply?prod_cat_idx=1"></a></li>
@@ -128,7 +136,7 @@
               </ul>
             </li>
             <li>
-              <a href="<%=request.getContextPath() %>/List.an">게시판</a>
+              <a href="<%=request.getContextPath() %>/An_List.an">게시판</a>
               <ul class="depth2">
                 <li><a href="investment/inquiry.do"></a></li>
                 <li><a href="investment/inquiry.do"></a></li>
@@ -137,7 +145,7 @@
               </ul>
             </li>
             <li>
-              <a href="<%=request.getContextPath() %>/List.free">고객센터</a>
+              <a href="<%=request.getContextPath() %>/Fb_List.free">고객센터</a>
               <ul class="depth2">
                 <li><a href="investment/inquiry.do"></a></li>
                 <li><a href="investment/inquiry.do"></a></li>
