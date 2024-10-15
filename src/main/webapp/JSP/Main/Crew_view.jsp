@@ -36,7 +36,6 @@
 	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
-</head>
 <body>
     <header id="header">
       <div class="inner">

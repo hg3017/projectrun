@@ -14,4 +14,5 @@ public interface AnnouncementService {
 	public int insertWrite(AnnouncementDTO dto);
 	public int updateEdit(AnnouncementDTO dto);
 	public int deletePost(AnnouncementDTO dto);
+	public int selectCount(Map<String, String> map);
 }
