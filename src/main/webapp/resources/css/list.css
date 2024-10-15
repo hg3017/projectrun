@@ -2,25 +2,25 @@
   padding: 120px 0;
 }
 
-.sub_visual {
+.list_page .sub_visual {
   height: 500px;
   background: url(../images/board_images.jpg) no-repeat center / cover;
   padding:200px;
 }
-.sub_visual .inner {
+.list_page .sub_visual .inner {
   max-width: 1450px;
   margin: 0 auto;
   position: relative;
 }
 
-.sub_visual h3 {
+.list_page .sub_visual h3 {
   margin: 0 45px 0;
   font-size: 40px;
   font-weight: 700;
   color: #fff;
   text-align: left;
 }
-.sub_visual h3 span {
+.list_page .sub_visual h3 span {
   width: 20px;
   height: 20px;
   display: inline-block;
@@ -28,16 +28,16 @@
   vertical-align: middle;
 }
 
-.contents {
+.list_page .contents {
   padding: 30px 0;
 }
-.contents .inner {
+.list_page .contents .inner {
   max-width: 1450px;
   margin: 0 auto;
   position: relative;
 }
 
-.contents .m_wrap {
+.list_page .contents .m_wrap {
   top: 0;
   right: 0;
   text-align: right;
@@ -45,10 +45,10 @@
   padding: 15px 0;
   margin: 0 45px 0;
 }
-.contents .m_wrap p {
+.list_page .contents .m_wrap p {
   font-size: 13px;
 }
-.contents .m_wrap span {
+.list_page .contents .m_wrap span {
   width: 15px;
   height: 15px;
   display: inline-block;
@@ -56,33 +56,33 @@
   vertical-align: middle;
 }
 
-.contents .board_list {
+.list_page .contents .board_list {
   margin: 0 45px 0;
 }
 
-.ban_box {
+.list_page .ban_box {
   padding-top: 50px;
 }
 
-.ban_box .inner {
+.list_page .ban_box .inner {
   max-width: 1450px;
   margin: 0 auto;
   position: relative;
 }
 
-.ban_box .etc {
+.list_page .ban_box .etc {
   margin: 0 45px 0;
   display: flex;
   justify-content: end;
   gap:30px;
 }
 
-.ban_box .etc li {
+.list_page .ban_box .etc li {
   background: #8c5ba3;
   border-radius: 20px;
 }
 
-.ban_box .etc a {
+.list_page .ban_box .etc a {
   display: block;
   height: 100px;
   background: url(../images/icon-consult.png) no-repeat 20px 50% / 30px;
@@ -90,21 +90,21 @@
 }
 
 
-.ban_box .etc .etc_right {
+.list_page .ban_box .etc .etc_right {
   background: url(../images/icon-call.png) no-repeat 20px 50% / 30px;
 }
 
-.ban_box .etc p {
+.list_page .ban_box .etc p {
   text-align: left;
   color: #fff;
   font-weight: 700;
 }
 
-.ban_box .etc_left p {
+.list_page .ban_box .etc_left p {
   padding-top: 7px;
 }
 
-.ban_box .etc .etc_right span {
+.list_page .ban_box .etc .etc_right span {
   display: flex;
 }
 
