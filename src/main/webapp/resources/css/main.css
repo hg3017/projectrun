@@ -1,11 +1,4 @@
 @charset "UTF-8";
-:root {
-  --point-color1: #e0462e;
-  --point-color2: #ed1c24;
-  --gray-400: #1b1b1b;
-  --gray-500: #1f1f1f;
-  --gray-600: #000;
-}
 
 #header {
   position: fixed;
@@ -83,29 +76,6 @@
   font-weight: 550;
 }
 
-#header .gnb .depth2 {
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  width: 100%;
-  z-index: 10;
-  display: block;
-  padding-top: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s;
-}
-#header .gnb .depth2 li + li {
-  margin-top: 15px;
-}
-#header .gnb .depth2 a {
-  font-size: 18px;
-  display: block;
-  text-align: left;
-  word-break: keep-all;
-  line-height: 1.5;
-}
-
 #header .btn_wrap {
   position: absolute;
   right: 20px;
@@ -118,7 +88,7 @@
   font-weight: 600;
 }
 #header .login_btn {
-   color: purple;
+  color: purple;
   font-weight: 550;
 }
 

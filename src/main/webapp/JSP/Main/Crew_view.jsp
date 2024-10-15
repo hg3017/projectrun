@@ -39,6 +39,7 @@
 <body>
    <div id="wrap">
     <jsp:include page="../Common/Header.jsp" />
+    <main id="container" class="crew_page">
     <section class="main_report">
       <div class="inner">
         <div class="head_wrap">
@@ -230,6 +231,7 @@
         </div>
       </div>
     </section>
+    </main>
     <jsp:include page= '../Common/Footer.jsp' />
   </div>
 </body>

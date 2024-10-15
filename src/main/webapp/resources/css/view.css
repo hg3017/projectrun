@@ -53,11 +53,11 @@
   padding-left: 5px;
 }
 
-  .main_report .head_wrap {
+.crew_page .main_report .head_wrap {
     display: flex;
     justify-content: space-between;
   }
-  .main_report .main_tit{
+.crew_page .main_report .main_tit{
     font-size: 28px;
     line-height: 1.45;
     letter-spacing: -1.9px;
@@ -65,7 +65,7 @@
     font-weight: 800;
     color: purple;
   }
-  .main_report .crew_btn {
+ .crew_page .main_report .crew_btn {
     position: static;
     justify-content: center;
     background: #8c5ba3;

@@ -12,13 +12,16 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  document
+// 봐야되는 코드
+    document
     .querySelector('#header .sitemap_btn')
     .addEventListener('click', function () {
       this.classList.toggle('on');
       document.querySelector('#header .menu_wrap').classList.toggle('on');
     });
 
+	  	
+	
   document.querySelectorAll('#header .menu>li>a').forEach((v) => {
     v.addEventListener('click', function (e) {
       e.preventDefault();
@@ -63,14 +66,14 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   // mixitup
-  let mixerFeatured = mixitup('.main_report .all_view', {
+/*  let mixerFeatured = mixitup('.main_report .all_view', {
     selectors: {
         target: '.featured_card'
     },
     animation: {
         duration: 300
     }
-});
+});*/
 
 const linkFeatured = document.querySelectorAll('.filter_container .social_tab li');
 items.forEach((item)=>{
