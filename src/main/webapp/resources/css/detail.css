@@ -1,0 +1,86 @@
+@charset "UTF-8";
+.page {
+  padding: 0 0 500px;
+}
+
+.page .contents .inner {
+  max-width: 1440px;
+  padding: 0 340px;
+  margin: 0 auto;
+}
+
+.page .sub_tit h2 {
+  font-size: 40px;
+  font-weight: 700;
+  padding-left: 35px;
+}
+
+
+
+.page .sub_tit {
+  position: relative;
+  margin-top: 150px;
+  padding: 0 530px;
+}
+.page .sub_tit .inner {
+  text-align: left;
+  margin: 0 auto;
+}
+
+.page .contents {
+  padding: 20px ;
+}
+
+.page .view_head {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(107, 98, 98);
+}
+.page .txt_wrap {
+  display: flex;
+  gap: 40px;
+  /* padding-left: 250px */
+}
+.page .txt_wrap p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.page .txt_wrap .btxt {
+  margin-left: 35px;
+}
+.page .txt_wrap .ctxt {
+  margin-left: 17px;
+}
+.page .txt_wrap .dtxt {
+  margin-left: -2px;
+}
+.page .txt_wrap .etxt {
+  margin-left: 36px;
+}
+
+.page .view_con {
+  padding: 50px 0 500px;
+}
+
+.page .btn3_wrap {
+  height: 60px;
+  border-radius: 30px;
+  width: 185px;
+  font-weight: 700;
+  color: #fff;
+  background: plum;
+  justify-content: center;
+  align-items: center;
+  display: inline-flex;
+  gap: 0 10px;
+}
+.page .btn3_wrap::before {
+  content: '';
+  width: 18px;
+  height: 15px;
+  background: url(../images/icon_list.svg) no-repeat left top / 100%;
+}
+.page .btn3_wrap a {
+  color: #fff;
+}

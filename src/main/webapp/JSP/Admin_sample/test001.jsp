@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	request객체의 ContextPath() 주소입니다. : <%=request.getContextPath() %>
+	<br>
+	request객체의 ContextPath() 주소입니다. : ${pageContext.request.contextPath}
+</body>
+</html>
