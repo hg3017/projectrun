@@ -38,14 +38,39 @@
 .page .txt_wrap {
   display: flex;
   gap: 40px;
-  /* padding-left: 250px */
+  position: relative;
+  left: 30px;
+  padding-bottom: 10px;
 }
 .page .txt_wrap p {
   font-size: 18px;
   font-weight: bold;
 }
 
-
+.page .txt_wrap .location::after {
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 25px;
+  left:-30px;
+  background: url(../images/location-on-map-svgrepo-com.svg) no-repeat 0 0 / 100%;
+}
+.page .txt_wrap .clock::after {
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 25px;
+  left:-30px;
+  background: url(../images/clock-0300-svgrepo-com.svg) no-repeat 0 0 / 100%;
+}
+.page .txt_wrap .cal::after {
+  position: absolute;
+  content: '';
+  width: 25px;
+  height: 25px;
+  left:-30px;
+  background: url(../images/calendar-svgrepo-com.svg) no-repeat 0 0 / 100%;
+}
 .page .txt_wrap .btxt {
   margin-left: 35px;
 }
