@@ -27,23 +27,22 @@
   <!-- css 파일 연결 -->
   <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/css/aos.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/css/view.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="${pageContext.request.contextPath}/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+   <link href="${pageContext.request.contextPath}/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
-  
 </head>
 <body>
-  <div id="skip_navi">
-    <a href="#container">본문바로가기</a>
-  </div>
   <div id="wrap">
-  
-    
-    <jsp:include page= '../Common/Header.jsp' />
-
-
- 
+    <jsp:include page="../Common/Header.jsp" />
+        <main id="container">
+      <section class="main_visual">
+      <h2 class="blind">메인슬라이더</h2>
+      </section>
       <section class="main_crew">
         <div class="inner">
           <div class="head_wrap">
@@ -57,7 +56,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="img_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/running-1944798_1280.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
                       <h3>서울/경기</h3>
@@ -69,7 +68,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="img_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/KakaoTalk_20240930_175125737.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew2.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
                       <h3>서울/경기</h3>
@@ -81,7 +80,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="img_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/KakaoTalk_20240930_175125737.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew2.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
                       <h3>서울/경기</h3>
@@ -93,7 +92,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="img_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/KakaoTalk_20240930_175125737.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew2.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
                       <h3>서울/경기</h3>
@@ -105,7 +104,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="all_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/running-1944798_1280.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew2.jpg" alt="">
                       <h3>서울/경기</h3>
                       <p>Sub3</p>
                       <span>목요일<br>PM 7:30</span>
@@ -115,7 +114,7 @@
                 <div class="swiper-slide">
                   <a href="#">
                     <div class="img_wrap">
-                      <img src="${pageContext.request.contextPath}/resources/images/KakaoTalk_20240930_175125737.jpg" alt="">
+                      <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
                       <h3>서울/경기</h3>
@@ -140,25 +139,26 @@
             </div>
             <ul class="list">
               <li>
-                <a href="board_list.html">
-                  <p></p>
+                <a href="List_cs_view.jsp">
+                  <p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
               <li>
-                <a href="board_list.html">
+                <a href="List_cs_view.jsp">
                   <p>러닝은 처음인데 참여해도 괜찮나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
               <li>
-                <a href="board_list.html">
+                <a href="List_cs_view.jsp">
                   <p>모집기간은 언제인가요? 마감된 모임은 신청할 수 없나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
             </ul>
-            <a href="#" class="more_btn">더보기</a>
+            <a href="List_cs.jsp" class="more_btn">더보기</a>
+            <!-- 고객센터로 이동 -->
           </div>
         </div>
       </section>
@@ -166,7 +166,6 @@
    
     
     <jsp:include page= '../Common/Footer.jsp' />
-    
   </div>
 </body>
 </html>

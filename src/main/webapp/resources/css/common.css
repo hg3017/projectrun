@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: 'Binggrae';
   font-style: normal;
@@ -509,7 +511,8 @@ div.file_wrap label::before {
   width: 180px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(0deg, #ed1c24, #e0462e);
+  background: #8c5ba3;
+  /* background: linear-gradient(0deg, #ed1c24, #e0462e); */
   border: none;
   font-size: 14px;
 }
@@ -543,7 +546,8 @@ div.file_wrap label::before {
   width: 185px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(-115deg, #008a43, #2ad47d);
+  background: #8c5ba3;
+  /* background: linear-gradient(-115deg, #008a43, #2ad47d); */
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -563,7 +567,8 @@ div.file_wrap label::before {
   width: 160px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(-115deg, #008a43, #2ad47d);
+  background: #8c5ba3;
+  /* background: linear-gradient(-115deg, #008a43, #2ad47d); */
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -741,8 +746,8 @@ caption.nohead {
 /* 게시물 검색 */
 .board_search_wrap {
   background: #f8f8f8;
-  padding: 56px 40px;
-  margin-bottom: 80px;
+  padding: 50px 40px;
+  margin-bottom: 30px;
 }
 .board_search {
   display: flex;
@@ -751,7 +756,8 @@ caption.nohead {
 }
 .board_search .select_wrap {
   /* 부모영역 1320: 240 = 100 : x x = 18.18% */
-  width: 18.2%;
+  /* width: 18.2%; */
+  width: 16.6%;
 }
 .board_search .input_wrap {
   max-width: 600px;
@@ -764,7 +770,6 @@ caption.nohead {
   width: calc(100% - 60px);
   height: 46px;
   border: none;
-  font-size: 18px;
 }
 .board_search .search_btn {
   width: 60px;
@@ -778,17 +783,17 @@ caption.nohead {
 .board_list .btn_wrap {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .board_list .write_btn {
   padding: 10px 20px;
   border: 1px solid #333; 
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .board_list table {
-  border-top: 2px solid #000;
+  border-top: 2px solid #8c5ba3;
 }
 .board_list th {
   height: 100px;
@@ -806,9 +811,8 @@ caption.nohead {
   width: 200px;
 }
 .board_list td {
-  height: 100px;
+  height: 70px;
   text-align: center;
-  font-size: 18px;
   border-bottom: 1px solid #707070;
 }
 .board_list .td_left {
@@ -880,8 +884,8 @@ caption.nohead {
   color: #999;
 }
 .board_pagination .num.active {
-  background: var(--point-color1);
-  border-color: var(--point-color1);
+  background: purple;
+  border-color: purple;
   color: #fff;
 }
 .board_pagination .next_paging {
@@ -892,19 +896,24 @@ caption.nohead {
 
 
 /* 게시물 보기 */
+.board_view {
+  margin: 0 45px 0;
+}
 .board_view .view_top {
+  padding-top: 100px;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .board_view .modify_btn {
   padding: 10px 20px;
-  border: 1px solid black;
+  border: 1px solid #333; 
+  font-size: 14px;
   font-weight: 500;
 }
 .board_view .view_tit {
   border-top: 2px solid #000;
-  padding: 40px;
+  padding: 30px;
   display: flex;
   gap: 0 40px;
   justify-content: space-between;
@@ -912,10 +921,10 @@ caption.nohead {
   border-bottom: 1px solid #ddd;
 }
 .board_view .view_tit h3 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--gray-600);
-  line-height: 1.2;
+  line-height: 1.0;
 }
 .board_view .view_tit .date {
   /* flex아이템 가로길이가 줄어들지 않도록 */
@@ -934,7 +943,7 @@ caption.nohead {
 .board_view .view_paging dt {
   background: #f8f8f8;
   width: 200px;
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
   font-weight: 500;
   color: #999;
@@ -946,6 +955,7 @@ caption.nohead {
 .board_view .view_paging dd {
   padding: 20px 0 20px 50px;
   flex-grow: 1;
+  font-size: 16px;
 }
 .board_view .view_paging a {
   color: var(--gray-400);
@@ -961,10 +971,14 @@ caption.nohead {
 }
 
 /* 게시판 쓰기 */
+.board_write {
+  padding-top: 80px;
+  margin: 0 45px 0;
+}
 .board_write .tit {
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 .board_write .note {
   text-align: right;
@@ -981,9 +995,8 @@ caption.nohead {
 .board_write th {
   width: 196px;
   font-weight: 400px;
-  font-size: 18px;
   text-align: left;
-  padding: 10px 0;
+  padding: 30px 0;
 }
 .board_write .th_top {
   padding: 10px 0;
@@ -994,13 +1007,11 @@ caption.nohead {
 .board_write input[type=text] {
   width: 100%;
   height: 50px;
-  font-size: 18px;
   border: none;
   border-bottom: 1px solid #ddd;
 }
 .board_write textarea {
   width: 100%;
-  font-size: 18px;
   padding: 15px;
   background: #f8f8f8;
   border: none;
@@ -1096,7 +1107,7 @@ caption.nohead {
   .board_search_wrap {
     padding: 40px;
   }
-
+  
   .board_search .select_wrap {
     width: 30%;
   }
@@ -1104,8 +1115,23 @@ caption.nohead {
     width: 70%;
   }
 
+  .board_search_wrap .select_wrap select {
+    height: 43px;
+    font-size: 15px;
+  }
+  
+  .board_search input[type=search] {
+    height: 43px;
+    font-size: 15px;
+    width: calc(100% - 40px);
+  }
+  .board_search .search_btn {
+    width: 43px;
+    height: 43px;
+  }
+
   .board_list .write_btn {
-    font-size: 16px;
+    font-size: 14px;
   }
   .board_list th {
     height: 70px;
@@ -1121,7 +1147,7 @@ caption.nohead {
     width: 120px;
   }
   .board_list td {
-    font-size: 16px;
+    font-size: 15px;
     height: 70px;
   }
 
@@ -1129,7 +1155,7 @@ caption.nohead {
     padding: 20px;
   }
   .board_view .view_tit h3 {
-    font-size: 26px;
+    font-size: 22px;
   }
   .board_view .view_tit .date {
     font-size: 14px;
@@ -1143,6 +1169,7 @@ caption.nohead {
   }
   .board_view .view_paging dd {
     padding: 15px 30px;
+    font-size: 14px;
   }
   .board_write .btn_wrap {
     margin-top: 30px;
@@ -1154,6 +1181,7 @@ caption.nohead {
 
   .board_write th {
     width: 14%;
+    font-size: 15px;
   }
   .board_write .td_flex {
     flex-direction: column;
@@ -1162,6 +1190,11 @@ caption.nohead {
   }
   .board_write .td_flex .file_wrap {
     max-width: 100%;
+    font-size: 14px;
+  }
+
+  .board_write .file_note {
+    font-size: 14px;
   }
 }
 
@@ -1169,26 +1202,27 @@ caption.nohead {
 
 @media (max-width: 767px) {
   .board_search_wrap {
-    padding: 15px;
-    margin-bottom: 30px;
+    padding: 30px;
+    margin-bottom: 20px;
   }
   .board_search_wrap .select_wrap select {
     height: 38px;
-    font-size: 13px;
+    font-size: 14px;
   }
   
   .board_search input[type=search] {
     height: 38px;
-    font-size: 13px;
+    font-size: 14px;
     width: calc(100% - 40px);
   }
   .board_search .search_btn {
     width: 40px;
     height: 38px;
   }
-
+    
   .board_list .write_btn {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 10px 15px;
   }
   .board_list th:first-child,
   .board_list td:first-child {
@@ -1239,7 +1273,7 @@ caption.nohead {
     font-size: 18px;
   }
   .board_view .view_tit .date {
-    font-size: 12px;
+    font-size: 13px;
   }
   .board_view .view_paging dt {
     width: 80px;
@@ -1267,6 +1301,10 @@ caption.nohead {
     font-size: 15px;
     width: 60px;
   }
+
+  .board_write td {
+    padding-left: 20px;
+  }
   .board_write input[type=text] {
     font-size: 15px;
     height: 40px;
@@ -1287,7 +1325,7 @@ caption.nohead {
   .board_write .file_wrap label {
     height: 40px;
     line-height: 40px;  
-    font-size: 15px;
+    font-size: 14px;
     width: 80px;
   }
   .board_write .file_note {

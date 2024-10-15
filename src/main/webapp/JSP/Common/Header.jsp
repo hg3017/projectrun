@@ -28,7 +28,7 @@
 <header id="header">
       <div class="inner">
           <h1 class="logo">
-            <a href="<%=request.getContextPath() %>/JSP/Index.jsp">
+            <a href="<%=request.getContextPath() %>/JSP/Main/Main.jsp">
               <img src="<%=request.getContextPath() %>/resources/images/free-icon-trail-running-3163782.png" alt="러닝메이트">
               <!-- <img src="ProjectRun/src/main/webapp/resources/images/free-icon-trail-running-3163782.png" alt="러닝메이트">  -->
               <span class="blind">러닝메이트</span>
@@ -37,16 +37,7 @@
           <nav class="gnb_wrap">
             <ul class="gnb">
               <li>
-                <a href="#">회사소개</a>
-                <ul class="depth2">
-                  <li><a href="/company/ceo"></a></li>
-                  <li><a href="/company/philosophy"></a></li>
-                  <li><a href="/company/business"></a></li>
-                  <li><a href="/company/history"></a></li>
-                </ul>
-              </li>
-              <li>
-                <a href="#">지역크루</a>
+                <a href="<%=request.getContextPath() %>/JSP/Main/Crew_view.jsp">지역크루</a>
                 <ul class="depth2">
                   <li><a href="/company/ceo"></a></li>
                   <li><a href="/company/philosophy"></a></li>
@@ -60,7 +51,11 @@
                 </ul>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="<%=request.getContextPath() %>/An_List.an">게시판</a>
+=======
+                <a href="<%=request.getContextPath() %>/JSP/Main/List_boardcrew.jsp">크루게시판</a>
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
                 <ul class="depth2">
                   <li><a href="/esg/esg"></a></li>
                   <li><a href="/esg/eco"></a></li>
@@ -72,7 +67,32 @@
                 </ul>
               </li>
               <li>
+<<<<<<< HEAD
                 <a href="<%=request.getContextPath() %>/Fb_List.free">고객센터</a>
+=======
+                <a href="<%=request.getContextPath() %>/JSP/Main/List_board.jsp">자유게시판</a>
+                <ul class="depth2">
+                  <li><a href="/esg/esg"></a></li>
+                  <li><a href="/esg/eco"></a></li>
+                  <li><a href="/esg/value"></a></li>
+                  <li><a href="/esg/global"></a></li>
+                  <li><a href="/esg/ethics"></a></li>
+                  <li><a href="/esg/contribution"></a></li>
+                  <li><a href="/esg/reports"></a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="<%=request.getContextPath() %>/List">공지사항</a>
+                <ul class="depth2">
+                  <li><a href="/company/ceo"></a></li>
+                  <li><a href="/company/philosophy"></a></li>
+                  <li><a href="/company/business"></a></li>
+                  <li><a href="/company/history"></a></li>
+                </ul>
+              </li>
+              <li>
+                <a href="<%=request.getContextPath() %>/JSP/Main/List_cs.jsp">고객센터</a>
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
                 <ul class="depth2">
                   <li><a href="/center/service"></a></li>
                   <li><a href="/center/supply?prod_cat_idx=1"></a></li>
@@ -135,11 +155,5 @@
         </div>
       </aside>
     </header>
-    <main id="container">
-      <section class="main_visual">
-   	   <h2 class="blind">메인슬라이더</h2>
-      </section>
-     </main>
-   
 </body>
 </html>
