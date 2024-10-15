@@ -89,7 +89,7 @@
 								<li><a href="#">setting<a></li>
 							</ul>
 						</div>
-					</aside>
+					</aside> 
 				</div>
 				<div class="contents">
 					<div class="inner">
