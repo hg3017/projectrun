@@ -17,9 +17,6 @@
 
 </head>
 
-</script>
-
-
 <body>
 
 <%
@@ -49,7 +46,7 @@ function sendRefuse(memberId) {
 }
 </script>
 
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page= '/JSP/Common/Header.jsp' />
 			<table class="notice">
 				<thead>
 				<tr>
@@ -110,6 +107,6 @@ function sendRefuse(memberId) {
 
 </body>
 
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 
 </html>

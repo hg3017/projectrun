@@ -64,12 +64,12 @@ public class FreeBoardController extends HttpServlet {
 			request.setAttribute("boards", boards);
 
 			// 3. 어떻게 어디로 이동 할것인?
-			String path = "List.jsp";
+			String path = "/JSP/FreeBoard/Fb_List.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 		} else if (action.equals("/Write.free")) {
 
 			// 3. 어떻게 어디로 이동 할것인?
-			String path = "Write.jsp";
+			String path = "/JSP/FreeBoard/Fb_Write.jsp";
 			response.sendRedirect(path);
 		} else if (action.equals("/WriteProcess.free")) {
 
@@ -94,7 +94,7 @@ public class FreeBoardController extends HttpServlet {
 			} else {
 				// 삽입 실패
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
-				String path = "Write.jsp"; // 다시 작성 페이지로 돌아감
+				String path = "/JSP/FreeBoard/Fb_Write.jsp"; // 다시 작성 페이지로 돌아감
 				request.getRequestDispatcher(path).forward(request, response);
 			}
 		} else if (action.equals("/View.free")) {
@@ -105,7 +105,7 @@ public class FreeBoardController extends HttpServlet {
 			request.setAttribute("board", board);
 
 			// 3. 어떻게 어디로 이동 할것인?
-			String path = "View.jsp";
+			String path = "/JSP/FreeBoard/Fb_View.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 
 		} else if (action.equals("/Edit.free")) {
@@ -117,7 +117,7 @@ public class FreeBoardController extends HttpServlet {
 			request.setAttribute("board", board);
 
 			// 3. 어떻게 어디로 이동 할것인가?
-			String path = "Edit.jsp";
+			String path = "/JSP/FreeBoard/Fb_Edit.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 
 		} else if (action.equals("/EditProcess.free")) {
@@ -142,7 +142,7 @@ public class FreeBoardController extends HttpServlet {
 			} else {
 				// 삽입 실패
 				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
-				String path = "Edit.jsp"; // 다시 작성 페이지로 돌아감
+				String path = "/JSP/FreeBoard/Fb_Edit.jsp"; // 다시 작성 페이지로 돌아감
 				request.getRequestDispatcher(path).forward(request, response);
 			}
 		} else if (action.equals("/DeleteProcess.free")) {
@@ -172,13 +172,13 @@ public class FreeBoardController extends HttpServlet {
 				} else {
 					// 실패 시 이전 페이지로 이동
 					request.setAttribute("errorMessage", "삭제에 실패하였습니다.");
-					String path = "View.jsp?num=" + num; // 다시 작성 페이지로 돌아감
+					String path = "/JSP/FreeBoard/Fb_View.jsp?num=" + num; // 다시 작성 페이지로 돌아감
 					request.getRequestDispatcher(path).forward(request, response);
 				}
 			} else {
 				// 작성자가 본인이 아닐 때 처리
 				request.setAttribute("errorMessage", "본인만 삭제할 수 있습니다.");
-				String path = "View.jsp?num=" + num; // 상세 페이지로 돌아감
+				String path = "/JSP/FreeBoard/Fb_View.jsp?num=" + num; // 상세 페이지로 돌아감
 				request.getRequestDispatcher(path).forward(request, response);
 			}
 		}

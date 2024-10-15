@@ -57,24 +57,24 @@ if (message != null) {
 <script>
 alter(${pageContext.request.contextPath});
 </script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
   <!-- css 파일 연결 -->
-  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 <style>
 </style>
 </head>
 <body>
-    <jsp:include page= '../Common/Header.jsp' />
+    <jsp:include page= '/JSP/Common/Header.jsp' />
     <h1 style="font-size:24px">자유게시판</h1>
 	<!-- 검색 -->
 	<form method="get">
@@ -116,7 +116,7 @@ else {
 			<td><%= virtualNum %></td>
 			<!--게시물 번호-->
 			<td align="left">
-				<!--제목(+ 하이퍼링크)--> <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>
+				<!--제목(+ 하이퍼링크)--> <a href="/JSP/FreeBoard/fb_View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>
 			</td>
 			<td align="center"><%= dto.getId() %></td>
 			<!--작성자 아이디-->
@@ -133,12 +133,12 @@ else {
 		<tr align="right">
  			<td align="center"><%=FreeBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
 			<td>
-				<button type="button" onclick="location.href='Write.jsp';">글쓰기</button>
+				<button type="button" onclick="location.href='/JSP/FreeBoard/Fb_Write.jsp';">글쓰기</button>
 			</td>
 		</tr>
 	</table>
 	   
-	<jsp:include page= '../Common/Footer.jsp' />   
+	<jsp:include page= '/JSP/Common/Footer.jsp' />   
 	   
 </body>
 </html>

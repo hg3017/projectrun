@@ -3,7 +3,7 @@
 
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 <script>
-	Kakao.init('cbd0e4c437369fd83b47158c66c6a059');
+	
 	
     Kakao.Auth.login({
         success: function (response) {
