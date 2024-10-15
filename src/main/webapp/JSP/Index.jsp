@@ -2,4 +2,3 @@
     pageEncoding="UTF-8"%>
 
 <jsp:include page= 'Main/Main.jsp' />
-
