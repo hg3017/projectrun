@@ -47,6 +47,8 @@
   font-weight: bold;
 }
 
+
+
 .page .txt_wrap .location::after {
   position: absolute;
   content: '';
