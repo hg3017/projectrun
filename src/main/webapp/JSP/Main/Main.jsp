@@ -141,7 +141,7 @@
             <ul class="list">
               <li>
                 <a href="board_list.html">
-                  <p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
+                  <p></p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
