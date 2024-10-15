@@ -1,10 +1,4 @@
-:root {
-  --point-color1: #e0462e;
-  --point-color2: #ed1c24;
-  --gray-400: #1b1b1b;
-  --gray-500: #1f1f1f;
-  --gray-600: #000;
-}
+
 #wrap {
   height: 1500px;
 }
@@ -84,32 +78,10 @@
   font-size: 20px;
   line-height: 115px;
   position: relative;
-  color: #fff;
+  color: purple;
   font-weight: 550;
 }
 
-#header .gnb .depth2 {
-  position: absolute;
-  top: 100%;
-  left: 25%;
-  width: 100%;
-  z-index: 10;
-  display: block;
-  padding-top: 20px;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s;
-}
-#header .gnb .depth2 li + li {
-  margin-top: 15px;
-}
-#header .gnb .depth2 a {
-  font-size: 18px;
-  display: block;
-  text-align: left;
-  word-break: keep-all;
-  line-height: 1.5;
-}
 
 #header .btn_wrap {
   position: absolute;
@@ -123,7 +95,7 @@
   font-weight: 600;
 }
 #header .login_btn {
-  color: #fff
+  color: #d40dfc
 }
 
 #header .sitemap_btn {
@@ -134,39 +106,7 @@
   display: none;
 }
 
-/* #hader .menu_wrap {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: lightgoldenrodyellow;
-  transition: all 0.5s;
-  transform: translateX(100%);
-  opacity: 0;
-  display: flex;
-  align-items: center;
-}
 
-#header .menu_wrap.on {
-  transform: translateX(0);
-  opacity: 1;
-}
-#header .menu_wrap .menu {
-  max-width: 1440px;
-  padding:  0 20px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-#header .menu {
-  display: flex;
-  margin-top: 120px;
-}
-#header .menu>li {
-  flex-grow: 1;
-  padding: 0 50px;
-} */
 .main_visual {
   height: 700px;
   padding: 180px 0;
@@ -453,7 +393,7 @@
 #header .sitemap_btn i {
   width: 26px;
   height: 2px;
-  background: #fff;
+  background: purple;
   transition: all 0.2s;
   border-radius: 1px;
 }

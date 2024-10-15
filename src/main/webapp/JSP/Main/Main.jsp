@@ -39,11 +39,11 @@
   </div>
   <div id="wrap">
   
-    
     <jsp:include page= '../Common/Header.jsp' />
 
-
- 
+	 <section class="main_visual">
+      <h2 class="blind">메인슬라이더</h2>
+      </section>
       <section class="main_crew">
         <div class="inner">
           <div class="head_wrap">
@@ -162,8 +162,6 @@
           </div>
         </div>
       </section>
-
-    zzzzzzzzzzzzzzzzzzzz
     
     <jsp:include page= '../Common/Footer.jsp' />
     
