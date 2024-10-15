@@ -22,7 +22,7 @@
           </h2>
           <div class="txt_wrap">
             <p class="address">서울특별시 종로구 삼일대로17길 51<span></span>사업자번호 : 123-45-67890<span></span>대표자 : 김경문</p>
-            <p class="copyright">COPYRIGHT © <strong>2024 LX Glas Corp.</strong> All rights reserved.</p>
+            <p class="copyright">COPYRIGHT © 2024 LX Glas Corp. All rights reserved.</p>
           </div>
         </div>
       </div>
