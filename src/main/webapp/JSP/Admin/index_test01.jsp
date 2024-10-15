@@ -65,8 +65,6 @@
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
 					</div>
-					</h1>
-					s
 				</div>
 				<div class="header_right">
 					<div class=inner>
