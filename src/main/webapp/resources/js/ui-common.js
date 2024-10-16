@@ -63,44 +63,26 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   // mixitup
-  let mixerFeatured = mixitup('.main_report .all_view', {
+/*  let mixerFeatured = mixitup('.filter_container .all_view', {
     selectors: {
-        target: '.featured_card'
+      target: '.featured_card',
     },
     animation: {
-        duration: 300
-    }
-});
+      duration: 300,
+    },
+  });*/
 
-const linkFeatured = document.querySelectorAll('.filter_container .social_tab li');
-items.forEach((item)=>{
-  item.addEventListener('click',()=>{
-      items.forEach((e)=>{
+  const items = document.querySelectorAll('.filter_container .social_tab li');
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      items.forEach((e) => {
         //하나만 선택되도록 기존의 효과를 지워준다.
-          e.classList.remove('active');
-      })
-    // 선택한 그 아이만 효과를 추가해준다.
+        e.classList.remove('active');
+      });
+      // 선택한 그 아이만 효과를 추가해준다.
       item.classList.add('active');
-    // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
-      document.getElementById('next').style.display='block';
-  })
-});
-});
-
-$(function () {
-  $('.filter_container .social_tab li').on('click', function (e) {
-    // a가 있으므로 기본이벤트막기
-    e.preventDefault();
-    // 클릭한 li에 active걸고 나머지 형제에서 active제거
-    $(this).addClass('active').siblings().removeClass('active');
-    // 형제요소중 클릭한 요소의 순서값 찾기
-    let idx = $(this).index();
-
-    // 순서값을 연결할 다른그룹요소에 eq()로 연결
-    $('.main_menu .swiper_wrap')
-      .eq(idx)
-      .addClass('on')
-      .siblings()
-      .removeClass('on');
+      // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
+      // document.getElementById('next').style.display = 'block';
+    });
   });
 });

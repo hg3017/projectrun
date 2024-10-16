@@ -44,7 +44,7 @@ public class AdminMemberController extends HttpServlet {
 		// System.out.println(action);
 		
 		// List.do로 들어온 요청 처리
-		if(action.equals("/Member_list.adme")) {
+		if(action.equals("/Member_List.adme")) {
 		// 만일 요청 값이 List.do라면 중괄호 안의 코드 실행
 			System.out.println("List.adme 접속 성공");
 			// System.out.println("Member List");
@@ -54,10 +54,11 @@ public class AdminMemberController extends HttpServlet {
 			List<MemberDTO> members = service.selectList();
 			request.setAttribute("members", members);
 			// System.out.println(request.getAttribute("members"));
-
+			System.out.println("members set 성공");
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.jsp";
+			System.out.println(path);
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
@@ -93,7 +94,7 @@ public class AdminMemberController extends HttpServlet {
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.jsp";
 			response.sendRedirect(path);
 			// sendRedirect 방식으로 List.do 파일로 이동(가상 경로)
 		}else if(action.equals("/Member_View.adme")) {
@@ -104,7 +105,7 @@ public class AdminMemberController extends HttpServlet {
 			request.setAttribute("member", member);
 			System.out.println("member 값2 : " + request.getAttribute("member"));
 			
-			String path = "Member_View.jsp";
+			String path = "/JSP/Admin/Member/Member_View.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// request에 담긴 값이 다음페이지와 그 다음 페이지에서도 계속 유지된다.
 			// 원래 A.jsp -> Servlet -> B.jsp 까지는 파라미터 정보가 유지되나, 그 다음 단계에서는 소멸된다.
@@ -116,7 +117,7 @@ public class AdminMemberController extends HttpServlet {
 			
 			request.setAttribute("member", member);
 			
-			String path = "Member_Edit.jsp";
+			String path = "/JSP/Admin/Member/Member_Edit.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// RequestDispatcher 객체 생성, request.getRequestDispatcher(path) 메서드의 반환값을 할당받는다.
 			dispatcher.forward(request, response);
@@ -139,17 +140,18 @@ public class AdminMemberController extends HttpServlet {
 			int rs = service.updateEdit(dto);
 			
 			// 작업 후 페이지 이동
-			String path = "View.jsp?id="+id;
+			String path = "/JSP/Admin/Member/Member_View.jsp?id="+id;
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_DeleteProcess.adme")) {
 			String id = request.getParameter("id");
 			
 			int rs = service.delete(id);
 			
-			String path = "List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.jsp";
 			response.sendRedirect(path);
-		}else if(action.equals("/Member_test01.adme")) {
-			String path = "Member_test01.jsp";
+		}else if(action.equals("/Member_Test01.adme")) {
+			System.out.println("action 값 확인 : "+action);
+			String path = "/JSP/Admin/Member/Member_Test01.jsp";
 			response.sendRedirect(path);
 		}
 	}
