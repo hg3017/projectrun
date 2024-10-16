@@ -7,7 +7,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원제 게시판</title>
+<title>View</title>
+<link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 <script>
 function deletePost() {
     var confirmed = confirm("정말로 삭제하겠습니까?"); 
@@ -23,6 +24,67 @@ function deletePost() {
 </head>
 <body>
 <jsp:include page= '/JSP/Common/Header.jsp' />
+
+    <main id="container" class="sub_container list_page">
+      <section class="sub_visual">
+        <div class="inner">
+          <div class="sub_wrap">
+            <h3>공지사항</h3>
+          </div>
+        </div>
+      </section>
+      <section class="contents">
+        <div class="inner">
+          <div class="board_view">
+            <div class="view_top">       
+            	<c:if test="${UserId eq board.id }">
+            	<button type="button" onclick="deletePost()">삭제하기</button>
+            	<button type="button" class="modify_btn" onclick="location.href='An_Edit.an?num=${board.num}';">수정하기</button>
+            	</c:if>
+              <!-- <a href="/JSP/Main/List_board_modify.jsp" class="modify_btn">글 수정하기</a> -->
+            </div>
+            <div class="view_tit">
+              <h3>${board.title }</h3>
+              <span class="date">${board.postdate }</span>
+            </div>
+            <div class="view_con">
+                <c:if test="${empty board.content }">내용없음</c:if>
+            	<c:if test="${not empty board.content }">${board.content }</c:if>
+            </div>
+            <dl class="view_paging">
+  <dt>이전글</dt>
+  <dd>
+    <c:if test="${not empty board.prevNum}">
+      <a href="An_View.an?num=${board.prevNum}">${board.prevTitle}</a>
+    </c:if>
+    <c:if test="${empty board.prevNum}">
+      <span>이전글이 없습니다</span>
+    </c:if>
+  </dd>
+</dl>
+
+<dl class="view_paging">
+  <dt>다음글</dt>
+  <dd>
+    <c:if test="${not empty board.nextNum}">
+      <a href="An_View.an?num=${board.num}">${board.nextTitle}</a>
+    </c:if>
+    <c:if test="${empty board.nextNum}">
+      <span>다음글이 없습니다</span>
+    </c:if>
+  </dd>
+</dl>
+            <div class="btn_wrap">
+                <button type="button" class="point_btn3" onclick="location.href='An_List.an';">
+                    목록
+                </button>
+              <!-- <a class="point_btn3" href="/JSP/Main/list_board.jsp">목록</a> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
 <h2>View</h2>
 <form name="writeFrm">
     <input type="hidden" name="num" value="${board.num }" />  <!-- 공통 링크 -->

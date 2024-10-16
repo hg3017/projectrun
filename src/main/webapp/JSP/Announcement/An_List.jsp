@@ -7,118 +7,102 @@
 <head>
 <meta charset="UTF-8">
 <title>List</title>
-<<<<<<< HEAD
 <link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-=======
-
-  <script src="/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="/resources/js/jquery-ui.min.js"></script>
-  <script src="/resources/js/swiper-bundle.min.js"></script>
-  <script src="/resources/js/aos.js"></script>
-  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
-
-  <!-- css 파일 연결 -->
-  	<link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  	<link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  	<link href="/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  	<link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <!-- php타임스탬프 이용하여 css캐싱방지 -->
->>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
-<style>
-</style>
 </head>
-<body>
-<<<<<<< HEAD
-    <jsp:include page='/JSP/Common/Header.jsp' />
-    
-    <main id="container" class="sub_container list_page">
-      <section class="sub_visual">
-        <div class="inner">
-          <div class="sub_wrap">
-            <h3>공지사항</h3>
+<body> 
+<jsp:include page='/JSP/Common/Header.jsp' />
+  
+  <main id="container" class="sub_container list_page">
+    <section class="sub_visual">
+      <div class="inner">
+        <div class="sub_wrap">
+          <h3>공지사항</h3>
+        </div>
+      </div>
+    </section>
+    <section class="contents">
+      <div class="inner">
+        <div class="m_wrap">
+          <p><a href="JSP/Main/Main.jsp">HOME</a><span></span>공지사항</p>
+        </div>
+        <div class="board_list">
+          <div class="list_wrap">
           </div>
         </div>
-      </section>
-      <section class="contents">
-        <div class="inner">
-          <div class="m_wrap">
-            <p><a href="/Main.jsp">HOME</a><span></span>공지사항</p>
-          </div>
-          <div class="board_list">
-            <div class="list_wrap">
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-    
-    <div>
-		<form method="get">
-			<table width="50%" style="border-collapse: collapse">
+      </div>
+    </section>
+  </main>
+	<div class="board_list">
+		<form method="get" class="list_wrap">
+			<table class="board_search_wrap">
 				<tr>
-					<td align="right"><select name="searchField">
-							<option value="title">제목</option>
-							<option value="content">내용</option>
-					</select> <input type="text" name="searchWord" /> <input type="submit"
-						value="검색" /></td>
+					<td align="right">
+						<div class="board_search">
+							<div class="select_wrap">
+								<select name="searchField">
+									<option value="title">제목</option>
+									<option value="content">내용</option>
+								</select>
+							</div>
+							<div class="input_wrap">
+								<input type="search" placeholder="검색어를 입력해주세요" name="searchWord" />
+								<button type="submit" class="search_btn"></button>
+							</div>
+						</div>
+					</td>
 				</tr>
 			</table>
 		</form>
+		<div class="btn_wrap">
+			<c:if test="${UserId eq 'hong01' }">
+				<button type="button" class="write_btn"
+					onclick="location.href='An_Write.an';">글쓰기</button>
+			</c:if>
+		</div>
+
 		<!-- 공지사항 목록 -->
-		<table border="1" width="50%" style="border-collapse: collapse">
+		<table>
 			<!-- 각각의 이름 -->
-=======
-    <jsp:include page= '/JSP/Common/Header.jsp' />
-    <h1 style="font-size:24px">공지사항</h1>
-	<!-- 검색 -->
-	<form method="get">
-		<table width="50%" style="border-collapse: collapse">
->>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 			<tr>
-				<th width="10%">번호</th>
-				<th width="50%">제목</th>
-				<th width="15%">작성자</th>
-				<th width="10%">조회수</th>
-				<th width="15%">작성일</th>
+				<th>NO</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성일</th>
 			</tr>
-		<c:if test="${empty boards}">
-			<tr>
-				<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
-			</tr> 
-		</c:if>
-		
+			<c:if test="${empty boards}">
+				<tr>
+					<td colspan="5" align="center">등록된 게시물이 없습니다.</td>
+				</tr>
+			</c:if>
+
 			<c:forEach var="board" items="${boards }" varStatus="status">
-			<tr align="center">
-				<td>${boards.size() - status.index}</td>
-				<!--게시물 번호-->
-				<td align="left">
-					<!--제목(+ 하이퍼링크)--> <a href="An_View.an?num=${board.num }">${board.title }</a>
-				</td>
-				<td align="center">${board.id }</td>
-				<!--작성자 아이디-->
-				<td align="center">${board.visitcount }</td>
-				<!--조회수-->
-				<td align="center">${board.postdate }</td>
-				<!--작성일--> 
-			</tr>
+				<tr align="center">
+					<td>${boards.size() - status.index}</td>
+					<!--게시물 번호-->
+					<td>
+						<!--제목(+ 하이퍼링크)--> <a href="An_View.an?num=${board.num }">${board.title }</a>
+					</td>
+					<td>${board.id }</td>
+					<!--작성자 아이디-->
+					<td>${board.visitcount }</td>
+					<!--조회수-->
+					<td>${board.postdate }</td>
+					<!--작성일-->
+				</tr>
 			</c:forEach>
 		</table>
-		<table width="50%" style="border-collapse: collapse">
-			<tr align="center">
-		        <td>${pagingStr}</td>  <!-- 페이징 링크 표시 -->
-		    </tr>
-			<tr align="right">
-				<td>
-				<c:if test="${UserId eq 'hong01' }">
-					<button type="button" onclick="location.href='An_Write.an';">글쓰기</button>
-				</c:if>
-				</td>
-			</tr>
-		</table>
-    </div>
-    
-	   
+		            <div class="board_pagination">
+ <%--              <a href="#" class="prev_paging">
+                <span class="blind">첫페이지</span>
+              </a>
+              <span class="num active">${pagingStr}</span>
+              <a href="#" class="next_paging">
+                <span class="blind">마지막페이지</span>
+              </a> --%>
+		        ${pagingStr} <!-- 페이징 링크 표시 -->
+            </div>
+	</div>
 	<jsp:include page= '/JSP/Common/Footer.jsp' />   
 	   
 </body>
