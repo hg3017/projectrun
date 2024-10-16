@@ -8,24 +8,24 @@
 <meta charset="UTF-8">
 <title>List</title>
 
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
   <!-- css 파일 연결 -->
-  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 <style>
 </style>
 </head>
 <body>
-    <jsp:include page= '../Common/Header.jsp' />
+    <jsp:include page= '/JSP/Common/Header.jsp' />
     <h1 style="font-size:24px">공지사항</h1>
 	<!-- 검색 -->
 	<form method="get">
@@ -84,7 +84,7 @@
 		</tr>
 	</table>
 	   
-	<jsp:include page= '../Common/Footer.jsp' />   
+	<jsp:include page= '/JSP/Common/Footer.jsp' />   
 	   
 </body>
 </html>

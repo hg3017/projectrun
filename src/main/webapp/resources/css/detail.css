@@ -55,7 +55,7 @@
   width: 25px;
   height: 25px;
   left:-30px;
-  background: url(../images/location-on-map-svgrepo-com.svg) no-repeat 0 0 / 100%;
+  background: url(/resources/images/location-on-map-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
 .page .txt_wrap .clock::after {
   position: absolute;
@@ -63,7 +63,7 @@
   width: 25px;
   height: 25px;
   left:-30px;
-  background: url(../images/clock-0300-svgrepo-com.svg) no-repeat 0 0 / 100%;
+  background: url(/resources/images/clock-0300-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
 .page .txt_wrap .cal::after {
   position: absolute;
@@ -71,7 +71,7 @@
   width: 25px;
   height: 25px;
   left:-30px;
-  background: url(../images/calendar-svgrepo-com.svg) no-repeat 0 0 / 100%;
+  background: url(/resources/images/calendar-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
 .page .txt_wrap .btxt {
   margin-left: 35px;
@@ -106,7 +106,7 @@
   content: '';
   width: 18px;
   height: 15px;
-  background: url(../images/icon_list.svg) no-repeat left top / 100%;
+  background: url(/resources/images/icon_list.svg) no-repeat left top / 100%;
 }
 .page .btn3_wrap a {
   color: #fff;

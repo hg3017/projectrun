@@ -71,19 +71,19 @@ public class RegisterController extends HttpServlet {
 			// insertMember 의 리턴값이 있는 경우 수행합니다. 
 			if(rs == 1){
 				// 회원가입에 성공한 경우, 경로를 추출하고 추출한 경로를 통해 로그인 페이지로 이동합니다. 
-				String ContextPath = request.getContextPath();				
-				response.sendRedirect(ContextPath + "/JSP/Login/Login.jsp");
+							
+				response.sendRedirect("/JSP/Login/Login.jsp");
 			} else {
 				
 				request.setAttribute("LoginErrMsg", "로그인 오류");
-				request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
 			}
 		
 		}
 		// Servelt 의 경로값이 /Logout.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
 		else if(action.equals("/Logout.lo")) {
 			session.invalidate();			
-			response.sendRedirect("LoginForm.jsp");
+			response.sendRedirect("/JSP/Login/Login.jsp");
 		}
 		
 	}

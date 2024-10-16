@@ -10,7 +10,7 @@
     
 </head>
 <body>
-	<h1> 로그인 페이지 zzzzzzz</h1>
+	<h1> 로그인 페이지 </h1>
 	
 	<!-- 로그인 오류 메시지를 출력합니다. 오류가 없는 경우 빈 문자열을 출력합니다. -->
 	<span style="color:red; font-size: 1.2em;">
@@ -24,9 +24,9 @@
 		<input type="submit" value="로그인">	
 	</form>
 	
-	<a href='../Register/Register.jsp' > 회원가입 </a>
+	<a href='/JSP/Register/Register.jsp' > 회원가입 </a>
 	
-	<a href="LoginKAKAO.jsp"><img src="<c:url value="/img/kakao_login_medium_narrow.png"/>" style="width: 200px"></a>
+	
 		
 		
 	                  		

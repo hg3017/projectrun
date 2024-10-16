@@ -4,7 +4,7 @@
 
 .list_page .sub_visual {
   height: 500px;
-  background: url(../images/board_images.jpg) no-repeat center / cover;
+  background: url(/resources/images/board_images.jpg) no-repeat center / cover;
   padding:200px;
 }
 .list_page .sub_visual .inner {
@@ -24,7 +24,7 @@
   width: 20px;
   height: 20px;
   display: inline-block;
-  background: url(../images/icon_locat_slide.svg) no-repeat 50% 50% / cover;
+  background: url(/resources/images/icon_locat_slide.svg) no-repeat 50% 50% / cover;
   vertical-align: middle;
 }
 
@@ -52,7 +52,7 @@
   width: 15px;
   height: 15px;
   display: inline-block;
-  background: url(../images/icon_loc.png) no-repeat 50% 30%;
+  background: url(/resources/images/icon_loc.png) no-repeat 50% 30%;
   vertical-align: middle;
 }
 
@@ -85,13 +85,13 @@
 .list_page .ban_box .etc a {
   display: block;
   height: 100px;
-  background: url(../images/icon-consult.png) no-repeat 20px 50% / 30px;
+  background: url(/resources/images/icon-consult.png) no-repeat 20px 50% / 30px;
   padding: 30px 30px 30px 100px;
 }
 
 
 .list_page .ban_box .etc .etc_right {
-  background: url(../images/icon-call.png) no-repeat 20px 50% / 30px;
+  background: url(/resources/images/icon-call.png) no-repeat 20px 50% / 30px;
 }
 
 .list_page .ban_box .etc p {

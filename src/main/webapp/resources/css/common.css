@@ -4,28 +4,28 @@
   font-family: 'Binggrae';
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/Binggrae.eot);
-  src: url(../fonts/Binggrae.eot) format('embedded-opentype'),
-    url(../fonts/Binggrae.woff) format('woff'),
-    url(../fonts/Binggrae.ttf) format('truetype');
+  src: url(/resources/fonts/Binggrae.eot);
+  src: url(/resources/fonts/Binggrae.eot) format('embedded-opentype'),
+    url(/resources/fonts/Binggrae.woff) format('woff'),
+    url(/resources/fonts/Binggrae.ttf) format('truetype');
 } 
  /* @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  src: url(../fonts/Pretendard-Medium.eot);
-  src: url(../fonts/Pretendard-Medium.eot?#iefix) format('embedded-opentype'),
-    url(../fonts/Pretendard-Medium.woff) format('woff'),
-    url(../fonts/Pretendard-Medium.ttf) format('truetype');
+  src: url(/resources/fonts/Pretendard-Medium.eot);
+  src: url(/resources/fonts/Pretendard-Medium.eot?#iefix) format('embedded-opentype'),
+    url(/resources/fonts/Pretendard-Medium.woff) format('woff'),
+    url(/resources/fonts/Pretendard-Medium.ttf) format('truetype');
 }  */
 @font-face {
   font-family: 'Binggrae-Bold';
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/Binggrae-Bold.eot);
-  src: url(../fonts/Binggrae-Bold.eot?#iefix) format('embedded-opentype'),
-    url(../fonts/Binggrae-Bold.woff) format('woff'),
-    url(../fonts/Binggrae-Bold.ttf) format('truetype');
+  src: url(/resources/fonts/Binggrae-Bold.eot);
+  src: url(/resources/fonts/Binggrae-Bold.eot?#iefix) format('embedded-opentype'),
+    url(/resources/fonts/Binggrae-Bold.woff) format('woff'),
+    url(/resources/fonts/Binggrae-Bold.ttf) format('truetype');
 }
 
 /* 반응형, 모바일에서 모든요소의 패딩,선을 크기안에 포함시킴 */
@@ -322,7 +322,7 @@ input[type='checkbox']:checked + label::before {
 }
 /* :has - ios 15.4부터 지원 */
 .checkbox:has(input[type='checkbox']:checked)::before {
-  background: url(../images/common/check.svg) no-repeat 50% 50% / 100%;
+  background: url(/resources/images/common/check.svg) no-repeat 50% 50% / 100%;
 }
 
 /* radio 공통 */
@@ -364,7 +364,7 @@ input[type='radio']:checked + label::before {
 }
 /* :has - ios 15.4부터 지원 */
 .radio:has(input[type='radio']:checked)::before {
-  background: url(../common/circle.svg) no-repeat 50% 50% / 14px;
+  background: url(/resources/images/common/circle.svg) no-repeat 50% 50% / 14px;
 }
 
 /* select 공통 */
@@ -558,7 +558,7 @@ div.file_wrap label::before {
   content: '';
   width: 18px;
   height: 15px;
-  background: url(../images/icon_list.svg) no-repeat left top / 100%;
+  background: url(/resources/images/icon_list.svg) no-repeat left top / 100%;
 }
 
 .point_btn4 {
@@ -654,7 +654,7 @@ div.file_wrap label::before {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(../images/common/sprite_pc_new.png) no-repeat;
+  background: url(/resources/images/common/sprite_pc_new.png) no-repeat;
   vertical-align: top;
 }
 .pdf_file_icon {
@@ -683,7 +683,7 @@ div.file_wrap label::before {
   vertical-align: top;
   width: 24px;
   height: 24px;
-  background: url(../images/common/set_os.svg) no-repeat;
+  background: url(/resources/images/common/set_os.svg) no-repeat;
 }
 [class*="device_icon"]:hover {
   background-position-x: -50px;
@@ -709,7 +709,7 @@ div.file_wrap label::before {
   vertical-align: top;
   width: 20px;
   height: 20px;
-  background: url(../images/common/set_community.svg) no-repeat;
+  background: url(/resources/images/common/set_community.svg) no-repeat;
 }
 [class*="sns_icon"]:hover {
   background-position-x: -50px;
@@ -775,7 +775,7 @@ caption.nohead {
   width: 60px;
   height: 46px;
   border: none;
-  background:#fff url(../images/icon_search.svg) no-repeat 50% 50%;
+  background:#fff url(/resources/images/icon_search.svg) no-repeat 50% 50%;
 }
 
 /* board_list(게시물리스트), board_view(게시물보기), board_write(게시물쓰기), board_modify(게시물수정) */
@@ -854,20 +854,20 @@ caption.nohead {
   content: '';
   width: 14px;
   height: 12px;
-  background: url(../images/page_two.svg) no-repeat;
+  background: url(/resources/images/page_two.svg) no-repeat;
 }
 .board_pagination .prev_paging {
   margin-right: 20px;
 }
 .board_pagination .prev_paging::after {
   width: 7px;
-  background-image:  url(../images/page_one.svg) no-repeat;
+  background-image:  url(/resources/images/page_one.svg) no-repeat;
 }
 .board_pagination .next_paging {
   transform: rotate(180deg);
 }
 .board_pagination .next_paging::after {
-  background-image:  url(../images/page_one.svg) no-repeat;
+  background-image:  url(/resources/images/page_one.svg) no-repeat;
   width: 7px;
 }
 .board_pagination .last_paging {
@@ -988,7 +988,7 @@ caption.nohead {
   width: 7px;
   height: 6px;
   display: inline-block;
-  background: url(../images/icon_ess.png) no-repeat;
+  background: url(/resources/images/icon_ess.png) no-repeat;
   margin: 0 5px;
   vertical-align: 2px;
 }

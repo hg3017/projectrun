@@ -9,7 +9,7 @@
 <body>
 <%@page import="DTO.MemberDTO"%>
 <!-- Menu  -->
-<jsp:include page= './Member_menu.jsp' />
+<jsp:include page= '/JSP/Admin/Member/Member_menu.jsp' />
 <!-- Contents -->
 <h1>Write</h1>
 <form name="writeFrm" method="post" action="WriteProcess.do">
@@ -60,7 +60,7 @@
             <td colspan="2" align="center">
                 <button type="submit">작성 완료</button>
                 <button type="reset">다시 입력</button>
-                <button type="button" onclick="location.href='List.jsp';">
+                <button type="button" onclick="location.href='/JSP/Admin/Member/Member_list.jsp';">
                     목록 보기</button>
             </td>
         </tr>

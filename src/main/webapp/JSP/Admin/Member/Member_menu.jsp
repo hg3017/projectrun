@@ -10,12 +10,12 @@
 <h1>관리자 매뉴</h1>
 <table border="1" width="80%">
 	<tr>
-		<td align="center"><a href="<%=request.getContextPath() %>/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
-		<td align="center"><a href="<%=request.getContextPath() %>/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
-		<td align="center"><a href="<%=request.getContextPath() %>/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
-		<td align="center"><a href="<%=request.getContextPath() %>/JSP/Admin/Member/test01.adme">컨트롤러 테스트 페이지</a></td>
+		<td align="center"><a href="/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
+		<td align="center"><a href="/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
+		<td align="center"><a href="/JSP/Admin/Member/List.adme">러닝크루 회원목록</a></td>
+		<td align="center"><a href="/JSP/Admin/Member/test01.adme">컨트롤러 테스트 페이지</a></td>
 	</tr>
 </table>
-	request page context 확인 : <%=request.getContextPath() %> <br>
+	request page context 확인 :  <br>
 </body>
 </html>

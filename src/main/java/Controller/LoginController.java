@@ -67,28 +67,28 @@ public class LoginController extends HttpServlet {
 				// 전달받은 id, pw 값이 일치하는 경우 작동합니다. 
 				if(pw.equals(dto.getPW())){
 					session.setAttribute("UserId", id);	
-					response.sendRedirect("../Main/Main.jsp");
+					response.sendRedirect("/JSP/Main/Main.jsp");
 				}else{
 					request.setAttribute("LoginErrMsg", "로그인 오류");
-					request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+					request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
 				}
 			} 
 			// dto 값이 null 인 경우 작동합니다. 
 			else{
 				request.setAttribute("LoginErrMsg", "로그인 오류");
-				request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
 			}
 			
 			
 		}
 		// Servelt 의 경로값이 /LoginForm.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
 		else if(action.equals("/LoginForm.lo")) {
-			response.sendRedirect("LoginForm.jsp");
+			response.sendRedirect("/JSP/Login/Login.jsp");
 		}
 		// Servelt 의 경로값이 /Logout.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
 		else if(action.equals("/Logout.lo")) {
 			session.invalidate();			
-			response.sendRedirect("LoginForm.jsp");
+			response.sendRedirect("/JSP/Login/Login.jsp");
 		}
 	}
 
