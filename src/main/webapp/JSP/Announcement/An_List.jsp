@@ -52,6 +52,7 @@
 					</td>
 				</tr>
 			</table>
+			
 		</form>
 		<div class="btn_wrap">
 			<c:if test="${UserId eq 'hong01' }">
