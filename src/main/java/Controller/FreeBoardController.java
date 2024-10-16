@@ -45,7 +45,7 @@ public class FreeBoardController extends HttpServlet {
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
 		System.out.println(action);
-		if (action.equals("/List.free")) {
+		if (action.equals("/Fb_List.free")) {
 			// 1. 받을 값 확인
 			String searchField = request.getParameter("searchField"); // 검색 필드 (예: 제목, 내용 등)
 			String searchWord = request.getParameter("searchWord"); // 검색어
