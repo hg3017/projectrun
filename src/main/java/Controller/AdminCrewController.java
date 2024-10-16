@@ -61,7 +61,7 @@ public class AdminCrewController extends HttpServlet {
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
-		}else if(action.equals("/Member_write.adme")) {
+		}else if(action.equals("/Member_Write.adme")) {
 			// System.out.println(action);
 			System.out.println("write : "+ request.getParameter("name"));
 			// 받을 값 없음, service 요청할 거 없음

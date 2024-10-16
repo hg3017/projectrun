@@ -68,7 +68,7 @@ public class AdminMemberController extends HttpServlet {
 			// 받을 값 없음, service 요청할 거 없음
 			// 3. 어떻게 어디로 이동할 것인가?
 			// System.out.println("Write.do" + request.getParameter("id"));
-			String path = "Member_Write.jsp";
+			String path = "/JSP/Admin/Member/Member_Write.jsp";
 			response.sendRedirect(path);
 			
 		}else if(action.equals("/Member_WriteProcess.adme")) {
@@ -152,6 +152,10 @@ public class AdminMemberController extends HttpServlet {
 		}else if(action.equals("/Member_Test01.adme")) {
 			System.out.println("action 값 확인 : "+action);
 			String path = "/JSP/Admin/Member/Member_Test01.jsp";
+			response.sendRedirect(path);
+		}else if(action.equals("/Member_LinkTest.adme")) {
+			System.out.println("action 값 확인 : "+action);
+			String path ="/JSP/Admin/Member/Member_LinkTest.jsp";
 			response.sendRedirect(path);
 		}
 	}
