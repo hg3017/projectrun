@@ -4,13 +4,11 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=1004"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="러닝크루">
   <meta property="og:type" content="website">
   <meta  property="og:title" content="러닝">
   <meta property="og:url" content="https://dot386@dot386.dothome.co.kr/html/test/index.html">
-  <meta property="og:image" content="/pub/images/og_image.jpg">
   <meta property="og:description" content="러닝크루">
   <title>러닝메이트</title>
   <link rel="icon" href="/resources/images/common/favicon.png">
@@ -38,8 +36,8 @@
 </head>
 <body>
   <div id="wrap">
-    <jsp:include page="/JSP/Common/Header.jsp" />
-        <main id="container">
+  
+    <jsp:include page= '/JSP/Common/Header.jsp' />
       <section class="main_visual">
       <h2 class="blind">메인슬라이더</h2>
       </section>
@@ -47,7 +45,7 @@
         <div class="inner">
           <div class="head_wrap">
             <h2 class="main_tit">러닝크루</h2>
-            <a class="crew_btn" href="#">크루등록하기</a>
+            <a class="crew_btn" href="/JSP/Main/Crew_write.jsp">크루등록하기</a>
           </div>
           <p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
           <div class="swiper_wrap">
@@ -103,8 +101,10 @@
                 </div>
                 <div class="swiper-slide">
                   <a href="#">
-                    <div class="all_wrap">
+                    <div class="img_wrap">
                       <img src="/resources/images/main_crew2.jpg" alt="">
+                    </div>
+                    <div class="txt_wrap">
                       <h3>서울/경기</h3>
                       <p>Sub3</p>
                       <span>목요일<br>PM 7:30</span>
@@ -162,8 +162,6 @@
           </div>
         </div>
       </section>
-
-   
     
     <jsp:include page= '/JSP/Common/Footer.jsp' />
   </div>

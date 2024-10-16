@@ -37,7 +37,7 @@
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
-   <div id="wrap">
+    <main id="container" class="crew_page">
     <jsp:include page="/JSP/Common/Header.jsp" />
     <section class="main_report">
       <div class="inner">
@@ -69,7 +69,7 @@
           </ul>
           <div class="report_wrap">
             <ul class="all_view">
-              <li class="featured_card">
+              <li class="featured_card active">
                 <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -230,7 +230,7 @@
         </div>
       </div>
     </section>
+    </main>
     <jsp:include page= '/JSP/Common/Footer.jsp' />
-  </div>
 </body>
 </html>
