@@ -5,8 +5,8 @@ public class AnnouncementPage {
 	public static String pagingStr(int totalCount, int pageSize, int blockPage, int pageNum, String reqUrl) {
 		String pagingStr = "";
 		
-		
-		int totalPages = (int)(Math.ceil(((double)totalCount / pageSize)));
+		//전체 데이터 수를 pageSize로 나누어 총 몇 페이지가 필요한지 계산
+		int totalPages = (int)(Math.ceil(((double)totalCount / pageSize))); 
 		
 		int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1; // 1, 11, 21, ...
 		
