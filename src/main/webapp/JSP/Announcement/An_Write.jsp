@@ -22,7 +22,11 @@ function validateForm(form) {
 </script>
 </head>
 <body>
+<<<<<<< HEAD
+<%-- <jsp:include page= '../Common/Header.jsp' /> --%>
+=======
 <jsp:include page= '/JSP/Common/Header.jsp' />
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 
 <h1>글쓰기 - Write</h1>
 <form name="writeFrm" method="post" action="An_WriteProcess.an" onsubmit="return validateForm(this);">
