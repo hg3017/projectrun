@@ -1,29 +1,37 @@
+@charset "UTF-8";
+
 @font-face {
   font-family: 'Binggrae';
   font-style: normal;
   font-weight: 400;
-  src: url(../fonts/Binggrae.eot);
+  src: url(/resources/fonts/Binggrae.eot);
+<<<<<<< HEAD
   src: url(../fonts/Binggrae.eot) format('embedded-opentype'),
     url(../fonts/Binggrae.woff) format('woff'),
     url(../fonts/Binggrae.ttf) format('truetype');
+=======
+  src: url(/resources/fonts/Binggrae.eot) format('embedded-opentype'),
+    url(/resources/fonts/Binggrae.woff) format('woff'),
+    url(/resources/fonts/Binggrae.ttf) format('truetype');
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 } 
  /* @font-face {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  src: url(../fonts/Pretendard-Medium.eot);
-  src: url(../fonts/Pretendard-Medium.eot?#iefix) format('embedded-opentype'),
-    url(../fonts/Pretendard-Medium.woff) format('woff'),
-    url(../fonts/Pretendard-Medium.ttf) format('truetype');
+  src: url(/resources/fonts/Pretendard-Medium.eot);
+  src: url(/resources/fonts/Pretendard-Medium.eot?#iefix) format('embedded-opentype'),
+    url(/resources/fonts/Pretendard-Medium.woff) format('woff'),
+    url(/resources/fonts/Pretendard-Medium.ttf) format('truetype');
 }  */
 @font-face {
   font-family: 'Binggrae-Bold';
   font-style: normal;
   font-weight: 700;
-  src: url(../fonts/Binggrae-Bold.eot);
-  src: url(../fonts/Binggrae-Bold.eot?#iefix) format('embedded-opentype'),
-    url(../fonts/Binggrae-Bold.woff) format('woff'),
-    url(../fonts/Binggrae-Bold.ttf) format('truetype');
+  src: url(/resources/fonts/Binggrae-Bold.eot);
+  src: url(/resources/fonts/Binggrae-Bold.eot?#iefix) format('embedded-opentype'),
+    url(/resources/fonts/Binggrae-Bold.woff) format('woff'),
+    url(/resources/fonts/Binggrae-Bold.ttf) format('truetype');
 }
 
 /* 반응형, 모바일에서 모든요소의 패딩,선을 크기안에 포함시킴 */
@@ -320,7 +328,7 @@ input[type='checkbox']:checked + label::before {
 }
 /* :has - ios 15.4부터 지원 */
 .checkbox:has(input[type='checkbox']:checked)::before {
-  background: url(../images/common/check.svg) no-repeat 50% 50% / 100%;
+  background: url(/resources/images/common/check.svg) no-repeat 50% 50% / 100%;
 }
 
 /* radio 공통 */
@@ -362,7 +370,7 @@ input[type='radio']:checked + label::before {
 }
 /* :has - ios 15.4부터 지원 */
 .radio:has(input[type='radio']:checked)::before {
-  background: url(../common/circle.svg) no-repeat 50% 50% / 14px;
+  background: url(/resources/images/common/circle.svg) no-repeat 50% 50% / 14px;
 }
 
 /* select 공통 */
@@ -509,7 +517,8 @@ div.file_wrap label::before {
   width: 180px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(0deg, #ed1c24, #e0462e);
+  background: #8c5ba3;
+  /* background: linear-gradient(0deg, #ed1c24, #e0462e); */
   border: none;
   font-size: 14px;
 }
@@ -543,7 +552,8 @@ div.file_wrap label::before {
   width: 185px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(-115deg, #008a43, #2ad47d);
+  background: #8c5ba3;
+  /* background: linear-gradient(-115deg, #008a43, #2ad47d); */
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -554,7 +564,7 @@ div.file_wrap label::before {
   content: '';
   width: 18px;
   height: 15px;
-  background: url(../images/icon_list.svg) no-repeat left top / 100%;
+  background: url(/resources/images/icon_list.svg) no-repeat left top / 100%;
 }
 
 .point_btn4 {
@@ -563,7 +573,8 @@ div.file_wrap label::before {
   width: 160px;
   font-weight: 700;
   color: #fff;
-  background: linear-gradient(-115deg, #008a43, #2ad47d);
+  background: #8c5ba3;
+  /* background: linear-gradient(-115deg, #008a43, #2ad47d); */
   justify-content: center;
   align-items: center;
   display: inline-flex;
@@ -649,7 +660,7 @@ div.file_wrap label::before {
   display: inline-block;
   width: 20px;
   height: 20px;
-  background: url(../images/common/sprite_pc_new.png) no-repeat;
+  background: url(/resources/images/common/sprite_pc_new.png) no-repeat;
   vertical-align: top;
 }
 .pdf_file_icon {
@@ -678,7 +689,7 @@ div.file_wrap label::before {
   vertical-align: top;
   width: 24px;
   height: 24px;
-  background: url(../images/common/set_os.svg) no-repeat;
+  background: url(/resources/images/common/set_os.svg) no-repeat;
 }
 [class*="device_icon"]:hover {
   background-position-x: -50px;
@@ -704,7 +715,7 @@ div.file_wrap label::before {
   vertical-align: top;
   width: 20px;
   height: 20px;
-  background: url(../images/common/set_community.svg) no-repeat;
+  background: url(/resources/images/common/set_community.svg) no-repeat;
 }
 [class*="sns_icon"]:hover {
   background-position-x: -50px;
@@ -741,8 +752,8 @@ caption.nohead {
 /* 게시물 검색 */
 .board_search_wrap {
   background: #f8f8f8;
-  padding: 56px 40px;
-  margin-bottom: 80px;
+  padding: 50px 40px;
+  margin-bottom: 30px;
 }
 .board_search {
   display: flex;
@@ -751,7 +762,8 @@ caption.nohead {
 }
 .board_search .select_wrap {
   /* 부모영역 1320: 240 = 100 : x x = 18.18% */
-  width: 18.2%;
+  /* width: 18.2%; */
+  width: 16.6%;
 }
 .board_search .input_wrap {
   max-width: 600px;
@@ -764,13 +776,12 @@ caption.nohead {
   width: calc(100% - 60px);
   height: 46px;
   border: none;
-  font-size: 18px;
 }
 .board_search .search_btn {
   width: 60px;
   height: 46px;
   border: none;
-  background:#fff url(../images/icon_search.svg) no-repeat 50% 50%;
+  background:#fff url(/resources/images/icon_search.svg) no-repeat 50% 50%;
 }
 
 /* board_list(게시물리스트), board_view(게시물보기), board_write(게시물쓰기), board_modify(게시물수정) */
@@ -778,17 +789,17 @@ caption.nohead {
 .board_list .btn_wrap {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .board_list .write_btn {
   padding: 10px 20px;
   border: 1px solid #333; 
-  font-size: 18px;
+  font-size: 14px;
   font-weight: 500;
 }
 
 .board_list table {
-  border-top: 2px solid #000;
+  border-top: 2px solid #8c5ba3;
 }
 .board_list th {
   height: 100px;
@@ -806,9 +817,8 @@ caption.nohead {
   width: 200px;
 }
 .board_list td {
-  height: 100px;
+  height: 70px;
   text-align: center;
-  font-size: 18px;
   border-bottom: 1px solid #707070;
 }
 .board_list .td_left {
@@ -850,20 +860,20 @@ caption.nohead {
   content: '';
   width: 14px;
   height: 12px;
-  background: url(../images/page_two.svg) no-repeat;
+  background: url(/resources/images/page_two.svg) no-repeat;
 }
 .board_pagination .prev_paging {
   margin-right: 20px;
 }
 .board_pagination .prev_paging::after {
   width: 7px;
-  background-image:  url(../images/page_one.svg) no-repeat;
+  background-image:  url(/resources/images/page_one.svg) no-repeat;
 }
 .board_pagination .next_paging {
   transform: rotate(180deg);
 }
 .board_pagination .next_paging::after {
-  background-image:  url(../images/page_one.svg) no-repeat;
+  background-image:  url(/resources/images/page_one.svg) no-repeat;
   width: 7px;
 }
 .board_pagination .last_paging {
@@ -880,8 +890,8 @@ caption.nohead {
   color: #999;
 }
 .board_pagination .num.active {
-  background: var(--point-color1);
-  border-color: var(--point-color1);
+  background: purple;
+  border-color: purple;
   color: #fff;
 }
 .board_pagination .next_paging {
@@ -892,19 +902,24 @@ caption.nohead {
 
 
 /* 게시물 보기 */
+.board_view {
+  margin: 0 45px 0;
+}
 .board_view .view_top {
+  padding-top: 100px;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .board_view .modify_btn {
   padding: 10px 20px;
-  border: 1px solid black;
+  border: 1px solid #333; 
+  font-size: 14px;
   font-weight: 500;
 }
 .board_view .view_tit {
   border-top: 2px solid #000;
-  padding: 40px;
+  padding: 30px;
   display: flex;
   gap: 0 40px;
   justify-content: space-between;
@@ -912,10 +927,10 @@ caption.nohead {
   border-bottom: 1px solid #ddd;
 }
 .board_view .view_tit h3 {
-  font-size: 32px;
+  font-size: 26px;
   font-weight: 500;
   color: var(--gray-600);
-  line-height: 1.2;
+  line-height: 1.0;
 }
 .board_view .view_tit .date {
   /* flex아이템 가로길이가 줄어들지 않도록 */
@@ -934,7 +949,7 @@ caption.nohead {
 .board_view .view_paging dt {
   background: #f8f8f8;
   width: 200px;
-  padding: 20px 0;
+  padding: 15px 0;
   text-align: center;
   font-weight: 500;
   color: #999;
@@ -946,6 +961,7 @@ caption.nohead {
 .board_view .view_paging dd {
   padding: 20px 0 20px 50px;
   flex-grow: 1;
+  font-size: 16px;
 }
 .board_view .view_paging a {
   color: var(--gray-400);
@@ -961,10 +977,14 @@ caption.nohead {
 }
 
 /* 게시판 쓰기 */
+.board_write {
+  padding-top: 80px;
+  margin: 0 45px 0;
+}
 .board_write .tit {
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 30px;
+  margin-bottom: 26px;
 }
 .board_write .note {
   text-align: right;
@@ -974,16 +994,15 @@ caption.nohead {
   width: 7px;
   height: 6px;
   display: inline-block;
-  background: url(../images/icon_ess.png) no-repeat;
+  background: url(/resources/images/icon_ess.png) no-repeat;
   margin: 0 5px;
   vertical-align: 2px;
 }
 .board_write th {
   width: 196px;
   font-weight: 400px;
-  font-size: 18px;
   text-align: left;
-  padding: 10px 0;
+  padding: 30px 0;
 }
 .board_write .th_top {
   padding: 10px 0;
@@ -994,13 +1013,11 @@ caption.nohead {
 .board_write input[type=text] {
   width: 100%;
   height: 50px;
-  font-size: 18px;
   border: none;
   border-bottom: 1px solid #ddd;
 }
 .board_write textarea {
   width: 100%;
-  font-size: 18px;
   padding: 15px;
   background: #f8f8f8;
   border: none;
@@ -1096,7 +1113,7 @@ caption.nohead {
   .board_search_wrap {
     padding: 40px;
   }
-
+  
   .board_search .select_wrap {
     width: 30%;
   }
@@ -1104,8 +1121,23 @@ caption.nohead {
     width: 70%;
   }
 
+  .board_search_wrap .select_wrap select {
+    height: 43px;
+    font-size: 15px;
+  }
+  
+  .board_search input[type=search] {
+    height: 43px;
+    font-size: 15px;
+    width: calc(100% - 40px);
+  }
+  .board_search .search_btn {
+    width: 43px;
+    height: 43px;
+  }
+
   .board_list .write_btn {
-    font-size: 16px;
+    font-size: 14px;
   }
   .board_list th {
     height: 70px;
@@ -1121,7 +1153,7 @@ caption.nohead {
     width: 120px;
   }
   .board_list td {
-    font-size: 16px;
+    font-size: 15px;
     height: 70px;
   }
 
@@ -1129,7 +1161,7 @@ caption.nohead {
     padding: 20px;
   }
   .board_view .view_tit h3 {
-    font-size: 26px;
+    font-size: 22px;
   }
   .board_view .view_tit .date {
     font-size: 14px;
@@ -1143,6 +1175,7 @@ caption.nohead {
   }
   .board_view .view_paging dd {
     padding: 15px 30px;
+    font-size: 14px;
   }
   .board_write .btn_wrap {
     margin-top: 30px;
@@ -1154,6 +1187,7 @@ caption.nohead {
 
   .board_write th {
     width: 14%;
+    font-size: 15px;
   }
   .board_write .td_flex {
     flex-direction: column;
@@ -1162,6 +1196,11 @@ caption.nohead {
   }
   .board_write .td_flex .file_wrap {
     max-width: 100%;
+    font-size: 14px;
+  }
+
+  .board_write .file_note {
+    font-size: 14px;
   }
 }
 
@@ -1169,26 +1208,27 @@ caption.nohead {
 
 @media (max-width: 767px) {
   .board_search_wrap {
-    padding: 15px;
-    margin-bottom: 30px;
+    padding: 30px;
+    margin-bottom: 20px;
   }
   .board_search_wrap .select_wrap select {
     height: 38px;
-    font-size: 13px;
+    font-size: 14px;
   }
   
   .board_search input[type=search] {
     height: 38px;
-    font-size: 13px;
+    font-size: 14px;
     width: calc(100% - 40px);
   }
   .board_search .search_btn {
     width: 40px;
     height: 38px;
   }
-
+    
   .board_list .write_btn {
-    font-size: 13px;
+    font-size: 12px;
+    padding: 10px 15px;
   }
   .board_list th:first-child,
   .board_list td:first-child {
@@ -1239,7 +1279,7 @@ caption.nohead {
     font-size: 18px;
   }
   .board_view .view_tit .date {
-    font-size: 12px;
+    font-size: 13px;
   }
   .board_view .view_paging dt {
     width: 80px;
@@ -1267,6 +1307,10 @@ caption.nohead {
     font-size: 15px;
     width: 60px;
   }
+
+  .board_write td {
+    padding-left: 20px;
+  }
   .board_write input[type=text] {
     font-size: 15px;
     height: 40px;
@@ -1287,7 +1331,7 @@ caption.nohead {
   .board_write .file_wrap label {
     height: 40px;
     line-height: 40px;  
-    font-size: 15px;
+    font-size: 14px;
     width: 80px;
   }
   .board_write .file_note {

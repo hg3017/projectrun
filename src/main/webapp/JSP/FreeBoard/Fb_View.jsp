@@ -2,7 +2,7 @@
 <%@page import="DAO.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./IsLoggedIn.jsp"%>
+<%@ include file="/JSP/FreeBoard/IsLoggedIn.jsp"%>
 <%
 String num = request.getParameter("num");  // 일련번호 받기 
 
@@ -29,7 +29,7 @@ function deletePost() {
 </script>
 </head>
 <body>
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page= '/JSP/Common/Header.jsp' />
 <h2>View</h2>
 <form name="writeFrm">
     <input type="hidden" name="num" value="<%= num %>" />  <!-- 공통 링크 -->
@@ -58,19 +58,19 @@ function deletePost() {
                 && session.getAttribute("UserId").toString().equals(dto.getId())) {
             %>
                 <button type="button"
-                        onclick="location.href='Edit.jsp?num=<%= dto.getNum() %>';">
+                        onclick="location.href='/JSP/FreeBoard/Fb_Edit.jsp?num=<%= dto.getNum() %>';">
                     수정하기</button>
                 <button type="button" onclick="deletePost();">삭제하기</button> 
             <%
             }
             %>
-                <button type="button" onclick="location.href='List.jsp';">
+                <button type="button" onclick="location.href='/JSP/FreeBoard/Fb_List.jsp';">
                     목록 보기
                 </button>
             </td>
         </tr>
     </table>
 </form>
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 </body>
 </html>

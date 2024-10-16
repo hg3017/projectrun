@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="./IsLoggedIn.jsp"%>
+<%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -14,7 +14,7 @@ function deletePost() {
     if (confirmed) {
         var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
         form.method = "post";               // 전송 방식 
-        form.action = "DeleteProcess.an";  // 전송 경로
+        form.action = "An_DeleteProcess.an";  // 전송 경로
         form.submit();                      // 폼값 전송
     }
 }
@@ -22,7 +22,7 @@ function deletePost() {
 </script>
 </head>
 <body>
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page= '/JSP/Common/Header.jsp' />
 <h2>View</h2>
 <form name="writeFrm">
     <input type="hidden" name="num" value="${board.num }" />  <!-- 공통 링크 -->
@@ -48,10 +48,10 @@ function deletePost() {
         <tr>
             <td colspan="4" align="right">
             	<c:if test="${UserId eq board.id }">
-            	<button type="button" onclick="location.href='Edit.an?num=${board.num}';">수정하기</button>
+            	<button type="button" onclick="location.href='An_Edit.an?num=${board.num}';">수정하기</button>
             	<button type="button" onclick="deletePost()">삭제하기</button>
             	</c:if>
-                <button type="button" onclick="location.href='List.an';">
+                <button type="button" onclick="location.href='An_List.an';">
                     목록 보기
                 </button>
             </td>
@@ -60,7 +60,7 @@ function deletePost() {
 </form>
 <table border="1" style="width:100%;">
  <tr>
-  <td><input id="writer" placeholder="이름"></td>
+  <td>댓글 작성자 : ${board.id }</td>
   <td rowspan="2">
    <button id="btnSave" type="button">확인</button>
   </td>
@@ -70,6 +70,6 @@ function deletePost() {
  </tr>
 </table>
 
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 </body>
 </html>
