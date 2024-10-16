@@ -5,9 +5,15 @@
   font-style: normal;
   font-weight: 400;
   src: url(/resources/fonts/Binggrae.eot);
+<<<<<<< HEAD
+  src: url(../fonts/Binggrae.eot) format('embedded-opentype'),
+    url(../fonts/Binggrae.woff) format('woff'),
+    url(../fonts/Binggrae.ttf) format('truetype');
+=======
   src: url(/resources/fonts/Binggrae.eot) format('embedded-opentype'),
     url(/resources/fonts/Binggrae.woff) format('woff'),
     url(/resources/fonts/Binggrae.ttf) format('truetype');
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 } 
  /* @font-face {
   font-family: 'Poppins';

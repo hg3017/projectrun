@@ -60,7 +60,7 @@ function deletePost() {
 </form>
 <table border="1" style="width:100%;">
  <tr>
-  <td><input id="writer" placeholder="이름"></td>
+  <td>댓글 작성자 : ${board.id }</td>
   <td rowspan="2">
    <button id="btnSave" type="button">확인</button>
   </td>
