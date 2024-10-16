@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./IsLoggedIn.jsp"%> 
+<%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%> 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -23,7 +23,7 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page= '/JSP/Common/Header.jsp' />
 <h2>Edit</h2>
 <form name="writeFrm" method="post" action="An_EditProcess.an"
       onsubmit="return validateForm(this);">
@@ -56,6 +56,6 @@ function validateForm(form) {  // 폼 내용 검증
 <c:if test="${empty board}">
     <p>게시물 데이터를 찾을 수 없습니다.</p> <!-- board 값이 null인 경우 경고 -->
 </c:if>
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 </body>
 </html>

@@ -133,7 +133,7 @@
   height: 700px;
   padding: 180px 0;
   text-align: center;
-  background: url(../images/main_slider.jpg) no-repeat center / cover;
+  background: url(/resources/images/main_slider.jpg) no-repeat center / cover;
 }
 
 .main_crew {
@@ -194,7 +194,7 @@
   width: 40px;
   height: 25px;
   left: 0;
-  background: url(../images/arrow-left.svg) no-repeat 100% / 100%;
+  background: url(/resources/images/arrow-left.svg) no-repeat 100% / 100%;
 }
 
 .main_crew .swiper-button-next {

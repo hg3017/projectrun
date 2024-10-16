@@ -2,7 +2,7 @@
 <%@page import="DAO.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="./IsLoggedIn.jsp"%> 
+<%@ include file="/JSP/FreeBoard/IsLoggedIn.jsp"%> 
 <%
 String num = request.getParameter("num");  // 일련번호 받기 
 FreeBoardDAO dao = new FreeBoardDAO();  // DAO 생성
@@ -35,7 +35,7 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page= '../Common/Header.jsp' />
+<jsp:include page= '/JSP/Common/Header.jsp' />
 <h2>Edit</h2>
 <form name="writeFrm" method="post" action="EditProcess.free"
       onsubmit="return validateForm(this);">
@@ -63,6 +63,6 @@ function validateForm(form) {  // 폼 내용 검증
         </tr>
     </table>
 </form>
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 </body>
 </html>

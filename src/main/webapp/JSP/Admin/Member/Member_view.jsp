@@ -14,11 +14,12 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 <body>
 <%@page import="DTO.MemberDTO"%>
 <!-- Menu -->
-<jsp:include page= './Member_menu.jsp' />
+<jsp:include page= '/JSP/Admin/Member/Member_menu.jsp' />
 <!-- Contents -->
 <h1>View</h1>
 <% out.println("member 객체 : "+ member); %>
-<form name="writeFrm" method="post" action="WriteProcess.jsp">
+<!-- 이 부분 확인 부탁드립니다. Controller 로 이동하는 부분인지, jsp 화면으로 이동하는 부분인지 확인 부탁드립니다. -->
+<form name="writeFrm" method="post" action="WriteProcess.jsp">  
 	<table border="1" width="80%">
 		<tr>
 			<td width="10%">ID</td>
@@ -76,9 +77,9 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="./List.do">[List]</a>
-				<a href="./Edit.do?id=<%=member.getId()%>">[Edit]</a>
-				<a href="./DeleteProcess.do?id=<%=member.getId()%>">[Delete]</a>
+				<a href="/List.do">[List]</a>
+				<a href="/Edit.do?id=<%=member.getId()%>">[Edit]</a>
+				<a href="/DeleteProcess.do?id=<%=member.getId()%>">[Delete]</a>
 			</td>
 		</tr>
 	</table>
