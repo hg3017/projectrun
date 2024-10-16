@@ -7,11 +7,29 @@
 <head>
 <meta charset="UTF-8">
 <title>List</title>
+<<<<<<< HEAD
 <link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+=======
+
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+
+  <!-- css 파일 연결 -->
+  	<link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  	<link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <!-- php타임스탬프 이용하여 css캐싱방지 -->
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 <style>
 </style>
 </head>
 <body>
+<<<<<<< HEAD
     <jsp:include page='/JSP/Common/Header.jsp' />
     
     <main id="container" class="sub_container list_page">
@@ -50,6 +68,13 @@
 		<!-- 공지사항 목록 -->
 		<table border="1" width="50%" style="border-collapse: collapse">
 			<!-- 각각의 이름 -->
+=======
+    <jsp:include page= '/JSP/Common/Header.jsp' />
+    <h1 style="font-size:24px">공지사항</h1>
+	<!-- 검색 -->
+	<form method="get">
+		<table width="50%" style="border-collapse: collapse">
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
 			<tr>
 				<th width="10%">번호</th>
 				<th width="50%">제목</th>

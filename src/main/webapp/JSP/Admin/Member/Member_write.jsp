@@ -4,14 +4,15 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>Register.jsp</title>
+<title>Write.jsp</title>
 </head>
 <body>
-
+<%@page import="DTO.MemberDTO"%>
+<!-- Menu  -->
+<jsp:include page= '/JSP/Admin/Member/Member_menu.jsp' />
+<!-- Contents -->
 <h1>Write</h1>
-
-<!-- 입력한 값을 RegisterProcess.regi 에  , post 방식을 통해 전달합니다.  -->
-<form action="RegisterProcess.regi" method = "post" name = "RegisterFrm" onsubmit="return validateForm(this)">
+<form name="writeFrm" method="post" action="WriteProcess.do">
     <table border="1" width="80%">
         <tr>
             <td>ID</td>
@@ -59,7 +60,7 @@
             <td colspan="2" align="center">
                 <button type="submit">작성 완료</button>
                 <button type="reset">다시 입력</button>
-                <button type="button" onclick="location.href='/JSP/Login/Login.jsp';">
+                <button type="button" onclick="location.href='/JSP/Admin/Member/Member_list.jsp';">
                     목록 보기</button>
             </td>
         </tr>

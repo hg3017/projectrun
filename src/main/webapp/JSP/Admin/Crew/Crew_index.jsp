@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Crew_index</title>
 </head>
 <body>
-	request객체의 ContextPath() 주소입니다. :
-	<br>
-	request객체의 ContextPath() 주소입니다. : 
+
 </body>
 </html>

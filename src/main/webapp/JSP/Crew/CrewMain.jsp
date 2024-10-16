@@ -11,8 +11,8 @@
 <head>
 <meta charset="UTF-8">
 
-<link rel="stylesheet" href="css/main.css?v=<?php echo time(); ?>">
-<link href="../../resources/css/CrewMain.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="/resource/css/main.css?v=<?php echo time(); ?>">
+<link href="/resources/css/CrewMain.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
 
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -45,7 +45,7 @@
    	crewMemberDao.close();
 %>
 
-	<jsp:include page= '../Common/Header.jsp' />
+	<jsp:include page= '/JSP/Common/Header.jsp' />
 	  <section class="main_info">
 	  <div class="inner">
 	  <div class="crew_name">
@@ -99,19 +99,19 @@
 		  <div class="crew_picture">
 
 	          <a href="#" class="picture_list">
-				<img src="images/icon/arr2_r_on.png" alt="" class="on" title="">
+				<img src="" alt="" class="on" title="">
 	          </a>
 	
 	          <a href="#" class="picture_list">
-				<img src="images/icon/arr2_r_on.png" alt="" class="on" title="">
+				<img src="" alt="" class="on" title="">
 	          </a>
 	
 	          <a href="#" class="picture_list">
-				<img src="images/icon/arr2_r_on.png" alt="" class="on" title="">
+				<img src="" alt="" class="on" title="">
 	          </a>
 	
 	          <a href="#" class="picture_list">
-				<img src="images/icon/arr2_r_on.png" alt="" class="on" title="">
+				<img src="" alt="" class="on" title="">
 	          </a>
       </div>	
 	</div> <!-- Section left 마지막  -->
@@ -163,5 +163,5 @@
 		</div>  <!-- inner 마지막  -->
 </body>
 
-<jsp:include page= '../Common/Footer.jsp' />
+<jsp:include page= '/JSP/Common/Footer.jsp' />
 </html>

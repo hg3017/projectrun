@@ -88,7 +88,7 @@
   font-weight: 500;
   padding-right: 35px;
   margin-right: -10px;
-  background: url(../images/icon/arr2_r_off.png) calc(100% - 10px) center no-repeat;
+  background: url(/resources/images/icon/arr2_r_off.png) calc(100% - 10px) center no-repeat;
   transition: all 0.3s;
 }
 
