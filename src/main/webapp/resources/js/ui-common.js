@@ -77,9 +77,28 @@ window.addEventListener('DOMContentLoaded', function () {
 
   // mixitup
 
-  const items = document.querySelectorAll('.filter_container .social_tab li');
-  const itemContents = document.querySelectorAll('.all_view .featured_card');
+  const items = document.querySelectorAll('.social_tab li');
+  const tabContent = document.querySelectorAll('.all_view .li');
+  
   items.forEach((item) => {
+    item.addEventListener("click", tabHandler);
+  });
+  
+  function tabHandler(item) {
+      const tabTarget = item.currentTarget;
+      const target = items.dataset.tab;
+
+      tabItem.forEach((e) => {
+        e.classList.remove('active');
+      });
+      tabContent.forEach((t) => {
+        t.classList.remove('target');
+      });
+      document.querySelector('#' + target).classList.add('target');
+      tabTarget.classList.add('active');
+    }
+  
+/*  items.forEach((item) => {
     item.addEventListener('click', () => {
       items.forEach((e) => {
         //하나만 선택되도록 기존의 효과를 지워준다.
@@ -90,6 +109,6 @@ window.addEventListener('DOMContentLoaded', function () {
     // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
       document.getElementById('next').style.display='block';
   })
-});
+});*/
 });
 
