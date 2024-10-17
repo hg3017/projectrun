@@ -1,23 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  <link rel="icon" href="${pageContext.request.contextPath}/resources/images/common/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
 
-	<!-- js 파일 연결 -->
-  <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
-
-  <!-- css 파일 연결 -->
-  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  
 <header id="header">
 
 
@@ -40,7 +23,7 @@ String sessionId = (String) session.getAttribute("UserId");
           <a href="#">게시판</a>
           <ul class="depth2">
             <li><a href="/JSP/Main/List_boardcrew.jsp">크루게시판</a></li>
-            <li><a href="/JSP/Main/List_board.jsp">자유게시판</a></li>
+            <li><a href="/Fb_List.free">자유게시판</a></li>
           </ul>
         </li>
         <li><a href="/An_List.an">공지사항</a></li>
@@ -56,7 +39,7 @@ String sessionId = (String) session.getAttribute("UserId");
            <% }
           	else if (sessionId != null ) {
           	%>
-          	<a class="login_btn" href="/Logout.lo">로그 아웃</a>  		
+          	<a class="login_btn" href="/Logout.lo">로그아웃</a>  		
           	<%	
           	}
           %>
@@ -78,7 +61,7 @@ String sessionId = (String) session.getAttribute("UserId");
             <a href="#">게시판</a>
             <ul class="depth2">
               <li><a href="/JSP/Main/List_boardcrew.jsp">크루게시판</a></li>
-              <li><a href="/JSP/Main/List_board.jsp">자유게시판</a></li>
+              <li><a href="/Fb_List.free">자유게시판</a></li>
             </ul>
           </li>
           <li><a href="/An_List.an">공지사항</a></li>
