@@ -35,7 +35,7 @@ String sessionId = (String) session.getAttribute("UserId");
     </h1>
     <nav class="gnb_wrap">
       <ul class="gnb">
-        <li><a href="/JSP/Main/Crew_view.jsp">지역크루</a></li>
+        <li> <a href="/CrewListProcess.crew">지역크루</a> </li>
         <li>
           <a href="#">게시판</a>
           <ul class="depth2">

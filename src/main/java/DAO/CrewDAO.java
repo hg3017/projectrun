@@ -14,7 +14,14 @@ public class CrewDAO extends JDBConnect {
 		List<CrewDTO> crewList = new ArrayList<CrewDTO>();
 		CrewDTO crew = null;
 		
-		String sql = "select idx, name, location_id, regidate from crew";
+		String sql = "select "
+				+ "	c.idx as idx,"
+				+ "    c.name as name,"
+				+ "    lo.name as location_id,"
+				+ "    c.regidate as regidate "
+				+ "from "
+				+ "	crew c"
+				+ "    inner join location lo on c.location_id = lo.id";
 		try {
 			psmt = con.prepareStatement(sql);
 			
@@ -23,7 +30,7 @@ public class CrewDAO extends JDBConnect {
                 
 				crew = new CrewDTO(); 
 
-				crew.setIdx(rs.getInt("Idx"));          
+				crew.setIdx(rs.getInt("idx"));          
 				crew.setName(rs.getString("name"));      
 				crew.setLocation_id(rs.getString("location_id")); 
 				crew.setRegidate(rs.getDate("regidate"));
@@ -33,7 +40,7 @@ public class CrewDAO extends JDBConnect {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+			//close();
 		}
 		return crewList;			
 	}
@@ -59,7 +66,7 @@ public class CrewDAO extends JDBConnect {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
-			close();
+//			close();
 		}
 		return crew;
 	}

@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 import DAO.CrewDAO;
 import DTO.AnnouncementDTO;
 import DTO.CrewDTO;
+import Service.CrewMemberService;
+import Service.CrewMemberServiceImpl;
 import Service.CrewService;
 import Service.CrewServiceImpl;
 
@@ -24,10 +26,12 @@ public class CrewController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	CrewService service;
-
+	CrewMemberService Memberservice;
+	
 	// LoginController 생성자. 컨트롤러가 생성될 때 LoginServiceImpl 객체를 생성하여 service 변수에 할당합니다.
 	public CrewController() {
 		service = new CrewServiceImpl();
+		Memberservice = new CrewMemberServiceImpl();
 	}
 
 	// GET 방식으로 데이터를 받은 경우 작동합니다.
@@ -51,31 +55,43 @@ public class CrewController extends HttpServlet {
 		
 		// Servelt 의 경로값이 /CrewListProcess.crew 인 경우 작동합니다. 
 		if(action.equals("/CrewListProcess.crew")) {
-			// 1. 받을 값 확인
-			System.out.println("asdasasd");
 			
-			// 2. service 요청
-			CrewDAO dao = new CrewDAO();
-			// LoginDTO 의 형태를 가진 객체를 dto 의 이름으로 생성하고 그 안에 dao.selectView(id) 에서 리턴받은 값을 입력합니다.
-			
-			List<CrewDTO> dto = dao.selectCrewList();
-			// dto 값이 null 이 아닌경우(리턴이 있는 경우) 작동합니다. 
-			if(dto != null){
-				
-				
-				
+			List<CrewDTO> CrewLists = service.selectCrewList();
+			request.setAttribute("CrewLists", CrewLists);
+						
+			if(CrewLists != null){
+				request.getRequestDispatcher("/JSP/Main/Crew_view.jsp").forward(request, response);
 			} 
 			// dto 값이 null 인 경우 작동합니다. 
 			else{
-				request.setAttribute("LoginErrMsg", "로그인 오류");
-				request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
+				request.getRequestDispatcher("/JSP/Main/Main.jsp").forward(request, response);
 			}
-			
-			
 		}
 		// Servelt 의 경로값이 /LoginForm.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
-		else if(action.equals("/LoginForm.crew")) {
+		else if(action.equals("/CrewMainProcess.crew")) {
 			
+			String crewName = request.getParameter("crewName");
+			
+			CrewDTO CrewDetail = service.selectCrew(crewName);
+			
+			String sessionId = (String) session.getAttribute("UserId");  
+			String crewSessionId = Memberservice.selectCrewMemberStatus(crewName, sessionId);
+			
+			request.setAttribute("CrewDetail", CrewDetail);
+			request.setAttribute("crewSessionId", crewSessionId);
+						
+			System.out.println("CrewController: crewName " + crewName);
+			System.out.println("CrewController: sessionId " + sessionId);
+			System.out.println("CrewController: crewSessionId " + crewSessionId);
+			
+			if(CrewDetail != null){
+				request.getRequestDispatcher("/JSP/Crew/CrewMain.jsp").forward(request, response);
+			} 
+			// dto 값이 null 인 경우 작동합니다. 
+			else{
+				request.getRequestDispatcher("/JSP/Main/Main.jsp").forward(request, response);
+			}
+
 		}
 		
 	}
