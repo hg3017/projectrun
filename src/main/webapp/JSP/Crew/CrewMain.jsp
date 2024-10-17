@@ -4,6 +4,9 @@
 <%@page import="DTO.CrewDTO"%>
 <%@page import="DAO.CrewDAO"%>
 <%@page import="DAO.CrewMemberDAO"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -31,18 +34,16 @@
 <body>
 
 <% 
-	String name = request.getParameter("name");  
-
-	CrewDAO crewDao = new CrewDAO();  // Crew DAO 생성 
-	CrewDTO crewDto = crewDao.selectCrew(name); // 크루 게시판 정보 불러오기 
-	
-	CrewMemberDAO crewMemberDao = new CrewMemberDAO();
-	
 	//id 세션을 가져옴.
-    String sessionId = (String) session.getAttribute("userId");  
+    String sessionId = (String) session.getAttribute("UserId");  
     // 가져온 id세션을 통해 내가 이 크루에 어떤 역할인지 확인.
-   	String crewSessionId = crewMemberDao.selectCrewMemberStatus(name, sessionId );
-   	crewMemberDao.close();
+    
+    
+   	String crewSessionId = (String)request.getAttribute("crewSessionId");  
+   	CrewDTO dto = (CrewDTO)request.getAttribute("CrewDetail"); 
+   	
+   	System.out.println(crewSessionId + " CrewMain.JSP crewSessionId 의 값 ");
+   
 %>
 
 	<jsp:include page= '/JSP/Common/Header.jsp' />
@@ -54,10 +55,10 @@
 			<h2> 크루 이름 </h2>
 			
 			<% 
-				if(crewSessionId == null || crewSessionId == "" || crewSessionId == "Refuse" || crewSessionId == "Wating" ) {
+				if(crewSessionId.equals(null) || crewSessionId.equals("") ) {
 				%>
 					<%
-						if(sessionId == null || sessionId == "") {
+						if(sessionId.equals(null) || sessionId.equals("")) {
 					%>
 						<button type="button" onclick="goLogin();">크루가입신청</button>
 					<% 	
@@ -68,9 +69,21 @@
 						}
 					%>
 				<% 
-				} else if (crewSessionId == "User" ) {
+				} else if (crewSessionId.equals("User")) {
 				%>
 					<button type="button" onclick="crew_regist();">크루탈퇴신청</button>
+				<% 
+				} else if (crewSessionId.equals("Refuse") ) { 
+				%>
+					<p> 가입이 거절되었습니다. </p>
+				<% 
+				} else if (crewSessionId.equals("Wating") ) { 
+				%>
+					<p> 승인 대기중입니다.  </p>
+				<% 
+				} else if (crewSessionId.equals("Master")) { 
+				%>
+					<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
 				<% 
 				}
 			%>			
@@ -122,7 +135,7 @@
 	              회원 목록
 	            </h2>
             	<!-- <button  >더 보기</button> -->
-            	<a href="/JSP/Crew/CrewMemberView.jsp?name=<%= name %>">  더 보기 </a>
+            	<a href="/JSP/Crew/CrewMemberView.jsp?name=<%= dto.getName() %>">  더 보기 </a>
             	
             </div>
             <ul class="notice">

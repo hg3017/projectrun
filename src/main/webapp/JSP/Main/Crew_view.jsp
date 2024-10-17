@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,6 +74,7 @@
           </ul>
           <div class="report_wrap">
             <ul class="all_view">
+
               <li class="target" id="capital">
                 <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
@@ -226,6 +231,22 @@
                   </div>
                 </a>
               </li>
+              <c:forEach var="crewList" items="${CrewLists }" varStatus="status">
+	              <li class="featured_card">
+	                <a href="/CrewMainProcess.crew?crewName=${crewList.name }">
+	                <!-- <a href="/CrewMainProcess.crew"> -->
+	                  <div class="img_wrap">
+	                    <img src="/resources/images/main_crew1.jpg" alt="">
+	                  </div>
+	                  	<div class="txt_wrap">
+	                  	
+		                  <h3> ${crewList.name }</h3>
+		                  <p>  ${crewList.location_id }</p>
+		                  <span> ${crewList.regidate }</span>
+	                	</div>
+	                </a>
+	              </li>
+              </c:forEach>
             </ul>
           </div>
         </div>

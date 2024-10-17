@@ -62,10 +62,8 @@ public class CrewMemberDAO extends JDBConnect {
 //			close();
 		}
 		
-		System.out.println("selectCrewMemberStatus crew_name : " + crew_name);
-		System.out.println("selectCrewMemberStatus member_id : " + member_id);
-		System.out.println("selectCrewMemberStatus Value : " + result);
-		
+		System.out.println("CrewMemberDAO-selectCrewMemberStatus- result : " + result );
+	
 		return result;			
 	}
 		
