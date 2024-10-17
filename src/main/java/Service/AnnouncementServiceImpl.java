@@ -47,5 +47,10 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	    return dao.selectCount(map);
 	}
 
+	@Override
+	public void updateVisitCount(String num) {
+		dao.updateVisitCount(num);
+	}
+
 
 }

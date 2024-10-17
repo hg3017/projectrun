@@ -11,7 +11,35 @@ public class AnnouncementDTO {
     private java.sql.Date postdate;
     private String visitcount;
     private String name;
+    private String prevNum;
+    private String prevTitle;
+    private String nextNum;
+    private String nextTitle;
 
+	public String getPrevNum() {
+		return prevNum;
+	}
+	public void setPrevNum(String prevNum) {
+		this.prevNum = prevNum;
+	}
+	public String getPrevTitle() {
+		return prevTitle;
+	}
+	public void setPrevTitle(String prevTitle) {
+		this.prevTitle = prevTitle;
+	}
+	public String getNextNum() {
+		return nextNum;
+	}
+	public void setNextNum(String nextNum) {
+		this.nextNum = nextNum;
+	}
+	public String getNextTitle() {
+		return nextTitle;
+	}
+	public void setNextTitle(String nextTitle) {
+		this.nextTitle = nextTitle;
+	}
 	public String getNum() {
 		return num;
 	}
