@@ -35,6 +35,8 @@
   <aside class="menu_wrap">
     <div class="menu_inner">
       <h2><span class="blind">러닝크루</span></h2>
+      
+      
       <ul class="menu">
         <li><a href="/JSP/Main/Crew_view.jsp">지역크루</a></li>
           <li>
