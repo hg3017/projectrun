@@ -19,6 +19,13 @@
   <link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   
 <header id="header">
+
+
+<%
+String sessionId = (String) session.getAttribute("UserId");  
+
+%>
+
   <div class="inner">
     <h1 class="logo">
       <a href="/JSP/Main/Main.jsp">
@@ -41,7 +48,19 @@
       </ul>
     </nav>
     <div class="btn_wrap">
-        <a class="login_btn" href="/JSP/Login/Login.jsp">로그인</a>  
+       
+ <% 
+          	if(sessionId == null || sessionId == "" ) {
+          %>
+            <a class="login_btn" href="/JSP/Login/Login.jsp">로그인</a>  
+           <% }
+          	else if (sessionId != null ) {
+          	%>
+          	<a class="login_btn" href="/Logout.lo">로그 아웃</a>  		
+          	<%	
+          	}
+          %>
+
         <button type="button" class="sitemap_btn">
           <span class="blind">사이트맵 열기</span>
           <i></i>
