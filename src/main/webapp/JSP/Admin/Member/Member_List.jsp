@@ -128,7 +128,7 @@ List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
 									for (MemberDTO member : members) {
 									%>
 									<tr align="center">
-										<td><a href="Member_view.adme?id=<%=member.getId()%>"><%=member.getId()%></a></td>
+										<td><a href="Member_View.adme?id=<%=member.getId()%>"><%=member.getId()%></a></td>
 										<td><%=member.getPass()%></td>
 										<td><%=member.getName()%></td>
 										<td><%=member.getGrade()%></td>

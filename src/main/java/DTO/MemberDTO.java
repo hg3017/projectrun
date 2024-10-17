@@ -38,20 +38,14 @@ public class MemberDTO {
 	}
 
 	// 오버라이딩된 생성자
-	public MemberDTO(int idx, String pass, String name, int grade, String nickname, String location, String phone_number,
-			String regidate, String editdate, int member_image_idx) {
-		super();
-		this.idx = idx;
-		this.pass = pass;
-		this.name = name;
-		this.grade = grade;
-		this.nickname = nickname;
-		this.location = location;
-		this.phone_number = phone_number;
-		this.regidate = regidate;
-		this.editdate = editdate;
-		this.member_image_idx = member_image_idx;
-	}
+	/*
+	 * public MemberDTO(int idx, String pass, String name, int grade, String
+	 * nickname, String location, String phone_number, String regidate, String
+	 * editdate, int member_image_idx) { super(); this.idx = idx; this.pass = pass;
+	 * this.name = name; this.grade = grade; this.nickname = nickname; this.location
+	 * = location; this.phone_number = phone_number; this.regidate = regidate;
+	 * this.editdate = editdate; this.member_image_idx = member_image_idx; }
+	 */
 	
 
 	// 오버라이딩된 생성자

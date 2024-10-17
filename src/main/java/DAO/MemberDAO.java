@@ -78,14 +78,16 @@ public class MemberDAO extends JDBConnect{
 
 	public int insertWrite(MemberDTO dto) {
 		int rs = 0;
-
+		// insert into member(id,pass,name,grade,nickname,location,phone_number) values ('01','01','01',01,'01','01','01');
+		// String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number) values (?,?,?,?,?,?,?)";
 		String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number) values (?,?,?,?,?,?,?)";
 		try {
+			System.out.println("insertWrite 함수 실행 성공");
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPass());
 			psmt.setString(3, dto.getName());
-			dto.setGrade(1); // 테스트용 코드
+			// dto.setGrade(1); // 테스트용 코드
 			psmt.setInt(4, dto.getGrade());
 			psmt.setString(5, dto.getNickname());
 			psmt.setString(6, dto.getLocation());
@@ -106,7 +108,8 @@ public class MemberDAO extends JDBConnect{
 		System.out.println("selectView 동작 성공");
 		MemberDTO member = null;
 		// String sql = "select id, pass, name, regidate from member where id = ?";
-		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate from member where id = ?";
+		System.out.println("selectView 메서드의 id 값 : "+id);
+		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx from member where id = ?";
 		
 		try {
 			psmt = con.prepareStatement(sql);
@@ -128,7 +131,7 @@ public class MemberDAO extends JDBConnect{
 				String editdate = rs.getString("editdate");
 				int member_image_idx = rs.getInt("member_image_idx");
 				//out.print(String.format("%s,%s,%s,%s <br>", id, pass, name, regidate));
-				member = new MemberDTO(idx, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx);
+				member = new MemberDTO(idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
