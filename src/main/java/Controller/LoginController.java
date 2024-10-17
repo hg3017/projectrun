@@ -57,9 +57,8 @@ public class LoginController extends HttpServlet {
 			System.out.println(pw);
 			
 			// 2. service 요청
-			LoginDAO dao = new LoginDAO();
 			// LoginDTO 의 형태를 가진 객체를 dto 의 이름으로 생성하고 그 안에 dao.selectView(id) 에서 리턴받은 값을 입력합니다.
-			LoginDTO dto = dao.selectView(id);
+			LoginDTO dto = service.selectView(id);
 				
 			// dto 값이 null 이 아닌경우(리턴이 있는 경우) 작동합니다. 
 			if(dto != null){
