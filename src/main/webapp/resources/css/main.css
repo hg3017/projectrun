@@ -1,3 +1,4 @@
+@charset "UTF-8";
 
 #header {
   position: fixed;
@@ -74,6 +75,7 @@
   color: purple;
   font-weight: 550;
 }
+
 #header .gnb > li:hover .depth2 {
   max-height: 200px;
   padding: 15px 0;
@@ -102,6 +104,7 @@
   color: #fff;
 }
 
+
 #header .btn_wrap {
   position: absolute;
   right: 20px;
@@ -114,6 +117,7 @@
 }
 #header .login_btn {
   color: purple;
+  font-weight: 550;
 }
 
 #header .sitemap_btn {

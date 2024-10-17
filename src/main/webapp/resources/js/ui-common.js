@@ -12,7 +12,8 @@ window.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  document
+// 봐야되는 코드
+    document
     .querySelector('#header .sitemap_btn')
     .addEventListener('click', function () {
       this.classList.toggle('on');
@@ -74,6 +75,8 @@ window.addEventListener('DOMContentLoaded', function () {
     },
   });
 
+  // mixitup
+
   const items = document.querySelectorAll('.filter_container .social_tab li');
   const itemContents = document.querySelectorAll('.all_view .featured_card');
   items.forEach((item) => {
@@ -84,8 +87,9 @@ window.addEventListener('DOMContentLoaded', function () {
       });
       // 선택한 그 아이만 효과를 추가해준다.
       item.classList.add('active');
-      // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
-      // document.getElementById('next').style.display = 'block';
-    });
-  });
+    // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
+      document.getElementById('next').style.display='block';
+  })
 });
+});
+

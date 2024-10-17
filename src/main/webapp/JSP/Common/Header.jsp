@@ -22,10 +22,6 @@
   <div class="inner">
     <h1 class="logo">
       <a href="/JSP/Main/Main.jsp">
-<header id="header">
-  <div class="inner">
-    <h1 class="logo">
-      <a href="Main.jsp">
         <img src="/resources/images/logo.png" alt="러닝메이트">
         <span class="blind">러닝메이트</span>
       </a>
@@ -67,7 +63,6 @@
             </ul>
           </li>
           <li><a href="/An_List.an">공지사항</a></li>
-          <li><a href="#">공지사항</a></li>
           <li><a href="/JSP/Main/List_cs.jsp"">고객센터</a></li>
       </ul>
     </div>
