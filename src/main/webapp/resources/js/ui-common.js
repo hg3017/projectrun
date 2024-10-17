@@ -74,17 +74,8 @@ window.addEventListener('DOMContentLoaded', function () {
     },
   });
 
-  // mixitup
-/*  let mixerFeatured = mixitup('.filter_container .all_view', {
-    selectors: {
-      target: '.featured_card',
-    },
-    animation: {
-      duration: 300,
-    },
-  });*/
-
   const items = document.querySelectorAll('.filter_container .social_tab li');
+  const itemContents = document.querySelectorAll('.all_view .featured_card');
   items.forEach((item) => {
     item.addEventListener('click', () => {
       items.forEach((e) => {

@@ -69,7 +69,7 @@
           </ul>
           <div class="report_wrap">
             <ul class="all_view">
-              <li class="featured_card active">
+              <li class="active">
                 <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -82,7 +82,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">  
                      <img src="/resources/images/main_crew1.jpg" alt="">
@@ -95,7 +95,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -108,7 +108,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -121,7 +121,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -134,7 +134,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -147,7 +147,7 @@
                   </div>
                 </a>
               </li>
-              <li class="featured_card">
+              <li>
                 <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
