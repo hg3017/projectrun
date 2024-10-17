@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>테스트</h1>
-git push 확인용 24.10.14_16:41
-git pull 확인용 24.10.14_19:03
-git push 테스트 24.10.15_12:39
-git push 확인용 24.10.15_12:45
+<h1>어드민 멤버 JSP 페이지</h1>
+<h2>이 페이지가 보인다면 JSP 페이지 접속은 성공입니다.</h2>
+git push 테스트 24.10.16_16:34 <br>
 </body>
 </html>

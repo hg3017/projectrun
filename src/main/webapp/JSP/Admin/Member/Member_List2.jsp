@@ -1,5 +1,11 @@
+<%@page import="java.util.List"%>
+<%@page import="DTO.MemberDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%
+// 결과 확인(웹 페이지에 출력)
+List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
+%>   
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,31 +27,23 @@
 
 <!-- js 파일 연결 -->
 <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
-<script
-	src="/resources/js/jquery-3.7.1.min.js"></script>
-<script
-	src="/resources/js/jquery-ui.min.js"></script>
-<script
-	src="/resources/js/swiper-bundle.min.js"></script>
+<script src="/resources/js/jquery-3.7.1.min.js"></script>
+<script src="/resources/js/jquery-ui.min.js"></script>
+<script src="/resources/js/swiper-bundle.min.js"></script>
 <script src="/resources/js/aos.js"></script>
-<script
-	src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+<script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
 <!-- css 파일 연결 -->
-<link
-	href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>"
+<link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <link
 	href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/admin_main.css?v=<?php echo time(); ?>"
+<link href="/resources/css/admin_main.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/admin_sub.css?v=<?php echo time(); ?>"
+<link href="/resources/css/admin_sub.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/common.css?v=<?php echo time(); ?>"
+<link href="/resources/css/common.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
@@ -59,8 +57,7 @@
 			<div class="inner">
 				<div class="header_left">
 					<div class="inner">
-						<a href="index.jsp"> <img
-							src='/resources/images/logo.png'
+						<a href="index.jsp"> <img src='/resources/images/logo.png'
 							alt="러닝메이트">
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
@@ -115,25 +112,38 @@
 								</form>
 							</div>
 							<div class="board_list_admin">
-								<table>
-									<thead>
-										<tr>
-											<th class="col1">id</th>
-											<th class="col2">name</th>
-											<th class="col3">grade</th>
-											<th class="col4">nickname</th>
-											<th class="col5">location</th>
-											<th class="col6">regidate</th>
-										</tr>
-									</thead>
+								<table border="1" width="80%">
 									<tr>
-										<td>id자리</td>
-										<td>name자리</td>
-										<td>grade자리</td>
-										<td>nickname자리</td>
-										<td>location자리</td>
-										<td>regidate자리</td>
+										<th width="11%">ID</th>
+										<th width="11%">PASS</th>
+										<th width="11%">NAME</th>
+										<th width="11%">GRADE</th>
+										<th width="11%">NICKNAME</th>
+										<th width="11%">LOCATION</th>
+										<th width="12%">PHONE_NUMBER</th>
+										<th width="11%">REGIDATE</th>
+										<th width="11%">EDITDATE</th>
+									</tr>
+									<%
+									for (MemberDTO member : members) {
+									%>
+									<tr align="center">
+										<td><a href="Member_view.adme?id=<%=member.getId()%>"><%=member.getId()%></a></td>
+										<td><%=member.getPass()%></td>
+										<td><%=member.getName()%></td>
+										<td><%=member.getGrade()%></td>
+										<td><%=member.getNickname()%></td>
+										<td><%=member.getLocation()%></td>
+										<td><%=member.getPhone_number()%></td>
+										<td><%=member.getRegidate()%></td>
+										<td><%=member.getEditdate()%></td>
+										<%
+										}
+										%>
+									
 									<tr>
+										<td colspan="4"><a href="Member_write.jsp">[회원 가입]</a></td>
+									</tr>
 								</table>
 							</div>
 						</div>
