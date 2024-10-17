@@ -53,8 +53,7 @@ public class LoginController extends HttpServlet {
 			// 1. 받을 값 확인
 			String id = request.getParameter("user_id");
 			String pw = request.getParameter("user_pw");
-			System.out.println(id);
-			System.out.println(pw);
+			
 			
 			// 2. service 요청
 			// LoginDTO 의 형태를 가진 객체를 dto 의 이름으로 생성하고 그 안에 dao.selectView(id) 에서 리턴받은 값을 입력합니다.
