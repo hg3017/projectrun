@@ -38,7 +38,9 @@
 </head>
 <body>
   <div id="wrap">
+    
     <jsp:include page="/JSP/Common/Header.jsp" />
+    
     <main id="container" class="sub_container list_page">
       <section class="sub_visual">
         <div class="inner">

@@ -38,7 +38,9 @@
 </head>
 <body>
 <div id="wrap">
+
     <jsp:include page="/JSP/Common/Header.jsp" />
+    
     <main id="container" class="page">
       <div class="sub_tit">
         <div class="inner">
@@ -71,6 +73,7 @@
         </div>
       </div>
     </main>
+    
     <jsp:include page= '/JSP/Common/Footer.jsp' />
 </body>
 </html>

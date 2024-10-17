@@ -37,6 +37,7 @@
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
+
  	<jsp:include page="/JSP/Common/Header.jsp" />
     <main id="container">
       <section class="main_write">

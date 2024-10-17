@@ -19,11 +19,19 @@
           </ul>
         </li>
         <li><a href="#">공지사항</a></li>
+<<<<<<< HEAD
         <li><a href="/JSP/Main/List_cs.jsp"">고객센터</a></li>
       </ul>
     </nav>
     <div class="btn_wrap">
         <a class="login_btn" href="/JSP/Login/login.jsp">로그인</a>  
+=======
+        <li><a href="/JSP/Main/List_cs.jsp">고객센터</a></li>
+      </ul>
+    </nav>
+    <div class="btn_wrap">
+        <a class="login_btn" href="/JSP/Login/Login.jsp">로그인</a>  
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
         <button type="button" class="sitemap_btn">
           <span class="blind">사이트맵 열기</span>
           <i></i>

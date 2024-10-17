@@ -4,19 +4,17 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=1004"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="러닝크루">
   <meta property="og:type" content="website">
   <meta  property="og:title" content="러닝">
   <meta property="og:url" content="https://dot386@dot386.dothome.co.kr/html/test/index.html">
-  <meta property="og:image" content="/pub/images/og_image.jpg">
   <meta property="og:description" content="러닝크루">
   <title>러닝메이트</title>
   <link rel="icon" href="/resources/images/common/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="/resources/images/common/free-icon-running-7126743.png">
 
-   <!-- js 파일 연결 -->
+	<!-- js 파일 연결 -->
   <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
   <script src="/resources/js/jquery-3.7.1.min.js"></script>
   <script src="/resources/js/jquery-ui.min.js"></script>
@@ -33,13 +31,13 @@
   <link href="/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
    <link href="/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-   <link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
   <div id="wrap">
-    <jsp:include page= '/JSP/Common/Header.jsp' />
-    <main id="container">
+
+		  <jsp:include page= '/JSP/Common/Header.jsp' />
       <section class="main_visual">
       <h2 class="blind">메인슬라이더</h2>
       </section>
@@ -102,9 +100,11 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-                  <a href="/JSP/Main/Crew_view.jsp">
-                    <div class="all_wrap">
+									<a href="#">
+									  <div class="img_wrap">
                       <img src="/resources/images/main_crew2.jpg" alt="">
+                    </div>
+                    <div class="txt_wrap">
                       <h3>서울/경기</h3>
                       <p>Sub3</p>
                       <span>목요일<br>PM 7:30</span>
@@ -162,6 +162,8 @@
           </div>
         </div>
       </section>
+
+    
     <jsp:include page= '/JSP/Common/Footer.jsp' />
   </div>
 </body>
