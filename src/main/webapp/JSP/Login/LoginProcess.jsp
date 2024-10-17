@@ -10,7 +10,7 @@ LoginDAO dao = new LoginDAO();
 LoginDTO dto = dao.selectView(id);
 
 if(dto != null) {
-	if(pw.equals(dto.getPW())){
+	if(pw.equals(dto.getPass())){
 		session.setAttribute("UserId", id);
 		response.sendRedirect("LoginForm.jsp");
 		
