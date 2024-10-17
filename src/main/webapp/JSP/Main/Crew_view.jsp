@@ -10,41 +10,41 @@
   <meta property="og:type" content="website">
   <meta  property="og:title" content="러닝">
   <meta property="og:url" content="https://dot386@dot386.dothome.co.kr/html/test/index.html">
-  <meta property="og:image" content="/pub/images/og_image.jpg">
+  <meta property="og:image" content="/pub/images/og_image.jpg"> <!-- 뭔지 확인이 필요합니다.  -->
   <meta property="og:description" content="러닝크루">
   <title>러닝메이트</title>
-  <link rel="icon" href="${pageContext.request.contextPath}/resources/images/common/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
+  <link rel="icon" href="/resources/images/common/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="/resources/images/common/free-icon-running-7126743.png">
 
 	<!-- js 파일 연결 -->
   <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
   <!-- css 파일 연결 -->
-  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/aos.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/view.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-   <link href="${pageContext.request.contextPath}/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/aos.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/view.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+   <link href="/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
    <div id="wrap">
-    <jsp:include page="../Common/Header.jsp" />
+    <jsp:include page='/JSP/Common/Header.jsp' />
     <main id="container" class="crew_page">
     <section class="main_report">
       <div class="inner">
         <div class="head_wrap">
           <h2 class="main_tit">러닝크루</h2>
-          <a class="crew_btn" href="Crew_write.jsp">크루등록하기</a>
+          <a class="crew_btn" href="/JSP/Main/Crew_write.jsp">크루등록하기</a>
         </div>
         <p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
         <div class="filter_container">
@@ -71,9 +71,9 @@
           <div class="report_wrap">
             <ul class="all_view">
               <li class="featured_card">
-                <a href=Release-detail.jsp">
+                <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -84,9 +84,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">  
-                     <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                     <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -97,9 +97,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -110,9 +110,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -123,9 +123,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -136,9 +136,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -149,9 +149,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -162,9 +162,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -175,9 +175,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -188,9 +188,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -201,9 +201,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -214,9 +214,9 @@
                 </a>
               </li>
               <li class="featured_card">
-                <a href="Release-detail.jsp">
+                <a href="/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
-                    <img src="${pageContext.request.contextPath}/resources/images/main_crew1.jpg" alt="">
+                    <img src="/resources/images/main_crew1.jpg" alt="">
                   </div>
                   <div class="txt_wrap">
                     <h3>서울/경기</h3>
@@ -231,8 +231,12 @@
         </div>
       </div>
     </section>
+<<<<<<< HEAD
     </main>
     <jsp:include page= '../Common/Footer.jsp' />
+=======
+    <jsp:include page= '/JSP/Common/Footer.jsp' />
+>>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
   </div>
 </body>
 </html>

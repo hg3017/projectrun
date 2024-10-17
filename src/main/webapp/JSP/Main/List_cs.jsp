@@ -1,3 +1,4 @@
+<%@page import="DTO.BoardCommentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,32 +14,32 @@
   <meta property="og:image" content="/pub/images/og_image.jpg">
   <meta property="og:description" content="러닝크루">
   <title>러닝메이트</title>
-  <link rel="icon" href="${pageContext.request.contextPath}/resources/images/common/favicon.png">
-  <link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
+  <link rel="icon" href="/resources/images/common/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="/resources/images/common/free-icon-running-7126743.png">
 
 	<!-- js 파일 연결 -->
   <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/aos.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
   <!-- css 파일 연결 -->
-  <link href="${pageContext.request.contextPath}/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/aos.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/view.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-   <link href="${pageContext.request.contextPath}/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-  <link href="${pageContext.request.contextPath}/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
-	<link href="${pageContext.request.contextPath}/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/aos.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/view.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/crew_write.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+   <link href="/resources/css/detail.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+	<link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
   <div id="wrap">
-    <jsp:include page="../Common/Header.jsp" />
+    <jsp:include page="/JSP/Common/Header.jsp" />
     <main id="container" class="sub_container list_page">
       <section class="sub_visual">
         <div class="inner">
@@ -50,7 +51,7 @@
       <section class="contents">
         <div class="inner">
           <div class="m_wrap">
-            <p><a href="Main.jsp">HOME</a><span></span>고객센터</p>
+            <p><a href="/JSP/Main/Main.jsp">HOME</a><span></span>고객센터</p>
           </div>
           <div class="board_list">
             <div class="list_wrap">
@@ -77,34 +78,12 @@
               </div>
             </div>
             <table>
-              <caption class="nohead">공지사항 테이블</caption>
                 <tr>
-                  <td class="col1">1</td>
-                  <td class="td_left">
-                    <a href="List_cs_view.jsp">
-                      <p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
-                    </a>
-                  </td>
-                  <td class="col3">2024.09.30</td>
+                  <th class="col1">번호</th>
+                  <th class="td_left">제목</th>
+                  <th class="col3">작성일자</th>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td class="td_left">
-                    <a href="List_cs_view.jsp">
-                      <p>러닝은 처음인데 참여해도 괜찮나요?</p>
-                    </a>
-                  </td>
-                  <td>2024.09.30</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td class="td_left">
-                    <a href="List_cs_view.jsp">
-                      <p>모집기간은 언제인가요? 마감된 모임은 신청할 수 없나요?</p>
-                    </a>
-                  </td>
-                  <td>2024.09.30</td>
-                </tr>
+               
             </table>
             <div class="board_pagination">
               <a href="#" class="prev_paging">
@@ -122,7 +101,7 @@
         <div class="inner">
           <ul class="etc">
             <li>
-              <a href="List_cs_write.jsp" class="etc_left"><p>1:1 상담하기</p></a>
+              <a href="/JSP/Main/List_cs_write.jsp" class="etc_left"><p>1:1 상담하기</p></a>
             </li>
             <li>
               <a href="#" class="etc_right"><p>전화 문의하기<span></span>TEL : 02-1234-5678</p></a>
@@ -131,7 +110,7 @@
         </div>
       </section>
     </main>
-    <jsp:include page= '../Common/Footer.jsp' />
+    <jsp:include page= '/JSP/Common/Footer.jsp' />
   </div>
 </body>
 </html>

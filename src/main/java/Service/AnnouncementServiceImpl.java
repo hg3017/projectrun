@@ -42,5 +42,10 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 		return dao.deletePost(dto);
 	}
 
+	@Override
+	public int selectCount(Map<String, String> map) {
+	    return dao.selectCount(map);
+	}
+
 
 }

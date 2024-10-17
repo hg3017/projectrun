@@ -75,7 +75,7 @@ window.addEventListener('DOMContentLoaded', function () {
     }
 });*/
 
-const linkFeatured = document.querySelectorAll('.filter_container .social_tab li');
+const items = document.querySelectorAll('.filter_container .social_tab li');
 items.forEach((item)=>{
   item.addEventListener('click',()=>{
       items.forEach((e)=>{
@@ -90,20 +90,3 @@ items.forEach((item)=>{
 });
 });
 
-$(function () {
-  $('.filter_container .social_tab li').on('click', function (e) {
-    // a가 있으므로 기본이벤트막기
-    e.preventDefault();
-    // 클릭한 li에 active걸고 나머지 형제에서 active제거
-    $(this).addClass('active').siblings().removeClass('active');
-    // 형제요소중 클릭한 요소의 순서값 찾기
-    let idx = $(this).index();
-
-    // 순서값을 연결할 다른그룹요소에 eq()로 연결
-    $('.main_menu .swiper_wrap')
-      .eq(idx)
-      .addClass('on')
-      .siblings()
-      .removeClass('on');
-  });
-});

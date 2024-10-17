@@ -57,7 +57,7 @@ public class MemberController extends HttpServlet {
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "List.jsp";
+			String path = "/JSP/Admim/Member/Member_list.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
@@ -67,7 +67,7 @@ public class MemberController extends HttpServlet {
 			// 받을 값 없음, service 요청할 거 없음
 			// 3. 어떻게 어디로 이동할 것인가?
 			// System.out.println("Write.do" + request.getParameter("id"));
-			String path = "Write.jsp";
+			String path = "/JSP/Admim/Member/Member_write.jsp";
 			response.sendRedirect(path);
 			
 		}else if(action.equals("/WriteProcess.do")) {
@@ -104,7 +104,7 @@ public class MemberController extends HttpServlet {
 			request.setAttribute("member", member);
 			System.out.println("member 값2 : " + request.getAttribute("member"));
 			
-			String path = "View.jsp";
+			String path = "/JSP/Admim/Member/Member_view.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// request에 담긴 값이 다음페이지와 그 다음 페이지에서도 계속 유지된다.
 			// 원래 A.jsp -> Servlet -> B.jsp 까지는 파라미터 정보가 유지되나, 그 다음 단계에서는 소멸된다.
@@ -116,7 +116,7 @@ public class MemberController extends HttpServlet {
 			
 			request.setAttribute("member", member);
 			
-			String path = "Edit.jsp";
+			String path = "/JSP/Admim/Member/Member_edit.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// RequestDispatcher 객체 생성, request.getRequestDispatcher(path) 메서드의 반환값을 할당받는다.
 			dispatcher.forward(request, response);

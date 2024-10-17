@@ -11,7 +11,7 @@
   background: #fff;
 }
 #header.sub_header .logo a {
-  background: url(../images/logo.svg) no-repeat 0 0 / 100%;
+  background: url(/resources/images/logo.svg) no-repeat 0 0 / 100%;
 }
 #header.sub_header .gnb>li>a {
   color: var(--gray-600);
@@ -64,13 +64,13 @@
   width: 20px;
   height: 20px;
   display: inline-block;
-  background: url(../images/icon_locat_slide.svg) no-repeat 50% 50%;
+  background: url(/images/icon_locat_slide.svg) no-repeat 50% 50%;
   vertical-align: middle;
 }
 
 .sub_visual {
   height: 400px;
-  background: url(../images/bg_aside04.png) no-repeat 50% 50% / cover;
+  background: url(/images/bg_aside04.png) no-repeat 50% 50% / cover;
   padding-top: 200px;
 }
 .sub_visual .inner {
@@ -179,7 +179,7 @@
   transform: translateY(-50%);
   border-radius: 50%;
   border: none;
-  background: #9ba1a3 url(../images/common/close.svg) no-repeat 50% 50% / 12px;
+  background: #9ba1a3 url(/resources/images/common/close.svg) no-repeat 50% 50% / 12px;
   display: none;
 }
 
@@ -315,8 +315,8 @@
     right: 40px;
     top: 0;
     height: 100%;
-    -webkit-mask: url(../images/arrow_btm.svg) no-repeat 50% 50%;
-    mask: url(../images/arrow_btm.svg) no-repeat 50% 50%;
+    -webkit-mask: url(/resources/images/arrow_btm.svg) no-repeat 50% 50%;
+    mask: url(/resources/images/arrow_btm.svg) no-repeat 50% 50%;
     background: #2DBAB4;
     transition: all 0.5s;
     width: 10px;

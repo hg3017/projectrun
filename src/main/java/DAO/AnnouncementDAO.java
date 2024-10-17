@@ -22,15 +22,20 @@ public class AnnouncementDAO extends JDBConnect {
 
         // 게시물 수를 얻어오는 쿼리문 작성
         String query = "SELECT COUNT(*) FROM announcement";
-        if (map != null && map.get("searchWord") != null) {
-            query += " WHERE " + map.get("searchField") + " "
-                   + " LIKE '%" + map.get("searchWord") + "%'";
+        if (map != null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+            query += " WHERE " + map.get("searchField") + " LIKE ? ";
+                   //+ " LIKE '%" + map.get("searchWord") + "%'";
         }
         
 
         try {
-            stmt = con.createStatement();   // 쿼리문 생성
-            rs = stmt.executeQuery(query);  // 쿼리 실행
+            psmt = con.prepareStatement(query);  // 쿼리문 생성
+            
+            if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+                psmt.setString(1, "%" + map.get("searchWord") + "%");
+            }
+            
+            rs = psmt.executeQuery(query);  // 쿼리 실행
             if(rs.next()) {  // 커서를 첫 번째 행으로 이동
             	totalCount = rs.getInt(1);  // 첫 번째 칼럼 값을 가져옴
             }
