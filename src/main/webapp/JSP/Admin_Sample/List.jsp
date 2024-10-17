@@ -5,8 +5,8 @@
 <%
 // 결과 확인(웹 페이지에 출력)
 List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
-%>   
-    
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -43,7 +43,7 @@ List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
 	</tr>
 <%for(MemberDTO member: members) {%>	
 	<tr align="center">
-		<td><a href="View.do?id=<%=member.getId()%>"><%=member.getId() %></a></td>
+		<td><a href="/JSP/Admin_Sample/View.do?id=<%=member.getId()%>"><%=member.getId() %></a></td>
 		<td><%=member.getPass() %></td>
 		<td><%=member.getName() %></td>
 		<td><%=member.getGrade() %></td>

@@ -13,8 +13,10 @@
 		<td align="center"><a href="/JSP/Admin_sample/List.do">러닝크루 회원목록</a></td>
 		<td align="center"><a href="/JSP/Admin_sample/List.do">러닝크루 회원목록</a></td>
 		<td align="center"><a href="/JSP/Admin_sample/List.do">러닝크루 회원목록</a></td>
+		<td align="center"><a href="/JSP/Admin_sample/Test01.jsp">테스트 페이지</a></td>
+		<td align="center"><a href="/JSP/Admin_sample/Test02.jsp">테스트 페이지</a></td>
 	</tr>
 </table>
-	request page context 확인 : <%=request.getContextPath() %> <br>
+<%-- 	request page context 확인 : <%=request.getContextPath() %> <br> --%>
 </body>
 </html>
