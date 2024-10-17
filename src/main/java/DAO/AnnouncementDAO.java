@@ -208,7 +208,42 @@ public class AnnouncementDAO extends JDBConnect {
             e.printStackTrace();
         }
     }
-    
+    public AnnouncementDTO pnPage(String num) { 
+        AnnouncementDTO dto = new AnnouncementDTO();
+
+        String query = "SELECT num, title, "
+                     + "LAG(num) OVER(ORDER BY num) AS prev_num, "
+                     + "LEAD(num) OVER(ORDER BY num) AS next_num, "
+                     + "LAG(title) OVER(ORDER BY num) AS prev_title, "
+                     + "LEAD(title) OVER(ORDER BY num) AS next_title "
+                     + "FROM announcement WHERE num=?";
+           try {
+        	   // 쿼리문 완성
+        	   psmt = con.prepareStatement(query);
+        	   psmt.setString(1, num);
+        	   rs = psmt.executeQuery();
+
+               if (rs.next()) {
+                   // 현재 게시글 정보
+                   dto.setNum(rs.getString("num"));
+                   dto.setTitle(rs.getString("title"));
+
+                   // 이전글 정보
+                   dto.setPrevNum(rs.getString("prev_num"));
+                   dto.setPrevTitle(rs.getString("prev_title"));
+
+                   // 다음글 정보
+                   dto.setNextNum(rs.getString("next_num"));
+                   dto.setNextTitle(rs.getString("next_title"));
+               }
+        	   // 쿼리문 실행 
+			
+		} catch (Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+		} 
+        return dto; // 결과 반환 
+    }
     // 지정한 게시물을 수정합니다.
     public int updateEdit(AnnouncementDTO dto) { 
         int result = 0;

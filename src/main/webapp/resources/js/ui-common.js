@@ -20,21 +20,31 @@ window.addEventListener('DOMContentLoaded', function () {
       document.querySelector('#header .menu_wrap').classList.toggle('on');
     });
 
-	  	
-	
-  document.querySelectorAll('#header .menu>li>a').forEach((v) => {
-    v.addEventListener('click', function (e) {
-      e.preventDefault();
-      // a부모에서 li에 넣기
-      v.parentElement.classList.toggle('on');
+	function siblings(t) {
+	   const children = t.parentElement.children;
+	   const tempArr = [];
 
-      //li의 형제 li배열애서 on클래스 제거
-      // siblings(v.parentElement).forEach((el) => {
-      //   el.classList.remove('on');
-      // });
-    });
-  });
+	   for (let i = 0; i < children.length; i++) {
+	     tempArr.push(children[i]);
+	   }
 
+	   return tempArr.filter((v) => {
+	     return v !== t;
+	   });
+	 }
+
+	 document.querySelectorAll('#header .menu>li>a').forEach((v) => {
+	   v.addEventListener('click', function (e) {
+	     e.preventDefault();
+	     // a부모에서 li에 넣기
+	     v.parentElement.classList.toggle('on');
+
+	     //li의 형제 li배열애서 on클래스 제거
+	     siblings(v.parentElement).forEach((el) => {
+	       el.classList.remove('on');
+	     });
+	   });
+	 });
   AOS.init({
     duration: 1000,
   });
@@ -66,23 +76,15 @@ window.addEventListener('DOMContentLoaded', function () {
   });
 
   // mixitup
-/*  let mixerFeatured = mixitup('.main_report .all_view', {
-    selectors: {
-        target: '.featured_card'
-    },
-    animation: {
-        duration: 300
-    }
-});*/
 
-const items = document.querySelectorAll('.filter_container .social_tab li');
-items.forEach((item)=>{
-  item.addEventListener('click',()=>{
-      items.forEach((e)=>{
+  const items = document.querySelectorAll('.filter_container .social_tab li');
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      items.forEach((e) => {
         //하나만 선택되도록 기존의 효과를 지워준다.
-          e.classList.remove('active');
-      })
-    // 선택한 그 아이만 효과를 추가해준다.
+        e.classList.remove('active');
+      });
+      // 선택한 그 아이만 효과를 추가해준다.
       item.classList.add('active');
     // 선택을 하면 다음으로 넘어갈 수 있는 버튼이 활성화 되도록 한다.
       document.getElementById('next').style.display='block';

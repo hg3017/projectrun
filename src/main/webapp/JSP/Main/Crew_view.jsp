@@ -70,7 +70,7 @@
           </ul>
           <div class="report_wrap">
             <ul class="all_view">
-              <li class="featured_card">
+              <li class="featured_card active">
                 <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -231,12 +231,8 @@
         </div>
       </div>
     </section>
-<<<<<<< HEAD
     </main>
-    <jsp:include page= '../Common/Footer.jsp' />
-=======
     <jsp:include page= '/JSP/Common/Footer.jsp' />
->>>>>>> branch 'function' of https://github.com/hg3017/ProjectRun.git
   </div>
 </body>
 </html>

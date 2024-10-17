@@ -4,7 +4,6 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <!-- <meta name="viewport" content="width=1004"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="러닝크루">
   <meta property="og:type" content="website">
@@ -102,8 +101,10 @@
                 </div>
                 <div class="swiper-slide">
                   <a href="/JSP/Main/Crew_view.jsp">
-                    <div class="all_wrap">
+                    <div class="img_wrap">
                       <img src="/resources/images/main_crew2.jpg" alt="">
+                    </div>
+                    <div class="txt_wrap">
                       <h3>서울/경기</h3>
                       <p>Sub3</p>
                       <span>목요일<br>PM 7:30</span>

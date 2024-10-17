@@ -72,15 +72,43 @@
   font-size: 20px;
   line-height: 115px;
   position: relative;
-   color: purple;
+  color: purple;
   font-weight: 550;
 }
+
+#header .gnb > li:hover .depth2 {
+  max-height: 200px;
+  padding: 15px 0;
+}
+#header .gnb .depth2 {
+  position: absolute;
+  left: 0;
+  top: 110px;
+  width: 100%;
+  background: #856ca0;
+  border-radius: 0 30px 30px 30px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s;
+}
+#header .gnb .depth2 li + li {
+  margin-top: 10px;
+}
+#header .gnb .depth2 a {
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  word-break: keep-all;
+  line-height: 1.5;
+  font-weight: 600;
+  color: #fff;
+}
+
 
 #header .btn_wrap {
   position: absolute;
   right: 20px;
   top: 40px;
-  /* transform: translateY(-50%); */
   display: flex;
   gap: 0 20px;
   z-index: 10;
@@ -99,15 +127,16 @@
   display: none;
 }
 
+
 .main_visual {
   height: 700px;
   padding: 180px 0;
   text-align: center;
-  background: url(/resources/images/main_slider.jpg) no-repeat center / cover;
+  background: url(../images/main_slider.jpg) no-repeat center / cover;
 }
 
 .main_crew {
-  max-width: 1450px;
+  max-width: 1550px;
   margin: 0 auto;
   padding-top: 20px;
 }
@@ -126,7 +155,7 @@
 }
 .main_crew .crew_btn {
   justify-content: center;
-  background: #8c5ba3;
+  background: #983a22;
   align-items: center;
   font-weight: 600;
   padding: 10px;
@@ -164,7 +193,7 @@
   width: 40px;
   height: 25px;
   left: 0;
-  background: url(/resources/images/arrow-left.svg) no-repeat 100% / 100%;
+  background: url(../images/arrow-left.svg) no-repeat 100% / 100%;
 }
 
 .main_crew .swiper-button-next {
@@ -203,32 +232,6 @@
   font-size: 15px;
 }
 
-.main_crew .all_wrap {
-  padding: 10px;
-}
-
-.main_crew .all_wrap h3 {
-  font-weight: 700;
-  background: plum;
-  display: inline-flex;
-  border-radius: 15px;
-  padding: 5px;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #fff;
-}
-
-.main_crew .all_wrap p {
-  font-weight: 600;
-  padding-left: 5px;
-}
-
-.main_crew .all_wrap span {
-  display: flex;
-  padding-left: 5px;
-  font-size: 15px;
-}
-
 /* 하단바 비활 */
 .main_crew .swiper-pagination {
   display: none;
@@ -243,7 +246,7 @@
   padding: 80px 0;
 }
 .main_info .inner {
-  max-width: 1450px;
+  max-width: 1550px;
   margin: 0 auto;
   position: relative;
   display: flex;
@@ -279,7 +282,6 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
-  text-align: left;
 }
 
 .main_info .more_btn {
@@ -294,7 +296,7 @@
 
 #footer {
   background: #777;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 #footer .inner {
   max-width: 1450px;
@@ -309,6 +311,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin: 0 45px 0;
 }
+
 #footer .footer_top img {
   top: 40px;
   height: 40px;
@@ -372,7 +375,7 @@
   #header .sitemap_btn i {
     width: 26px;
     height: 2px;
-    background: #fff;
+    background: purple;
     transition: all 0.2s;
     border-radius: 1px;
   }
@@ -453,6 +456,50 @@
     transform: all 0.2s;
   }
 
+  #header .menu > li.on > a::before {
+    color: #ed1c24;
+  }
+  #header .menu > li.on > a::after {
+    color: #ed1c24;
+    width: 14px;
+    height: 2px;
+    right: 20px;
+    margin-top: -1px;
+  }
+  #header .menu > li.on .depth2 {
+    max-height: 240px;
+  }
+  #header .menu .depth2 {
+    padding: 0 10px;
+    background: #e7e7e7;
+    margin-top: 0;
+    max-height: 0;
+    overflow: hidden;
+    transform: all 0.5s;
+  }
+  #header .menu .depth2 li + li {
+    margin-top: 0;
+  }
+  #header .menu .depth2 a {
+    color: #620dbe;
+    display: block;
+    font-size: 16px;
+    line-height: 45px;
+    position: relative;
+    padding-left: 10px;
+    font-weight: 600;
+  }
+  #header .menu .depth2 a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    margin-top: -2px;
+    background: #999;
+    border-radius: 50%;
+  }
   .main_visual {
     height: 600px;
   }
@@ -464,7 +511,8 @@
     font-size: 15px;
   }
 
-  .main_crew .crew_btn {
+  .main_report .txt_wrap h3 {
+    font-size: 10px;
   }
 }
 
