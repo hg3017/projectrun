@@ -50,7 +50,7 @@
 	  <div class="inner">
 	  <div class="crew_name">
 	  
-			<img src="/resources/images/free-icon-trail-running-3163782.jpg" alt="">
+			<img src="/resources/images/logo.png" alt="">
 			<h2> 크루 이름 </h2>
 			
 			<% 

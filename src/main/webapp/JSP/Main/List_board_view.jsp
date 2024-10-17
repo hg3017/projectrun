@@ -71,7 +71,7 @@
               <dd><a href="#">?</a></dd>
             </dl>
             <div class="btn_wrap">
-              <a class="point_btn3" href="/JSP/Main/list_board.jsp">목록</a>
+              <a class="point_btn3" href="/JSP/Main/List_board.jsp">목록</a>
             </div>
           </div>
         </div>

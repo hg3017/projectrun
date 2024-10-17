@@ -37,8 +37,9 @@
   <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
 <body>
+   <div id="wrap">
+    <jsp:include page='/JSP/Common/Header.jsp' />
     <main id="container" class="crew_page">
-    <jsp:include page="/JSP/Common/Header.jsp" />
     <section class="main_report">
       <div class="inner">
         <div class="head_wrap">
@@ -232,5 +233,6 @@
     </section>
     </main>
     <jsp:include page= '/JSP/Common/Footer.jsp' />
+  </div>
 </body>
 </html>

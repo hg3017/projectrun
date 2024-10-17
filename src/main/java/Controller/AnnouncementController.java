@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -84,7 +85,7 @@ public class AnnouncementController extends HttpServlet {
 
 		    // 5. 페이징 처리
 		    int pageSize = 10; // 한 페이지에 보여줄 게시물 수
-		    int blockPage = 5; // 한 번에 보여줄 페이지 블록 수
+		    int blockPage = 2; // 한 번에 보여줄 페이지 블록 수
 		    String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/An_List.an");
 		    request.setAttribute("pagingStr", pagingStr);
 
@@ -131,10 +132,8 @@ public class AnnouncementController extends HttpServlet {
 			
 			String num = request.getParameter("num");  // 일련번호 받기 
 
-			AnnouncementDAO dao = new AnnouncementDAO();  // DAO 생성 
-			dao.updateVisitCount(num);                 // 조회수 증가 
-			AnnouncementDTO dto = dao.selectView(num);        // 게시물 가져오기 
-			dao.close();                               // DB 연결 해제
+			service.updateVisitCount(num);                 // 조회수 증가 
+			AnnouncementDTO dto = service.selectView(num);        // 게시물 가져오기 
 
 			request.setAttribute("board", dto);
 			

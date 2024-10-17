@@ -36,8 +36,8 @@
 </head>
 <body>
   <div id="wrap">
-
-		  <jsp:include page= '/JSP/Common/Header.jsp' />
+    <jsp:include page= '/JSP/Common/Header.jsp' />
+    <main id="container">
       <section class="main_visual">
       <h2 class="blind">메인슬라이더</h2>
       </section>
@@ -100,8 +100,8 @@
                   </a>
                 </div>
                 <div class="swiper-slide">
-									<a href="#">
-									  <div class="img_wrap">
+                  <a href="/JSP/Main/Crew_view.jsp">
+                    <div class="img_wrap">
                       <img src="/resources/images/main_crew2.jpg" alt="">
                     </div>
                     <div class="txt_wrap">
@@ -162,8 +162,6 @@
           </div>
         </div>
       </section>
-
-    
     <jsp:include page= '/JSP/Common/Footer.jsp' />
   </div>
 </body>
