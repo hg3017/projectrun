@@ -1,3 +1,4 @@
+<%@page import="DTO.BoardCommentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -77,34 +78,12 @@
               </div>
             </div>
             <table>
-              <caption class="nohead">공지사항 테이블</caption>
                 <tr>
-                  <td class="col1">1</td>
-                  <td class="td_left">
-                    <a href="/JSP/Main/List_cs_view.jsp">
-                      <p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
-                    </a>
-                  </td>
-                  <td class="col3">2024.09.30</td>
+                  <th class="col1">번호</th>
+                  <th class="td_left">제목</th>
+                  <th class="col3">작성일자</th>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td class="td_left">
-                    <a href="/JSP/Main/List_cs_view.jsp">
-                      <p>러닝은 처음인데 참여해도 괜찮나요?</p>
-                    </a>
-                  </td>
-                  <td>2024.09.30</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td class="td_left">
-                    <a href="/JSP/Main/List_cs_view.jsp">
-                      <p>모집기간은 언제인가요? 마감된 모임은 신청할 수 없나요?</p>
-                    </a>
-                  </td>
-                  <td>2024.09.30</td>
-                </tr>
+               
             </table>
             <div class="board_pagination">
               <a href="#" class="prev_paging">
