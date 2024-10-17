@@ -57,7 +57,7 @@ public class MemberController extends HttpServlet {
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "/JSP/Admim_sample/List.jsp";
+			String path = "/JSP/Admim_Sample/List.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
@@ -148,7 +148,15 @@ public class MemberController extends HttpServlet {
 			
 			String path = "List.do";
 			response.sendRedirect(path);
+		}else if(action.equals("/Test02.do")) {
+			String id = request.getParameter("id");
+			
+			int rs = service.delete(id);
+			
+			String path = "/JSP/Admin_Sample/Test02.jsp";
+			response.sendRedirect(path);
 		}
+		
 	}
 	/* 서비스나 dao는 순수 자바 파일이다. */
 }
