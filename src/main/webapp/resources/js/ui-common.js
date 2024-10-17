@@ -19,19 +19,31 @@ window.addEventListener('DOMContentLoaded', function () {
       document.querySelector('#header .menu_wrap').classList.toggle('on');
     });
 
-  document.querySelectorAll('#header .menu>li>a').forEach((v) => {
-    v.addEventListener('click', function (e) {
-      e.preventDefault();
-      // a부모에서 li에 넣기
-      v.parentElement.classList.toggle('on');
+	function siblings(t) {
+	   const children = t.parentElement.children;
+	   const tempArr = [];
 
-      //li의 형제 li배열애서 on클래스 제거
-      // siblings(v.parentElement).forEach((el) => {
-      //   el.classList.remove('on');
-      // });
-    });
-  });
+	   for (let i = 0; i < children.length; i++) {
+	     tempArr.push(children[i]);
+	   }
 
+	   return tempArr.filter((v) => {
+	     return v !== t;
+	   });
+	 }
+
+	 document.querySelectorAll('#header .menu>li>a').forEach((v) => {
+	   v.addEventListener('click', function (e) {
+	     e.preventDefault();
+	     // a부모에서 li에 넣기
+	     v.parentElement.classList.toggle('on');
+
+	     //li의 형제 li배열애서 on클래스 제거
+	     siblings(v.parentElement).forEach((el) => {
+	       el.classList.remove('on');
+	     });
+	   });
+	 });
   AOS.init({
     duration: 1000,
   });

@@ -53,7 +53,6 @@
 				</tr>
 			</table>
 		</form>
-		
 		<div class="btn_wrap">
 			<c:if test="${UserId eq 'hong01' }">
 				<button type="button" class="write_btn"
