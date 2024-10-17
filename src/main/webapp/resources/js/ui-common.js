@@ -78,6 +78,7 @@ window.addEventListener('DOMContentLoaded', function () {
   // mixitup
 
   const items = document.querySelectorAll('.filter_container .social_tab li');
+  const itemContents = document.querySelectorAll('.all_view .featured_card');
   items.forEach((item) => {
     item.addEventListener('click', () => {
       items.forEach((e) => {
