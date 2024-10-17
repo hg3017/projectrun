@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
   <link rel="icon" href="${pageContext.request.contextPath}/resources/images/common/favicon.png">
   <link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
 
