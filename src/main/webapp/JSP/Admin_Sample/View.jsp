@@ -12,13 +12,12 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 <title>View.jsp</title>
 </head>
 <body>
-<%@page import="DTO.MemberDTO"%>
 <!-- Menu -->
 <jsp:include page= './Menu.jsp' />
 <!-- Contents -->
 <h1>View</h1>
 <% out.println("member 객체 : "+ member); %>
-<form name="writeFrm" method="post" action="WriteProcess.jsp">
+<form name="writeFrm" method="post" action="WriteProcess.do">
 	<table border="1" width="80%">
 		<tr>
 			<td width="10%">ID</td>
@@ -76,12 +75,13 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<a href="./List.do">[List]</a>
-				<a href="./Edit.do?id=<%=member.getId()%>">[Edit]</a>
-				<a href="./DeleteProcess.do?id=<%=member.getId()%>">[Delete]</a>
+				<a href="/JSP/Admin_Sample/List.do">[List]</a>
+				<a href="/JSP/Admin_Sample/Edit.do?id=<%=member.getId()%>">[Edit]</a>
+				<a href="/JSP/Admin_Sample/DeleteProcess.do?id=<%=member.getId()%>">[Delete]</a>
 			</td>
 		</tr>
 	</table>
+	<%=member.getId()%>
 </form>
 
 </body>

@@ -21,6 +21,7 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 <h1>Edit</h1>
 <form name="editFrm" method="post" action="EditProcess.do">
 <input type="hidden" name="id" value="<%=member.getId() %>">
+<!-- id값 숨겨서 전달 -->
 	<table border="1" width="80%">
 		<tr>
 			<td>ID</td>
@@ -81,7 +82,8 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 			<td colspan="2" align="center">
 				<button type="submit">작성 완료</button>
 				<button type="reset">다시 입력</button>
-				<button type="button" onclick="location.href='List.jsp';">목록 보기</button>
+				<button type="button" onclick="location.href='/JSP/Admin_Sample/List.jsp';">목록 보기</button>
+				<button type="button" onclick="location.href='/JSP/FreeBoard/Fb_List.jsp';">자유게시판 보기</button>
 	</table>
 	
 </form>

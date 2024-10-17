@@ -26,7 +26,7 @@ List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
 </head>
 <body>
 <!-- Menu  -->
-<jsp:include page= './Menu.jsp' />
+<jsp:include page= '/JSP/Admin_Sample/Menu.jsp' />
 <!-- Contents -->
 <h1>List </h1>
 <table border="1" width="80%">
@@ -43,7 +43,7 @@ List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
 	</tr>
 <%for(MemberDTO member: members) {%>	
 	<tr align="center">
-		<td><a href="/JSP/Admin_Sample/View.do?id=<%=member.getId()%>"><%=member.getId() %></a></td>
+		<td><a href="View.do?id=<%=member.getId()%>"><%=member.getId() %></a></td>
 		<td><%=member.getPass() %></td>
 		<td><%=member.getName() %></td>
 		<td><%=member.getGrade() %></td>
