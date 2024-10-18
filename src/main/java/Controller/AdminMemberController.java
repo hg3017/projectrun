@@ -101,7 +101,7 @@ public class AdminMemberController extends HttpServlet {
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "/JSP/Admin/Member/Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
 			// sendRedirect 방식으로 List.do 파일로 이동(가상 경로)
 		}else if(action.equals("/Member_View.adme")) {
@@ -111,7 +111,6 @@ public class AdminMemberController extends HttpServlet {
 			MemberDTO member = service.selectView(id);
 			System.out.println("member 값 : " + member);
 			request.setAttribute("member", member);
-			System.out.println("member 값2 : " + request.getAttribute("member"));
 			
 			String path = "/JSP/Admin/Member/Member_View.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
@@ -156,9 +155,9 @@ public class AdminMemberController extends HttpServlet {
 			
 			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
-		}else if(action.equals("/Member_Test01.adme")) {
+		}else if(action.equals("/Member_Test02.adme")) {
 			System.out.println("action 값 확인 : "+action);
-			String path = "/JSP/Admin/Member/Member_Test01.jsp";
+			String path = "/JSP/Admin/Member/Member_Test02.jsp";
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_LinkTest.adme")) {
 			System.out.println("action 값 확인 : "+action);
