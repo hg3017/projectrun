@@ -158,7 +158,6 @@
               </li>
             </ul>
             <a href="/JSP/Main/List_cs.jsp" class="more_btn">더보기</a>
-            <!-- 고객센터로 이동 -->
           </div>
         </div>
       </section>

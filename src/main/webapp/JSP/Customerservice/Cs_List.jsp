@@ -80,7 +80,7 @@
                   <th class="td_left">제목</th>
                   <th class="col3">작성일자</th>
                 </tr>
-               
+
             </table>
             <div class="board_pagination">
               <a href="#" class="prev_paging">
