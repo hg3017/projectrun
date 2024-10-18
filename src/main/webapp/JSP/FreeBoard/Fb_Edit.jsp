@@ -1,24 +1,31 @@
-<%@page import="DTO.FreeBoardDTO"%>
-<%@page import="DAO.FreeBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/JSP/FreeBoard/IsLoggedIn.jsp"%> 
-<%
-String num = request.getParameter("num");  // 일련번호 받기 
-FreeBoardDAO dao = new FreeBoardDAO();  // DAO 생성
-FreeBoardDTO dto = dao.selectView(num);        // 게시물 가져오기 
-String sessionId = session.getAttribute("UserId").toString(); // 로그인 ID 얻기 
-/* if (!sessionId.equals(dto.getId())) {      // 본인인지 확인
-    JSFunction.alertBack("작성자 본인만 수정할 수 있습니다.", out);
-    return;
-} */
-dao.close();  // DB 연결 해제
-%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>수정하기</title>
+<title>자유게시판 / 수정하기</title>
+  <link rel="icon" href="/resources/images/common/favicon.png">
+  <link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
+
+	<!-- js 파일 연결 -->
+  <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
+  <script src="/resources/js/jquery-3.7.1.min.js"></script>
+  <script src="/resources/js/jquery-ui.min.js"></script>
+  <script src="/resources/js/swiper-bundle.min.js"></script>
+  <script src="/resources/js/aos.js"></script>
+  <script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+
+  <!-- css 파일 연결 -->
+  <link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/sub.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/common.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  <link href="/resources/css/list.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
+  
 <script type="text/javascript">
 function validateForm(form) {  // 폼 내용 검증 
     if (form.title.value == "") {
@@ -35,34 +42,71 @@ function validateForm(form) {  // 폼 내용 검증
 </script>
 </head>
 <body>
-<jsp:include page= '/JSP/Common/Header.jsp' />
-<h2>Edit</h2>
-<form name="writeFrm" method="post" action="EditProcess.free"
-      onsubmit="return validateForm(this);">
-    <input type="hidden" name="num" value="<%= dto.getNum() %>" /> 
-    <table border="1" width="90%">
-        <tr>
-            <td align="center">제목</td>
-            <td colspan="2">
-                <input type="text" name="title" style="width: 90%;" 
-                       value="<%= dto.getTitle() %>"/> 
-            </td>
-        </tr>
-        <tr>
-            <td align="center">내용</td>
-            <td colspan="2">
-                <textarea name="content" style="width: 90%; height: 100px;"><%= dto.getContent() %></textarea>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2" align="right">
-                <button type="submit">작성 완료</button>
-                <button type="button" onclick="location.href='List.jsp';">
-                    목록 보기</button>
-            </td>
-        </tr>
-    </table>
-</form>
-<jsp:include page= '/JSP/Common/Footer.jsp' />
+	<jsp:include page='/JSP/Common/Header.jsp' />
+	<main id="container" class="sub_container list_page">
+		<section class="sub_visual">
+			<div class="inner">
+				<div class="sub_wrap">
+					<h3>자유게시판</h3>
+				</div>
+			</div>
+		</section>
+		<section class="contents">
+			<div class="inner">
+				<div class="board_write">
+					<form name="editFrm" method="post" action="Fb_EditProcess.free"
+						onsubmit="return validateForm(this);">
+						<input type="hidden" name="num" value="${board.num }" />
+						<fieldset>
+							<legend>자유게시판 게시글 수정하기</legend>
+							<h3 class="tit">게시글 수정하기</h3>
+							<p class="note">
+								<i class="star"></i>표시는 필수 입력 사항입니다.
+							</p>
+							<c:if test="${not empty board}">
+								<table>
+									<caption class="nohead">자유게시판 게시글 수정하기 테이블</caption>
+									<tr>
+										<th>제목<i class="star"></i></th>
+										<td><input type="text" name="title"
+											placeholder="제목을 입력해주세요" title="제목을 입력해주세요"
+											value="${board.title }"></td>
+									</tr>
+									<tr>
+										<th class="th_top">내용<i class="star"></i></th>
+										<td><textarea name="content"
+												placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요"
+												rows="10">${board.content }</textarea></td>
+									</tr>
+									<tr>
+										<th>첨부파일</th>
+										<td class="td_flex">
+											<div class="file_wrap">
+												<input type="text" readonly> <label> <input
+													type="file" class="blind"> 파일선택
+												</label>
+											</div>
+											<p class="file_note">※ 등록 가능 확장자 :
+												pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 5MB</p>
+										</td>
+									</tr>
+								</table>
+							</c:if>
+							<div class="btn_wrap">
+								<button type="submit" class="point_btn4">수정완료</button>
+								<button type="button" class="point_btn5"
+									onclick="location.href='Fb_List.free';">취소</button>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</section>
+	</main>
+	<c:if test="${empty board}">
+		<p>게시물 데이터를 찾을 수 없습니다.</p>
+		<!-- board 값이 null인 경우 경고 -->
+	</c:if>
+	<jsp:include page='/JSP/Common/Footer.jsp' />
 </body>
 </html>

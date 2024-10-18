@@ -27,11 +27,11 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return dao.insertWrite(dto);
 	}
 
-	@Override
-	public FreeBoardDTO selectView(String num) {
-		
-		return dao.selectView(num);
-	}
+//	@Override
+//	public AnnouncementDTO selectView(String num) {
+//		
+//		return dao.selectView(num);
+//	}
 
 	@Override
 	public int updateEdit(FreeBoardDTO dto) {
@@ -41,8 +41,22 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 
 	@Override
 	public int deletePost(FreeBoardDTO dto) {
-		// TODO Auto-generated method stub
 		return dao.deletePost(dto);
+	}
+
+	@Override
+	public int selectCount(Map<String, String> map) {
+	    return dao.selectCount(map);
+	}
+
+	@Override
+	public void updateVisitCount(String num) {
+		dao.updateVisitCount(num);
+	}
+
+	@Override
+	public FreeBoardDTO pnPage(String num) {
+		return dao.pnPage(num);
 	}
 
 

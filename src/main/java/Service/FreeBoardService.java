@@ -9,8 +9,10 @@ import DTO.FreeBoardDTO;
 public interface FreeBoardService {
 	
 	public List<FreeBoardDTO> selectList(Map<String, String> map);
-	public FreeBoardDTO selectView(String num);
 	public int insertWrite(FreeBoardDTO dto);
 	public int updateEdit(FreeBoardDTO dto);
 	public int deletePost(FreeBoardDTO dto);
+	public int selectCount(Map<String, String> map);
+	public void updateVisitCount(String num);
+	public FreeBoardDTO pnPage(String num);
 }
