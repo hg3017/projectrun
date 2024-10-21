@@ -5,7 +5,7 @@
 <%
 // 결과 확인(웹 페이지에 출력)
 List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
-%>   
+%>
 <!DOCTYPE html>
 <html>
 <head>

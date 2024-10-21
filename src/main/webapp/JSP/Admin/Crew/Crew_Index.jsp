@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Crew_index</title>
+<title>Crew_Index</title>
 </head>
 <body>
-
+<h1>Crew_Index</h1>
 </body>
 </html>
