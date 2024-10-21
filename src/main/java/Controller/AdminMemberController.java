@@ -62,7 +62,13 @@ public class AdminMemberController extends HttpServlet {
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
-		}else if(action.equals("/Member_Write.adme")) {
+		}else if(action.equals("/Member_Index.adme")) {
+			// 받을 값 없음, service 요청할 거 없음
+			// 3. 어떻게 어디로 이동할 것인가?
+			String path = "/JSP/Admin/Member/Member_Index.jsp";
+			response.sendRedirect(path);
+		}
+		else if(action.equals("/Member_Write.adme")) {
 			// System.out.println(action);
 			System.out.println("write : "+ request.getParameter("name"));
 			// 받을 값 없음, service 요청할 거 없음
@@ -85,25 +91,26 @@ public class AdminMemberController extends HttpServlet {
 			int grade = Integer.parseInt(request.getParameter("grade"));
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number =request.getParameter("phone_number");
+			// int phone_number = Integer.parseInt(request.getParameter("phone_number"));
 			// String -> int 형변환 : int numInt = Integer.parseInt(str);
-			
-			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);			
+
+			MemberDTO dto = new MemberDTO(id,pass,name,grade,nickname,location,phone_number);
 			// 2. 어떤 service 요청
 			int rs = service.insertWrite(dto);
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "/JSP/Admin/Member/Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
 			// sendRedirect 방식으로 List.do 파일로 이동(가상 경로)
 		}else if(action.equals("/Member_View.adme")) {
 			System.out.println("Member_View.adme 실행 성공");
 			String id = request.getParameter("id");
+			System.out.println("View로 가는 id 값 : "+id);
 			MemberDTO member = service.selectView(id);
 			System.out.println("member 값 : " + member);
 			request.setAttribute("member", member);
-			System.out.println("member 값2 : " + request.getAttribute("member"));
 			
 			String path = "/JSP/Admin/Member/Member_View.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
@@ -112,14 +119,13 @@ public class AdminMemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 		}else if(action.equals("/Member_Edit.adme")) {
 			String id = request.getParameter("id");
-			
 			MemberDTO member = service.selectView(id);
-			
 			request.setAttribute("member", member);
-			
 			String path = "/JSP/Admin/Member/Member_Edit.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// RequestDispatcher 객체 생성, request.getRequestDispatcher(path) 메서드의 반환값을 할당받는다.
+			// request에 담긴 값이 다음페이지와 그 다음 페이지에서도 계속 유지된다.
+			// 원래 A.jsp -> Servlet -> B.jsp 까지는 파라미터 정보가 유지되나, 그 다음 단계에서는 소멸된다.
 			dispatcher.forward(request, response);
 			// forward 방식으로 request 객체를 전송하면서 파일로 이동
 		}else if(action.equals("/Member_EditProcess.adme")) {
@@ -133,25 +139,25 @@ public class AdminMemberController extends HttpServlet {
 			// System.out.print(id + "," + pass + "," + name);
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number = request.getParameter("phone_number");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str)
 			MemberDTO dto = new MemberDTO(id, pass, name, nickname, location, phone_number);
 			
 			int rs = service.updateEdit(dto);
 			
 			// 작업 후 페이지 이동
-			String path = "/JSP/Admin/Member/Member_View.jsp?id="+id;
+			String path = "/JSP/Admin/Member/Member_View.adme?id="+id;
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_DeleteProcess.adme")) {
 			String id = request.getParameter("id");
 			
 			int rs = service.delete(id);
 			
-			String path = "/JSP/Admin/Member/Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
-		}else if(action.equals("/Member_Test01.adme")) {
+		}else if(action.equals("/Member_Test02.adme")) {
 			System.out.println("action 값 확인 : "+action);
-			String path = "/JSP/Admin/Member/Member_Test01.jsp";
+			String path = "/JSP/Admin/Member/Member_Test02.jsp";
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_LinkTest.adme")) {
 			System.out.println("action 값 확인 : "+action);

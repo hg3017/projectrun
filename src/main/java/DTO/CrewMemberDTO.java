@@ -13,8 +13,6 @@ public class CrewMemberDTO {
 	public int getIdx() {
 		return idx;
 	}
-	
-	
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
@@ -61,8 +59,6 @@ public class CrewMemberDTO {
 		return "CrewMemberDTO [idx=" + idx + ", crew_name=" + crew_name + ", member_id=" + member_id + ", status="
 				+ status + "]";
 	}
-	
-	
 	
 	
 	
