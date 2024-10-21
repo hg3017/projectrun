@@ -40,7 +40,8 @@ public class AnnouncementController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doProcess");
+	    response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
@@ -59,13 +60,6 @@ public class AnnouncementController extends HttpServlet {
 		    int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1; // 기본 페이지 번호
 		    int offset = (pageNum - 1) * limit; // 오프셋 계산
 
-			// 2. searchField, searchWord, limit, offset 값을 Map에 저장
-//			Map<String, String> map = new HashMap<>();
-//			map.put("searchField", searchField != null ? searchField : ""); // 필드가 없으면 빈 값
-//			map.put("searchWord", searchWord != null ? searchWord : ""); // 검색어가 없으면 빈 값
-//			map.put("limit", limit != null ? limit : "10"); // 기본 limit 설정
-//			map.put("offset", offset != null ? offset : "0");
-			
 		    Map<String, String> map = new HashMap<>();
 		    map.put("searchField", (searchField != null) ? searchField : "");
 		    map.put("searchWord", (searchWord != null) ? searchWord : "");
@@ -98,14 +92,15 @@ public class AnnouncementController extends HttpServlet {
 			// 1. 받을 값 확인
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			//String idx = request.getParameter("idx");
 			
 			HttpSession session = request.getSession();
-		    String id = (String) session.getAttribute("UserId");
+		    String member_id = (String) session.getAttribute("UserId");
 		    
 			AnnouncementDTO dto = new AnnouncementDTO();
 			dto.setTitle(title);
 			dto.setContent(content);
-			dto.setId(id);
+			dto.setMember_id(member_id);
 			
 			// 2. service 요청
 			int rs = service.insertWrite(dto);
@@ -123,20 +118,20 @@ public class AnnouncementController extends HttpServlet {
 			}
 			
 		} else if (action.equals("/An_View.an")) {
-			String num = request.getParameter("num");  // 일련번호 받기 
+			String idx = request.getParameter("idx");  // 일련번호 받기 
 
-			service.updateVisitCount(num);                 // 조회수 증가 
-			AnnouncementDTO dto = service.pnPage(num);     // 게시물 가져오기 
+			service.updateVisitCount(idx);                 // 조회수 증가 
+			AnnouncementDTO dto = service.pnPage(idx);     // 게시물 가져오기 
 
 			request.setAttribute("board", dto);
 			path = "An_View";
 
 		} else if (action.equals("/An_Edit.an")) {
-			String num = request.getParameter("num");  // 일련번호 받기 
+			String idx = request.getParameter("idx");  // 일련번호 받기 
 			//HttpSession session = request.getSession();
 			//String sessionId = (String) session.getAttribute("UserId");
 			
-			AnnouncementDTO dto = service.pnPage(num);        // 게시물 가져오기 
+			AnnouncementDTO dto = service.pnPage(idx);        // 게시물 가져오기 
 			request.setAttribute("board", dto);
 			
 			// 3. 어떻게 어디로 이동 할것인가?
@@ -144,12 +139,12 @@ public class AnnouncementController extends HttpServlet {
 			
 		} else if (action.equals("/An_EditProcess.an")) {
 			// 1. 받을 값 확인
-			String num = request.getParameter("num");
+			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			AnnouncementDTO dto = new AnnouncementDTO();
-			dto.setNum(num);
+			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
 			
@@ -159,7 +154,7 @@ public class AnnouncementController extends HttpServlet {
 			// 3. 어떻게 어디로 이동 할것인가?
 			if (rs == 1) {
 				// 성공 시 상세 보기 페이지로 이동
-				response.sendRedirect("/An_View.an?num=" + num);
+				response.sendRedirect("/An_View.an?idx=" + idx);
 				return;
 			} else {
 				// 삽입 실패
@@ -170,22 +165,19 @@ public class AnnouncementController extends HttpServlet {
 		} else if (action.equals("/An_DeleteProcess.an")) {
 			// 1. 받을 값 확인
 			HttpSession session = request.getSession();
-			String num = request.getParameter("num");
+			String idx = request.getParameter("idx");
 
 			AnnouncementDAO dao = new AnnouncementDAO();
-			AnnouncementDTO dto = dao.pnPage(num);
+			AnnouncementDTO dto = dao.pnPage(idx);
 			
-			// 응답 인코딩 설정
-		    response.setContentType("text/html; charset=UTF-8");
-		    response.setCharacterEncoding("UTF-8");
 
 			// 로그인된 사용자 ID 얻기
-			String sessionId = session.getAttribute("UserId").toString();
+			String member_id = session.getAttribute("UserId").toString();
 			int delResult = 0;
 
-			if (sessionId.equals(dto.getId())) { // 작성자가 본인인지 확인
+			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
 				// 작성자가 본인이면...
-				dto.setNum(num);
+				dto.setIdx(idx);
 
 				delResult = service.deletePost(dto);
 
@@ -197,18 +189,18 @@ public class AnnouncementController extends HttpServlet {
 					return;
 				} else {
 					// 실패 시 이전 페이지로 이동
-					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/An_View.an?num=" + num + "'</script>");
+					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/An_View.an?idx=" + idx + "'</script>");
 					return;
 				}
 			} else {
 				// 작성자가 본인이 아닐 때 처리
-				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/An_View.an?num=" + num + "'</script>");
+				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/An_View.an?idx=" + idx + "'</script>");
 				return;
 			}
 		}
 		
-		request.setAttribute("layout", path);
-		request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
+		request.setAttribute("An_Layout", path);
+		request.getRequestDispatcher("/JSP/Announcement/An_Layout.jsp").forward(request, response);
 	}
 
 }
