@@ -6,6 +6,7 @@ public class CrewDTO {
 	private int idx;
 	private String name;
 	private String location_id;
+	private String descripton;
 	private Date regidate;
 	
 	public int getIdx() {
@@ -26,6 +27,17 @@ public class CrewDTO {
 	public void setLocation_id(String location_id) {
 		this.location_id = location_id;
 	}
+	
+	
+	
+	
+	public String getDescripton() {
+		return descripton;
+	}
+	public void setDescripton(String descripton) {
+		this.descripton = descripton;
+	}
+	
 	public Date getRegidate() {
 		return regidate;
 	}

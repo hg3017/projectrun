@@ -3,50 +3,35 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-
-</head>
-
-<body>
 
 <%
-	String name = request.getParameter("name");  
+   	String crewSessionId = (String)request.getAttribute("crewSessionId");  
 
-	CrewMemberDAO crewMemberDao = new CrewMemberDAO();
-	
-	List<CrewMemberDTO> crewMemberLists = crewMemberDao.selectCrewMemberList(name);
-		
-	//id 세션을 가져옴.
-	String sessionId = (String) session.getAttribute("userId");  
-    // 가져온 id세션을 통해 내가 이 크루에 어떤 역할인지 확인.
-   	String crewSessionId = crewMemberDao.selectCrewMemberStatus(name, sessionId );
-    
-    
+   	List<CrewMemberDTO> crewMemberLists = (List<CrewMemberDTO>)request.getAttribute("crewMemberLists"); 	
 %>
         
 <script>
-function sendAccept(memberId) {
+function sendAccept(memberId, crewName) {
     // 페이지 이동을 통해 서버에 데이터를 전달 (GET 요청)
-    window.location.href = "/accept.crewMember?name=" + memberId + "&crew_name=<%= name %>";
+    window.location.href = "/accept.crewMember?name=" + memberId + "&crew_name=" + crewName;
 }
 
-function sendRefuse(memberId) {
+function sendRefuse(memberId, crewName) {
     // 페이지 이동을 통해 서버에 데이터를 전달 (GET 요청)
-    window.location.href = "/refuse.crewMember?name=" + memberId + "&crew_name=<%= name %>";
+    window.location.href = "/refuse.crewMember?name=" + memberId + "&crew_name=" + crewName;
 }
+
+function sendDelete(memberId, crewName) {
+    // 페이지 이동을 통해 서버에 데이터를 전달 (GET 요청)
+    window.location.href = "/delete.crewMember?name=" + memberId + "&crew_name=" + crewName;
+}
+
 </script>
-
-<jsp:include page= '/JSP/Common/Header.jsp' />
+<main id="container">
+	<section class="main_info">
 			<table class="notice">
 				<thead>
 				<tr>
@@ -57,56 +42,26 @@ function sendRefuse(memberId) {
 				</tr>
 				</thead>
 				<tbody>
-				<%
-					for (CrewMemberDTO dto : crewMemberLists) {
-				%>
 				
-              <tr>
-              
-              <%
-              	if(dto.getStatus().equals("Waiting")) {
-				
-					%>
-					<td><input type="checkbox" name="chkRow" id=""></td>
-			  <%
-				} else {
-			   %>
-					<td> </td>
-			  <%
-				}
-              %>
-              	<% 
-              		/* if (!dto.getStatus().equals("Waiting") && !crewSessionId.equals("Master")) { */
-                %>
-                
-              	<td> 사진 <%= dto.getMember_image() %> </td>
-                <td> <%= dto.getMember_id() %> </td>
-                <td> 소개 <%= dto.getDescription() %> </td>
-                <td> 상태 <%= dto.getStatus() %> </td>
-                <% 
-                	if( dto.getStatus().equals("Waiting") && crewSessionId.equals("Master") ) { 
-                %>
-                <td> <input type="button" value="승인" class="btn" onclick="sendAccept('<%= dto.getMember_id() %>');">  </td>
-                <td> <input type="button" value="거부" class="btn" onclick="sendRefuse('<%= dto.getMember_id() %>');"> </td>
-                
-                <%
-                	}
-                
-                /* } */
-                 %>
-              </tr>
-              
-             <%
-				}
-             %>
+				<c:forEach var="crewMember" items="${crewMemberLists }" >
+					<tr>
+						<td> 사진 ${crewMember.member_image } </td>
+		                <td> 이름 ${crewMember.member_id } </td>
+		                <td> 소개 ${crewMember.description } </td>
+		                <td> 상태 ${crewMember.status} </td>
+					                 
+                 		<c:if test="${crewMember.status eq 'Waiting' && crewSessionId eq 'Master'}">
+ 							<td> <input type="button" value="승인" class="btn" onclick="sendAccept('${crewMember.member_id}','${crewMember.crew_name}');">  </td>
+			                <td> <input type="button" value="거부" class="btn" onclick="sendRefuse('${crewMember.member_id}', '${crewMember.crew_name}');"> </td>
+						</c:if>
+						
+						<c:if test="${crewMember.status eq 'User' && crewSessionId eq 'Master'}">
+							<td> <input type="button" value="추방" class="btn" onclick="senDelete('${crewMember.member_id}','${crewMember.crew_name}');">  </td>		
+						</c:if>
+					</tr>
+				</c:forEach>
+
              </tbody>
             </table>
-            
-            
-            
-
-</body>
-
-<jsp:include page= '/JSP/Common/Footer.jsp' />
-
-</html>
+            </section>
+</main>
