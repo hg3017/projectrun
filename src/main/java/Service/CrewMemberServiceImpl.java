@@ -26,6 +26,12 @@ public class CrewMemberServiceImpl implements CrewMemberService {
 	}
 	
 	@Override
+	public String selectCrewMemberStatus(String crew_name, String member_id) {
+		return dao.selectCrewMemberStatus(crew_name, member_id);
+		
+	}
+	
+	@Override
 	public int insertCrewMember(String crew_name, String member_id) {
 		return dao.insertCrewMember(crew_name, member_id);
 	}
@@ -33,6 +39,11 @@ public class CrewMemberServiceImpl implements CrewMemberService {
 	@Override
 	public int deleteCrewMember(String crew_name, String member_id) {
 		return dao.deleteCrewMember(crew_name, member_id);
+	}
+	
+	@Override
+	public int refuseCrewMember(String crew_name, String member_id) {
+		return dao.refuseCrewMember(crew_name, member_id);
 	}
 	
 }

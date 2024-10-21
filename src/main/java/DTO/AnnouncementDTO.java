@@ -8,7 +8,7 @@ public class AnnouncementDTO {
     private String title;
     private String content;
     private String id;
-    private java.sql.Date postdate;
+    private Date postdate;
     private String visitcount;
     private String name;
     private String prevNum;
@@ -64,10 +64,10 @@ public class AnnouncementDTO {
 	public void setId(String id) {
 		this.id = id;
 	}
-	public java.sql.Date getPostdate() {
+	public Date getPostdate() {
 		return postdate;
 	}
-	public void setPostdate(java.sql.Date postdate) {
+	public void setPostdate(Date postdate) {
 		this.postdate = postdate;
 	}
 	public String getVisitcount() {
@@ -82,6 +82,10 @@ public class AnnouncementDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-    
+	@Override
+	public String toString() {
+		return "AnnouncementDTO [num=" + num + ", title=" + title + ", content=" + content + ", id=" + id
+				+ ", postdate=" + postdate + ", visitcount=" + visitcount + ", name=" + name + ", prevNum=" + prevNum
+				+ ", prevTitle=" + prevTitle + ", nextNum=" + nextNum + ", nextTitle=" + nextTitle + "]";
+	}
 }

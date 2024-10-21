@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,27 +54,28 @@
         <div class="filter_container">
           <ul class="social_tab">
             <li class="active">
-              <a href="#" data-filter="all">전체</a>
+              <a href="#" data-tab="all">전체</a>
             </li>
             <li >
-              <a href="#" data-filter=".capital">수도권</a>
+              <a href="#" data-tab="capital">수도권</a>
             </li>
             <li>
-              <a href="#" data-filter=".Chungcheong">충청권</a>
+              <a href="#" data-tab="Chungcheong">충청권</a>
             </li>
             <li>
-              <a href="#" data-filter=".Gangwon">강원권</a>
+              <a href="#" data-tab="Gangwon">강원권</a>
             </li>
             <li>
-              <a href="#" data-filter=".Jeolla">전라권</a>
+              <a href="#" data-tab="Jeolla">전라권</a>
             </li>
             <li>
-              <a href="#" data-filter=".Gyeongsang">경상권</a>
+              <a href="#" data-tab="Gyeongsang">경상권</a>
             </li>
           </ul>
           <div class="report_wrap">
             <ul class="all_view">
-              <li class="active">
+
+              <li class="target" id="capital">
                 <a href=/JSP/Main/Release-detail.jsp">
                   <div class="img_wrap">
                     <img src="/resources/images/main_crew1.jpg" alt="">
@@ -226,6 +231,22 @@
                   </div>
                 </a>
               </li>
+              <c:forEach var="crewList" items="${CrewLists }" varStatus="status">
+	              <li class="featured_card">
+	                <a href="/CrewMainProcess.crew?crewName=${crewList.name }">
+	                <!-- <a href="/CrewMainProcess.crew"> -->
+	                  <div class="img_wrap">
+	                    <img src="/resources/images/main_crew1.jpg" alt="">
+	                  </div>
+	                  	<div class="txt_wrap">
+	                  	
+		                  <h3> ${crewList.name }</h3>
+		                  <p>  ${crewList.location_id }</p>
+		                  <span> ${crewList.regidate }</span>
+	                	</div>
+	                </a>
+	              </li>
+              </c:forEach>
             </ul>
           </div>
         </div>

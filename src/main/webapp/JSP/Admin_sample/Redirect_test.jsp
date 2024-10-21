@@ -4,11 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Redirect_test</title>
 </head>
+<% response.sendRedirect("/JSP/Admin_Sample/Test02.jsp"); %>
 <body>
-	request객체의 ContextPath() 주소입니다. :
-	<br>
-	request객체의 ContextPath() 주소입니다. : 
 </body>
 </html>

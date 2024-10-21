@@ -5,8 +5,8 @@
 <%
 // 결과 확인(웹 페이지에 출력)
 List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
-%>   
-    
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -26,7 +26,7 @@ List<MemberDTO> members = (List<MemberDTO>)request.getAttribute("members");
 </head>
 <body>
 <!-- Menu  -->
-<jsp:include page= './Menu.jsp' />
+<jsp:include page= '/JSP/Admin_Sample/Menu.jsp' />
 <!-- Contents -->
 <h1>List </h1>
 <table border="1" width="80%">
