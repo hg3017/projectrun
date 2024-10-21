@@ -122,7 +122,7 @@
 									</tr>
 									<%for(AdminCrewDTO crew: crews) {%>
 									<tr align="center">
-										<td><a href="/JSP/Crew/Crew_View.adme?id=<%=crew.getIdx()%>"><%=crew.getIdx() %></a></td>
+										<td><a href="/JSP/Crew/Crew_View.adcr?idx=<%=crew.getIdx()%>"><%=crew.getIdx() %></a></td>
 										<td><%=crew.getName() %></td>
 										<td><%=crew.getLocation_id() %></td>
 										<td><%=crew.getDescription() %></td>
@@ -130,7 +130,7 @@
 										<%} %>
 									
 									<tr>
-										<td colspan="5"><a href="/JSP/Admin/Crew/Crew_Write.adme">[회원 가입]</a></td>
+										<td colspan="5"><a href="/JSP/Admin/Crew/Crew_Write.adcr">[회원 가입]</a></td>
 									</tr>
 								</table>
 							</div>

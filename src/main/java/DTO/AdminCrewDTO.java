@@ -35,6 +35,13 @@ public class AdminCrewDTO {
 		this.description = description;
 		this.regidate = regidate;
 	}
+	// 오버라이딩된 AdminCrewDTO 생성자 선언
+	public AdminCrewDTO(String name, String location_id, String description) {
+		super();
+		this.name = name;
+		this.location_id = location_id;
+		this.description = description;
+	}
 
 	// getter 메서드 setter 메서드
 	public int getIdx() {

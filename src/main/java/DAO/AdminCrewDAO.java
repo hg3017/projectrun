@@ -13,7 +13,8 @@ import Common.JDBConnect;
 import DTO.AdminCrewDTO;
 
 public class AdminCrewDAO extends JDBConnect{
-	DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+	//DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	String dateTime = dateFormat.format(new Date());
 	
 	public AdminCrewDAO() {
@@ -85,7 +86,11 @@ public class AdminCrewDAO extends JDBConnect{
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getLocation_id());
 			psmt.setString(3, dto.getDescription());
-			psmt.setString(4, dto.getRegidate());
+			// psmt.setString(4, dto.getRegidate());
+			String regidate = dateTime;
+			// 유저가 regidate 값을 입력하는 것이 아니라,
+			// 현재 시간이 입력되므로 현재 시간값이 있는 dateTime 변수의 값이 regidate에 대입된다.
+			psmt.setString(4, regidate);
 			
 			rs = psmt.executeUpdate();
 		} catch (SQLException e) {

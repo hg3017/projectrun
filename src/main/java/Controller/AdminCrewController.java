@@ -1,6 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -42,6 +45,10 @@ public class AdminCrewController extends HttpServlet {
 		//	System.out.println(lastSlash);
 		String action = uri.substring(lastSlash);
 		// System.out.println(action);
+		
+		// DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String dateTime = dateFormat.format(new Date());
 		
 		// List.do로 들어온 요청 처리
 		if(action.equals("/Crew_List.adcr")) {
@@ -85,7 +92,7 @@ public class AdminCrewController extends HttpServlet {
 			// request.setCharacterEncoding("UTF-8");
 			// System.out.println("Crew List");
 			// 1. 받을 값을 확인
-			int idx = Integer.parseInt(request.getParameter("idx"));
+			// int idx = Integer.parseInt(request.getParameter("idx"));
 			// String -> int 형변환 : int numInt = Integer.parseInt(str);
 			// int형 변수 idx를 선언하고 request 객체의 idx 속성의 값을 저장한다.
 			String name = request.getParameter("name");
@@ -93,15 +100,14 @@ public class AdminCrewController extends HttpServlet {
 			String location_id = request.getParameter("location_id");
 			String description = request.getParameter("description");
 			String regidate = request.getParameter("regidate");
+			// String regidate = dateFormat.format(new Date());
 			
-			AdminCrewDTO dto = new AdminCrewDTO(idx, name, location_id, description, regidate);			
+			AdminCrewDTO dto = new AdminCrewDTO(name, location_id, description, regidate);
 			// 2. 어떤 service 요청
 			int rs = service.insertWrite(dto);
 			// service 객체의 메서드 insertWrite(dto) 호출
 
 			// 3. 어떻게 어디로 이동할 것인가?
-			
-			
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
 			String path = "/JSP/Admin/Crew/Crew_List.adcr";
 			response.sendRedirect(path);
@@ -110,10 +116,9 @@ public class AdminCrewController extends HttpServlet {
 			System.out.println("Crew_View.adcr 실행 성공");
 			int idx = Integer.parseInt(request.getParameter("idx"));
 			AdminCrewDTO crew = service.selectView(idx);
-			System.out.println("crew 값 : " + crew);
 			request.setAttribute("crew", crew);
 			
-			String path = "/JSP/Admin/Crew/Crew_View.adcr";
+			String path = "/JSP/Admin/Crew/Crew_View.jsp";
 			RequestDispatcher dispatcher = request.getRequestDispatcher(path);
 			// request에 담긴 값이 다음페이지와 그 다음 페이지에서도 계속 유지된다.
 			// 원래 A.jsp -> Servlet -> B.jsp 까지는 파라미터 정보가 유지되나, 그 다음 단계에서는 소멸된다.
