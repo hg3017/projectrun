@@ -18,6 +18,8 @@ public class MemberDTO {
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public MemberDTO(int idx, String id, String pass, String name, int grade, String nickname, String location,
 			String phone_number, String description, String regidate, String editdate, int member_image_idx) {
@@ -53,6 +55,23 @@ public class MemberDTO {
 		this.editdate = editdate;
 		this.member_image_idx = member_image_idx;
 	}
+	
+	
+
+	public MemberDTO(String id, String pass, String name, int grade, String nickname, String location,
+			String phone_number, String description) {
+		super();
+		this.id = id;
+		this.pass = pass;
+		this.name = name;
+		this.grade = grade;
+		this.nickname = nickname;
+		this.location = location;
+		this.phone_number = phone_number;
+		this.description = description;
+	}
+
+
 
 	public MemberDTO(String id, String pass, String name, int grade, String nickname, String location,
 			String phone_number) {

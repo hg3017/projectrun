@@ -58,8 +58,8 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 			<div class="inner">
 				<div class="header_left">
 					<div class="inner">
-						<a href="/JSP/Admin/Admin_Index.jsp"> <img src='/resources/images/logo.png'
-							alt="러닝메이트">
+						<a href="/JSP/Admin/Admin_Index.jsp"> <img
+							src='/resources/images/logo.png' alt="러닝메이트">
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
 					</div>
@@ -81,10 +81,10 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 									<span class="blind">administer</span>
 								</h2>
 								<ul class="menu">
-								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.adme">member</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.adcr">crew</a></li>
-								<li><a href="#">setting(미구현)<a></li>
+									<li><a href="#">dashboard(미구현)</a></li>
+									<li><a href="/JSP/Admin/Member/Member_Index.jsp">member</a></li>
+									<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">crew</a></li>
+									<li><a href="#">setting(미구현)<a></li>
 								</ul>
 							</div>
 						</aside>
@@ -95,51 +95,53 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 								action="Member_WriteProcess.adme">
 								<table border="1" width="80%">
 									<tr>
-										<td width="10%">ID</td>
-										<td align="center"><%=member.getId()%></td>
+										<td>ID</td>
+										<td><input type="text" name="id" style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">PASS</td>
-										<td align="center"><%=member.getPass()%></td>
+										<td>PASS</td>
+										<td><input type="text" name="pass" style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">NAME</td>
-										<td align="center"><%=member.getName()%></td>
+										<td>NAME</td>
+										<td><input type="text" name="name" style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">GRADE</td>
-										<td align="center"><%=member.getGrade()%></td>
+										<td>GRADE</td>
+										<td><input type="text" name="grade" style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">NICKNAME</td>
-										<td align="center"><%=member.getNickname()%></td>
+										<td>NICKNAME</td>
+										<td><input type="text" name="nickname"
+											style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">LOCATION</td>
-										<td align="center"><%=member.getLocation()%></td>
+										<td>PHONE_NUMBER</td>
+										<td><input type="text" name="phone_number"
+											style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">PHONE_NUMBER</td>
-										<td align="center"><%=member.getPhone_number()%></td>
+										<td>LOCATION</td>
+										<td><input type="text" name="location"
+											style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">REGIDATE</td>
-										<td align="center"><%=member.getRegidate()%></td>
+										<td>DESCRIPTION</td>
+										<td><input type="text" name="description"
+											style="width: 90%;" /></td>
 									</tr>
 									<tr>
-										<td width="10%">EDITDATE</td>
-										<td align="center"><%=member.getEditdate()%></td>
-									</tr>
-									<tr>
-										<td colspan="2" align="center"><a
-											href="/JSP/Admin/Member/Member_List.adme">[List]</a> <a
-											href="/JSP/Admin/Member/Member_Edit.adme?id=<%=member.getId()%>">[Edit]</a>
-											<a
-											href="/JSP/Admin/Member/Member_DeleteProcess.adme?id=<%=member.getId()%>">[Delete]</a>
+										<td colspan="2" align="center">
+											<button type="submit">작성 완료</button>
+											<button type="reset">다시 입력</button>
+											<button type="button"
+												onclick="location.href='/JSP/Admin_Sample/List.jsp'">목록
+												보기</button>
+											<button type="button" onclick="location.href='List.jsp'">목록
+												보기</button>
 										</td>
 									</tr>
 								</table>
-								<%=member.getId()%>
 							</form>
 						</div>
 					</div>

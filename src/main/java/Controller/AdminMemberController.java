@@ -58,7 +58,7 @@ public class AdminMemberController extends HttpServlet {
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
 			String path = "/JSP/Admin/Member/Member_List.jsp";
-			System.out.println(path);
+			System.out.println("Admin 컨트롤러 멤버 리스트 경로 출력 : "+path);
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
@@ -86,15 +86,16 @@ public class AdminMemberController extends HttpServlet {
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
 			String phone_number = request.getParameter("phone_number");
+			String description = request.getParameter("description");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str);
 			
-			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);			
+			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number, description);			
 			// 2. 어떤 service 요청
 			int rs = service.insertWrite(dto);
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "/JSP/Admin/Member/Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
 			// sendRedirect 방식으로 List.do 파일로 이동(가상 경로)
 		}else if(action.equals("/Member_View.adme")) {
@@ -123,6 +124,7 @@ public class AdminMemberController extends HttpServlet {
 			dispatcher.forward(request, response);
 			// forward 방식으로 request 객체를 전송하면서 파일로 이동
 		}else if(action.equals("/Member_EditProcess.adme")) {
+			System.out.println("Member_EditProcess.adme 진입성공");
 			// 1. 받을 값을 확인
 			String id = request.getParameter("id");
 			// String형 변수 id를 선언하고 request 객체의 id 속성의 값을 저장한다.
@@ -131,23 +133,25 @@ public class AdminMemberController extends HttpServlet {
 			String name = request.getParameter("name");
 			// String형 변수 name를 선언하고 request 객체의 pass 속성의 값을 저장한다.
 			// System.out.print(id + "," + pass + "," + name);
+			int grade = Integer.parseInt(request.getParameter("grade"));
+			// String -> int 형변환 : int numInt = Integer.parseInt(str)
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
 			String phone_number = request.getParameter("phone_number");
-			// String -> int 형변환 : int numInt = Integer.parseInt(str)
-			MemberDTO dto = new MemberDTO(id, pass, name, nickname, location, phone_number);
+			String description = request.getParameter("description");
+			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number, description);			
 			
 			int rs = service.updateEdit(dto);
 			
 			// 작업 후 페이지 이동
-			String path = "/JSP/Admin/Member/Member_View.jsp?id="+id;
+			String path = "/JSP/Admin/Member/Member_View.adme?id="+id;
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_DeleteProcess.adme")) {
 			String id = request.getParameter("id");
 			
 			int rs = service.delete(id);
 			
-			String path = "/JSP/Admin/Member/Member_List.jsp";
+			String path = "/JSP/Admin/Member/Member_List.adme";
 			response.sendRedirect(path);
 		}else if(action.equals("/Member_Test01.adme")) {
 			System.out.println("action 값 확인 : "+action);

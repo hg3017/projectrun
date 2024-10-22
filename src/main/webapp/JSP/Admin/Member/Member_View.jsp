@@ -81,10 +81,10 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 									<span class="blind">administer</span>
 								</h2>
 								<ul class="menu">
-								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.adme">member</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.adcr">crew</a></li>
-								<li><a href="#">setting(미구현)<a></li>
+									<li><a href="#">dashboard(미구현)</a></li>
+									<li><a href="/JSP/Admin/Member/Member_Index.jsp">member</a></li>
+									<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">crew</a></li>
+									<li><a href="#">setting(미구현)<a></li>
 								</ul>
 							</div>
 						</aside>
@@ -129,6 +129,9 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 									<tr>
 										<td width="10%">EDITDATE</td>
 										<td align="center"><%=member.getEditdate()%></td>
+									</tr>									<tr>
+										<td width="10%">DESCRIPTION</td>
+										<td align="center"><%=member.getDescription()%></td>
 									</tr>
 									<tr>
 										<td colspan="2" align="center"><a

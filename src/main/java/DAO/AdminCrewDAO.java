@@ -7,16 +7,16 @@ import java.util.List;
 import javax.servlet.ServletContext;
 
 import Common.JDBConnect;
-import DTO.MemberDTO;
+import DTO.AdminCrewDTO;
 
-public class MemberDAO extends JDBConnect{
+public class AdminCrewDAO extends JDBConnect{
 	
-	public MemberDAO() {
+	public AdminCrewDAO() {
 		super();
 	}
 	
-	public List<MemberDTO> selectList(){
-		List<MemberDTO> members = new ArrayList<>();
+	public List<AdminCrewDTO> selectList(){
+		List<AdminCrewDTO> members = new ArrayList<>();
 		
 		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx from member order by regidate desc";
 
@@ -39,11 +39,10 @@ public class MemberDAO extends JDBConnect{
 				String editdate = rs.getString("editdate");
 				int member_image_idx = rs.getInt("member_image_idx");
 				//out.print(String.format("%s,%s,%s,%s <br>", id, pass, name, regidate));
-				MemberDTO dto = new MemberDTO(idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx);
+				AdminCrewDTO dto = new AdminCrewDTO(idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx);
 				members.add(dto);
 			}	
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 	
 		
@@ -69,7 +68,6 @@ public class MemberDAO extends JDBConnect{
 
 			rs = psmt.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 			// close() 다 빼기
@@ -77,7 +75,7 @@ public class MemberDAO extends JDBConnect{
 		return rs;
 	}
 
-	public int insertWrite(MemberDTO dto) {
+	public int insertWrite(AdminCrewDTO dto) {
 		int rs = 0;
 		// insert into member(id,pass,name,grade,nickname,location,phone_number) values ('01','01','01',01,'01','01','01');
 		// String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number) values (?,?,?,?,?,?,?)";
@@ -106,9 +104,9 @@ public class MemberDAO extends JDBConnect{
 		return rs;
 	}
 
-	public MemberDTO selectView(String id) {
+	public AdminCrewDTO selectView(String id) {
 		System.out.println("selectView 동작 성공");
-		MemberDTO member = null;
+		AdminCrewDTO member = null;
 		// String sql = "select id, pass, name, regidate from member where id = ?";
 		System.out.println("selectView 메서드의 id 값 : "+id);
 		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, description, regidate, editdate, member_image_idx from member where id = ?";
@@ -134,7 +132,7 @@ public class MemberDAO extends JDBConnect{
 				String editdate = rs.getString("editdate");
 				int member_image_idx = rs.getInt("member_image_idx");
 				//out.print(String.format("%s,%s,%s,%s <br>", id, pass, name, regidate));
-				member = new MemberDTO(idx, id, pass, name, grade, nickname, location, phone_number, description, regidate, editdate, member_image_idx);
+				member = new AdminCrewDTO(idx, id, pass, name, grade, nickname, location, phone_number, description, regidate, editdate, member_image_idx);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -143,7 +141,7 @@ public class MemberDAO extends JDBConnect{
 		return member;
 	}
 
-	public int updateEdit(MemberDTO dto) {
+	public int updateEdit(AdminCrewDTO dto) {
 		int rs = 0;
 		
 		// String sql = "update member set pass = ?, name = ? where id = ?";
