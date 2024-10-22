@@ -14,9 +14,10 @@ import DTO.MemberDTO;
 import Service.MemberService;
 import Service.MemberServiceImpl;
 
-
-// *.do 로 들어오는 모든 요청 처리
-@WebServlet("*.ad")
+// 미구현, 오류만 없애놓음, .ad 컨트롤러 비활성화 상태
+// @WebServlet("*.ad") 각주처리만으로 컨트롤러 비활성화되는지 확인 필요, 확실치 않음
+// *.ad 로 들어오는 모든 요청 처리
+// @WebServlet("*.ad")
 public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -84,16 +85,17 @@ public class AdminController extends HttpServlet {
 			int grade = Integer.parseInt(request.getParameter("grade"));
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number =request.getParameter("phone_number");
+			// int phone_number = Integer.parseInt(request.getParameter("phone_number"));
 			// String -> int 형변환 : int numInt = Integer.parseInt(str);
-			
-			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);			
+
+			MemberDTO dto = new MemberDTO(id,pass,name,grade,nickname,location,phone_number);
 			// 2. 어떤 service 요청
 			int rs = service.insertWrite(dto);
 
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
-			String path = "Admin_List.jsp";
+			String path = "/JSP/Admin_Sample/List.do";
 			response.sendRedirect(path);
 			// sendRedirect 방식으로 List.do 파일로 이동(가상 경로)
 		}else if(action.equals("/Admin_View.ad")) {
@@ -132,14 +134,14 @@ public class AdminController extends HttpServlet {
 			// System.out.print(id + "," + pass + "," + name);
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number = request.getParameter("phone_number");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str)
 			MemberDTO dto = new MemberDTO(id, pass, name, nickname, location, phone_number);
-			
+
 			int rs = service.updateEdit(dto);
-			
+
 			// 작업 후 페이지 이동
-			String path = "Admin_view.jsp?id="+id;
+			String path = "/JSP/Admin_Sample/View.do?id="+id;
 			response.sendRedirect(path);
 		}else if(action.equals("/Admin_DeleteProcess.ad")) {
 			String id = request.getParameter("id");

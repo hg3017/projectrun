@@ -8,13 +8,11 @@ import DTO.AnnouncementDTO;
 
 public interface AnnouncementService {
 	
-	//public List<AnnouncementDTO> selectList();
 	public List<AnnouncementDTO> selectList(Map<String, String> map);
-//	public AnnouncementDTO selectView(String num);
 	public int insertWrite(AnnouncementDTO dto);
 	public int updateEdit(AnnouncementDTO dto);
 	public int deletePost(AnnouncementDTO dto);
 	public int selectCount(Map<String, String> map);
-	public void updateVisitCount(String num);
-	public AnnouncementDTO pnPage(String num);
+	public void updateVisitCount(String idx);
+	public AnnouncementDTO pnPage(String idx);
 }
