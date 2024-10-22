@@ -207,8 +207,8 @@ public class AnnouncementController extends HttpServlet {
 			}
 		}
 		
-		request.setAttribute("layout", path);
-		request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
+		request.setAttribute("An_layout", path);
+		request.getRequestDispatcher("/JSP/Announcement/An_Layout.jsp").forward(request, response);
 	}
 
 }

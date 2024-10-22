@@ -45,7 +45,7 @@
 		</table>
 	</form>
 	<div class="btn_wrap">
-		<c:if test="${UserId eq 'hong01' }">
+		<c:if test="${UserId eq 'admin' }">
 			<button type="button" class="write_btn"
 				onclick="location.href='/An_Write.an';">글쓰기</button>
 		</c:if>
