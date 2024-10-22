@@ -30,7 +30,7 @@ function validateForm(form) {  // 폼 내용 검증
 			<div class="board_write">
 				<form name="editFrm" method="post" action="An_EditProcess.an"
 					onsubmit="return validateForm(this);">
-					<input type="hidden" name="idx" value="${board.idx }" />
+					<input type="hidden" name="num" value="${board.num }" />
 					<fieldset>
 						<legend>공지사항 수정하기</legend>
 						<h3 class="tit">공지사항 수정하기</h3>
@@ -69,7 +69,7 @@ function validateForm(form) {  // 폼 내용 검증
 						<div class="btn_wrap">
 							<button type="submit" class="point_btn4">수정완료</button>
 							<button type="button" class="point_btn5"
-								onclick="location.href='/An_List.an';">취소</button>
+								onclick="location.href='An_List.an';">취소</button>
 						</div>
 					</fieldset>
 				</form>

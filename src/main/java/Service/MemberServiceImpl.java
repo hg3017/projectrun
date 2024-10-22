@@ -34,11 +34,14 @@ public class MemberServiceImpl implements MemberService{
 		return this.dao.selectView(id);
 	}
 	@Override
-	public int updateEdit(MemberDTO dto) {	
+	public int updateEdit(MemberDTO dto) {
+		
 		return this.dao.updateEdit(dto);
 	}
+	
 	@Override
 	public int delete(String id) {
+		
 		return this.dao.delete(id);
 	}
 }

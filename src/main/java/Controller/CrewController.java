@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 import DAO.CrewDAO;
 import DTO.AnnouncementDTO;
 import DTO.CrewDTO;
+import DTO.CrewMemberDTO;
 import Service.CrewMemberService;
 import Service.CrewMemberServiceImpl;
 import Service.CrewService;
@@ -53,6 +54,8 @@ public class CrewController extends HttpServlet {
 		String action = uri.substring(lastSlash);
 		HttpSession session = request.getSession();
 		
+		String path = "CrewView";
+		
 		// Servelt 의 경로값이 /CrewListProcess.crew 인 경우 작동합니다. 
 		if(action.equals("/CrewListProcess.crew")) {
 			
@@ -60,40 +63,31 @@ public class CrewController extends HttpServlet {
 			request.setAttribute("CrewLists", CrewLists);
 						
 			if(CrewLists != null){
-				request.getRequestDispatcher("/JSP/Main/Crew_view.jsp").forward(request, response);
+				path = "CrewView";
 			} 
-			// dto 값이 null 인 경우 작동합니다. 
-			else{
-				request.getRequestDispatcher("/JSP/Main/Main.jsp").forward(request, response);
-			}
 		}
 		// Servelt 의 경로값이 /LoginForm.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
 		else if(action.equals("/CrewMainProcess.crew")) {
 			
 			String crewName = request.getParameter("crewName");
-			
 			CrewDTO CrewDetail = service.selectCrew(crewName);
+			List<CrewMemberDTO> crewMainMemberLists = Memberservice.selectCrewMainMemberList(crewName);
 			
 			String sessionId = (String) session.getAttribute("UserId");  
 			String crewSessionId = Memberservice.selectCrewMemberStatus(crewName, sessionId);
 			
 			request.setAttribute("CrewDetail", CrewDetail);
 			request.setAttribute("crewSessionId", crewSessionId);
-						
-			System.out.println("CrewController: crewName " + crewName);
-			System.out.println("CrewController: sessionId " + sessionId);
-			System.out.println("CrewController: crewSessionId " + crewSessionId);
+			request.setAttribute("crewMainMemberLists", crewMainMemberLists);
 			
 			if(CrewDetail != null){
-				request.getRequestDispatcher("/JSP/Crew/CrewMain.jsp").forward(request, response);
+				path= "CrewMain";
 			} 
-			// dto 값이 null 인 경우 작동합니다. 
-			else{
-				request.getRequestDispatcher("/JSP/Main/Main.jsp").forward(request, response);
-			}
-
+			
 		}
 		
+		request.setAttribute("layout", path);
+		request.getRequestDispatcher("/JSP/Crew/CrewLayout.jsp").forward(request, response);
 	}
 
 }

@@ -44,12 +44,16 @@ public class CrewDAO extends JDBConnect {
 		}
 		return crewList;			
 	}
+	
+	
 		
 	
 	public CrewDTO selectCrew(String name) {
 		CrewDTO crew = null;
 		
-		String sql = "select idx, name, location_id, regidate from crew where name = ?";
+		String sql = "select idx, name, location_id, description, regidate from crew where name = ?";
+		
+		
 		
 		try {
 			psmt = con.prepareStatement(sql);
@@ -61,13 +65,16 @@ public class CrewDAO extends JDBConnect {
 				crew.setIdx(rs.getInt("Idx"));          
 				crew.setName(rs.getString("name"));      
 				crew.setLocation_id(rs.getString("location_id")); 
+				crew.setDescripton(rs.getString("description"));
 				crew.setRegidate(rs.getDate("regidate"));   
+				
             }
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 //			close();
 		}
+		
 		return crew;
 	}
 	
