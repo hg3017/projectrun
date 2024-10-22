@@ -84,8 +84,8 @@
 							</h2>
 							<ul class="menu">
 								<li><a href="#">dashboard</a></li>
-								<li><a href="#">member</a></li>
-								<li><a href="#">crew</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">member</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">crew</a></li>
 								<li><a href="#">setting<a></li>
 							</ul>
 						</div>

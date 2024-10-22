@@ -85,7 +85,7 @@ public class AdminMemberController extends HttpServlet {
 			int grade = Integer.parseInt(request.getParameter("grade"));
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number = request.getParameter("phone_number");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str);
 			
 			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);			
@@ -133,7 +133,7 @@ public class AdminMemberController extends HttpServlet {
 			// System.out.print(id + "," + pass + "," + name);
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number = request.getParameter("phone_number");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str)
 			MemberDTO dto = new MemberDTO(id, pass, name, nickname, location, phone_number);
 			
