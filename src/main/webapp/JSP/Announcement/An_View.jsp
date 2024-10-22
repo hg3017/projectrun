@@ -8,7 +8,7 @@ function deletePost() {
     if (confirmed) {
         var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
         form.method = "post";               // 전송 방식 
-        form.action = "An_DeleteProcess.an";  // 전송 경로
+        form.action = "/An_DeleteProcess.an";  // 전송 경로
         form.submit();                      // 폼값 전송
     }
 }
@@ -69,7 +69,7 @@ function deletePost() {
 				</dl>
 				<div class="btn_wrap">
 					<button type="button" class="point_btn3"
-						onclick="location.href='An_List.an';">목록</button>
+						onclick="location.href='/An_List.an';">목록</button>
 				</div>
 			</div>
 		</div>

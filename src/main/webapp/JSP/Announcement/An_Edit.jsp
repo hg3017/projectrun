@@ -69,7 +69,7 @@ function validateForm(form) {  // 폼 내용 검증
 						<div class="btn_wrap">
 							<button type="submit" class="point_btn4">수정완료</button>
 							<button type="button" class="point_btn5"
-								onclick="location.href='An_List.an';">취소</button>
+								onclick="location.href='/An_List.an';">취소</button>
 						</div>
 					</fieldset>
 				</form>

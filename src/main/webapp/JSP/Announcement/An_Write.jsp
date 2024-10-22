@@ -48,7 +48,7 @@ function validateForm(form) {
 								<td><textarea name="content" placeholder="게시물 내용을 작성해 주세요"
 										title="게시물 내용을 작성해 주세요" rows="10"></textarea></td>
 							</tr>
-							<tr>
+ 							<tr>
 								<th>첨부파일</th>
 								<td class="td_flex">
 									<div class="file_wrap">
