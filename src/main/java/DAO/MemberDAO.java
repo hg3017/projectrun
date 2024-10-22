@@ -110,7 +110,7 @@ public class MemberDAO extends JDBConnect{
 		// String sql = "select id, pass, name, regidate from member where id = ?";
 		System.out.println("selectView 메서드의 id 값 : "+id);
 		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx from member where id = ?";
-		
+
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, id);

@@ -19,6 +19,7 @@ public class CustomerboardDAO extends JDBConnect {
 		if(map !=null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 			query += " WHERE " + map.get("searchField") + " LIKE ?";
 		}
+		
 		try {
 			psmt = con.prepareStatement(query);
 			
@@ -124,7 +125,7 @@ public class CustomerboardDAO extends JDBConnect {
 	
 	public int inserWrite(CustomerboardDTO dto) {
 		int result = 0;
-		
+		 
 		try {
 			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?,?,?)";
 			
