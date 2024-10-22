@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 
+<!--로그인 확인-->
 <script type="text/javascript">
 function validateForm(form) {  
     if (form.title.value == "") {
@@ -47,8 +48,7 @@ function validateForm(form) {
 								<td><textarea name="content" placeholder="게시물 내용을 작성해 주세요"
 										title="게시물 내용을 작성해 주세요" rows="10"></textarea></td>
 							</tr>
- 							<%@ include file="/JSP/Announcement/An_FileUpload.jsp" %>
-<!--  							<tr>
+							<tr>
 								<th>첨부파일</th>
 								<td class="td_flex">
 									<div class="file_wrap">
@@ -59,7 +59,7 @@ function validateForm(form) {
 									<p class="file_note">※ 등록 가능 확장자 :
 										pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 5MB</p>
 								</td>
-							</tr> -->
+							</tr>
 						</table>
 						<div class="btn_wrap">
 							<button type="submit" class="point_btn4">작성완료</button>

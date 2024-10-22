@@ -4,9 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Crew_index</title>
 </head>
 <body>
-<h1>Crew_Menu</h1>
+
 </body>
 </html>
