@@ -47,7 +47,7 @@ public class CustomerboardDAO extends JDBConnect {
 		if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
 		}
-		query += " ORDER BY num DESC ";
+		query += " ORDER BY idx DESC ";
 		query += " LIMIT ? OFFSET ? ";
 		
 		try {
@@ -70,7 +70,7 @@ public class CustomerboardDAO extends JDBConnect {
 				dto.setCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
-				dto.setMember_id(rs.getString("memeber_id"));
+				dto.setMember_id(rs.getString("member_id"));
 				dto.setRegidate(rs.getDate("regidate"));
 				dto.setVisitcount(rs.getInt("visitcount"));
 				
@@ -144,7 +144,7 @@ public class CustomerboardDAO extends JDBConnect {
 	}
 	
 	public void updateVisitCount(String num) {
-		String query = "UPDATE customerboard SET " + " visitcount=visitcount+1"  + " WHERE num=? ";
+		String query = "UPDATE customerboard SET " + " visitcount=visitcount+1"  + " WHERE idx=? ";
 		
 		try {
 			psmt = con.prepareStatement(query);
