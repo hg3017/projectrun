@@ -53,41 +53,51 @@ public class CrewMemberController extends HttpServlet {
 		String action = uri.substring(lastSlash);
 		HttpSession session = request.getSession();
 		
+		String path = "CrewMemberList.crewMember";
+		
 		// Servelt 의 경로값이 /CrewListProcess.crew 인 경우 작동합니다. 
-		if(action.equals("/CrewListProcess.crewMember")) {
+		if(action.equals("/CrewMemberList.crewMember")) {
 			// 1. 받을 값 확인
-			
 			String crewName = request.getParameter("crewName");
 			String sessionId = (String) session.getAttribute("UserId");  
-			
+			String crewSessionId = service.selectCrewMemberStatus(crewName, sessionId);
+						
 			// 2. service 요청
-			List<CrewMemberDTO> dto = service.selectCrewMemberList(crewName);
+			List<CrewMemberDTO> crewMemberLists = service.selectCrewMemberList(crewName);
+			
+			request.setAttribute("crewMemberLists", crewMemberLists);
+			request.setAttribute("crewSessionId", crewSessionId);
+			
 			// dto 값이 null 이 아닌경우(리턴이 있는 경우) 작동합니다. 
-			if(dto != null){
-				
-				
-				
+			if(crewMemberLists != null){
+				path = "CrewMemberView";
+//				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
 			} 
 			// dto 값이 null 인 경우 작동합니다. 
 			else{
-				
-				request.getRequestDispatcher("/JSP/Crew/CrewMain.jsp").forward(request, response);
+				path = "CrewMain";
+//				request.getRequestDispatcher("/JSP/Crew/CrewMain.jsp").forward(request, response);
 			}
+		} else if(action.equals("/CrewMemberList.crewMainMember")) {
+			String crewName = request.getParameter("crewName");
+				
+			List<CrewMemberDTO> crewMainMemberLists = service.selectCrewMainMemberList(crewName);
+
+			request.setAttribute("crewMainMemberLists", crewMainMemberLists);
 			
+			if(crewMainMemberLists != null){
+				path = "CrewMemberView";
+			} 
 			
 		}
 		else if(action.equals("/accept.crewMember")) {
 			String name = request.getParameter("name");
 			String crew_name = request.getParameter("crew_name");
-			
-			
-			CrewMemberDAO dao = new CrewMemberDAO();
-			int rs = dao.acceptCrewMember(crew_name, name);
+				
+			int rs = service.acceptCrewMember(crew_name, name);
 
 			if(rs == 1) {
-				System.out.println("CrewMemberController.doProcess.accept - checkpoint2");
-
-				response.sendRedirect("/JSP/Crew/CrewMemberView.jsp");
+				path = "CrewMemberView";
 			} else {
 				request.setAttribute("AcceptErrMsg", "가입 승인 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
@@ -98,20 +108,31 @@ public class CrewMemberController extends HttpServlet {
 			String name = request.getParameter("name");
 			String crew_name = request.getParameter("crew_name");
 			
-			CrewMemberDAO dao = new CrewMemberDAO();
-			int rs = dao.refuseCrewMember(crew_name, name);
 			
-			System.out.println("CrewMemberController.doProcess.refuse - checkpoint1");
-			
+			int rs = service.refuseCrewMember(crew_name, name);
+						
 			if(rs == 1) {
-				System.out.println("CrewMemberController.doProcess.refuse - checkpoint2");
 				response.sendRedirect("/JSP/Crew/CrewMemberView.jsp");
 			} else {
 				request.setAttribute("RefuseErrMsg", "가입 거절 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
 			}
+		} else if(action.equals("/delete.crewMember")) {
+			String name = request.getParameter("name");
+			String crew_name = request.getParameter("crew_name");
+			
+			int rs = service.deleteCrewMember(crew_name, name);
+			
+			if(rs == 1) {
+				response.sendRedirect("/JSP/Crew/CrewMemberView.jsp");
+			} else {
+				request.setAttribute("DeleteErrMsg", "회원 삭제 오류");
+				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
+			}
 		}
 		
+		request.setAttribute("layout", path);
+		request.getRequestDispatcher("/JSP/Crew/CrewLayout.jsp").forward(request, response);
+		
 	}
-
 }
