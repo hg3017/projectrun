@@ -27,6 +27,12 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 		return dao.insertWrite(dto);
 	}
 
+//	@Override
+//	public AnnouncementDTO selectView(String num) {
+//		
+//		return dao.selectView(num);
+//	}
+
 	@Override
 	public int updateEdit(FreeBoardDTO dto) {
 		
@@ -44,13 +50,13 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	}
 
 	@Override
-	public void updateVisitCount(String idx) {
-		dao.updateVisitCount(idx);
+	public void updateVisitCount(String num) {
+		dao.updateVisitCount(num);
 	}
 
 	@Override
-	public FreeBoardDTO pnPage(String idx) {
-		return dao.pnPage(idx);
+	public FreeBoardDTO pnPage(String num) {
+		return dao.pnPage(num);
 	}
 
 
