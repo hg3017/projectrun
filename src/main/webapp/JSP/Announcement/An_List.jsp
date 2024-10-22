@@ -55,11 +55,11 @@
 	<table>
 		<!-- 각각의 이름 -->
 		<tr>
-			<th>NO</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>조회수</th>
-			<th>작성일</th>
+			<th style=width:15%>NO</th>
+			<th style=width:35%>제목</th>
+			<!-- <th>작성자</th> -->
+			<th style=width:20%>조회수</th>
+			<th style=width:20%>작성일</th>
 		</tr>
 		<c:if test="${empty boards}">
 			<tr>
@@ -72,13 +72,13 @@
 				<td>${boards.size() - status.index}</td>
 				<!--게시물 번호-->
 				<td>
-					<!--제목(+ 하이퍼링크)--> <a href="An_View.an?num=${board.num }">${board.title }</a>
+					<!--제목(+ 하이퍼링크)--> <a href="An_View.an?idx=${board.idx }">${board.title }</a>
 				</td>
-				<td>${board.id }</td>
+				<%-- <td>${board.member_id }</td> --%>
 				<!--작성자 아이디-->
 				<td>${board.visitcount }</td>
 				<!--조회수-->
-				<td>${board.postdate }</td>
+				<td>${board.regidate }</td>
 				<!--작성일-->
 			</tr>
 		</c:forEach>

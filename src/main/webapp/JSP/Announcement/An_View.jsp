@@ -27,18 +27,18 @@ function deletePost() {
 		<div class="inner">
 			<div class="board_view">
 				<form name="writeFrm" method="post">
-    				<input type="hidden" name="num" value="${board.num}" />
+    				<input type="hidden" name="idx" value="${board.idx}" />
 				</form>
 				<div class="view_top">
-					<c:if test="${UserId eq board.id }">
+					<c:if test="${UserId eq board.member_id }">
 						<button type="button" class="modify_btn"
-							onclick="location.href='An_Edit.an?num=${board.num}';">수정하기</button>
+							onclick="location.href='An_Edit.an?idx=${board.idx}';">수정하기</button>
 						<button type="button" onclick="deletePost()">삭제하기</button>
 					</c:if>
 				</div>
 				<div class="view_tit">
 					<h3>${board.title }</h3>
-					<span class="date">${board.postdate }</span>
+					<span class="date">${board.regidate }</span>
 				</div>
 				<div class="view_con">
 					<c:if test="${empty board.content }">내용없음</c:if>
@@ -48,7 +48,7 @@ function deletePost() {
 					<dt>이전글</dt>
 					<dd>
 						<c:if test="${not empty board.prevNum}">
-							<a href="An_View.an?num=${board.prevNum}">${board.prevTitle}</a>
+							<a href="An_View.an?idx=${board.prevNum}">${board.prevTitle}</a>
 						</c:if>
 						<c:if test="${empty board.prevNum}">
 							<span>이전글이 없습니다</span>
@@ -60,7 +60,7 @@ function deletePost() {
 					<dt>다음글</dt>
 					<dd>
 						<c:if test="${not empty board.nextNum}">
-							<a href="An_View.an?num=${board.nextNum}">${board.nextTitle}</a>
+							<a href="An_View.an?idx=${board.nextNum}">${board.nextTitle}</a>
 						</c:if>
 						<c:if test="${empty board.nextNum}">
 							<span>다음글이 없습니다</span>
