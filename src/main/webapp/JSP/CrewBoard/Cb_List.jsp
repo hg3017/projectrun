@@ -81,6 +81,7 @@
         <div class="inner">
           <div class="sub_wrap">
             <h3>게시판 <span></span> 크루</h3>
+            
           </div>
         </div>
       </section>
