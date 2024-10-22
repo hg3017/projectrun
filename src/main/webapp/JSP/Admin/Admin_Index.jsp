@@ -59,7 +59,9 @@
 			<div class="inner">
 				<div class="header_left">
 					<div class="inner">
-						<a href="/JSP/Admin/Admin_Index.jsp"> <img src='/resources/images/logo.png' alt="러닝메이트">
+						<a href="index.jsp"> <img
+							src='/resources/images/logo.png'
+							alt="러닝메이트">
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
 					</div>
@@ -81,10 +83,10 @@
 								<span class="blind">administer</span>
 							</h2>
 							<ul class="menu">
-								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.adme">member</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.adcr">crew</a></li>
-								<li><a href="#">setting(미구현)<a></li>
+								<li><a href="#">dashboard</a></li>
+								<li><a href="#">member</a></li>
+								<li><a href="#">crew</a></li>
+								<li><a href="#">setting<a></li>
 							</ul>
 						</div>
 					</aside> 
