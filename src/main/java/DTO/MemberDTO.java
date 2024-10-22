@@ -10,6 +10,7 @@ public class MemberDTO {
 	private String nickname;
 	private String location;
 	private String phone_number;
+	private String description;
 	private String regidate;
 	private String editdate;
 	private int member_image_idx;
@@ -18,7 +19,24 @@ public class MemberDTO {
 	public MemberDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	// 오버라이딩된 생성자
+	public MemberDTO(int idx, String id, String pass, String name, int grade, String nickname, String location,
+			String phone_number, String description, String regidate, String editdate, int member_image_idx) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.pass = pass;
+		this.name = name;
+		this.grade = grade;
+		this.nickname = nickname;
+		this.location = location;
+		this.phone_number = phone_number;
+		this.description = description;
+		this.regidate = regidate;
+		this.editdate = editdate;
+		this.member_image_idx = member_image_idx;
+	}
 
 	// 오버라이딩된 생성자
 	public MemberDTO(int idx, String id, String pass, String name, int grade, String nickname, String location,
@@ -36,17 +54,6 @@ public class MemberDTO {
 		this.editdate = editdate;
 		this.member_image_idx = member_image_idx;
 	}
-
-	// 오버라이딩된 생성자
-	/*
-	 * public MemberDTO(int idx, String pass, String name, int grade, String
-	 * nickname, String location, String phone_number, String regidate, String
-	 * editdate, int member_image_idx) { super(); this.idx = idx; this.pass = pass;
-	 * this.name = name; this.grade = grade; this.nickname = nickname; this.location
-	 * = location; this.phone_number = phone_number; this.regidate = regidate;
-	 * this.editdate = editdate; this.member_image_idx = member_image_idx; }
-	 */
-	
 
 	// 오버라이딩된 생성자
 	public MemberDTO(String id, String pass, String name, int grade, String nickname, String location,
@@ -71,7 +78,6 @@ public class MemberDTO {
 		this.location = location;
 		this.phone_number = phone_number;
 	}
-
 
 	// getter 메서드 setter 메서드
 	public int getIdx() {
@@ -122,6 +128,12 @@ public class MemberDTO {
 	public void setPhone_number(String phone_number) {
 		this.phone_number = phone_number;
 	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public String getRegidate() {
 		return regidate;
 	}
@@ -141,13 +153,14 @@ public class MemberDTO {
 		this.member_image_idx = member_image_idx;
 	}
 
-
 	// toString 메서드
 	@Override
 	public String toString() {
 		return "MemberDTO [idx=" + idx + ", id=" + id + ", pass=" + pass + ", name=" + name + ", grade=" + grade
-				+ ", nickname=" + nickname + ", location=" + location + ", phone_number=" + phone_number + ", regidate="
-				+ regidate + ", editdate=" + editdate + ", member_image_idx=" + member_image_idx + "]";
+				+ ", nickname=" + nickname + ", location=" + location + ", phone_number=" + phone_number
+				+ ", description=" + description + ", regidate=" + regidate + ", editdate=" + editdate
+				+ ", member_image_idx=" + member_image_idx + "]";
 	}
+	
 	
 }
