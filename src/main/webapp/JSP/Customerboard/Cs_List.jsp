@@ -1,6 +1,42 @@
+<%@page import="DTO.CustomerboardDTO"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="DAO.CustomerboardDAO"%>
 <%@page import="DTO.BoardCommentDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+//DAO를 생성해 DB에 연결
+CustomerboardDAO dao = new CustomerboardDAO();
+
+//사용자가 입력한 검색 조건을 Map에 저장
+Map<String, String> param = new HashMap<String, String>(); 
+String searchField = request.getParameter("searchField");
+String searchWord = request.getParameter("searchWord");
+if (searchWord != null) {
+ param.put("searchField", searchField);
+ param.put("searchWord", searchWord);
+}
+
+int totalCount = dao.selectCount(param);
+int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+int blockPage = Integer.parseInt(application.getInitParameter("PAGES_PER_BLOCK"));
+int totalPage = (int)Math.ceil((double)totalCount/pageSize);
+
+int pageNum = 1;
+String pageTemp = request.getParameter("pageNum");
+if(pageTemp != null && !pageTemp.equals(""))
+pageNum = Integer.parseInt(pageTemp);
+
+int limit1 = pageSize;
+int offset = (pageNum -1) * pageSize + 1;
+param.put("limit",pageSize+"");
+param.put("offset",offset+"");
+
+List<CustomerboardDTO> boardList = dao.selectList(param);
+dao.close();
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -75,12 +111,44 @@
               </div>
             </div>
             <table>
-                <tr>
-                  <th class="col1">번호</th>
-                  <th class="td_left">제목</th>
-                  <th class="col3">작성일자</th>
-                </tr>
-               
+        		<tr>
+            		<th width="10%">NO</th>
+            		<th width="10%">분류</th>
+            		<th width="10%">공개여부</th>
+            		<th width="50%">제목</th>
+            		<th width="15%">작성자</th>
+            		<th width="15%">작성일</th>
+     		   </tr>
+<%
+if (boardList.isEmpty()) {
+    // 게시물이 하나도 없을 때 
+%>
+        <tr>
+        	<td colspan="10" align="center">등록된 게시물이 없습니다</td>
+        </tr>
+<%
+}
+else {
+    // 게시물이 있을 때 
+    int virtualNum = 0;  // 화면상에서의 게시물 번호
+    for (CustomerboardDTO dto : boardList)
+    {
+        virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
+%>
+        <tr align="center">
+            <td><%= virtualNum %></td>  <!--게시물 번호-->
+            <td><%= dto.getAbleview() %></td>
+            <td><%= dto.getCategory() %></td>
+            <td align="left">  <!--제목(+ 하이퍼링크)-->
+                <a href="View.jsp?num=<%= dto.getIdx() %>"><%= dto.getTitle() %></a>
+            </td>
+            <td align="center"><%= dto.getMember_id() %></td>          <!--작성자 아이디-->
+            <td align="center"><%= dto.getRegidate() %></td>    <!--작성일-->
+        </tr>
+<%
+    }
+}
+%>
             </table>
             <div class="board_pagination">
               <a href="#" class="prev_paging">
