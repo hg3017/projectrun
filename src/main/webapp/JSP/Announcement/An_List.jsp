@@ -47,7 +47,7 @@
 	<div class="btn_wrap">
 		<c:if test="${UserId eq 'hong01' }">
 			<button type="button" class="write_btn"
-				onclick="location.href='An_Write.an';">글쓰기</button>
+				onclick="location.href='/An_Write.an';">글쓰기</button>
 		</c:if>
 	</div>
 
