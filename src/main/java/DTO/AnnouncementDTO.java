@@ -4,18 +4,60 @@ import java.sql.Date;
 
 public class AnnouncementDTO {
     // 멤버 변수 선언
-    private String num;
+    private String idx;
     private String title;
     private String content;
-    private String id;
-    private Date postdate;
+    private String member_id;
+    private Date regidate;
     private String visitcount;
     private String name;
     private String prevNum;
     private String prevTitle;
     private String nextNum;
     private String nextTitle;
-
+    
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public Date getRegidate() {
+		return regidate;
+	}
+	public void setRegidate(Date regidate) {
+		this.regidate = regidate;
+	}
+	public String getVisitcount() {
+		return visitcount;
+	}
+	public void setVisitcount(String visitcount) {
+		this.visitcount = visitcount;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPrevNum() {
 		return prevNum;
 	}
@@ -40,52 +82,12 @@ public class AnnouncementDTO {
 	public void setNextTitle(String nextTitle) {
 		this.nextTitle = nextTitle;
 	}
-	public String getNum() {
-		return num;
-	}
-	public void setNum(String num) {
-		this.num = num;
-	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public Date getPostdate() {
-		return postdate;
-	}
-	public void setPostdate(Date postdate) {
-		this.postdate = postdate;
-	}
-	public String getVisitcount() {
-		return visitcount;
-	}
-	public void setVisitcount(String visitcount) {
-		this.visitcount = visitcount;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
 	@Override
 	public String toString() {
-		return "AnnouncementDTO [num=" + num + ", title=" + title + ", content=" + content + ", id=" + id
-				+ ", postdate=" + postdate + ", visitcount=" + visitcount + ", name=" + name + ", prevNum=" + prevNum
+		return "AnnouncementDTO [idx=" + idx + ", title=" + title + ", content=" + content + ", member_id=" + member_id
+				+ ", regidate=" + regidate + ", visitcount=" + visitcount + ", name=" + name + ", prevNum=" + prevNum
 				+ ", prevTitle=" + prevTitle + ", nextNum=" + nextNum + ", nextTitle=" + nextTitle + "]";
 	}
+
+    
 }
