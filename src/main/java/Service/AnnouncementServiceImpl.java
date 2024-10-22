@@ -25,12 +25,6 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 		return dao.insertWrite(dto);
 	}
 
-//	@Override
-//	public AnnouncementDTO selectView(String num) {
-//		
-//		return dao.selectView(num);
-//	}
-
 	@Override
 	public int updateEdit(AnnouncementDTO dto) {
 		
@@ -48,13 +42,13 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	}
 
 	@Override
-	public void updateVisitCount(String num) {
-		dao.updateVisitCount(num);
+	public void updateVisitCount(String idx) {
+		dao.updateVisitCount(idx);
 	}
 
 	@Override
-	public AnnouncementDTO pnPage(String num) {
-		return dao.pnPage(num);
+	public AnnouncementDTO pnPage(String idx) {
+		return dao.pnPage(idx);
 	}
 
 

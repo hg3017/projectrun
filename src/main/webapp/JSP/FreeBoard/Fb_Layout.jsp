@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>공지사항</title>
+	<title>자유게시판</title>
 	<link rel="icon" href="/resources/images/common/favicon.png">
 	<link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
 	
@@ -27,7 +27,7 @@
 <body>
 	<jsp:include page="/JSP/Common/Header.jsp" />
 	
-	<jsp:include page="/JSP/Announcement/${layout }.jsp" />
+	<jsp:include page="/JSP/FreeBoard/${Fb_Layout }.jsp" />
 	
 	<jsp:include page="/JSP/Common/Footer.jsp" />
 </body>
