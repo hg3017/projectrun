@@ -41,11 +41,13 @@ public class FreeBoardController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doProcess");
+	    response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
-		System.out.println(action);
+		
+		String path = "Fb_List";
 		
 		if (action.equals("/Fb_List.free")) {
 			
@@ -53,7 +55,7 @@ public class FreeBoardController extends HttpServlet {
 			String searchField = request.getParameter("searchField"); // 검색 필드 (예: 제목, 내용 등)
 			String searchWord = request.getParameter("searchWord"); // 검색어
 			String limitParam = request.getParameter("limit"); // 페이징 처리를 위한 limit
-			String offsetParam = request.getParameter("offset");
+			//String offsetParam = request.getParameter("offset");
 			String pageNumParam = request.getParameter("pageNum");
 			
 		    int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10; // 기본 페이지 크기
@@ -81,28 +83,27 @@ public class FreeBoardController extends HttpServlet {
 		    request.setAttribute("pagingStr", pagingStr);
 
 			// 4. 어떻게 어디로 이동 할것인가?
-			String path = "/JSP/FreeBoard/Fb_List.jsp";
-			request.getRequestDispatcher(path).forward(request, response);
+			path = "Fb_List";
 			
 		} else if (action.equals("/Fb_Write.free")) {
 
 			// 3. 어떻게 어디로 이동 할것인가?
-			String path = "/JSP/FreeBoard/Fb_Write.jsp";
-			response.sendRedirect(path);
+			path = "Fb_Write";
 			
 		} else if (action.equals("/Fb_WriteProcess.free")) {
 			// 파일 업로드 처리
 			// 1. 받을 값 확인
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+			//String idx = request.getParameter("idx");
 			
 			HttpSession session = request.getSession();
-		    String id = (String) session.getAttribute("UserId");
+		    String member_id = (String) session.getAttribute("UserId");
 		    
 			FreeBoardDTO dto = new FreeBoardDTO();
 			dto.setTitle(title);
 			dto.setContent(content);
-			dto.setId(id);
+			dto.setMember_id(member_id);
 			
 			// 2. service 요청
 			int rs = service.insertWrite(dto);
@@ -110,49 +111,44 @@ public class FreeBoardController extends HttpServlet {
 			// 3. 어떻게 어디로 이동 할것인가?
 			if (rs == 1) {
 				// 성공적으로 삽입
-				String path = "Fb_List.free";
-				response.sendRedirect(path);
+				response.sendRedirect("/Fb_List.free");
+				return;
 			} else {
 				// 삽입 실패
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
-				String path = "/JSP/FreeBoard/Fb_Write.jsp"; // 다시 작성 페이지로 돌아감
-				request.getRequestDispatcher(path).forward(request, response);
+				path = "Fb_Write"; // 다시 작성 페이지로 돌아감
 			}
 			
 		} else if (action.equals("/Fb_View.free")) {
 			
-			String num = request.getParameter("num");  // 일련번호 받기 
+			String idx = request.getParameter("idx");  // 일련번호 받기 
 
-			service.updateVisitCount(num);                 // 조회수 증가 
-			FreeBoardDTO dto = service.pnPage(num);     // 게시물 가져오기 
+			service.updateVisitCount(idx);                 // 조회수 증가 
+			FreeBoardDTO dto = service.pnPage(idx);     // 게시물 가져오기 
 
 			request.setAttribute("board", dto);
 		
-			
-			String path = "/JSP/FreeBoard/Fb_View.jsp";
-			request.getRequestDispatcher(path).forward(request, response);
-			
+			path = "Fb_View";
 
 		} else if (action.equals("/Fb_Edit.free")) {
-			String num = request.getParameter("num");  // 일련번호 받기 
-			HttpSession session = request.getSession();
-			String sessionId = (String) session.getAttribute("UserId");
+			String idx = request.getParameter("idx");  // 일련번호 받기 
+			//HttpSession session = request.getSession();
+			//String member_id = (String) session.getAttribute("UserId");
 			
-			FreeBoardDTO dto = service.pnPage(num);        // 게시물 가져오기 
+			FreeBoardDTO dto = service.pnPage(idx);        // 게시물 가져오기 
 			request.setAttribute("board", dto);
 			
 			// 3. 어떻게 어디로 이동 할것인가?
-			String path = "/JSP/FreeBoard/Fb_Edit.jsp";
-			request.getRequestDispatcher(path).forward(request, response);
+			path = "Fb_Edit";
 			
 		} else if (action.equals("/Fb_EditProcess.free")) {
 			// 1. 받을 값 확인
-			String num = request.getParameter("num");
+			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			FreeBoardDTO dto = new FreeBoardDTO();
-			dto.setNum(num);
+			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
 			
@@ -163,51 +159,49 @@ public class FreeBoardController extends HttpServlet {
 			// 3. 어떻게 어디로 이동 할것인가?
 			if (rs == 1) {
 				// 성공 시 상세 보기 페이지로 이동
-				String path = "Fb_View.free?num=" + num;
-				response.sendRedirect(path);
+				response.sendRedirect("/Fb_View.free?idx=" + idx);
+				return;
 			} else {
 				// 삽입 실패
 				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
-				String path = "/JSP/FreeBoard/Fb_Edit.jsp"; // 다시 작성 페이지로 돌아감
-				request.getRequestDispatcher(path).forward(request, response);
+				path = "Fb_Edit"; // 다시 작성 페이지로 돌아감
 			}
 		} else if (action.equals("/Fb_DeleteProcess.free")) {
 			// 1. 받을 값 확인
 			HttpSession session = request.getSession();
-			String num = request.getParameter("num");
+			String idx = request.getParameter("idx");
 
 			FreeBoardDAO dao = new FreeBoardDAO();
-			FreeBoardDTO dto = dao.pnPage(num);
+			FreeBoardDTO dto = dao.pnPage(idx);
 
 			// 로그인된 사용자 ID 얻기
-			String sessionId = session.getAttribute("UserId").toString();
+			String member_id = session.getAttribute("UserId").toString();
 			int delResult = 0;
 
-			if (sessionId.equals(dto.getId())) { // 작성자가 본인인지 확인
+			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
 				// 작성자가 본인이면...
-				dto.setNum(num);
+				dto.setIdx(idx);
 
 				delResult = service.deletePost(dto);
 
 				// 3. 어떻게 어디로 이동 할것인가?
 				if (delResult == 1) {
 					// 성공 시 목록 페이지로 이동
-					session.setAttribute("message", "삭제되었습니다.");
-					String path = "Fb_List.free";
-					response.sendRedirect(path);
+					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/Fb_List.free'</script>");
+					return;
 				} else {
 					// 실패 시 이전 페이지로 이동
-					request.setAttribute("errorMessage", "삭제에 실패하였습니다.");
-					String path = "Fb_View.jsp?num=" + num; // 다시 작성 페이지로 돌아감
-					request.getRequestDispatcher(path).forward(request, response);
+					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/Fb_View.free?idx=" + idx + "'</script>");
+					return;
 				}
 			} else {
 				// 작성자가 본인이 아닐 때 처리
-				request.setAttribute("errorMessage", "본인만 삭제할 수 있습니다.");
-				String path = "Fb_View.jsp?num=" + num; // 상세 페이지로 돌아감
-				request.getRequestDispatcher(path).forward(request, response);
+				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Fb_View.free?idx=" + idx + "'</script>");
+				return;
 			}
 		}
+		request.setAttribute("Fb_Layout", path);
+		request.getRequestDispatcher("/JSP/FreeBoard/Fb_Layout.jsp").forward(request, response);
 	}
 
 }

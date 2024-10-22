@@ -13,6 +13,6 @@ public interface FreeBoardService {
 	public int updateEdit(FreeBoardDTO dto);
 	public int deletePost(FreeBoardDTO dto);
 	public int selectCount(Map<String, String> map);
-	public void updateVisitCount(String num);
-	public FreeBoardDTO pnPage(String num);
+	public void updateVisitCount(String idx);
+	public FreeBoardDTO pnPage(String idx);
 }
