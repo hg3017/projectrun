@@ -41,7 +41,8 @@ public class CustomerController extends HttpServlet {
 		String action = uri.substring(lastShash);
 		System.out.println(action);
 		
-		if(action.equals("Cs_list.co")) {
+		
+		if(action.equals("/Cs_List.co")) {
 			String searchField = requset.getParameter("searchField");
 			String searchWord = requset.getParameter("searchWord");
 			String limitParam = requset.getParameter("limit");
@@ -65,10 +66,10 @@ public class CustomerController extends HttpServlet {
 			
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, requset.getContextPath() + "/Cs_list.co");
+			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, requset.getContextPath() + "/Cs_List.co");
 			requset.setAttribute("paginStr", pagingStr);
 			
-			String path = "Cs_list";
+			String path = "Cs_List";
 		} 
 	}
 	
