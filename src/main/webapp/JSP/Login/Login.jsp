@@ -24,7 +24,8 @@
 		<input type="submit" value="로그인">	
 	</form>
 	
-	<a href='/JSP/Register/Register.jsp' > 회원가입 </a>
+<!-- 	<a href='/JSP/Register/Register.jsp' > 회원가입 </a> -->
+	<a href='/JSP/Register/layout.jsp' > 회원가입 </a>
 	
 	
 		
