@@ -10,7 +10,7 @@
       <div class="inner">
         <div class="head_wrap">
           <h2 class="main_tit">러닝크루</h2>
-          <a class="crew_btn" href="/JSP/Main/Crew_write.jsp">크루등록하기</a>
+          <a class="crew_btn" href="/CrewRegistHref.crew">크루등록하기</a>
         </div>
         <p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
         <div class="filter_container">
