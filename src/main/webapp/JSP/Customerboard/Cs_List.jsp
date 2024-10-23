@@ -27,6 +27,7 @@ int totalPage = (int)Math.ceil((double)totalCount/pageSize);
 int pageNum = 1;
 String pageTemp = request.getParameter("pageNum");
 if(pageTemp != null && !pageTemp.equals(""))
+	
 pageNum = Integer.parseInt(pageTemp);
 
 int limit1 = pageSize;
