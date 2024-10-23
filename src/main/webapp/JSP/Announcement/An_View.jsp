@@ -12,7 +12,6 @@ function deletePost() {
         form.submit();                      // 폼값 전송
     }
 }
-
 </script>
 
 <main id="container" class="sub_container list_page">
