@@ -28,7 +28,7 @@ function validateForm(form) {  // 폼 내용 검증
 	<section class="contents">
 		<div class="inner">
 			<div class="board_write">
-				<form name="editFrm" method="post" action="An_EditProcess.an"
+				<form name="editFrm" method="post" enctype="multipart/form-data" action="An_EditProcess.an"
 					onsubmit="return validateForm(this);">
 					<input type="hidden" name="idx" value="${board.idx }" />
 					<fieldset>
@@ -57,7 +57,7 @@ function validateForm(form) {  // 폼 내용 검증
 									<td class="td_flex">
 										<div class="file_wrap">
 											<input type="text" readonly> <label> <input
-												type="file" class="blind"> 파일선택
+												type="file" name="file">
 											</label>
 										</div>
 										<p class="file_note">※ 등록 가능 확장자 :
