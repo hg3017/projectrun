@@ -85,6 +85,7 @@ function deletePost() {
 		</div>
 	</section>
 </main>
+
 <%-- 	<table border="1" style="width: 100%;">
 		<tr>
 			<td>댓글 작성자 : ${board.id }</td>

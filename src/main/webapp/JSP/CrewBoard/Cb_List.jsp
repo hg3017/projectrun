@@ -157,8 +157,7 @@ else {
     }
 }
 %>
-                
-                
+            
                 <%-- <c:if test="${empty boards }">
                 	<tr>
                 		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
