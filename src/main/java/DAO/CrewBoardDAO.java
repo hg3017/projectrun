@@ -82,7 +82,7 @@ public class CrewBoardDAO extends JDBConnect{
 		return cb;
 	}
 
-	public List<CrewBoardDTO> selectListPage(Map<String, String> map) {
+	public List<CrewBoardDTO> selectListPage(Map<String, Object> map) {
 		List<CrewBoardDTO> cb = new Vector<CrewBoardDTO>(); // 결과(게시물 목록)를 담을 변수
 
 		// 쿼리문 템플릿
@@ -123,6 +123,47 @@ public class CrewBoardDAO extends JDBConnect{
 
 		// 목록 반환
 		return cb;
+	}
+	
+	public int insertWrite(CrewBoardDTO dto) { 
+		int result = 0;
+		
+		try {
+			String query = "INSERT INTO board (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getCrew_name());
+			psmt.setString(3, dto.getContent());
+			psmt.setString(4, dto.getMember_id());
+			
+			result = psmt.executeUpdate();
+		}
+		catch (Exception e) {
+			System.out.println("게시물 입력 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public CrewBoardDTO selectView(String num) {
+		CrewBoardDTO dto = new CrewBoardDTO();
+		
+		String query = "";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, null);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setIdx(rs.getString(1));
+			}
+		}
+		catch (Exception e) {
+			
+		}
+		return dto;
 	}
 
 }

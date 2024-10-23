@@ -6,9 +6,9 @@
 <%@page import="DAO.CrewBoardDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%-- <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> --%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
  
- <%
+ <%-- <%
  CrewBoardDAO dao = new CrewBoardDAO();
  
  Map<String, String> param = new HashMap<String, String>(); 
@@ -21,7 +21,7 @@
 
  int totalCount = dao.selectCount(param);  // 게시물 수 확인
  int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
- int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK")); 
+/*  int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK"));  */
  int totalPage = (int)Math.ceil((double)totalCount/pageSize); 
  
  
@@ -38,7 +38,7 @@
  
  List<CrewBoardDTO> boardList = dao.selectList(param);
  dao.close();
- %>
+ %> --%>
  
 <!DOCTYPE html>
 <html>
@@ -129,7 +129,24 @@
                   <th>작성일</th>
                   <th>조회수</th>
                 </tr>
-                <%
+                <c:if test="${empty boards }">
+                	<tr>
+			           <td colspan="6" align="center">
+			               등록된 게시물이 없습니다.
+			           </td>
+			       </tr>
+                </c:if>
+                <c:forEach var="board" items="${boards }" varStatus="status">
+                	<tr align="center">
+                		<td>${boards.size() - status.index}</td>
+                		<td><a href="Cb_View.co?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
+                		<td>${boards.member_id }</td>
+                		<td>${boards.crew_name }</td>
+                		<td>${boards.regidate }</td>
+                		<td>${boards.visitcount }</td>
+                	</tr>
+                </c:forEach>
+<%--                 <%
 if (boardList.isEmpty()) {
     // 게시물이 하나도 없을 때 
 %>
@@ -160,10 +177,12 @@ else {
 <%
     }
 }
-%>
+%> --%>
+
+
             </table>
             <div class="board_pagination">
-            <td><%=CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
+           ${pagingStr}
             </div>
           </div>
         </div>

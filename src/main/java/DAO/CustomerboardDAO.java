@@ -194,9 +194,46 @@ public class CustomerboardDAO extends JDBConnect {
 	}
 	
 	public CustomerboardDTO viewPage(String idx) {
+		CustomerboardDTO dto = new CustomerboardDTO();
 		
+		String query = "";
+		query += " SELECT A.*										";
+		query += "	FROM (											";
+		query += " SELECT											";
+		query += " IDX, 											";
+		query += " MEMBER_ID										";
+		query += " TITLE,											";
+		query += " REGIDATE											";
+		query += " CONTENT 											";
+		query += " OFILE 											";
+		query += " SFILE 											";
+		query += " LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM, 		";
+		query += " LEAD(IDX) OVER(ORDER BY IDX) AS NEXT_NUM, 		";
+		query += " LAG(TITLE) OVER(ORDER BY IDX) AS PREV_TITLE, 	";
+		query += " LEAD(TITLE) OVER(ORDER BY IDX) AS NEXT_TITLE, 	";
+		query += " FROM CUSTOMERBOARD 								";
+		query += " ) A 												";
+		query += " WHERE IDX = ?									";
 		
-		return null;
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, idx);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				dto.setIdx(rs.getInt("idx"));
+				dto.setCategory(rs.getString("category"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setRegidate(rs.getDate("regidate"));
+				
+			}
+		} catch (Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return dto;
 		
 	}
 }
