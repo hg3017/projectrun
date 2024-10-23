@@ -192,4 +192,11 @@ public class CustomerboardDAO extends JDBConnect {
 		}
 		return result;
 	}
+	
+	public CustomerboardDTO viewPage(String idx) {
+		
+		
+		return null;
+		
+	}
 }
