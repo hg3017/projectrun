@@ -1,0 +1,15 @@
+.main_register {
+    padding: 30px 0;
+}
+.main_register .inner {
+  max-width: 1450px;
+  margin: 0 auto;
+}
+.main_register .info {
+  font-size: 30px;
+  font-weight: 700;
+  color: black;
+  text-align: left;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
