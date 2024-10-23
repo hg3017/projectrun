@@ -16,7 +16,6 @@ String searchField = request.getParameter("searchField");
 String searchWord = request.getParameter("searchWord");
 if (searchWord != null) {
  param.put("searchField", searchField);
- 
  param.put("searchWord", searchWord);
 }
 
