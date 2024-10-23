@@ -40,11 +40,21 @@ public class CrewBoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
+		
+		String path = "Cb_List";
+		
 		System.out.println(action);
 		if(action.equals("/Cb_List.crewb")) {
 			Map<String, String> param = new HashMap<String, String>();
 			String searchField = request.getParameter("searchField");
 			String searchWord = request.getParameter("searchWord");
+			String limitParam = request.getParameter("limit");
+			String pageNumParam = request.getParameter("pageNum");
+			
+			int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10;
+			int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1;
+			
+			
 			if(searchWord != null) {
 				param.put("searchField",searchField);
 				param.put("searchWord",searchWord);
@@ -52,9 +62,11 @@ public class CrewBoardController extends HttpServlet {
 			CrewBoardDAO dao = new CrewBoardDAO();
 			List<CrewBoardDTO> boardLists = dao.selectList(param);
 			
-			String path = "/JSP/CrewBoard/Cb_List.jsp";
 			request.getRequestDispatcher(path).forward(request, response);
 			
 		}
+		request.setAttribute("layout", path);
+	    request.getRequestDispatcher("/JSP/Customerboard/layout.jsp").forward(request, response);
 	}
+	
 }

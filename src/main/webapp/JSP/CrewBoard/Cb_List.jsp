@@ -21,7 +21,7 @@
 
  int totalCount = dao.selectCount(param);  // 게시물 수 확인
  int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
- int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK")); 
+/*  int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK"));  */
  int totalPage = (int)Math.ceil((double)totalCount/pageSize); 
  
  
@@ -163,7 +163,14 @@ else {
 %>
             </table>
             <div class="board_pagination">
-            <td><%=CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
+            <a href="#" class="prev_paging">
+                <span class="blind">첫페이지</span>
+              </a>
+              <span class="num active">1</span>
+              <a href="#" class="next_paging">
+                <span class="blind">마지막페이지</span>
+              </a>
+           <%--  <td><%=CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td> --%>
             </div>
           </div>
         </div>
