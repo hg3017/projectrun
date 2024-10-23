@@ -47,7 +47,7 @@ function deletePost() {
 				<div class="view_file">
 					<h3>첨부파일</h3>
 					<c:if test="${not empty board.ofile}">
-						<a href="${board.sfile}">${board.ofile}</a>
+						<a href="${board.sfile}" download>${board.ofile}</a>
 					</c:if>
 					<c:if test="${empty board.ofile}">
 						<span>첨부파일 없음</span>
@@ -85,6 +85,7 @@ function deletePost() {
 		</div>
 	</section>
 </main>
+
 <%-- 	<table border="1" style="width: 100%;">
 		<tr>
 			<td>댓글 작성자 : ${board.id }</td>

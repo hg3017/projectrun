@@ -26,27 +26,26 @@ public class CustomerController extends HttpServlet {
 		service = new CustomerboardServiceImpl();
 	}
 
-	protected void doGet(HttpServletRequest requset, HttpServletResponse response) throws ServletException, IOException {
-		super.doGet(requset, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
 	}
 
-	protected void doPost(HttpServletRequest requset, HttpServletResponse response) throws ServletException, IOException {
-		super.doPost(requset, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		doProcess(request, response);
 	}
 	
-	protected void doProcess(HttpServletRequest requset, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("doProcess");
-		String uri = requset.getRequestURI();
-		int lastShash = uri.lastIndexOf("/");
-		String action = uri.substring(lastShash);
-		System.out.println(action);
+	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String uri = request.getRequestURI();
+		int lastSlash = uri.lastIndexOf("/");
+		String action = uri.substring(lastSlash);
 		
+		String path = "Cs_List";
 		
 		if(action.equals("/Cs_List.co")) {
-			String searchField = requset.getParameter("searchField");
-			String searchWord = requset.getParameter("searchWord");
-			String limitParam = requset.getParameter("limit");
-			String pageNumParam = requset.getParameter("pageNum");
+			String searchField = request.getParameter("searchField");
+			String searchWord = request.getParameter("searchWord");
+			String limitParam = request.getParameter("limit");
+			String pageNumParam = request.getParameter("pageNum");
 			
 			int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10;
 			int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1;
@@ -59,20 +58,30 @@ public class CustomerController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 			
 			int totalCount =  service.selectCount(map);
-			requset.setAttribute("totalCount", totalCount);
+			request.setAttribute("totalCount", totalCount);
 			
-			List<CustomerboardDTO> board = service.selectList(map);
-			requset.setAttribute("board", board);
+			List<CustomerboardDTO> boards = service.selectList(map);
+			request.setAttribute("boards", boards);
 			
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, requset.getContextPath() + "/Cs_List.co");
-			requset.setAttribute("paginStr", pagingStr);
+			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co");
+			request.setAttribute("pagingStr", pagingStr);
 			
-			String path = "Cs_List";
-		} 
+			path = "Cs_List";
+		} else if(action.equals("/Cs_View.co")) {
+			String idx = request.getParameter("idx");
+			
+			service.updateVisitCount(idx);
+			CustomerboardDTO dto = service.ViewPage(idx);
+			
+			request.setAttribute("board", dto);
+			path = "Cs_View";
+			
+		}
+		request.setAttribute("layout", path);
+		request.getRequestDispatcher("/JSP/Customerboard/layout.jsp").forward(request, response);
 	}
-	
 	
 	
 	

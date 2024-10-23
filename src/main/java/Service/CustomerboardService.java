@@ -12,7 +12,7 @@ public interface CustomerboardService {
 	public int updateEdit(CustomerboardDTO dto);
 	public int deletePost(CustomerboardDTO dto);
 	public int selectCount(Map<String, String> map);
-	public void updateVisitCount(String num);
-//	public CustomerboardDTO pnPage(String num);
+	public void updateVisitCount(String idx);
+	public CustomerboardDTO ViewPage(String idx);
 	
 }

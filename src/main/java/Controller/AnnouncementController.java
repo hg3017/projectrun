@@ -1,9 +1,6 @@
 package Controller;
 
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,13 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.oreilly.servlet.MultipartRequest;
-
 import DAO.AnnouncementDAO;
 import DTO.AnnouncementDTO;
 import Service.AnnouncementService;
 import Service.AnnouncementServiceImpl;
 import Utils.AnnouncementPage;
+import Utils.FileUtils;
 
 @WebServlet("*.an")
 public class AnnouncementController extends HttpServlet {
@@ -93,8 +89,39 @@ public class AnnouncementController extends HttpServlet {
 			path = "An_Write";
 			
 		} else if (action.equals("/An_WriteProcess.an")) {
-			multipartProcess(request, response);
-			return;
+			AnnouncementDTO dto = new AnnouncementDTO();
+			
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("oFile"));
+			dto.setSfile(rData.get("sFile"));
+			
+			// 파일 업로드 처리
+			// 1. 받을 값 확인
+			String title = rData.get("title");
+			String content = rData.get("content");
+			//String idx = request.getParameter("idx");
+			
+			HttpSession session = request.getSession();
+		    String member_id = (String) session.getAttribute("UserId");
+		    
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setMember_id(member_id);
+			
+			// 2. service 요청
+			int rs = service.insertWrite(dto);
+
+			// 3. 어떻게 어디로 이동 할것인가?
+			if (rs == 1) {
+				// 성공적으로 삽입
+				//String path = "An_List.an";
+				response.sendRedirect("/An_List.an");
+				return;
+			} else {
+				// 삽입 실패
+				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
+				path = "An_Write";
+			}
 			
 		} else if (action.equals("/An_View.an")) {
 			String idx = request.getParameter("idx");  // 일련번호 받기 
@@ -107,8 +134,6 @@ public class AnnouncementController extends HttpServlet {
 
 		} else if (action.equals("/An_Edit.an")) {
 			String idx = request.getParameter("idx");  // 일련번호 받기 
-			//HttpSession session = request.getSession();
-			//String sessionId = (String) session.getAttribute("UserId");
 			
 			AnnouncementDTO dto = service.pnPage(idx);        // 게시물 가져오기 
 			request.setAttribute("board", dto);
@@ -117,12 +142,17 @@ public class AnnouncementController extends HttpServlet {
 			path = "An_Edit";
 			
 		} else if (action.equals("/An_EditProcess.an")) {
-			// 1. 받을 값 확인
-			String idx = request.getParameter("idx");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-
 			AnnouncementDTO dto = new AnnouncementDTO();
+			
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("oFile"));
+			dto.setSfile(rData.get("sFile"));
+			
+			// 1. 받을 값 확인
+			String idx = rData.get("idx");
+			String title = rData.get("title");
+			String content = rData.get("content");
+
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
@@ -180,73 +210,6 @@ public class AnnouncementController extends HttpServlet {
 		
 		request.setAttribute("layout", path);
 		request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
-	}
-
-	private void multipartProcess(HttpServletRequest request, HttpServletResponse response) {
-		try {
-			String saveDirectory = request.getServletContext().getRealPath("/Upload");
-			System.out.println(saveDirectory);
-
-			int maxPostSize = 1024 * 1024 * 5; // 5M
-			String encoding = "UTF-8";
-
-			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, encoding);
-
-			AnnouncementDTO dto = new AnnouncementDTO();
-			
-			// file
-			String fileName = mr.getFilesystemName("file");
-			// 파일이 없을 경우 처리
-			if (fileName == null || fileName.isEmpty()) {
-			    // 파일이 없는 경우에 대한 로직
-			    System.out.println("파일이 업로드되지 않았습니다.");
-			    dto.setOfile("");
-			    dto.setSfile("");
-			} else {
-			String ext = fileName.substring(fileName.lastIndexOf(".")); // aaa.jpg
-			String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
-
-			String newFileName = now + ext;
-			File oldFile = new File(saveDirectory + File.separator + fileName);
-			File newFile = new File(saveDirectory + File.separator + newFileName);
-			oldFile.renameTo(newFile);
-			
-			dto.setOfile(fileName);
-			dto.setSfile(newFileName);
-			}
-			// 파일 업로드 처리
-			// 1. 받을 값 확인
-			String title = mr.getParameter("title");
-			String content = mr.getParameter("content");
-			//String idx = request.getParameter("idx");
-			
-			HttpSession session = request.getSession();
-		    String member_id = (String) session.getAttribute("UserId");
-		    
-			dto.setTitle(title);
-			dto.setContent(content);
-			dto.setMember_id(member_id);
-			
-			// 2. service 요청
-			int rs = service.insertWrite(dto);
-
-			// 3. 어떻게 어디로 이동 할것인가?
-			if (rs == 1) {
-				// 성공적으로 삽입
-				//String path = "An_List.an";
-				response.sendRedirect("/An_List.an");
-				return;
-			} else {
-				// 삽입 실패
-				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
-				request.setAttribute("layout", "An_Write");
-				request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
-			}
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
 	}
 
 }
