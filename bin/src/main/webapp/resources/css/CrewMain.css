@@ -1,0 +1,126 @@
+
+.main_info {
+  padding: 0 2%;
+  margin-top: 120px;
+  margin-bottom: 150px
+}
+
+.main_info .inner {
+  justify-content: space-between;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+
+.main_tit {
+  margin-bottom: 40px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 700; 
+  
+}
+
+
+.main_info .section_left {
+  width: 40%;
+}
+
+.main_info .crew_picture {
+  justify-content: space-between;
+  margin-top: 40px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.main_info .crew_picture a {
+  width: 49%;
+  padding: 32px 8px;
+}
+
+/* 
+.main_info .crew_picture a:nth-child(2) ~ a {
+  margin-top: 2%;
+} */
+ 
+
+.main_info .picture_list {
+  display: block;
+  font-size: 17px;
+  text-align: center;
+  border: 1px solid #0d0d0d;
+  font-weight: 700;
+  position: relative;
+  transition: all 0.4s;
+  color: #0d0d0d;
+  
+}
+
+
+/* Main Section Notice ************************* */
+/* Main Section Notice ************************* */
+/* Main Section Notice ************************* */
+/* Main Section Notice ************************* */
+/* Main Section Notice ************************* */
+
+.main_info .section_right {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.board_more {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.main_tit a {
+  display: block;
+  max-width: 83px;
+  font-size: 15px;
+  font-weight: 500;
+  padding-right: 35px;
+  margin-right: -10px;
+  background: url(/resources/images/icon/arr2_r_off.png) calc(100% - 10px) center no-repeat;
+  transition: all 0.3s;
+}
+
+.main_info .section_right .notice {
+  border-top: 1px solid #d9d9d9;
+}
+
+.main_info .section_right .notice li {
+  padding: 23px 0;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.main_info .section_right .list_detail {
+  display: flex;
+  flex-flow: row wrap;
+  color: #0d0d0d;
+}
+
+.main_info .section_right .list_detail p {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.main_info .section_right .list_detail p:nth-of-type(2) {
+  width: calc(100% - 110px);
+  padding: 0 25px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.main_info .section_right .list_detail p:nth-of-type(3) {
+  font-size: 14px;
+  font-weight: 400;
+}

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+.main_write .inner {
+  padding-top: 150px;
+}
+.head_wrap {
+  margin: 0  auto;
+}
+.head_wrap .main_tit {
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+}
+.head_wrap .tit {
+  padding:  10px 0 20px;
+  text-align: center;
+
+}
+
+.input_wrap {
+  position: relative;
+  text-align: center;
+}
+.input_wrap .inner {
+  padding: 50px;
+  /* border: 1px solid #c6c6c6; */
+  margin: 0 auto;
+  box-shadow: 0 5px 8px 0 rgba(68,68,68,.04);
+
+}
+.wr2 .text{
+  margin: 20px;
+}
+.wr1 p {
+  padding:  0 150px 5px 0;
+}
+
+.wr2 p {
+  padding:  0 160px 5px 0;
+}
+.wr3 p {
+  padding:  0 130px 5px 0;
+}
+.wr4 p {
+  padding:  0 140px 5px 0;
+}
+
+.btn_wrap2 {
+  font-size: 18px;
+  font-weight: 600;
+  padding: 5px;
+  text-align: center;
+}
+.btn_wrap2 a {
+  border: 1px solid black;
+  border-radius: 5px;
+}
