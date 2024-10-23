@@ -88,6 +88,7 @@ AdminCrewDTO crew = (AdminCrewDTO) request.getAttribute("crew");
 				<div class="contents">
 					<div class="inner">
 						<form name="writeFrm" method="post" action="Crew_EditProcess.adcr">
+						<input type="hidden" name="idx" value="<%=crew.getIdx() %>">
 							<table border="1" width="80%">
 								<tr>
 									<td width="10%" name="idx">IDX</td>
