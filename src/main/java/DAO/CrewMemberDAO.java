@@ -80,7 +80,6 @@ public class CrewMemberDAO extends JDBConnect {
 				crewMember.setStatus(rs.getString("status"));
 				crewMember.setMember_image(rs.getInt("member_image_idx"));
 				crewMember.setDescription(rs.getString("description"));
-							
 				crewMemberList.add(crewMember); 
             }
 		} catch (SQLException e) {
