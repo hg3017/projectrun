@@ -30,8 +30,8 @@ public class AdminCrewServiceImpl implements AdminCrewService{
 	}
 	
 	@Override
-	public AdminCrewDTO selectView(String id) {
-		return this.dao.selectView(id);
+	public AdminCrewDTO selectView(int idx) {
+		return this.dao.selectView(idx);
 	}
 	@Override
 	public int updateEdit(AdminCrewDTO dto) {
@@ -40,8 +40,8 @@ public class AdminCrewServiceImpl implements AdminCrewService{
 	}
 	
 	@Override
-	public int delete(String id) {
+	public int delete(int idx) {
 		
-		return this.dao.delete(id);
+		return this.dao.delete(idx);
 	}
 }

@@ -94,7 +94,8 @@
 				<div class="contents">
 					<div class="inner">
 						<div class="">
-							
+							크루 관리 페이지입니다. <br>
+							<a href="/JSP/Admin/Crew/Crew_List.adcr">crew 목록 이동</a>
 						</div>
 					</div>
 				</div>

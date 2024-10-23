@@ -1,5 +1,7 @@
+<%@page import="DTO.AdminCrewDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%AdminCrewDTO crew = (AdminCrewDTO) request.getAttribute("crew"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,38 +16,29 @@
 <meta property="og:image" content="/pub/images/og_image.jpg">
 <meta property="og:description" content="러닝크루">
 <title>러닝메이트</title>
-<link rel="icon"
-	href="/resources/images/common/favicon.png">
+<link rel="icon" href="/resources/images/common/favicon.png">
 <link rel="apple-touch-icon-precomposed"
 	href="/resources/images/common/free-icon-running-7126743.png">
 
 <!-- js 파일 연결 -->
 <!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->
-<script
-	src="/resources/js/jquery-3.7.1.min.js"></script>
-<script
-	src="/resources/js/jquery-ui.min.js"></script>
-<script
-	src="/resources/js/swiper-bundle.min.js"></script>
+<script src="/resources/js/jquery-3.7.1.min.js"></script>
+<script src="/resources/js/jquery-ui.min.js"></script>
+<script src="/resources/js/swiper-bundle.min.js"></script>
 <script src="/resources/js/aos.js"></script>
-<script
-	src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
+<script src="/resources/js/ui-common.js?v=<?php echo time(); ?>"></script>
 
 <!-- css 파일 연결 -->
-<link
-	href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>"
+<link href="/resources/css/jquery-ui.min.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <link
 	href="/resources/css/swiper-bundle.min.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/admin_main.css?v=<?php echo time(); ?>"
+<link href="/resources/css/admin_main.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/admin_sub.css?v=<?php echo time(); ?>"
+<link href="/resources/css/admin_sub.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
-<link
-	href="/resources/css/common.css?v=<?php echo time(); ?>"
+<link href="/resources/css/common.css?v=<?php echo time(); ?>"
 	rel="stylesheet" type="text/css">
 <!-- php타임스탬프 이용하여 css캐싱방지 -->
 </head>
@@ -60,8 +53,7 @@
 				<div class="header_left">
 					<div class="inner">
 						<a href="/JSP/Admin/Admin_Index.jsp"> <img
-							src='/resources/images/logo.png'
-							alt="러닝메이트">
+							src='/resources/images/logo.png' alt="러닝메이트">
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
 						</a>
 					</div>
@@ -89,13 +81,43 @@
 								<li><a href="#">setting(미구현)<a></li>
 							</ul>
 						</div>
-					</aside> 
+					</aside>
 				</div>
 				<div class="contents">
 					<div class="inner">
-						<div class="">
-							
-						</div>
+						<form name="writeFrm" method="post"
+							action="Crew_WriteProcess.adcr">
+							<table border="1" width="80%">
+								<tr>
+									<td width="10%">IDX</td>
+									<td align="center"><%=crew.getIdx()%></td>
+								</tr>
+								<tr>
+									<td width="10%">NAME</td>
+									<td align="center"><%=crew.getName()%></td>
+								</tr>
+								<tr>
+									<td width="10%">LOCATION_ID</td>
+									<td align="center"><%=crew.getLocation_id()%></td>
+								</tr>
+								<tr>
+									<td width="10%">DESCRIPTION</td>
+									<td align="center"><%=crew.getDescription()%></td>
+								</tr>
+								<tr>
+									<td width="10%">REGIDATE</td>
+									<td align="center"><%=crew.getRegidate()%></td>
+								</tr>
+								<tr>
+									<td colspan="2" align="center"><a
+										href="/JSP/Admin/Crew/Crew_List.adcr">[List]</a> <a
+										href="/JSP/Admin/Crew/Crew_Edit.adcr?idx=<%=crew.getIdx()%>">[Edit]</a>
+										<a
+										href="/JSP/Admin/Crew/Crew_DeleteProcess.adcr?idx=<%=crew.getIdx()%>">[Delete]</a>
+									</td>
+								</tr>
+							</table>
+						</form>
 					</div>
 				</div>
 			</div>
