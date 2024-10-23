@@ -9,7 +9,7 @@
 <%
 String saveDirectory = application.getRealPath("/Uploads");
 out.print(saveDirectory);
-saveDirectory = "/Users/lhg/Desktop/ProjectRun/src/main/webapp/Upload";
+saveDirectory = "/Users/lhg/git/ProjectRun/src/main/webapp/Upload";
 
 int maxPostSize = 1024 * 1024 * 5; // 5M
 String encoding = "UTF-8";
