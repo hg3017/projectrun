@@ -30,8 +30,10 @@
                 
                 
                 
+                
+                
                 	<select id = "lo" name = "lo" size = "1" >
-                		<c:forEach var="location" items="${locations }" varStatus="status">
+<%--                 		<c:forEach var="location" items="${locations }" varStatus="status"> --%>
                 			<option value=${location.id}>${location.name} </option>	
                 		</c:forEach>
                 	</select>
