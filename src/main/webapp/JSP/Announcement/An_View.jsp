@@ -12,7 +12,6 @@ function deletePost() {
         form.submit();                      // 폼값 전송
     }
 }
-
 </script>
 
 <main id="container" class="sub_container list_page">
@@ -44,6 +43,17 @@ function deletePost() {
 					<c:if test="${empty board.content }">내용없음</c:if>
 					<c:if test="${not empty board.content }">${board.content }</c:if>
 				</div>
+						<!-- 파일 첨부 정보 -->
+				<div class="view_file">
+					<h3>첨부파일</h3>
+					<c:if test="${not empty board.ofile}">
+						<a href="${board.sfile}">${board.ofile}</a>
+					</c:if>
+					<c:if test="${empty board.ofile}">
+						<span>첨부파일 없음</span>
+					</c:if>
+				</div>
+				
 				<dl class="view_paging">
 					<dt>이전글</dt>
 					<dd>

@@ -1,4 +1,4 @@
-<%@page import="DAO.FileDAO"%>
+<%-- <%@page import="DAO.FileDAO"%>
 <%@page import="DTO.FileDTO"%>
 <%@page import="java.io.File"%>
 <%@page import="java.util.Date"%>
@@ -20,6 +20,7 @@ MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, 
 String fileName = mr.getFilesystemName("attachedFile");
 String ext = fileName.substring(fileName.lastIndexOf(".")); // aaa.jpg
 String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+
 String newFileName = now + ext;
 File oldFile = new File(saveDirectory + File.separator + fileName);
 File newFile = new File(saveDirectory + File.separator + newFileName);
@@ -52,4 +53,4 @@ dao.insertFile(dto);
 //response.sendRedirect("/An_Write.an");
 
 
-%>
+%> --%>
