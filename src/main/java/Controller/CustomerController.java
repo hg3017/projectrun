@@ -66,10 +66,19 @@ public class CustomerController extends HttpServlet {
 			int pageSize = 10;
 			int blockPage = 5;
 			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co");
-			request.setAttribute("paginStr", pagingStr);
+			request.setAttribute("pagingStr", pagingStr);
 			
 			path = "Cs_List";
-		} 
+		} else if(action.equals("/Cs_View.co")) {
+			String idx = request.getParameter("idx");
+			
+			service.updateVisitCount(idx);
+			CustomerboardDTO dto = service.ViewPage(idx);
+			
+			request.setAttribute("board", dto);
+			path = "Cs_View";
+			
+		}
 		request.setAttribute("layout", path);
 		request.getRequestDispatcher("/JSP/Customerboard/layout.jsp").forward(request, response);
 	}
