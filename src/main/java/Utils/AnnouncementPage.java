@@ -16,6 +16,7 @@ public class AnnouncementPage {
 
 		}
 		int blockCount = 1;
+		
 		while(blockCount <= blockPage && pageTemp <= totalPages){
 			if(pageNum == pageTemp ) {
 				pagingStr += String.format("<span class=\"num active\">%s</span>&nbsp;&nbsp;", pageTemp);

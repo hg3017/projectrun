@@ -1,6 +1,9 @@
 package Controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.oreilly.servlet.MultipartRequest;
 
 import DAO.AnnouncementDAO;
 import DTO.AnnouncementDTO;
@@ -40,7 +45,8 @@ public class AnnouncementController extends HttpServlet {
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doProcess");
+	    response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
@@ -59,13 +65,6 @@ public class AnnouncementController extends HttpServlet {
 		    int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1; // 기본 페이지 번호
 		    int offset = (pageNum - 1) * limit; // 오프셋 계산
 
-			// 2. searchField, searchWord, limit, offset 값을 Map에 저장
-//			Map<String, String> map = new HashMap<>();
-//			map.put("searchField", searchField != null ? searchField : ""); // 필드가 없으면 빈 값
-//			map.put("searchWord", searchWord != null ? searchWord : ""); // 검색어가 없으면 빈 값
-//			map.put("limit", limit != null ? limit : "10"); // 기본 limit 설정
-//			map.put("offset", offset != null ? offset : "0");
-			
 		    Map<String, String> map = new HashMap<>();
 		    map.put("searchField", (searchField != null) ? searchField : "");
 		    map.put("searchWord", (searchWord != null) ? searchWord : "");
@@ -94,18 +93,139 @@ public class AnnouncementController extends HttpServlet {
 			path = "An_Write";
 			
 		} else if (action.equals("/An_WriteProcess.an")) {
-			// 파일 업로드 처리
+			multipartProcess(request, response);
+			return;
+			
+		} else if (action.equals("/An_View.an")) {
+			String idx = request.getParameter("idx");  // 일련번호 받기 
+
+			service.updateVisitCount(idx);                 // 조회수 증가 
+			AnnouncementDTO dto = service.pnPage(idx);     // 게시물 가져오기 
+
+			request.setAttribute("board", dto);
+			path = "An_View";
+
+		} else if (action.equals("/An_Edit.an")) {
+			String idx = request.getParameter("idx");  // 일련번호 받기 
+			//HttpSession session = request.getSession();
+			//String sessionId = (String) session.getAttribute("UserId");
+			
+			AnnouncementDTO dto = service.pnPage(idx);        // 게시물 가져오기 
+			request.setAttribute("board", dto);
+			
+			// 3. 어떻게 어디로 이동 할것인가?
+			path = "An_Edit";
+			
+		} else if (action.equals("/An_EditProcess.an")) {
 			// 1. 받을 값 확인
+			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			
-			HttpSession session = request.getSession();
-		    String id = (String) session.getAttribute("UserId");
-		    
+
 			AnnouncementDTO dto = new AnnouncementDTO();
+			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
-			dto.setId(id);
+			
+			// 2. service 요청
+			int rs = service.updateEdit(dto);
+
+			// 3. 어떻게 어디로 이동 할것인가?
+			if (rs == 1) {
+				// 성공 시 상세 보기 페이지로 이동
+				response.sendRedirect("/An_View.an?idx=" + idx);
+				return;
+			} else {
+				// 삽입 실패
+				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
+				path = "An_Edit";
+			}
+			
+		} else if (action.equals("/An_DeleteProcess.an")) {
+			// 1. 받을 값 확인
+			HttpSession session = request.getSession();
+			String idx = request.getParameter("idx");
+
+			AnnouncementDAO dao = new AnnouncementDAO();
+			AnnouncementDTO dto = dao.pnPage(idx);
+			
+
+			// 로그인된 사용자 ID 얻기
+			String member_id = session.getAttribute("UserId").toString();
+			int delResult = 0;
+
+			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
+				// 작성자가 본인이면...
+				dto.setIdx(idx);
+
+				delResult = service.deletePost(dto);
+
+				// 3. 어떻게 어디로 이동 할것인가?
+				if (delResult == 1) {
+					// 성공 시 목록 페이지로 이동
+//					session.setAttribute("message", "삭제되었습니다.");
+					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/An_List.an'</script>");
+					return;
+				} else {
+					// 실패 시 이전 페이지로 이동
+					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/An_View.an?idx=" + idx + "'</script>");
+					return;
+				}
+			} else {
+				// 작성자가 본인이 아닐 때 처리
+				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/An_View.an?idx=" + idx + "'</script>");
+				return;
+			}
+		}
+		
+		request.setAttribute("layout", path);
+		request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
+	}
+
+	private void multipartProcess(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			String saveDirectory = request.getServletContext().getRealPath("/Upload");
+			System.out.println(saveDirectory);
+
+			int maxPostSize = 1024 * 1024 * 5; // 5M
+			String encoding = "UTF-8";
+
+			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, encoding);
+
+			AnnouncementDTO dto = new AnnouncementDTO();
+			
+			// file
+			String fileName = mr.getFilesystemName("file");
+			// 파일이 없을 경우 처리
+			if (fileName == null || fileName.isEmpty()) {
+			    // 파일이 없는 경우에 대한 로직
+			    System.out.println("파일이 업로드되지 않았습니다.");
+			    dto.setOfile("");
+			    dto.setSfile("");
+			} else {
+			String ext = fileName.substring(fileName.lastIndexOf(".")); // aaa.jpg
+			String now = new SimpleDateFormat("yyyyMMdd_HmsS").format(new Date());
+
+			String newFileName = now + ext;
+			File oldFile = new File(saveDirectory + File.separator + fileName);
+			File newFile = new File(saveDirectory + File.separator + newFileName);
+			oldFile.renameTo(newFile);
+			
+			dto.setOfile(fileName);
+			dto.setSfile(newFileName);
+			}
+			// 파일 업로드 처리
+			// 1. 받을 값 확인
+			String title = mr.getParameter("title");
+			String content = mr.getParameter("content");
+			//String idx = request.getParameter("idx");
+			
+			HttpSession session = request.getSession();
+		    String member_id = (String) session.getAttribute("UserId");
+		    
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setMember_id(member_id);
 			
 			// 2. service 요청
 			int rs = service.insertWrite(dto);
@@ -119,96 +239,14 @@ public class AnnouncementController extends HttpServlet {
 			} else {
 				// 삽입 실패
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
-				path = "An_Write"; // 다시 작성 페이지로 돌아감
+				request.setAttribute("layout", "An_Write");
+				request.getRequestDispatcher("/JSP/Announcement/layout.jsp").forward(request, response);
 			}
 			
-		} else if (action.equals("/An_View.an")) {
-			String num = request.getParameter("num");  // 일련번호 받기 
-
-			service.updateVisitCount(num);                 // 조회수 증가 
-			AnnouncementDTO dto = service.pnPage(num);     // 게시물 가져오기 
-
-			request.setAttribute("board", dto);
-			path = "An_View";
-
-		} else if (action.equals("/An_Edit.an")) {
-			String num = request.getParameter("num");  // 일련번호 받기 
-			//HttpSession session = request.getSession();
-			//String sessionId = (String) session.getAttribute("UserId");
-			
-			AnnouncementDTO dto = service.pnPage(num);        // 게시물 가져오기 
-			request.setAttribute("board", dto);
-			
-			// 3. 어떻게 어디로 이동 할것인가?
-			path = "An_Edit";
-			
-		} else if (action.equals("/An_EditProcess.an")) {
-			// 1. 받을 값 확인
-			String num = request.getParameter("num");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-
-			AnnouncementDTO dto = new AnnouncementDTO();
-			dto.setNum(num);
-			dto.setTitle(title);
-			dto.setContent(content);
-			
-			// 2. service 요청
-			int rs = service.updateEdit(dto);
-
-			// 3. 어떻게 어디로 이동 할것인가?
-			if (rs == 1) {
-				// 성공 시 상세 보기 페이지로 이동
-				response.sendRedirect("/An_View.an?num=" + num);
-				return;
-			} else {
-				// 삽입 실패
-				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
-				path = "An_Edit";
-			}
-			
-		} else if (action.equals("/An_DeleteProcess.an")) {
-			// 1. 받을 값 확인
-			HttpSession session = request.getSession();
-			String num = request.getParameter("num");
-
-			AnnouncementDAO dao = new AnnouncementDAO();
-			AnnouncementDTO dto = dao.pnPage(num);
-			
-			// 응답 인코딩 설정
-		    response.setContentType("text/html; charset=UTF-8");
-		    response.setCharacterEncoding("UTF-8");
-
-			// 로그인된 사용자 ID 얻기
-			String sessionId = session.getAttribute("UserId").toString();
-			int delResult = 0;
-
-			if (sessionId.equals(dto.getId())) { // 작성자가 본인인지 확인
-				// 작성자가 본인이면...
-				dto.setNum(num);
-
-				delResult = service.deletePost(dto);
-
-				// 3. 어떻게 어디로 이동 할것인가?
-				if (delResult == 1) {
-					// 성공 시 목록 페이지로 이동
-//					session.setAttribute("message", "삭제되었습니다.");
-					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/An_List.an'</script>");
-					return;
-				} else {
-					// 실패 시 이전 페이지로 이동
-					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/An_View.an?num=" + num + "'</script>");
-					return;
-				}
-			} else {
-				// 작성자가 본인이 아닐 때 처리
-				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/An_View.an?num=" + num + "'</script>");
-				return;
-			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		request.setAttribute("An_layout", path);
-		request.getRequestDispatcher("/JSP/Announcement/An_Layout.jsp").forward(request, response);
 	}
 
 }

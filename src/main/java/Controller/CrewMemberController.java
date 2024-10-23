@@ -90,6 +90,7 @@ public class CrewMemberController extends HttpServlet {
 			} 
 			
 		}
+		// 가입 승인 로직. 
 		else if(action.equals("/accept.crewMember")) {
 			String name = request.getParameter("name");
 			String crew_name = request.getParameter("crew_name");
@@ -104,6 +105,7 @@ public class CrewMemberController extends HttpServlet {
 			}
 			
 		}
+		// 가입 거부 로직.
 		else if(action.equals("/refuse.crewMember")) {
 			String name = request.getParameter("name");
 			String crew_name = request.getParameter("crew_name");
@@ -117,7 +119,9 @@ public class CrewMemberController extends HttpServlet {
 				request.setAttribute("RefuseErrMsg", "가입 거절 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
 			}
-		} else if(action.equals("/delete.crewMember")) {
+		} 
+		// 회원 탈퇴 로직. 
+		else if(action.equals("/delete.crewMember")) {
 			String name = request.getParameter("name");
 			String crew_name = request.getParameter("crew_name");
 			
