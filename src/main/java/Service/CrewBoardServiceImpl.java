@@ -19,6 +19,12 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	public List<CrewBoardDTO> selectList(Map<String, String> map) {
 		return dao.selectList(map);
 	}
+
+	@Override
+	public int selectCount(Map<String, String> map) {
+		// TODO Auto-generated method stub
+		return dao.selectCount(map);
+	}
 	
 	
 }
