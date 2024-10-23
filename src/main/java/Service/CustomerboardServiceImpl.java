@@ -19,11 +19,6 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 		return dao.selectList(map);
 	}
 
-//	@Override
-//	public CustomerboardDTO selectView(String rum) {
-//		return dao.selectView();
-//	}
-
 	@Override
 	public int insertWrite(CustomerboardDTO dto) {
 		return dao.inserWrite(dto);
@@ -45,8 +40,13 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 	}
 
 	@Override
-	public void updateVisitCount(String num) {
-		dao.updateVisitCount(num);
+	public void updateVisitCount(String idx) {
+		dao.updateVisitCount(idx);
+	}
+
+	@Override
+	public CustomerboardDTO ViewPage(String idx) {
+		return dao.viewPage(idx);
 	}
 	
 	
