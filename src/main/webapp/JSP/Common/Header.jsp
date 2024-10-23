@@ -27,7 +27,7 @@ String sessionId = (String) session.getAttribute("UserId");
           </ul>
         </li>
         <li><a href="/An_List.an">공지사항</a></li>
-        <li><a href="/JSP/Main/List_cs.jsp">고객센터</a></li>
+        <li><a href="/Cs_List.co">고객센터</a></li>
       </ul>
     </nav>
     <div class="btn_wrap">
@@ -65,7 +65,7 @@ String sessionId = (String) session.getAttribute("UserId");
             </ul>
           </li>
           <li><a href="/An_List.an">공지사항</a></li>
-          <li><a href="/JSP/Main/List_cs.jsp"">고객센터</a></li>
+          <li><a href="/Cs_List.co">고객센터</a></li>
       </ul>
     </div>
   </aside>
