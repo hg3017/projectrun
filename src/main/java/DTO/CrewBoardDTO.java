@@ -8,7 +8,7 @@ public class CrewBoardDTO {
     private String crew_name;
     private String content;
     private String member_id;
-    private java.sql.Date postdate;
+    private java.sql.Date regidate;
     private String visitcount;
     
 
@@ -52,12 +52,12 @@ public class CrewBoardDTO {
 		this.member_id = member_id;
 	}
 
-	public java.sql.Date getPostdate() {
-		return postdate;
+	public java.sql.Date getRegidate() {
+		return regidate;
 	}
 
-	public void setPostdate(java.sql.Date postdate) {
-		this.postdate = postdate;
+	public void setRegidate(java.sql.Date regidate) {
+		this.regidate = regidate;
 	}
 
 	public String getVisitcount() {
@@ -66,6 +66,12 @@ public class CrewBoardDTO {
 
 	public void setVisitcount(String visitcount) {
 		this.visitcount = visitcount;
+	}
+
+	@Override
+	public String toString() {
+		return "CrewBoardDTO [idx=" + idx + ", title=" + title + ", crew_name=" + crew_name + ", content=" + content
+				+ ", member_id=" + member_id + ", regidate=" + regidate + ", visitcount=" + visitcount + "]";
 	}
 	
 	
