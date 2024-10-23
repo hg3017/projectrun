@@ -50,6 +50,7 @@ public class MemberDAO extends JDBConnect{
 		return members;
 	}
 
+	// 현재 사용 안하는 중
 	public int insertWrite(String id, String pass, String name, int grade, String nickname, String location, String phone_number) {
 		int rs = 0;
 
@@ -80,7 +81,7 @@ public class MemberDAO extends JDBConnect{
 		int rs = 0;
 		// insert into member(id,pass,name,grade,nickname,location,phone_number) values ('01','01','01',01,'01','01','01');
 		// String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number) values (?,?,?,?,?,?,?)";
-		String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number) values (?,?,?,?,?,?,?)";
+		String sql = "insert into member(id,pass,name,grade,nickname,location,phone_number,description) values (?,?,?,?,?,?,?,?)";
 		try {
 			System.out.println("insertWrite 함수 실행 성공");
 			psmt = con.prepareStatement(sql);
@@ -92,6 +93,7 @@ public class MemberDAO extends JDBConnect{
 			psmt.setString(5, dto.getNickname());
 			psmt.setString(6, dto.getLocation());
 			psmt.setString(7, dto.getPhone_number());
+			psmt.setString(8, dto.getDescription());
 
 			rs = psmt.executeUpdate();
 		} catch (SQLException e) {
@@ -109,7 +111,7 @@ public class MemberDAO extends JDBConnect{
 		MemberDTO member = null;
 		// String sql = "select id, pass, name, regidate from member where id = ?";
 		System.out.println("selectView 메서드의 id 값 : "+id);
-		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx from member where id = ?";
+		String sql = "select idx, id, pass, name, grade, nickname, location, phone_number, description, regidate, editdate, member_image_idx from member where id = ?";
 		
 		try {
 			psmt = con.prepareStatement(sql);
@@ -127,11 +129,12 @@ public class MemberDAO extends JDBConnect{
 				String nickname = rs.getString("nickname");
 				String location = rs.getString("location");
 				String phone_number = rs.getString("phone_number");
+				String description = rs.getString("description");
 				String regidate = rs.getString("regidate");
 				String editdate = rs.getString("editdate");
 				int member_image_idx = rs.getInt("member_image_idx");
 				//out.print(String.format("%s,%s,%s,%s <br>", id, pass, name, regidate));
-				member = new MemberDTO(idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx);
+				member = new MemberDTO(idx, id, pass, name, grade, nickname, location, phone_number, description, regidate, editdate, member_image_idx);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -144,15 +147,18 @@ public class MemberDAO extends JDBConnect{
 		int rs = 0;
 		
 		// String sql = "update member set pass = ?, name = ? where id = ?";
-		String sql = "update member set pass= ?, name = ?, nickname= ?, location= ?, phone_number=?  where id = ?";
+		String sql = "update member set pass= ?, name = ?, grade = ?, nickname= ?, location= ?, phone_number=?, description=?, member_image_idx=? where id = ?";
 		try {
 			psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getPass());
 			psmt.setString(2, dto.getName());
-			psmt.setString(3, dto.getNickname());
-			psmt.setString(4, dto.getLocation());
-			psmt.setString(5, dto.getPhone_number());
-			psmt.setString(6, dto.getId());
+			psmt.setInt(3, dto.getGrade());
+			psmt.setString(4, dto.getNickname());
+			psmt.setString(5, dto.getLocation());
+			psmt.setString(6, dto.getPhone_number());
+			psmt.setString(7, dto.getDescription ());
+			psmt.setInt(8, dto.getMember_image_idx ());
+			psmt.setString(9, dto.getId());
 
 			rs = psmt.executeUpdate();
 		} catch (SQLException e) {

@@ -82,10 +82,10 @@ public class AdminController extends HttpServlet {
 			// String형 변수 name를 선언하고 request 객체의 pass 속성의 값을 저장한다.
 			// System.out.print(id + "," + pass + "," + name);
 			int grade = Integer.parseInt(request.getParameter("grade"));
+			// String -> int 형변환 : int numInt = Integer.parseInt(str);
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
-			// String -> int 형변환 : int numInt = Integer.parseInt(str);
+			String phone_number = request.getParameter("phone_number");
 			
 			MemberDTO dto = new MemberDTO(id, pass, name, grade, nickname, location, phone_number);			
 			// 2. 어떤 service 요청
@@ -132,7 +132,7 @@ public class AdminController extends HttpServlet {
 			// System.out.print(id + "," + pass + "," + name);
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
-			int phone_number = Integer.parseInt(request.getParameter("phone_number"));
+			String phone_number = request.getParameter("phone_number");
 			// String -> int 형변환 : int numInt = Integer.parseInt(str)
 			MemberDTO dto = new MemberDTO(id, pass, name, nickname, location, phone_number);
 			
