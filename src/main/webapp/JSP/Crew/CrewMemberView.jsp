@@ -9,7 +9,6 @@
 
 <%
    	String crewSessionId = (String)request.getAttribute("crewSessionId");  
-
    	List<CrewMemberDTO> crewMemberLists = (List<CrewMemberDTO>)request.getAttribute("crewMemberLists"); 	
 %>
         

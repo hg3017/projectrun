@@ -17,8 +17,6 @@
    	String crewSessionId = (String)request.getAttribute("crewSessionId");  
    	CrewDTO dto = (CrewDTO)request.getAttribute("CrewDetail"); 
    	List<CrewMemberDTO> crewMainMemberLists =  (List<CrewMemberDTO>)request.getAttribute("crewMainMemberLists"); 
-   	System.out.println("CrewMain.jsp : crewMainMemberLists");
-    System.out.println(crewMainMemberLists);
 %>
 
 <script type="text/javascript">
@@ -32,7 +30,6 @@
 </script>
 
 <main id="container">
-
 
 	  <section class="main_info">
 	  <div class="inner">
