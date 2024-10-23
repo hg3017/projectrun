@@ -72,7 +72,7 @@
 						<p>For a day when everyone runs happy</p>
 					</div>
 				</div>
-			</div>
+			</div> 
 		</header>
 		<main id="container">
 			<div class="inner">
