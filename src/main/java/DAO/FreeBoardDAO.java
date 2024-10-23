@@ -31,7 +31,7 @@ public class FreeBoardDAO extends JDBConnect {
 				psmt.setString(1, "%" + map.get("searchWord") + "%");
 			}
 
-			rs = psmt.executeQuery(query); // 쿼리 실행
+			rs = psmt.executeQuery(); // 쿼리 실행
 			if (rs.next()) { // 커서를 첫 번째 행으로 이동
 				totalCount = rs.getInt(1); // 첫 번째 칼럼 값을 가져옴
 			}

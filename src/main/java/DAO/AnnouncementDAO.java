@@ -32,7 +32,7 @@ public class AnnouncementDAO extends JDBConnect {
 				psmt.setString(1, "%" + map.get("searchWord") + "%");
 			}
 
-			rs = psmt.executeQuery(query); // 쿼리 실행
+			rs = psmt.executeQuery(); // 쿼리 실행
 			if (rs.next()) { // 커서를 첫 번째 행으로 이동
 				totalCount = rs.getInt(1); // 첫 번째 칼럼 값을 가져옴
 			}
@@ -136,12 +136,14 @@ public class AnnouncementDAO extends JDBConnect {
 
 		try {
 			// INSERT 쿼리문 작성
-			String query = "INSERT INTO announcement (title,content,member_id) VALUES ( ?, ?, ?)";
+			String query = "INSERT INTO announcement (title,content,member_id,ofile,sfile) VALUES ( ?, ?, ?, ?, ?)";
 
 			psmt = con.prepareStatement(query); // 동적 쿼리
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getMember_id());
+			psmt.setString(4, dto.getOfile());
+			psmt.setString(5, dto.getSfile());
 
 			result = psmt.executeUpdate();
 
@@ -206,6 +208,8 @@ public class AnnouncementDAO extends JDBConnect {
 		query += "			TITLE,                                            ";
 		query += "			REGIDATE,                                         ";
 		query += "			CONTENT,                                          ";
+		query += "			OFILE,                                            ";
+		query += "			SFILE,                                            ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
 		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXT_NUM,         ";
 		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREV_TITLE,      ";
@@ -226,6 +230,8 @@ public class AnnouncementDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
 				dto.setRegidate(rs.getDate("regidate"));
 				
 				// 이전글 정보
