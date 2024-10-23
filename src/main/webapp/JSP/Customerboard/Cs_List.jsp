@@ -41,24 +41,22 @@
         </div>
         <table>
           <tr>
-            <th width="10%">NO</th>
+            <th>NO</th>
             <th width="10%">분류</th>
             <th width="10%">공개여부</th>
-            <th width="40%">제목</th>
-            <th width="15%">작성자</th>
-            <th width="15%">작성일</th>
+            <th width="60%">제목</th>
+            <th width="15%">작성일자</th>
           </tr>
           <c:if test="${empty boards }">
             <tr><td colspan="5" align="center">등록된 게시물이 없습니다.</td></tr>
           </c:if>
           <c:forEach var="board" items="${boards}" varStatus="status">
             <!-- 등록된 게시물이 있을 때 -->
-            <tr align="center">
+            <tr>
               <td>${boards.size() - status.index}</td> <!-- 테이블번호 -->
               <td>${board.category }</td> <!-- 분류 -->
               <td>${board.ableview }</td> <!-- 공개여부 -->
               <td><a href="Cs_View.co?idx=${board.idx }">${board.title }</a></td> <!-- 제목 -->
-              <td>${board.member_id }</td> <!-- 작성자아이디 -->
               <td>${board.regidate }</td> <!-- 작성일자 -->
             </tr>
           </c:forEach>

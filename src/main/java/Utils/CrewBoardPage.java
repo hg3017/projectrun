@@ -6,7 +6,7 @@ public class CrewBoardPage {
 		String pagingStr = "";
 		
 		
-		int totalPage = (int)(Math.ceil(((double)totalCount / pageSize)));
+		int totalPages = (int)(Math.ceil((totalCount / (double)pageSize)));
 		
 		int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1;
 		
@@ -15,7 +15,7 @@ public class CrewBoardPage {
 			pagingStr += String.format("<a hraf=\"%s?pageNum=%s\">[Prev]</a>", reqUrl,pageTemp-1);
 		}
 		int blockCount = 1;
-		while(blockCount <= blockPage && pageTemp <= totalPage) {
+		while(blockCount <= blockPage && pageTemp <= totalPages) {
 			if(pageNum == pageTemp) {
 				pagingStr += String.format("[%s]", pageTemp);
 			}else {
@@ -24,9 +24,9 @@ public class CrewBoardPage {
 			pageTemp++;
 			blockCount++;
 		}
-		if(pageTemp <= totalPage) {
+		if(pageTemp <= totalPages) {
 			pagingStr += String.format("<a hraf=\"%s?pageNum=%s\">[Next]</a>", reqUrl, pageTemp+1);
-			pagingStr += String.format("<a hraf=\"%s?pageNum=%s\">[End]</a>", reqUrl, totalPage);
+			pagingStr += String.format("<a hraf=\"%s?pageNum=%s\">[End]</a>", reqUrl, totalPages);
 		}
 		return pagingStr;
 		

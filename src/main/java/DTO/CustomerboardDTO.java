@@ -13,6 +13,7 @@ public class CustomerboardDTO {
 	private int visitcount;
 	
 	
+	
 	public int getIdx() {
 		return idx;
 	}
