@@ -22,7 +22,7 @@
 	<script src="/resources/js/swiper-bundle.min.js"></script>
 	<script src="/resources/js/aos.js"></script>
 	<script src="/resources/js/ui-common.js"></script>
-  
+  	<script src="/resources/js/announcement.js"></script>
 </head>
 <body>
 	<jsp:include page="/JSP/Common/Header.jsp" />
