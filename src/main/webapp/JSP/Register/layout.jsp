@@ -28,7 +28,7 @@
 	<jsp:include page="/JSP/Common/Header.jsp" />
 
 	<jsp:include page="/JSP/Register/Register.jsp" />
-	
+
 	<jsp:include page="/JSP/Common/Footer.jsp" />
 </body>
 </html>
