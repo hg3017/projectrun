@@ -161,7 +161,7 @@ public class CrewBoardDAO extends JDBConnect{
 			}
 		}
 		catch (Exception e) {
-			// TODO: handle exception
+			
 		}
 		return dto;
 	}
