@@ -21,7 +21,6 @@ public class AdminCrewDTO {
 		this.regidate = regidate;
 	}
 	
-	
 	public AdminCrewDTO(int idx, String name, String location_id, String description) {
 		super();
 		this.idx = idx;
