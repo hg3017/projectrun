@@ -14,10 +14,13 @@ import DAO.CrewDAO;
 import DTO.AnnouncementDTO;
 import DTO.CrewDTO;
 import DTO.CrewMemberDTO;
+import DTO.LocationDTO;
 import Service.CrewMemberService;
 import Service.CrewMemberServiceImpl;
 import Service.CrewService;
 import Service.CrewServiceImpl;
+import Service.LocationService;
+import Service.LocationServiceImpl;
 
 
 
@@ -28,11 +31,13 @@ public class CrewController extends HttpServlet {
 
 	CrewService service;
 	CrewMemberService Memberservice;
+	LocationService Locationservice;
 	
 	// LoginController 생성자. 컨트롤러가 생성될 때 LoginServiceImpl 객체를 생성하여 service 변수에 할당합니다.
 	public CrewController() {
 		service = new CrewServiceImpl();
 		Memberservice = new CrewMemberServiceImpl();
+		Locationservice = new LocationServiceImpl();
 	}
 
 	// GET 방식으로 데이터를 받은 경우 작동합니다.
@@ -56,7 +61,7 @@ public class CrewController extends HttpServlet {
 		
 		String path = "CrewView";
 		
-		// Servelt 의 경로값이 /CrewListProcess.crew 인 경우 작동합니다. 
+		// 크루리스트 전체 목록을 가져옵니다. 
 		if(action.equals("/CrewListProcess.crew")) {
 			
 			List<CrewDTO> CrewLists = service.selectCrewList();
@@ -66,7 +71,7 @@ public class CrewController extends HttpServlet {
 				path = "CrewView";
 			} 
 		}
-		// Servelt 의 경로값이 /LoginForm.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
+		// 선택한 크루의 정보를 가지고, 선택 크루 상세화면으로 이동합니다. 
 		else if(action.equals("/CrewMainProcess.crew")) {
 			
 			String crewName = request.getParameter("crewName");
@@ -83,8 +88,57 @@ public class CrewController extends HttpServlet {
 			if(CrewDetail != null){
 				path= "CrewMain";
 			} 
+		
+		} 
+		// 크루 생성 화면으로 이동합니다. 
+		else if(action.equals("/CrewRegistHref.crew")) {
 			
-		}
+			List<LocationDTO> locations = Locationservice.locationView();
+			
+			request.setAttribute("locations", locations);
+			
+			if(locations != null){
+				path= "CrewRegist";
+			} 
+			
+			
+			
+		} 
+		// 입력한 크루를 등록합니다. 
+		else if(action.equals("/CrewRegist.crew")) {
+			CrewDTO dto = new CrewDTO();
+			
+			dto.setName(request.getParameter("name"));
+			dto.setDescripton(request.getParameter("description"));
+			dto.setLocation_id(request.getParameter("lo"));
+			
+			String sessionId = (String) session.getAttribute("UserId");  
+			
+			System.out.println("CrewRegist.crew- checkPoint2");
+			System.out.println("dto getName : " + dto.getName()  );
+			System.out.println("sessionId : " + sessionId  );
+			
+			int rs = service.registCrew(dto);
+			System.out.println("CrewRegist.crew- checkPoint1");
+			int memberResult = service.registCrewMaster(dto.getName(), sessionId);
+			
+			
+			
+			if(rs == 1 && memberResult == 1){
+				// 회원가입에 성공한 경우, 경로를 추출하고 추출한 경로를 통해 로그인 페이지로 이동합니다. 
+				List<CrewDTO> CrewLists = service.selectCrewList();
+				request.setAttribute("CrewLists", CrewLists);
+				
+				path= "CrewView";
+			} else {	
+				request.setAttribute("LoginErrMsg", "크루 등록 오류");
+				path= "CrewView";
+				
+			}
+			
+			
+		} 
+		
 		
 		request.setAttribute("layout", path);
 		request.getRequestDispatcher("/JSP/Crew/CrewLayout.jsp").forward(request, response);

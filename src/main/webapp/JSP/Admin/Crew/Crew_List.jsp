@@ -1,5 +1,9 @@
+<%@page import="java.util.List"%>
+<%@page import="DTO.AdminCrewDTO"%>
+<%@page import="DAO.AdminCrewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%List<AdminCrewDTO> crews = (List<AdminCrewDTO>)request.getAttribute("crews"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +63,7 @@
 			<div class="inner">
 				<div class="header_left">
 					<div class="inner">
-						<a href="index.jsp"> <img
+						<a href="/JSP/Admin/Admin_Index.jsp"> <img
 							src='/resources/images/logo.png'
 							alt="러닝메이트">
 							<h2>running mate</h2> <span class="blind">러닝메이트 사이트 로고</span>
@@ -83,13 +87,13 @@
 								<span class="blind">administer</span>
 							</h2>
 							<ul class="menu">
-								<li><a href="#">dashboard</a></li>
-								<li><a href="#">member</a></li>
-								<li><a href="#">crew</a></li>
-								<li><a href="#">setting<a></li>
+								<li><a href="#">dashboard(미구현)</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">member</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">crew</a></li>
+								<li><a href="#">setting(미구현)<a></li>
 							</ul>
 						</div>
-					</aside>
+					</aside> 
 				</div>
 				<div class="contents">
 					<div class="inner">
@@ -114,27 +118,32 @@
 								</fieldset>
 							</form>
 						</div>
-						<div class="board_list">
-							<table>
-								<thead>
+						<div class="board_list_admin">
+							<table border="1" width="80%">
 									<tr>
-										<th class="col1">id</th>
-										<th class="col2">name</th>
-										<th class="col3">grade</th>
-										<th class="col4">nickname</th>
-										<th class="col5">location</th>
-										<th class="col6">regidate</th>
+										<th width="11%">IDX</th>
+										<th width="11%">NAME</th>
+										<th width="11%">LOCATION_ID</th>
+										<th width="11%">DESCRIPTION</th>
+										<th width="11%">REGIDATE</th>
 									</tr>
-								</thead>
-								<tr>
-									<td>id자리</td>
-									<td>name자리</td>
-									<td>grade자리</td>
-									<td>nickname자리</td>
-									<td>location자리</td>
-									<td>regidate자리</td>
-								<tr>
-							</table>
+									<%
+									for (AdminCrewDTO crew : crews) {
+									%>
+									<tr align="center">
+										<td><a href="Crew_View.adcr?idx=<%=crew.getIdx()%>"><%=crew.getIdx()%></a></td>
+										<td><%=crew.getName()%></td>
+										<td><%=crew.getLocation_id()%></td>
+										<td><%=crew.getDescription()%></td>
+										<td><%=crew.getRegidate()%></td>
+										<%
+										}
+										%>
+									
+									<tr>
+										<td colspan="4"><a href="/JSP/Admin/Crew/Crew_Write.adcr">[회원 가입]</a></td>
+									</tr>
+								</table>
 						</div>
 					</div>
 				</div>
