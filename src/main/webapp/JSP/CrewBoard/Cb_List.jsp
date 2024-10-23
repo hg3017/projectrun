@@ -1,3 +1,4 @@
+<%@page import="Utils.CrewBoardPage"%>
 <%@page import="DTO.CrewBoardDTO"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
@@ -19,21 +20,23 @@
  }
 
  int totalCount = dao.selectCount(param);  // 게시물 수 확인
-/*  int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
- int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK"));
- int totalPage = (int)Math.ceil((double)totalCount/pageSize); */
-
+ int pageSize = Integer.parseInt(application.getInitParameter("POSTS_PER_PAGE"));
+ int blockPage = Integer.parseInt(application.getInitParameter("POSTS_PER_BLOCK")); 
+ int totalPage = (int)Math.ceil((double)totalCount/pageSize); 
+ 
+ 
+ 
  int pageNum = 1;
  String pageTemp = request.getParameter("pageNum");
  if(pageTemp != null && !pageTemp.equals(""))
  	pageNum = Integer.parseInt(pageTemp);
 
-/*  int limit1 = pageSize;
+ int limit1 = pageSize;
  int offset = (pageNum -1) * pageSize + 1;
- param.put("limit",pageSize+""); */
-/*  param.put("offset",offset+""); */
+ param.put("limit",pageSize+"");
+ param.put("offset",offset+""); 
  
- List<CrewBoardDTO> boardLists = dao.selectList(param);
+ List<CrewBoardDTO> boardList = dao.selectList(param);
  dao.close();
  %>
  
@@ -123,15 +126,15 @@
                   <th>제목</th>
                   <th>작성자</th>
                   <th>크루명</th>
-                  <th>조회수</th>
                   <th>작성일</th>
+                  <th>조회수</th>
                 </tr>
                 <%
-if (boardLists.isEmpty()) {
+if (boardList.isEmpty()) {
     // 게시물이 하나도 없을 때 
 %>
         <tr>
-            <td colspan="5" align="center">
+            <td colspan="6" align="center">
                 등록된 게시물이 없습니다.
             </td>
         </tr>
@@ -140,50 +143,27 @@ if (boardLists.isEmpty()) {
 else {
     // 게시물이 있을 때 
     int virtualNum = 0;  // 화면상에서의 게시물 번호
-    for (CrewBoardDTO dto : boardLists)
+    for (CrewBoardDTO dto : boardList)
     {
         virtualNum = totalCount--;  // 전체 게시물 수에서 시작해 1씩 감소
 %>
         <tr align="center">
             <td><%= virtualNum %></td>  <!--게시물 번호-->
             <td align="left">  <!--제목(+ 하이퍼링크)-->
-                <%-- <a href="View.jsp?num=<%= dto.getNum() %>"><%= dto.getTitle() %></a>  --%>
+                <a href="View.jsp?num=<%= dto.getIdx() %>"><%= dto.getTitle() %></a>
             </td>
             <td align="center"><%= dto.getMember_id() %></td>          <!--작성자 아이디-->
+             <td align="center"><%= dto.getCrew_name() %></td>    <!--크루명-->
+            <td align="center"><%= dto.getRegidate() %></td>    <!--작성일-->
             <td align="center"><%= dto.getVisitcount() %></td>  <!--조회수-->
-            <td align="center"><%= dto.getPostdate() %></td>    <!--작성일-->
         </tr>
 <%
     }
 }
 %>
-            
-                <%-- <c:if test="${empty boards }">
-                	<tr>
-                		<td colspan="6" align="center">등록된 게시물이 없습니다.</td>
-                	</tr>
-                </c:if>
-                
-                <c:forEach var="board" items="${boards }" varStatus="status">
-                	<tr align="center">
-                		<td>${boards.size() - status.index}</td>
-                		<td>
-                			<a href="#"></a>
-                		</td>
-                		<td>${board.id }</td>
-                		<td>${board.visitcount }</td>
-                		<td>${board.postdate }</td>
-                	</tr>
-                </c:forEach> --%>
             </table>
             <div class="board_pagination">
-              <a href="#" class="prev_paging">
-                <span class="blind">첫페이지</span>
-              </a>
-              <span class="num active">1</span>
-              <a href="#" class="next_paging">
-                <span class="blind">마지막페이지</span>
-              </a>
+            <td><%=CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getRequestURI()) %></td>
             </div>
           </div>
         </div>
