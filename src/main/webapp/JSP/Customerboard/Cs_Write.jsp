@@ -18,6 +18,7 @@
                 <legend>게시물 작성하기</legend>
                 <h3 class="tit">Q&A 게시물 작성하기</h3>
                 <p class="note"><i class="star"></i>표시는 필수 입력 사항입니다.</p>
+                
                 <table>
                   <caption class="nohead">게시물 작성하기 테이블</caption>
                   <tr>
