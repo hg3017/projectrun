@@ -121,7 +121,7 @@ public class AdminCrewController extends HttpServlet {
 			// forward 방식으로 request 객체를 전송하면서 파일로 이동
 		}else if(action.equals("/Crew_EditProcess.adcr")) {
 			System.out.println("Crew_EditProcess.adcr 진입성공");
-			// 1. 받을 값을 확인
+			System.out.println(request.getParameter("idx"));			// 1. 받을 값을 확인
 			int idx = Integer.parseInt(request.getParameter("idx"));
 			// request.getParameter() 메서드는 String 데이터형태로 데이터를 가져오므로
 			// Integer.parseInt() 메서드를 통해서 int형으로 강제 형변환 해주어야 한다.

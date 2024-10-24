@@ -2,15 +2,24 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
-
-  
+<% 
+	String sessionId = (String) session.getAttribute("UserId");  
+%>
     <main id="container" class="crew_page">
      <div id="wrap">
     <section class="main_report">
       <div class="inner">
         <div class="head_wrap">
           <h2 class="main_tit">러닝크루</h2>
-          <a class="crew_btn" href="/CrewRegistHref.crew">크루등록하기</a>
+          
+          <%      
+          	if(sessionId != null  ) {
+        %>
+          	<a class="crew_btn" href="/CrewRegistHref.crew">크루등록하기</a>
+        <%
+          	}
+        %>
+          
         </div>
         <p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
         <div class="filter_container">
