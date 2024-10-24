@@ -25,11 +25,10 @@
 	</form>
 	
 <!-- 	<a href='/JSP/Register/Register.jsp' > 회원가입 </a> -->
-	<a href='/JSP/Register/layout.jsp' > 회원가입 </a>
-	
-	
+	<a href="/JSP/Register/Register.regi"> 회원가입 </a> 
+	<a href="/JSP/Register/Register.jsp"> 회원가입JSP </a> 
+	<a href="/JSP/Admin/Member/Member_List.adme">회원 목록</a>
 		
 		
-	                  		
 </body>
 </html>
