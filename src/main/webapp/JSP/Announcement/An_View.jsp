@@ -30,9 +30,9 @@ function deletePost() {
 				</form>
 				<div class="view_top">
 					<c:if test="${UserId eq board.member_id }">
-						<button type="button" class="modify_btn"
-							onclick="location.href='An_Edit.an?idx=${board.idx}';">수정하기</button>
-						<button type="button" onclick="deletePost()">삭제하기</button>
+						<a href="#" class="modify_btn" style="margin-right:10px;"
+							onclick="location.href='An_Edit.an?idx=${board.idx}'; return false;">수정하기</a>
+						<a href="#" class="modify_btn" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
 					</c:if>
 				</div>
 				<div class="view_tit">
@@ -47,7 +47,7 @@ function deletePost() {
 				<div class="view_file">
 					<h3>첨부파일</h3>
 					<c:if test="${not empty board.ofile}">
-						<a href="${board.sfile}" download>${board.ofile}</a>
+						<a href="/FileDown.an?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
 					</c:if>
 					<c:if test="${empty board.ofile}">
 						<span>첨부파일 없음</span>
@@ -78,8 +78,8 @@ function deletePost() {
 					</dd>
 				</dl>
 				<div class="btn_wrap">
-					<button type="button" class="point_btn3"
-						onclick="location.href='/An_List.an';">목록</button>
+					<a href="#" class="point_btn3"
+						onclick="location.href='/An_List.an';">목록</a>
 				</div>
 			</div>
 		</div>

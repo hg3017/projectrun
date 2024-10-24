@@ -3,23 +3,18 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/JSP/CrewBoard/IsLoggedIn.jsp"%>
 
-<%
-String num = request.getParameter("num");
-
-CrewBoardDAO dao = new CrewBoardDAO();
-
-%>
-
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title </title>
-</head>
-<body>
- <jsp:include page="/JSP/Common/Header.jsp" />
-    
-    <main id="container" class="sub_container list_page">
+<script>
+	function deletePost() {
+		var confirmed = confirm("정말로 삭제하겠습니까?");
+		if(confirmed) {
+			var form = document.writeFrm;
+			form.method = "post";
+			form.action = "/An_DeleteProcess.an";
+		}
+		
+	}
+</script>
+<main id="container" class="sub_container list_page">
       <section class="sub_visual">
         <div class="inner">
           <div class="sub_wrap">
@@ -34,15 +29,21 @@ CrewBoardDAO dao = new CrewBoardDAO();
               <a href="/JSP/Main/List_boardcrew_modify.jsp" class="modify_btn">글 수정하기</a>
             </div>
             <div class="view_tit">
-              <h3>러닝 시 필요물품</h3>
-              <span class="date">2024.09.30</span>
+              <h3>${board.title }</h3>
+              <span class="date">${board.regidate }</span>
             </div>
             <div class="view_con">
-              게시물 내용
+              <c:if test="${empty board.content }">내용없음</c:if>
+              <c:if test="${not empty board.content }">${board.content }</c:if>
             </div>
             <dl class="view_paging">
               <dt>이전글</dt>
-              <dd><a href="#"></a></dd>
+              <dd>
+				<c:if test="${not empty board.prevNum  }">
+					<a href="Cb_View.cb?idx=${board.prevNum }">${board.prevTitle }</a>
+				</c:if>
+				<c:if test="${empty board.prevNum }"></c:if>
+			 </dd>
             </dl>
             <dl class="view_paging">
               <dt>다음글</dt>
@@ -55,6 +56,3 @@ CrewBoardDAO dao = new CrewBoardDAO();
         </div>
       </section>
     </main>
-    <jsp:include page= '/JSP/Common/Footer.jsp' />
-</body>
-</html>

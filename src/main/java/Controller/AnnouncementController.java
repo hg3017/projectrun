@@ -92,8 +92,8 @@ public class AnnouncementController extends HttpServlet {
 			AnnouncementDTO dto = new AnnouncementDTO();
 			
 			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-			dto.setOfile(rData.get("oFile"));
-			dto.setSfile(rData.get("sFile"));
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
 			
 			// 파일 업로드 처리
 			// 1. 받을 값 확인
@@ -145,8 +145,8 @@ public class AnnouncementController extends HttpServlet {
 			AnnouncementDTO dto = new AnnouncementDTO();
 			
 			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-			dto.setOfile(rData.get("oFile"));
-			dto.setSfile(rData.get("sFile"));
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
 			
 			// 1. 받을 값 확인
 			String idx = rData.get("idx");
@@ -206,6 +206,10 @@ public class AnnouncementController extends HttpServlet {
 				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/An_View.an?idx=" + idx + "'</script>");
 				return;
 			}
+			
+		} else if (action.equals("/FileDown.an")) {
+			FileUtils.fileDownload(request, response);
+			return;
 		}
 		
 		request.setAttribute("layout", path);
