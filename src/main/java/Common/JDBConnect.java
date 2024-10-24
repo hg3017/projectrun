@@ -40,6 +40,34 @@ public class JDBConnect {
 		}
 	}
 	
+	public JDBConnect(String driver, String url, String user, String pass) {
+		try{
+			Class.forName(driver);
+			
+			con = DriverManager.getConnection(url,user,pass);
+			System.out.println("DB 연결 성공(인수 생성자 1)");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public JDBConnect(ServletContext application) {
+		try{
+			String driver = application.getInitParameter("MysqlDriver");			
+			
+			Class.forName(driver);
+
+			String url = application.getInitParameter("MysqlUrl");
+			String user = application.getInitParameter("MysqlId");
+			String pass = application.getInitParameter("MysqlPwd");
+
+			con = DriverManager.getConnection(url,user,pass);
+			System.out.println("DB 연결 성공(인수 생성자 2)");
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
 	public void close()
 	{	
 		try {
