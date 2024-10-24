@@ -10,6 +10,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.apache.tomcat.util.http.fileupload.FileUtils;
 
 import DTO.CustomerboardDTO;
 import Service.CustomerboardService;
@@ -78,9 +81,35 @@ public class CustomerController extends HttpServlet {
 			request.setAttribute("board", dto);
 			path = "Cs_View";
 			
+		} else if(action.equals("/Cs_Write.co")) {
+			path = "Cs_Write";
+		} else if(action.equals("/Cs_WriteProcess.co")) {
+			String title = request.getParameter("title");
+			String category = request.getParameter("category");
+			String content = request.getParameter("content");
+			int ableview = Integer.parseInt(request.getParameter("ableview"));
+			
+			HttpSession session = request.getSession();
+			String member_id = (String) session.getAttribute("UserId");
+			
+			CustomerboardDTO dto = new CustomerboardDTO();
+			dto.setTitle(title);
+			dto.setCategory(category);
+			dto.setAbleview(ableview);
+			dto.setContent(content);
+			
+			int rs = service.insertWrite(dto);
+			
+			if(rs == 1) {
+				response.sendRedirect("Cs_List.co");
+				return;
+			} else {
+				request.setAttribute("errorMessage", "게시물 작성에 실패하였씁니다");
+				path = "Cs_Write";
+			}
 		}
 		request.setAttribute("layout", path);
-		request.getRequestDispatcher("/JSP/Customerboard/layout.jsp").forward(request, response);
+		request.getRequestDispatcher("/JSP/Customerboard/Cs_Layout.jsp").forward(request, response);
 	}
 	
 	

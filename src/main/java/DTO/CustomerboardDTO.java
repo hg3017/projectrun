@@ -11,7 +11,10 @@ public class CustomerboardDTO {
 	private String member_id;
 	private Date regidate;
 	private int visitcount;
-	
+	private String prevnum;
+	private String prevtitle;
+	private String nextnum;
+	private String nexttitle;
 	
 	
 	public int getIdx() {
@@ -62,14 +65,40 @@ public class CustomerboardDTO {
 	public void setVisitcount(int visitcount) {
 		this.visitcount = visitcount;
 	}
+	public String getPrevnum() {
+		return prevnum;
+	}
+	public void setPrevnum(String prevnum) {
+		this.prevnum = prevnum;
+	}
+	public String getPrevtitle() {
+		return prevtitle;
+	}
+	public void setPrevtitle(String prevtitle) {
+		this.prevtitle = prevtitle;
+	}
+	public String getNextnum() {
+		return nextnum;
+	}
+	public void setNextnum(String nextnum) {
+		this.nextnum = nextnum;
+	}
+	public String getNexttitle() {
+		return nexttitle;
+	}
+	public void setNexttitle(String nexttitle) {
+		this.nexttitle = nexttitle;
+	}
 	
 	
 	@Override
 	public String toString() {
 		return "CustomerboardDTO [idx=" + idx + ", ableview=" + ableview + ", category=" + category + ", title=" + title
 				+ ", content=" + content + ", member_id=" + member_id + ", regidate=" + regidate + ", visitcount="
-				+ visitcount + "]";
+				+ visitcount + ", prevnum=" + prevnum + ", prevtitle=" + prevtitle + ", nextnum=" + nextnum
+				+ ", nexttitle=" + nexttitle + "]";
 	}
+	
 	
 	
 }
