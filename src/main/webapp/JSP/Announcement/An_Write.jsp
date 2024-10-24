@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <script type="text/javascript">
 function validateForm(form) {  
     if (form.title.value == "") {
@@ -16,7 +15,6 @@ function validateForm(form) {
     }
 }
 </script>
-
 <main id="container" class="sub_container list_page">
 	<section class="sub_visual">
 		<div class="inner">
@@ -57,9 +55,9 @@ function validateForm(form) {
 								<th>첨부파일</th>
 								<td class="td_flex">
 									<div class="file_wrap">
-										<input type="text" placeholder="첨부파일 없음" readonly > 
+										<input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
 										<label>
-											<input type="file" name="file" >
+											<input type="file" name="file" id="fileInput" class="blind" > 파일선택
 										</label>
 									</div>
 									<p class="file_note">
@@ -69,7 +67,7 @@ function validateForm(form) {
 							</tr>
 						</table>
 						<div class="btn_wrap">
-							<button type="submit" class="point_btn4">작성완료</button>
+							<button type="submit" class="point_btn4" style="border:none">작성완료</button>
 							<button type="button" class="point_btn5" onclick="location.href='/An_List.an';">취소</button>
 						</div>
 					</fieldset>
