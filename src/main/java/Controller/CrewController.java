@@ -12,9 +12,12 @@ import javax.servlet.http.HttpSession;
 
 import DAO.CrewDAO;
 import DTO.AnnouncementDTO;
+import DTO.CommentDTO;
 import DTO.CrewDTO;
 import DTO.CrewMemberDTO;
 import DTO.LocationDTO;
+import Service.CommentService;
+import Service.CommentServiceImpl;
 import Service.CrewMemberService;
 import Service.CrewMemberServiceImpl;
 import Service.CrewService;
@@ -32,12 +35,14 @@ public class CrewController extends HttpServlet {
 	CrewService service;
 	CrewMemberService Memberservice;
 	LocationService Locationservice;
+	CommentService Commentservice;
 	
 	// LoginController 생성자. 컨트롤러가 생성될 때 LoginServiceImpl 객체를 생성하여 service 변수에 할당합니다.
 	public CrewController() {
 		service = new CrewServiceImpl();
 		Memberservice = new CrewMemberServiceImpl();
 		Locationservice = new LocationServiceImpl();
+		Commentservice = new CommentServiceImpl();
 	}
 
 	// GET 방식으로 데이터를 받은 경우 작동합니다.
@@ -77,6 +82,7 @@ public class CrewController extends HttpServlet {
 			String crewName = request.getParameter("crewName");
 			CrewDTO CrewDetail = service.selectCrew(crewName);
 			List<CrewMemberDTO> crewMainMemberLists = Memberservice.selectCrewMainMemberList(crewName);
+			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
 			
 			String sessionId = (String) session.getAttribute("UserId");  
 			String crewSessionId = Memberservice.selectCrewMemberStatus(crewName, sessionId);
@@ -84,6 +90,7 @@ public class CrewController extends HttpServlet {
 			request.setAttribute("CrewDetail", CrewDetail);
 			request.setAttribute("crewSessionId", crewSessionId);
 			request.setAttribute("crewMainMemberLists", crewMainMemberLists);
+			request.setAttribute("commentLists", CommentLists);
 			
 			if(CrewDetail != null){
 				path= "CrewMain";
@@ -119,7 +126,6 @@ public class CrewController extends HttpServlet {
 			System.out.println("sessionId : " + sessionId  );
 			
 			int rs = service.registCrew(dto);
-			System.out.println("CrewRegist.crew- checkPoint1");
 			int memberResult = service.registCrewMaster(dto.getName(), sessionId);
 			
 			
