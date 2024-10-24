@@ -1,6 +1,8 @@
 
 <%@page import="java.util.List"%>
 <%@page import="DTO.CrewMemberDTO"%>
+<%@page import="DTO.CommentDTO"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="DTO.CrewDTO"%>
@@ -17,13 +19,21 @@
    	String crewSessionId = (String)request.getAttribute("crewSessionId");  
    	CrewDTO dto = (CrewDTO)request.getAttribute("CrewDetail"); 
    	List<CrewMemberDTO> crewMainMemberLists =  (List<CrewMemberDTO>)request.getAttribute("crewMainMemberLists"); 
+   	
+	/* 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 */
+   	/* List<CommentDTO> commentLists = (List<CommentDTO>)request.getAttribute("CommentLists");
+   	System.out.println("CrewMain-commentList");
+	System.out.println(commentLists); */
+	
+	/* for( CommentDTO aaa : commentLists ) {
+		out.println(aaa + "<br>"); 
+	} */
+	
+   	/* 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 */
+   	
 %>
 
 <script type="text/javascript">
-	function crew_regist() {
-		alert("asdasd");
-	}
-	
 	function goLogin() {
 		location.href="/JSP/Login/Login.jsp"
 	}
@@ -33,115 +43,144 @@
 
 	  <section class="main_info">
 	  <div class="inner">
-	  <div class="crew_name">
-	  		<div id="main_tit">
-			
-				<h2> <%=dto.getName() %> </h2>
-				<!-- <img src="/resources/images/logo.png" alt=""> -->
-				<a> 크루 썸네일  </a>
-			</div>
-			<% 
-				if(crewSessionId == null || crewSessionId.equals("") ) {
-				%>
-					<%
-						if( crewSessionId == null || crewSessionId.equals("")) {
+		  <div class="crew_name">
+		  		<div id="main_tit">
+				
+					<h2> <%=dto.getName() %> </h2>
+					<!-- <img src="/resources/images/logo.png" alt=""> -->
+					<a> 크루 썸네일  </a>
+				</div>
+				<% 
+					if(crewSessionId == null || crewSessionId.equals("") ) {
 					%>
-						<button type="button" onclick="goLogin();">크루가입신청</button>
-					<% 	
-						} else {
+						<%
+							if( crewSessionId == null || crewSessionId.equals("")) {
+						%>
+							<button type="button" onclick="goLogin();">크루가입신청</button>
+						<% 	
+							} else {
+						%>
+							<button type="button" onclick="crew_regist();">크루가입신청</button>
+						<%
+							}
+						%>
+					<% 
+					} else if (crewSessionId.equals("User")) {
 					%>
-						<button type="button" onclick="crew_regist();">크루가입신청</button>
-					<%
-						}
+						<button type="button" onclick="crew_regist();">크루탈퇴신청</button>
+					<% 
+					} else if (crewSessionId.equals("Refuse") ) { 
 					%>
-				<% 
-				} else if (crewSessionId.equals("User")) {
-				%>
-					<button type="button" onclick="crew_regist();">크루탈퇴신청</button>
-				<% 
-				} else if (crewSessionId.equals("Refuse") ) { 
-				%>
-					<p> 가입이 거절되었습니다. </p>
-				<% 
-				} else if (crewSessionId.equals("Wating") ) { 
-				%>
-					<p> 승인 대기중입니다. </p>
-				<% 
-				} else if (crewSessionId.equals("Master")) { 
-				%>
-					<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
-				<% 
-				}
-			%>			
-			
-          <h2> 크루 소개 </h2>
-          <p> 
-            <%=dto.getDescripton() %>
-          </p> 
-        </div>
-	  
-	  	<div class="section_left">
-	  	
-	  	  <div class="board_more"> 
-	            <h2 class="main_tit">
-	              크루 활동
-	            </h2>
-            	<button >더 보기</button>
-            </div>
-	  		
-		  <div class="crew_picture">
-
-	          <a href="#" class="picture_list">
-				<img src="" alt="" class="on" title="">
-	          </a>
+						<p> 가입이 거절되었습니다. </p>
+					<% 
+					} else if (crewSessionId.equals("Wating") ) { 
+					%>
+						<p> 승인 대기중입니다. </p>
+					<% 
+					} else if (crewSessionId.equals("Master")) { 
+					%>
+						<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
+					<% 
+					}
+				%>			
+				
+	          <h2> 크루 소개 </h2>
+	          <p> 
+	            <%=dto.getDescripton() %>
+	          </p> 
+	        </div>
+		  
+		  	<div class="section_left">
+		  	
+		  	  <div class="board_more"> 
+		            <h2 class="main_tit">
+		              크루 활동
+		            </h2>
+	            	<button >더 보기</button>
+	            </div>
+		  		
+			  <div class="crew_picture">
 	
-	          <a href="#" class="picture_list">
-				<img src="" alt="" class="on" title="">
-	          </a>
-	
-	          <a href="#" class="picture_list">
-				<img src="" alt="" class="on" title="">
-	          </a>
-	
-	          <a href="#" class="picture_list">
-				<img src="" alt="" class="on" title="">
-	          </a>
-      </div>	
-	</div> <!-- Section left 마지막  -->
-        <div class="section_right">
-            
-            <div class="board_more"> 
-	            <h2 class="main_tit">
-	              회원 목록
-	            </h2>
-            	<!-- <button  >더 보기</button> -->
-            	<a href="/CrewMemberList.crewMember?crewName=<%= dto.getName() %>">  더 보기 </a>
-            	
-            </div>
-            
-            <table class="notice">
-			    <thead>
-			        <tr>
-			            <th> 사진 </th>
-			            <th> 이름 </th>
-			            <th> 소개 </th>
-			        </tr>
-			    </thead>
-			    <tbody>
-			        <c:forEach var="crewMainMember" items="${crewMainMemberLists}">
-			            <tr>
-			                <td>사진: ${crewMember.member_image}</td>
-			                <td>이름: ${crewMainMember.member_id}</td>	
-			                <td>소개: ${crewMember.description}</td>
-			            </tr>
-			        </c:forEach>
-			    </tbody>
-			</table>
-			
-      </div>    
+		          <a href="#" class="picture_list">
+					<img src="" alt="" class="on" title="">
+		          </a>
+		
+		          <a href="#" class="picture_list">
+					<img src="" alt="" class="on" title="">
+		          </a>
+		
+		          <a href="#" class="picture_list">
+					<img src="" alt="" class="on" title="">
+		          </a>
+		
+		          <a href="#" class="picture_list">
+					<img src="" alt="" class="on" title="">
+		          </a>
+	      </div>	
+		</div> <!-- Section left 마지막  -->
+	        <div class="section_right">
+	            
+	            <div class="board_more"> 
+		            <h2 class="main_tit">
+		              회원 목록
+		            </h2>
+	            	<!-- <button  >더 보기</button> -->
+	            	<a href="/CrewMemberList.crewMember?crewName=<%= dto.getName() %>">  더 보기 </a>
+	            	
+	            </div>
+	            
+	            <table class="notice">
+				    <thead>
+				        <tr>
+				            <th> 사진 </th>
+				            <th> 이름 </th>
+				            <th> 소개 </th>
+				        </tr>
+				    </thead>
+				    <tbody>
+				        <c:forEach var="crewMainMember" items="${crewMainMemberLists}">
+				            <tr>
+				                <td>사진: ${crewMainMember.member_image}</td>
+				                <td>이름: ${crewMainMember.member_id}</td>	
+				                <td>소개: ${crewMainMember.description}</td>
+				            </tr>
+				        </c:forEach>
+				        
+				        
+				        
+				    </tbody>
+				</table>
+	      </div> 
+	      
+	      <%-- <table class="notice">
+		    <thead>
+		        <tr>
+		            <th>이름</th>
+		            <th>댓글 내용</th>
+		        </tr>
+		    </thead>
+		    <tbody>
+		        <c:forEach var="comment" items="${commentLists}">
+		            <tr>
+		                <td>${comment.member_id}</td>
+		                <td>${comment.content}</td>
+		            </tr>
+		        </c:forEach>
+		    </tbody>
+		</table> --%>
+		
+		   
       </div>
-    </section>
+      
         
+      			
+      		
+    </section>
+    			
+    
+    <!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
+    <jsp:include page="/JSP/Crew/Comment.jsp" />
+	<!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
 		
 	
 </main>
