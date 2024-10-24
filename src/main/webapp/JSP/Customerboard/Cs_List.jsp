@@ -29,7 +29,7 @@
                     </select>
                   </div>
                   <div class="input_wrap">
-                    <input type="search" title="검색어를 입력해주세요">
+                    <input type="search" title="검색어를 입력해주세요" placeholder="검색어를 입력해주세요">
                     <button type="submit" class="search_btn">
                       <span class="blind">게시물 검색</span>
                     </button>
@@ -38,6 +38,12 @@
               </fieldset>
             </form>
           </div>
+			<div class="btn_wrap">
+				<c:if test="${UserId eq 'admin' }">
+				<button type="button" class="write_btn" onclick="location.href='/Cs_Write.co';">글쓰기</button>
+				<!-- admin 전용 게시글 작성 -->
+				</c:if>
+			</div>
         </div>
         <table>
           <tr>
@@ -67,14 +73,16 @@
   </section>
   <section class="ban_box">
     <div class="inner">
-      <ul class="etc">
-        <li>
-          <a href="/JSP/Main/List_cs_write.jsp" class="etc_left"><p>1:1 상담하기</p></a>
-        </li>
-        <li>
-          <a href="#" class="etc_right"><p>전화 문의하기<span></span>TEL : 02-1234-5678</p></a>
-        </li>
-      </ul>
+      	<div class="etc">
+      		<ul class="etc">
+            <li>
+              <a href="/Cs_Write.co" class="etc_left"><p>1:1 상담하기</p></a> <!-- 고객전용 게시글 작성 -->
+            </li>
+            <li>
+              <a href="#" class="etc_right"><p>전화 문의하기<span></span>TEL : 02-1234-5678</p></a>
+            </li>
+          </ul>
+    	</div>
     </div>
   </section>
 </main>
