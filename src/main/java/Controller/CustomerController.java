@@ -85,17 +85,13 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Write";
 		} else if(action.equals("/Cs_WriteProcess.co")) {
 			String title = request.getParameter("title");
-			String category = request.getParameter("category");
 			String content = request.getParameter("content");
-			int ableview = Integer.parseInt(request.getParameter("ableview"));
 			
 			HttpSession session = request.getSession();
 			String member_id = (String) session.getAttribute("UserId");
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
 			dto.setTitle(title);
-			dto.setCategory(category);
-			dto.setAbleview(ableview);
 			dto.setContent(content);
 			
 			int rs = service.insertWrite(dto);
