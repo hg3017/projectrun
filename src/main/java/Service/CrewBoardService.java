@@ -9,4 +9,8 @@ public interface CrewBoardService {
 	public List<CrewBoardDTO> selectList(Map<String, String> map);
 	
 	public int selectCount(Map<String, String> map);
+
+	public void updateVisitCount(String idx);
+
+	public CrewBoardDTO pnPage(String idx);
 }

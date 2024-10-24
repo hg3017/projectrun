@@ -146,10 +146,27 @@ public class CrewBoardDAO extends JDBConnect{
 		return result;
 	}
 	
-	public CrewBoardDTO selectView(String num) {
+	public CrewBoardDTO pnPage(String idx) {
 		CrewBoardDTO dto = new CrewBoardDTO();
 		
 		String query = "";
+		
+		query += "SELECT CB.*                                                  ";
+		query += "  FROM (                                                    ";
+		query += "		SELECT                                                ";
+		query += "			IDX,                                              ";
+		query += "			TITLE,                                            ";
+		query += "			MEMBER_ID,                                         ";
+		query += "			CREW_NAME,                                         ";
+		query += "			CONTENT,                                          ";
+		query += "			REGIDATE,                                         ";
+		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
+		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXT_NUM,         ";
+		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREV_TITLE,      ";
+		query += "			LEAD(TITLE) OVER(ORDER BY IDX) AS NEXT_TITLE      ";
+		query += "		FROM CREWBOARD                                        ";
+		query += "	) CB                                                       ";
+		query += " WHERE IDX = ?                                              ";
 		
 		try {
 			psmt = con.prepareStatement(query);
@@ -157,13 +174,34 @@ public class CrewBoardDAO extends JDBConnect{
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setIdx(rs.getString(1));
+				dto.setMember_id(rs.getString("member_id"));
+				dto.setIdx(rs.getString("idx"));
+				dto.setTitle(rs.getString("title"));
+				dto.setCrew_name(rs.getString("crew_name"));
+				dto.setContent(rs.getString("content"));
+				dto.setRegidate(rs.getDate("regidate"));
 			}
 		}
 		catch (Exception e) {
-			
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
 		}
 		return dto;
+	}
+
+	public void updateVisitCount(String idx) {
+		
+		String query = "UPDATE crewboard SET visitcount=visitcount +1 WHERE idx=?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			psmt.setString(1,idx);
+			psmt.executeUpdate(); 
+		}catch (Exception e) {
+			System.out.println("게시물 조회수 증가 중 예외 발생");
+			e.printStackTrace();
+		}
+		
 	}
 
 }
