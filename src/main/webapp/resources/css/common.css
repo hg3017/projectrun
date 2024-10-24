@@ -546,6 +546,7 @@ div.file_wrap label::before {
 .point_btn3 {
   height: 60px;
   border-radius: 30px;
+  border: none;
   width: 185px;
   font-weight: 700;
   color: #fff;
@@ -906,11 +907,14 @@ caption.nohead {
   padding-top: 100px;
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
+  gap: 0 20px;
+  
 }
-.board_view .modify_btn {
+.board_view .view_top button {
   padding: 10px 20px;
   border: 1px solid #333; 
+  background:#fff;
   font-size: 14px;
   font-weight: 500;
 }

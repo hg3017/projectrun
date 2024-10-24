@@ -85,13 +85,13 @@
 .list_page .ban_box .etc a {
   display: block;
   height: 100px;
-  background: url(/resources/images/icon-consult.png) no-repeat 20px 50% / 30px;
+  background: url(../images/icon-consult.png) no-repeat 20px 50% / 30px;
   padding: 30px 30px 30px 100px;
 }
 
 
 .list_page .ban_box .etc .etc_right {
-  background: url(/resources/images/icon-call.png) no-repeat 20px 50% / 30px;
+  background: url(../images/icon-call.png) no-repeat 20px 50% / 30px;
 }
 
 .list_page .ban_box .etc p {
