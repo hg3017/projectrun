@@ -15,7 +15,7 @@ import Service.MemberService;
 import Service.MemberServiceImpl;
 
 
-// *.do 로 들어오는 모든 요청 처리
+// *.adme 로 들어오는 모든 요청 처리
 @WebServlet("*.adme")
 public class AdminMemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

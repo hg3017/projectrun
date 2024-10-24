@@ -12,7 +12,7 @@
 	</section>
 	<section class="contents">
 		<div class="inner">
-			<form name="writeFrm" method="post" action="Member_WriteProcess.adme">
+			<form name="writeFrm" method="post" action="RegisterProcess.regi">
 				<table border="1" width="80%">
 					<tr>
 						<td>ID</td>

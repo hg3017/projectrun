@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원가입</title>
+	<title>고객센터</title>
 	<link rel="icon" href="/resources/images/common/favicon.png">
 	<link rel="apple-touch-icon-precomposed" href="images/common/free-icon-running-7126743.png">
 	
@@ -27,7 +27,7 @@
 <body>
 	<jsp:include page="/JSP/Common/Header.jsp" />
 
-	<jsp:include page="/JSP/Register/${layout }.jsp" />
+	<jsp:include page="/JSP/Register/Register.jsp" />
 
 	<jsp:include page="/JSP/Common/Footer.jsp" />
 </body>
