@@ -17,9 +17,9 @@ public class CrewBoardPage {
 		int blockCount = 1;
 		while(blockCount <= blockPage && pageTemp <= totalPages) {
 			if(pageNum == pageTemp) {
-				pagingStr += String.format("[%s]", pageTemp);
+				pagingStr += String.format("<span class=\"num active\">%s</span>&nbsp;&nbsp;", pageTemp);
 			}else {
-				pagingStr += String.format("<a href=\"%s?pageNum=%s\">[%s]</a>", reqUrl,pageTemp, pageTemp);
+				pagingStr += String.format("<a class=\"num\" href=\"%s?pageNum=%s\">[%s]</a>", reqUrl,pageTemp, pageTemp);
 			}
 			pageTemp++;
 			blockCount++;

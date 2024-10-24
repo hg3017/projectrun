@@ -19,9 +19,10 @@ import Service.CrewService;
 import Utils.CrewBoardPage;
 
 
-@WebServlet("*.crewb")
+@WebServlet("*.cb")
 public class CrewBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
 	CrewBoardService service;
 	
 	public CrewBoardController() {
@@ -45,8 +46,7 @@ public class CrewBoardController extends HttpServlet {
 		String path = "Cb_List";
 		
 		System.out.println(action);
-		if(action.equals("/Cb_List.crewb")) {
-			Map<String, String> param = new HashMap<String, String>();
+		if(action.equals("/Cb_List.cb")) {
 			String searchField = request.getParameter("searchField");
 			String searchWord = request.getParameter("searchWord");
 			String limitParam = request.getParameter("limit");
@@ -71,13 +71,23 @@ public class CrewBoardController extends HttpServlet {
 			int pageSize = 10;
 			int blockPage = 5;
 			
-			String pageingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.crewb");
-			request.setAttribute("pageingStr", pageingStr);
-			
+			String pagingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.cb");
+			request.setAttribute("pagingStr", pagingStr);	
+
 			path = "Cb_List";
+		}else if(action.equals("/Cb_View.cb")) {
+			String idx = request.getParameter("idx");
+			
+			service.updateVisitCount(idx);
+			CrewBoardDTO dto = service.pnPage(idx);
+			
+			request.setAttribute("board", dto);
+			
+			path = "Cb_View";
 		}
+		
 		request.setAttribute("layout", path);
-	    request.getRequestDispatcher("/JSP/Crewboard/layout.jsp").forward(request, response);
+	    request.getRequestDispatcher("/JSP/CrewBoard/layout.jsp").forward(request, response);
 	}
 	
 }

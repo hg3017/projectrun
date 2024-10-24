@@ -22,8 +22,18 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 
 	@Override
 	public int selectCount(Map<String, String> map) {
-		// TODO Auto-generated method stub
 		return dao.selectCount(map);
+	}
+
+	@Override
+	public void updateVisitCount(String idx) {
+		dao.updateVisitCount(idx);
+		
+	}
+
+	@Override
+	public CrewBoardDTO pnPage(String idx) {
+		return dao.pnPage(idx);
 	}
 	
 	

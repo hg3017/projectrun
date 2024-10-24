@@ -22,7 +22,7 @@ String sessionId = (String) session.getAttribute("UserId");
         <li>
           <a href="#">게시판</a>
           <ul class="depth2">
-            <li><a href="/JSP/Main/List_boardcrew.jsp">크루게시판</a></li>
+            <li><a href="/Cb_List.cb">크루게시판</a></li>
             <li><a href="/Fb_List.free">자유게시판</a></li>
           </ul>
         </li>
