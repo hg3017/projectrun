@@ -91,7 +91,7 @@ AdminCrewDTO crew = (AdminCrewDTO) request.getAttribute("crew");
 						<input type="hidden" name="idx" value="<%=crew.getIdx() %>">
 							<table border="1" width="80%">
 								<tr>
-									<td width="10%">IDX</td>
+									<td width="10%" name="idx">IDX</td>
 									<td align="center"><%=crew.getIdx()%></td>
 								</tr>
 								<tr>

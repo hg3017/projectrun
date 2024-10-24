@@ -26,12 +26,7 @@
               </div>
               <div class="wr3">
                 <p>활동지역</p>
-                
-                
-                
-                
-                
-                
+
                 	<select id = "lo" name = "lo" size = "1" >
                 		<c:forEach var="location" items="${locations }" varStatus="status">
                 			<option value=${location.id}>${location.name} </option>	
@@ -43,7 +38,7 @@
             </div>
           </div>
           <div class="btn_wrap2">
-            <a href="/JSP/Main/Crew_view.jsp">목록</a>
+            <a href="CrewListProcess.crew"> 목록</a>
             <button type="submit">작성 완료</button>
           </div>
           </form>
