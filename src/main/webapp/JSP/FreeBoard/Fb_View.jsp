@@ -49,7 +49,7 @@ function deletePost() {
 					<dt>이전글</dt>
 					<dd>
 						<c:if test="${not empty board.prevNum}">
-							<a href="Fb_View.free?idx=${board.prevNum}">${board.prevTitle}</a>
+							<a href="Fb_View.free?idx=${board.prevNum }">${board.prevTitle }</a>
 						</c:if>
 						<c:if test="${empty board.prevNum}">
 							<span>이전글이 없습니다</span>
