@@ -56,8 +56,9 @@ function validateForm(form) {  // 폼 내용 검증
 									<th>첨부파일</th>
 									<td class="td_flex">
 										<div class="file_wrap">
-											<input type="text" readonly> <label> <input
-												type="file" name="file">
+											<input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
+											<label>
+												<input type="file" name="file" id="fileInput" class="blind" > 파일선택
 											</label>
 										</div>
 										<p class="file_note">※ 등록 가능 확장자 :
@@ -67,8 +68,8 @@ function validateForm(form) {  // 폼 내용 검증
 							</table>
 						</c:if>
 						<div class="btn_wrap">
-							<button type="submit" class="point_btn4">수정완료</button>
-							<button type="button" class="point_btn5"
+							<button type="submit" class="point_btn4" style="border:none">수정완료</button>
+							<button type="button" class="point_btn5" 
 								onclick="location.href='/An_List.an';">취소</button>
 						</div>
 					</fieldset>
