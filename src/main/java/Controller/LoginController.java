@@ -96,10 +96,10 @@ public class LoginController extends HttpServlet {
 			
 			// request.setAttribute("layout","Admin/" + path);
 			// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
-			
-			
-			
 		}
+		
+		request.setAttribute("layout","Login/" + path);
+		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 		
 	}
 
