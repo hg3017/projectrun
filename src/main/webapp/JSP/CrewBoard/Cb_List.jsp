@@ -69,7 +69,6 @@
                 		<td>${board.visitcount }</td>
                 	</tr>
                 </c:forEach>
-
             </table>
             <div class="board_pagination">
            		${pagingStr}
