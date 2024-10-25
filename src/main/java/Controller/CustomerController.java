@@ -72,6 +72,7 @@ public class CustomerController extends HttpServlet {
 			request.setAttribute("pagingStr", pagingStr);
 			
 			path = "Cs_List";
+			
 		} else if(action.equals("/Cs_View.co")) {
 			String idx = request.getParameter("idx");
 			
@@ -83,6 +84,7 @@ public class CustomerController extends HttpServlet {
 			
 		} else if(action.equals("/Cs_Write.co")) {
 			path = "Cs_Write";
+			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
