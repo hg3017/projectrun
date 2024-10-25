@@ -24,7 +24,7 @@ public class FileUtils {
 			String saveDirectory = request.getServletContext().getRealPath("/Upload");
 			System.out.println(saveDirectory);
 			
-			int maxPostSize = 1024 * 1024 * 5; // 5M
+			int maxPostSize = 1024 * 1024 * 10; // 10M
 			String encoding = "UTF-8";
 			
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, encoding);

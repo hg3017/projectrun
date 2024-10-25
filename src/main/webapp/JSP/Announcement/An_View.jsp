@@ -30,9 +30,9 @@ function deletePost() {
 				</form>
 				<div class="view_top">
 					<c:if test="${UserId eq board.member_id }">
-						<a href="#" class="modify_btn" style="margin-right:10px;"
+						<a href="#"
 							onclick="location.href='An_Edit.an?idx=${board.idx}'; return false;">수정하기</a>
-						<a href="#" class="modify_btn" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
+						<a href="#" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
 					</c:if>
 				</div>
 				<div class="view_tit">
@@ -78,8 +78,8 @@ function deletePost() {
 					</dd>
 				</dl>
 				<div class="btn_wrap">
-					<a href="#" class="point_btn3"
-						onclick="location.href='/An_List.an';">목록</a>
+					<button type="button" class="point_btn3"
+						onclick="location.href='/An_List.an';">목록</button>
 				</div>
 			</div>
 		</div>
