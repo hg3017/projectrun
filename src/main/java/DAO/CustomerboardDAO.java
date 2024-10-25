@@ -177,14 +177,16 @@ public class CustomerboardDAO extends JDBConnect {
 	
 	public int inserWrite(CustomerboardDTO dto) {
 		int result = 0;
-		 
+		System.out.println("고객센터 컨트롤러 insertWrite 메서드 실행성공"); 
+		
 		try {
-			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?,?,?)";
+			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getMember_id());
+			psmt.setString(3, "hong01");
+			// psmt.setString(3, dto.getMember_id());
 			
 			result = psmt.executeUpdate();
 			
@@ -193,20 +195,6 @@ public class CustomerboardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 		return result;
-	}
-	
-	public void updateVisitCount(String idx) {
-		String query = "UPDATE customerboard SET " + " visitcount=visitcount+1"  + " WHERE idx=? ";
-		
-		try {
-			psmt = con.prepareStatement(query);
-			psmt.setString(1, idx);
-			psmt.executeUpdate();
-		} catch (Exception e) {
-			System.out.println("게시물 조회수 증가 중 예외 발생");
-			e.printStackTrace();
-		}
-		
 	}
 	
 	public int updateEdit(CustomerboardDTO dto) {

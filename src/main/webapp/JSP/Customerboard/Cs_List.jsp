@@ -40,8 +40,7 @@
           </div>
 			<div class="btn_wrap">
 				<c:if test="${UserId eq 'admin' }">
-				<button type="button" class="write_btn" onclick="location.href='/Cs_Write.co';">글쓰기</button>
-				<!-- admin 전용 게시글 작성 -->
+				<a href="/Cs_Write.co" class="write_btn">글쓰기</a> <!-- admin 전용 게시글 작성 -->
 				</c:if>
 			</div>
         </div>
