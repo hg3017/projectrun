@@ -160,17 +160,17 @@ public class CrewBoardDAO extends JDBConnect{
 		query += "			CREW_NAME,                                         ";
 		query += "			CONTENT,                                          ";
 		query += "			REGIDATE,                                         ";
-		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
-		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXT_NUM,         ";
-		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREV_TITLE,      ";
-		query += "			LEAD(TITLE) OVER(ORDER BY IDX) AS NEXT_TITLE      ";
+		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREVNUM,          ";
+		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXTNUM,         ";
+		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREVTITLE,      ";
+		query += "			LEAD(TITLE) OVER(ORDER BY IDX) AS NEXTTITLE      ";
 		query += "		FROM CREWBOARD                                        ";
 		query += "	) CB                                                       ";
 		query += " WHERE IDX = ?                                              ";
 		
 		try {
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, null);
+			psmt.setString(1, idx);
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
@@ -180,6 +180,10 @@ public class CrewBoardDAO extends JDBConnect{
 				dto.setCrew_name(rs.getString("crew_name"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegidate(rs.getDate("regidate"));
+				dto.setPrevnum(rs.getString("prevnum"));
+				dto.setPrevtitle(rs.getString("prevtitle"));
+				dto.setNextnum(rs.getString("nextnum"));
+				dto.setNexttitle(rs.getString("nexttitle"));
 			}
 		}
 		catch (Exception e) {
