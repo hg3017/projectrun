@@ -124,6 +124,7 @@ public class AnnouncementController extends HttpServlet {
 			}
 			
 		} else if (action.equals("/An_View.an")) {
+			
 			String idx = request.getParameter("idx");  // 일련번호 받기 
 
 			service.updateVisitCount(idx);                 // 조회수 증가 
@@ -137,7 +138,7 @@ public class AnnouncementController extends HttpServlet {
 			
 			AnnouncementDTO dto = service.pnPage(idx);        // 게시물 가져오기 
 			request.setAttribute("board", dto);
-			
+
 			// 3. 어떻게 어디로 이동 할것인가?
 			path = "An_Edit";
 			
@@ -152,10 +153,14 @@ public class AnnouncementController extends HttpServlet {
 			String idx = rData.get("idx");
 			String title = rData.get("title");
 			String content = rData.get("content");
+			String fileName = rData.get("ofile");
+			String newFileName = rData.get("sfile");
 
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
+			dto.setOfile(fileName);
+			dto.setSfile(newFileName);
 			
 			// 2. service 요청
 			int rs = service.updateEdit(dto);

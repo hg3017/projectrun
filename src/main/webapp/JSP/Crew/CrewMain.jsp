@@ -9,7 +9,7 @@
 <%@page import="DAO.CrewDAO"%>
 <%@page import="DAO.CrewMemberDAO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<link href="/resources/css/CrewMain.css" rel="stylesheet" type="text/css">
 
 <% 
 	//id 세션을 가져옴.
@@ -89,6 +89,8 @@
 	            <%=dto.getDescripton() %>
 	          </p> 
 	        </div>
+	        
+	        <div class="exter"> 
 		  
 		  	<div class="section_left">
 		  	
@@ -144,43 +146,19 @@
 				                <td>이름: ${crewMainMember.member_id}</td>	
 				                <td>소개: ${crewMainMember.description}</td>
 				            </tr>
-				        </c:forEach>
-				        
-				        
+				        </c:forEach>  
 				        
 				    </tbody>
 				</table>
 	      </div> 
-	      
-	      <%-- <table class="notice">
-		    <thead>
-		        <tr>
-		            <th>이름</th>
-		            <th>댓글 내용</th>
-		        </tr>
-		    </thead>
-		    <tbody>
-		        <c:forEach var="comment" items="${commentLists}">
-		            <tr>
-		                <td>${comment.member_id}</td>
-		                <td>${comment.content}</td>
-		            </tr>
-		        </c:forEach>
-		    </tbody>
-		</table> --%>
-		
-		   
+	       </div>  
       </div>
       
         
       			
       		
     </section>
-    			
-    
     <!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
     <jsp:include page="/JSP/Crew/Comment.jsp" />
 	<!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
-		
-	
 </main>
