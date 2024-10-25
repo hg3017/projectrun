@@ -25,6 +25,7 @@
   	<script src="/resources/js/announcementNew.js"></script>
 </head>
 <body>
+
 	<jsp:include page="/JSP/Common/Header.jsp" />
 	
 	<jsp:include page="/JSP/${layout }.jsp" />
