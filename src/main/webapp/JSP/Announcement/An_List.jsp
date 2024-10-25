@@ -75,6 +75,7 @@
 								<td>${board.regidate }</td>
 								<!--작성일-->
 							</tr>
+							
 						</c:forEach>
 					</table>
 					<div class="board_pagination">
