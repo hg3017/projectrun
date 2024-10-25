@@ -48,17 +48,23 @@ public class LoginController extends HttpServlet {
 		String action = uri.substring(lastSlash);
 		HttpSession session = request.getSession();
 		
+		String path = "Login";
+		
 		// Servelt 의 경로값이 /LoginProcess.lo 인 경우 작동합니다. 
 		if(action.equals("/LoginProcess.lo")) {
 			// 1. 받을 값 확인
 			String id = request.getParameter("user_id");
 			String pw = request.getParameter("user_pw");
 			
+			System.out.println(id);
+			
 			
 			// 2. service 요청
 			// LoginDTO 의 형태를 가진 객체를 dto 의 이름으로 생성하고 그 안에 dao.selectView(id) 에서 리턴받은 값을 입력합니다.
 			LoginDTO dto = service.selectView(id);
 				
+			System.out.println(dto);
+			
 			// dto 값이 null 이 아닌경우(리턴이 있는 경우) 작동합니다. 
 			if(dto != null){
 				
@@ -81,7 +87,20 @@ public class LoginController extends HttpServlet {
 		else if(action.equals("/Logout.lo")) {
 			session.invalidate();			
 			response.sendRedirect("/JSP/Login/Login.jsp");
+		} 
+		else if(action.equals("/AdminPage.lo")) {		
+						
+			path = "Admin_Index";
+			
+			response.sendRedirect("/JSP/Admin/Admin_Index.jsp");
+			
+			// request.setAttribute("layout","Admin/" + path);
+			// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
+			
+			
+			
 		}
+		
 	}
 
 }
