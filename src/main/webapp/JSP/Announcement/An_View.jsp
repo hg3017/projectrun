@@ -44,7 +44,7 @@ function deletePost() {
 					<c:if test="${not empty board.content }">${board.content }</c:if>
 				</div>
 						<!-- 파일 첨부 정보 -->
-				<div class="view_file">
+				<div class="view_file" align="right">
 					<h3>첨부파일</h3>
 					<c:if test="${not empty board.ofile}">
 						<a href="/FileDown.an?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>

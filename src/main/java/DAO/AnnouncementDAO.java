@@ -40,8 +40,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 수를 구하는 중 예외 발생");
 			e.printStackTrace();
-		}
-
+		} 
 		return totalCount;
 	}
 
@@ -56,7 +55,7 @@ public class AnnouncementDAO extends JDBConnect {
 		query += " LIMIT ? OFFSET ?";
 
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			int paramIndex = 1;
 			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
@@ -83,7 +82,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 조회 중 예외 발생");
 			e.printStackTrace();
-		}
+		} 
 		return amt;
 	}
 
@@ -270,13 +269,15 @@ public class AnnouncementDAO extends JDBConnect {
 
 		try {
 			// 쿼리문 템플릿
-			String query = "UPDATE announcement SET title=?, content=? WHERE idx=?";
+			String query = "UPDATE announcement SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getIdx());
+			psmt.setString(3, dto.getOfile());
+			psmt.setString(4, dto.getSfile());
+			psmt.setString(5, dto.getIdx());
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();
@@ -305,7 +306,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 삭제 중 예외 발생");
 			e.printStackTrace();
-		}
+		} 
 
 		return result; // 결과 반환
 	}

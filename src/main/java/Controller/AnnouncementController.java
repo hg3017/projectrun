@@ -153,10 +153,14 @@ public class AnnouncementController extends HttpServlet {
 			String idx = rData.get("idx");
 			String title = rData.get("title");
 			String content = rData.get("content");
+			String fileName = rData.get("ofile");
+			String newFileName = rData.get("sfile");
 
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
+			dto.setOfile(fileName);
+			dto.setSfile(newFileName);
 			
 			// 2. service 요청
 			int rs = service.updateEdit(dto);
