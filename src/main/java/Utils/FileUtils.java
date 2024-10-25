@@ -21,10 +21,11 @@ public class FileUtils {
 		Map<String, String> data = new HashMap<>();
 		
 		try {
-			String saveDirectory = request.getServletContext().getRealPath("/Upload");
+			//String saveDirectory = request.getServletContext().getRealPath("/Upload");
+			String saveDirectory = "/Users/lhg/git/ProjectRun/src/main/webapp/Upload";
 			System.out.println(saveDirectory);
 			
-			int maxPostSize = 1024 * 1024 * 5; // 5M
+			int maxPostSize = 1024 * 1024 * 10; // 10M
 			String encoding = "UTF-8";
 			
 			MultipartRequest mr = new MultipartRequest(request, saveDirectory, maxPostSize, encoding);

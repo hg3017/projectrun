@@ -75,8 +75,11 @@ public class RegisterController extends HttpServlet {
 			path = "Register_Test01.jsp";
 			response.sendRedirect(path);
 		}
-		// request.setAttribute("layout", path);
-		// request.getRequestDispatcher("/JSP/Register/layout.jsp").forward(request, response);
+		
+		request.setAttribute("layout","Register/" + path);
+		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
+		
+		
 	}
 	/* 서비스나 dao는 순수 자바 파일이다. */
 }

@@ -31,8 +31,17 @@ String sessionId = (String) session.getAttribute("UserId");
       </ul>
     </nav>
     <div class="btn_wrap">
+    
+	    	  <% 
+	          	if( sessionId != null && sessionId.equals("admin")) {
+	          %>
+	            <a class="login_btn" href="/AdminPage.lo"> 관리자 화면 </a>  
+	           <% }
+	          %>
+    
+    
        
- <% 
+ 		  <% 
           	if(sessionId == null || sessionId == "" ) {
           %>
             <a class="login_btn" href="/JSP/Login/Login.jsp">로그인</a>  
