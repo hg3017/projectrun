@@ -14,6 +14,7 @@
 	<link href="/resources/css/main.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/common.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/list.css" rel="stylesheet" type="text/css">
+	
 
 	<!-- js 파일 연결 -->
 	<!-- jquery 개발방식에선 js파일을 상단에 연결하여 빠르게 확인되게함 -->

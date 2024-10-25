@@ -158,10 +158,6 @@ public class AnnouncementController extends HttpServlet {
 			dto.setTitle(title);
 			dto.setContent(content);
 			
-		    if (rData.get("sfile") != null) {
-		        dto.setOfile(rData.get("ofile"));  // 원본 파일 이름
-		        dto.setSfile(rData.get("sfile"));  // 저장된 파일 이름
-		    }
 			// 2. service 요청
 			int rs = service.updateEdit(dto);
 

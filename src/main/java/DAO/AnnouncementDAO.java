@@ -40,7 +40,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 수를 구하는 중 예외 발생");
 			e.printStackTrace();
-		} 
+		}
 
 		return totalCount;
 	}

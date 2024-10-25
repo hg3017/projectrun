@@ -2,14 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglibprefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-    
-</head>
-<body>
 	<h1> 로그인 페이지 </h1>
 	
 	<!-- 로그인 오류 메시지를 출력합니다. 오류가 없는 경우 빈 문자열을 출력합니다. -->
@@ -30,5 +22,3 @@
 	<a href="/JSP/Admin/Member/Member_List.adme">회원 목록</a>
 		
 		
-</body>
-</html>
