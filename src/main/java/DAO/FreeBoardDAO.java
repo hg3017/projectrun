@@ -55,7 +55,7 @@ public class FreeBoardDAO extends JDBConnect {
 		query += " LIMIT ? OFFSET ?";
 
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			int paramIndex = 1;
 			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
@@ -135,12 +135,14 @@ public class FreeBoardDAO extends JDBConnect {
 
 		try {
 			// INSERT 쿼리문 작성
-			String query = "INSERT INTO freeboard (title,content,member_id) VALUES ( ?, ?, ?)";
+			String query = "INSERT INTO freeboard (title,content,member_id,ofile,sfile) VALUES ( ?, ?, ?, ?, ?)";
 
 			psmt = con.prepareStatement(query); // 동적 쿼리
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getMember_id());
+			psmt.setString(4, dto.getOfile());
+			psmt.setString(5, dto.getSfile());
 
 			result = psmt.executeUpdate();
 
@@ -156,20 +158,22 @@ public class FreeBoardDAO extends JDBConnect {
 		FreeBoardDTO dto = new FreeBoardDTO();
 		
 		String query = "";
-		query += "SELECT A.*                                                  ";
+		query += "SELECT F.*                                                  ";
 		query += "  FROM (                                                    ";
 		query += "		SELECT                                                ";
 		query += "			IDX,                                              ";
-		query += "			MEMBER_ID,                                         ";
+		query += "			MEMBER_ID,                                        ";
 		query += "			TITLE,                                            ";
 		query += "			REGIDATE,                                         ";
 		query += "			CONTENT,                                          ";
+		query += "			OFILE,                                            ";
+		query += "			SFILE,                                            ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
 		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXT_NUM,         ";
 		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREV_TITLE,      ";
 		query += "			LEAD(TITLE) OVER(ORDER BY IDX) AS NEXT_TITLE      ";
 		query += "		FROM FREEBOARD                                        ";
-		query += "	) A                                                       ";
+		query += "	) F                                                       ";
 		query += " WHERE IDX = ?                                              ";
 		
 		try {
@@ -184,6 +188,8 @@ public class FreeBoardDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
 				dto.setRegidate(rs.getDate("regidate"));
 				
 				// 이전글 정보
@@ -222,13 +228,15 @@ public class FreeBoardDAO extends JDBConnect {
 
 		try {
 			// 쿼리문 템플릿
-			String query = "UPDATE freeboard SET title=?, content=? WHERE idx=?";
+			String query = "UPDATE freeboard SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getIdx());
+			psmt.setString(3, dto.getOfile());
+			psmt.setString(4, dto.getSfile());
+			psmt.setString(5, dto.getIdx());
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();
