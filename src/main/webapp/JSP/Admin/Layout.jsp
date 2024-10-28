@@ -67,7 +67,7 @@
 						</div>
 					</aside> 
 				</div>
-				<%-- <jsp:include page="/JSP/Admin/${layout}.jsp" /> --%>
+				<jsp:include page="/JSP/Admin/${layout}.jsp" />
 			</div>
 		</main>
 		<footer id="footer">
