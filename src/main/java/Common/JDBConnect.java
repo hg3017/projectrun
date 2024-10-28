@@ -68,8 +68,7 @@ public class JDBConnect {
 		}
 	}
 	
-	public void close()
-	{	
+	public void close() {	
 		try {
 			if(rs != null) rs.close();
 			if(stmt != null) stmt.close();

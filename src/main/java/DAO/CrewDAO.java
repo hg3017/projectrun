@@ -86,9 +86,6 @@ public class CrewDAO extends JDBConnect {
 		String sql = "insert into crew (name, location_id, description, regidate) "
 				+ " values(?, ?, ?, ?) ";
 		
-		System.out.println("CrewDAO-registCrew");
-		System.out.println(dto);
-		
 		try {
 			// JDBConnect 에서 상속받은 psmt 객체를 통해 jdbc 에 쿼리를 요청합니다. 
 			// 미리 정의한 문자열 sql 의 ? 의 자리에 id 값을 입력하고 쿼리를 작동합니다. 
