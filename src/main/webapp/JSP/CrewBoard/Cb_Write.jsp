@@ -29,7 +29,7 @@ function validateForm(form) {
       <section class="contents">
         <div class="inner">
           <div class="board_write">
-            <form>
+             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb" enctype="multipart/form-data" onsubmit="return validateForm(this);">
               <fieldset>
                 <legend>게시물 작성하기</legend>
                 <h3 class="tit">크루게시판 게시물 작성하기</h3>
@@ -59,8 +59,8 @@ function validateForm(form) {
                   </tr>
                 </table>
                 <div class="btn_wrap">
-                  <a class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</a>
-                  <a class="point_btn5" href="/Cb_List.cb">취소</a>s
+                  <button type="submit" class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</button>
+                  <button type="submit" class="point_btn5" href="/Cb_List.cb">취소</button>
                 </div>
               </fieldset>
             </form>

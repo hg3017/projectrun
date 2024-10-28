@@ -39,7 +39,10 @@
                 </form>
               </div>
               <div class="btn_wrap">
-                <a class="write_btn" href="/JSP/Main/List_boardcrew_write.jsp">글쓰기</a>
+                <c:if test="${UserId eq 'admin' }">
+					<a href="#" class="write_btn"
+						onclick="location.href='/Cb_Write.cb';">글쓰기</a>
+				</c:if>
               </div>
             </div>
             <table>

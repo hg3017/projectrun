@@ -10,7 +10,7 @@
 		if(confirmed) {
 			var form = document.writeFrm;
 			form.method = "post";
-			form.action = "/An_DeleteProcess.an";
+			form.action = "/Cb_DeleteProcess.cb";
 		}
 		
 	}
@@ -26,6 +26,9 @@
       <section class="contents">
         <div class="inner">
           <div class="board_view">
+         	<form name="writeFrm" method="post">
+   				<input type="hidden" name="idx" value="${board.idx}" />
+			</form>
             <div class="view_top">
              	<c:if test="${UserId eq board.member_id }">
              		<button type="button" onclick="location.href='Cb_Edit.cb?idx=${board.idx}';">수정하기</button>
