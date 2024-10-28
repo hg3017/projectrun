@@ -39,14 +39,14 @@
                 </form>
               </div>
               <div class="btn_wrap">
-                <c:if test="${UserId eq 'admin' }">
-					<a href="#" class="write_btn"
-						onclick="location.href='/Cb_Write.cb';">글쓰기</a>
+                <c:if test="${UserId eq 'hong01' }">
+					<a href="/Cb_Write.cb" class="write_btn">글쓰기</a>
 				</c:if>
               </div>
             </div>
             <table>
               <caption class="nohead">공지사항 테이블</caption>
+              
                 <tr>
                   <th>No</th>
                   <th>제목</th>

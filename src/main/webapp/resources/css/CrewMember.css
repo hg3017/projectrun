@@ -1,0 +1,158 @@
+/* /* 기본 스타일 
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+#container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+테이블 스타일
+.notice {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.notice th, .notice td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.notice thead {
+    background-color: #007bff;
+    color: #fff;
+}
+
+
+.notice img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+버튼 스타일
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn[value="승인"] {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn[value="거부"] {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn[value="추방"] {
+    background-color: #ff9900;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+ */
+ 
+ /* 전체적인 스타일 */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+#container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 테이블 스타일 */
+.notice {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.notice th, .notice td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+.notice thead {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.notice th {
+    font-weight: bold;
+}
+
+.notice tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+.notice img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* 버튼 스타일 */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #fff;
+}
+
+.btn[value="승인"] {
+    background-color: #28a745;
+}
+
+.btn[value="거부"] {
+    background-color: #dc3545;
+}
+
+.btn[value="추방"] {
+    background-color: #ff9900;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+/* 상태 열 */
+.notice td {
+    font-size: 0.9em;
+    color: #666;
+}
+ 

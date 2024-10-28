@@ -16,6 +16,7 @@ import DAO.FreeBoardDAO;
 import DTO.FreeBoardDTO;
 import Service.FreeBoardService;
 import Service.FreeBoardServiceImpl;
+import Utils.FileUtils;
 import Utils.FreeBoardPage;
 
 
@@ -91,16 +92,21 @@ public class FreeBoardController extends HttpServlet {
 			path = "Fb_Write";
 			
 		} else if (action.equals("/Fb_WriteProcess.free")) {
+			FreeBoardDTO dto = new FreeBoardDTO();
+			
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
+			
 			// 파일 업로드 처리
 			// 1. 받을 값 확인
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+			String title = rData.get("title");
+			String content = rData.get("content");
 			//String idx = request.getParameter("idx");
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");
 		    
-			FreeBoardDTO dto = new FreeBoardDTO();
 			dto.setTitle(title);
 			dto.setContent(content);
 			dto.setMember_id(member_id);
@@ -132,8 +138,6 @@ public class FreeBoardController extends HttpServlet {
 
 		} else if (action.equals("/Fb_Edit.free")) {
 			String idx = request.getParameter("idx");  // 일련번호 받기 
-			//HttpSession session = request.getSession();
-			//String member_id = (String) session.getAttribute("UserId");
 			
 			FreeBoardDTO dto = service.pnPage(idx);        // 게시물 가져오기 
 			request.setAttribute("board", dto);
@@ -142,15 +146,24 @@ public class FreeBoardController extends HttpServlet {
 			path = "Fb_Edit";
 			
 		} else if (action.equals("/Fb_EditProcess.free")) {
-			// 1. 받을 값 확인
-			String idx = request.getParameter("idx");
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
-
 			FreeBoardDTO dto = new FreeBoardDTO();
+			
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
+			
+			// 1. 받을 값 확인
+			String idx = rData.get("idx");
+			String title = rData.get("title");
+			String content = rData.get("content");
+			String fileName = rData.get("ofile");
+			String newFileName = rData.get("sfile");
+
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
+			dto.setOfile(fileName);
+			dto.setSfile(newFileName);
 			
 			
 			// 2. service 요청
@@ -200,8 +213,8 @@ public class FreeBoardController extends HttpServlet {
 				return;
 			}
 		}
-		request.setAttribute("Fb_Layout", path);
-		request.getRequestDispatcher("/JSP/FreeBoard/Fb_Layout.jsp").forward(request, response);
+		request.setAttribute("layout", "FreeBoard/" + path);
+		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}
 
 }

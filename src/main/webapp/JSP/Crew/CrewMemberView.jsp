@@ -4,6 +4,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="/resources/css/CrewMember.css" rel="stylesheet" type="text/css">
 
 
 
@@ -34,10 +35,13 @@ function sendDelete(memberId, crewName) {
 			<table class="notice">
 				<thead>
 				<tr>
-					<th><input type="checkbox" name="" id="chkRowAll" > </th>
 					<th> 사진 </th>
 					<th> 이름 </th>
 					<th> 소개 </th>
+					 <c:if test = "${ crewSessionId eq 'Master'}" >
+					 <th > 상태  </th>
+					 <th colspan='2'> 처리 </th>
+					 </c:if>
 				</tr>
 				</thead>
 				<tbody>
@@ -47,15 +51,20 @@ function sendDelete(memberId, crewName) {
 						<td> 사진 ${crewMember.member_image } </td>
 		                <td> 이름 ${crewMember.member_id } </td>
 		                <td> 소개 ${crewMember.description } </td>
+		                
+		                
+		                <c:if test = "${ crewSessionId eq 'Master'}" >
 		                <td> 상태 ${crewMember.status} </td>
 					                 
-                 		<c:if test="${crewMember.status eq 'Waiting' && crewSessionId eq 'Master'}">
- 							<td> <input type="button" value="승인" class="btn" onclick="sendAccept('${crewMember.member_id}','${crewMember.crew_name}');">  </td>
-			                <td> <input type="button" value="거부" class="btn" onclick="sendRefuse('${crewMember.member_id}', '${crewMember.crew_name}');"> </td>
-						</c:if>
+	                 		<c:if test="${crewMember.status eq 'Waiting'}">
+	 							<td> <input type="button" value="승인" class="btn" onclick="sendAccept('${crewMember.member_id}','${crewMember.crew_name}');">  </td>
+				                <td> <input type="button" value="거부" class="btn" onclick="sendRefuse('${crewMember.member_id}', '${crewMember.crew_name}');"> </td>
+							</c:if>
+							
+							<c:if test="${crewMember.status eq 'User'}">
+								<td> <input type="button" value="추방" class="btn" onclick="senDelete('${crewMember.member_id}','${crewMember.crew_name}');">  </td>		
+							</c:if>
 						
-						<c:if test="${crewMember.status eq 'User' && crewSessionId eq 'Master'}">
-							<td> <input type="button" value="추방" class="btn" onclick="senDelete('${crewMember.member_id}','${crewMember.crew_name}');">  </td>		
 						</c:if>
 					</tr>
 				</c:forEach>

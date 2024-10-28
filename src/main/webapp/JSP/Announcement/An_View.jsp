@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 
@@ -26,7 +27,7 @@ function deletePost() {
 		<div class="inner">
 			<div class="board_view">
 				<form name="writeFrm" method="post">
-    				<input type="hidden" name="idx" value="${board.idx}" />
+					<input type="hidden" name="idx" value="${board.idx}" />
 				</form>
 				<div class="view_top">
 					<c:if test="${UserId eq board.member_id }">
@@ -43,7 +44,7 @@ function deletePost() {
 					<c:if test="${empty board.content }">내용없음</c:if>
 					<c:if test="${not empty board.content }">${board.content }</c:if>
 				</div>
-						<!-- 파일 첨부 정보 -->
+				<!-- 파일 첨부 정보 -->
 				<div class="view_file" align="right">
 					<h3>첨부파일</h3>
 					<c:if test="${not empty board.ofile}">
@@ -53,7 +54,8 @@ function deletePost() {
 						<span>첨부파일 없음</span>
 					</c:if>
 				</div>
-				
+				<br>
+
 				<dl class="view_paging">
 					<dt>이전글</dt>
 					<dd>

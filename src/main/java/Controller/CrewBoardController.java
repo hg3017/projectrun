@@ -87,14 +87,14 @@ public class CrewBoardController extends HttpServlet {
 			request.setAttribute("board", dto);
 			
 			path = "Cb_View";
-		}else if(action.equals("/Cs_Write.cb")) {
+		}else if(action.equals("/Cb_Write.cb")) {
 			path = "Cb_Write";
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
 			CrewBoardDTO dto = new CrewBoardDTO();
 			
-			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-			dto.setOfile(rData.get("ofile"));
-			dto.setSfile(rData.get("sfile"));
+//			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+//			dto.setOfile(rData.get("ofile"));
+//			dto.setSfile(rData.get("sfile"));
 			
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");

@@ -51,7 +51,7 @@ public class CrewBoardDAO extends JDBConnect{
 		 query += " LIMIT ? OFFSET ? ";
 		
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			
 			int paramIdex = 1;
 			if(map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
@@ -129,15 +129,15 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO crewboard (title, crew_name, content, member_id,ofile,sfile) VALUES (?, ?, ?, ?,?,?)";
+			String query = "INSERT INTO crewboard (title, crew_name, content, member_id,ofile,sfile) VALUES (?, ?, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getCrew_name());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getMember_id());
-			psmt.setString(4, dto.getOfile());
-			psmt.setString(5, dto.getSfile());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 			
 			result = psmt.executeUpdate();
 		}
@@ -162,6 +162,8 @@ public class CrewBoardDAO extends JDBConnect{
 		query += "			CREW_NAME,                                         ";
 		query += "			CONTENT,                                          ";
 		query += "			REGIDATE,                                         ";
+		query += "			OFILE,                                         ";
+		query += "			SFILE,                                         ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREVNUM,          ";
 		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXTNUM,         ";
 		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREVTITLE,      ";
