@@ -21,7 +21,7 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 
 	@Override
 	public int insertWrite(CustomerboardDTO dto) {
-		return dao.inserWrite(dto);
+		return dao.insertWrite(dto);
 	}
 
 	@Override
@@ -40,13 +40,14 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 	}
 
 	@Override
-	public void updateVisitCount(String idx) {
-		dao.updateVisitCount(idx);
+	public CustomerboardDTO ViewPage(String idx) {
+		return dao.viewPage(idx);
 	}
 
 	@Override
-	public CustomerboardDTO ViewPage(String idx) {
-		return dao.viewPage(idx);
+	public void updateVisitCount(String idx) {
+		dao.updateVisitCount(idx);
+		
 	}
 	
 	

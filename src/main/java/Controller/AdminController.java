@@ -155,6 +155,15 @@ public class AdminController extends HttpServlet {
 		}else if(action.equals("/Admin_Index.ad")) {
 			String path = "/JSP/Admin/Admin_Index.jsp";
 			response.sendRedirect(path);
+		} else if(action.equals("/AdminPage.ad")) {		
+					
+		//path = "Admin_Index";
+		
+		response.sendRedirect("/JSP/Admin/Admin_Index.jsp");
+		
+		//request.getRequestDispatcher("/JSP/Admin/Admin_Index.jsp").forward(request, response);;
+		// request.setAttribute("layout","Admin/" + path);
+		// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 		}
 		
 	}

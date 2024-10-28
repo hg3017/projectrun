@@ -3,7 +3,7 @@ package DTO;
 import java.util.Date;
 
 public class CustomerboardDTO {
-	private int idx;
+	private String idx;
 	private int ableview;
 	private String category;
 	private String title;
@@ -17,10 +17,10 @@ public class CustomerboardDTO {
 	private String nexttitle;
 	
 	
-	public int getIdx() {
+	public String getIdx() {
 		return idx;
 	}
-	public void setIdx(int idx) {
+	public void setIdx(String idx) {
 		this.idx = idx;
 	}
 	public int getAbleview() {

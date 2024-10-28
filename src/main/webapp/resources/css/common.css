@@ -1011,6 +1011,7 @@ caption.nohead {
 .board_write td {
   padding: 10px 0;
 }
+
 .board_write input[type=text] {
   width: 100%;
   height: 50px;
