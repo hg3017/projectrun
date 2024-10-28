@@ -83,6 +83,7 @@
 					<div class="board_pagination">
 						${pagingStr}
 						<!-- 페이징 링크 표시 -->
+						
 					</div>
 				</div>
 			</div>
