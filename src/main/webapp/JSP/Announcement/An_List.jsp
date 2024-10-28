@@ -26,13 +26,13 @@
 								<div class="board_search">
 									<div class="select_wrap">
 										<select  name="searchField">
-											<option value="title">제목</option>
-											<option value="content">내용</option>
+											<option value="title" ${param.searchField eq 'title' ? 'selected' : ''}>제목</option>
+											<option value="content" ${param.searchField eq 'content' ? 'selected' : ''}>내용</option>
 										</select>
 									</div>
 									<div class="input_wrap">
 										<input type="search" placeholder="검색어를 입력해주세요"
-											name="searchWord" />
+											name="searchWord" value="${param.searchWord }" />
 										<button type="submit" class="search_btn"></button>
 									</div>
 								</div>

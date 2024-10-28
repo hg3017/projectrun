@@ -73,6 +73,7 @@ public class FreeBoardDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx")); // 일련번호
 				dto.setTitle(rs.getString("title")); // 제목
 				dto.setContent(rs.getString("content")); // 내용
+				dto.setCrew_name(rs.getString("crew_name")); // 크루명
 				dto.setRegidate(rs.getDate("regidate")); // 작성일
 				dto.setMember_id(rs.getString("member_id")); // 작성자 아이디
 				dto.setVisitcount(rs.getString("visitcount")); // 조회수
@@ -135,14 +136,15 @@ public class FreeBoardDAO extends JDBConnect {
 
 		try {
 			// INSERT 쿼리문 작성
-			String query = "INSERT INTO freeboard (title,content,member_id,ofile,sfile) VALUES ( ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO freeboard (title,content,member_id,crew_name,ofile,sfile) VALUES ( ?, ?, ?, ?, ?, ?)";
 
 			psmt = con.prepareStatement(query); // 동적 쿼리
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getMember_id());
-			psmt.setString(4, dto.getOfile());
-			psmt.setString(5, dto.getSfile());
+			psmt.setString(4, dto.getCrew_name());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 
 			result = psmt.executeUpdate();
 
@@ -166,6 +168,7 @@ public class FreeBoardDAO extends JDBConnect {
 		query += "			TITLE,                                            ";
 		query += "			REGIDATE,                                         ";
 		query += "			CONTENT,                                          ";
+		query += "			CREW_NAME,                                        ";
 		query += "			OFILE,                                            ";
 		query += "			SFILE,                                            ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
@@ -188,6 +191,7 @@ public class FreeBoardDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
+				dto.setCrew_name(rs.getString("crew_name"));
 				dto.setOfile(rs.getString("ofile"));
 				dto.setSfile(rs.getString("sfile"));
 				dto.setRegidate(rs.getDate("regidate"));

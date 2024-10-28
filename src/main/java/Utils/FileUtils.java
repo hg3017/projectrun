@@ -39,6 +39,10 @@ public class FileUtils {
 				String newFileName = now + ext;
 				File oldFile = new File(saveDirectory + File.separator + fileName);
 				File newFile = new File(saveDirectory + File.separator + newFileName);
+//				if(!newFile.exists()) {
+//					newFile.mkdirs();
+//				}
+				
 				oldFile.renameTo(newFile);
 				
 				data.put("ofile", fileName);
