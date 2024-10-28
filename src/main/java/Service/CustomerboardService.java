@@ -13,5 +13,6 @@ public interface CustomerboardService {
 	public int deletePost(CustomerboardDTO dto);
 	public int selectCount(Map<String, String> map);
 	public CustomerboardDTO ViewPage(String idx);
+	public void updateVisitCount(String idx);
 	
 }

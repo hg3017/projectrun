@@ -43,6 +43,12 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 	public CustomerboardDTO ViewPage(String idx) {
 		return dao.viewPage(idx);
 	}
+
+	@Override
+	public void updateVisitCount(String idx) {
+		dao.updateVisitCount(idx);
+		
+	}
 	
 	
 }

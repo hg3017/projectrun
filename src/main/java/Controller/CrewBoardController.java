@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.CrewBoardDAO;
 import DTO.CrewBoardDTO;
@@ -84,10 +85,35 @@ public class CrewBoardController extends HttpServlet {
 			request.setAttribute("board", dto);
 			
 			path = "Cb_View";
+		}else if(action.equals("/Cs_Write.cb")) {
+			path = "Cb_Write";
+		}else if(action.equals("/Cb_WriteProcess.cb")) {
+			String title= request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			HttpSession session = request.getSession();
+		    String member_id = (String) session.getAttribute("UserId");
+		    
+		    CrewBoardDTO dto = new CrewBoardDTO();
+		    dto.setTitle(title);
+		    dto.setContent(content);
+		    dto.setMember_id(member_id);
+		    
+		    int rs = service.insertWrite(dto);
+		    
+		    if (rs == 1) {
+				// 성공적으로 삽입
+				response.sendRedirect("/Cb_List.cb");
+				return;
+			} else {
+				// 삽입 실패
+				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
+				path = "Cb_Write"; // 다시 작성 페이지로 돌아감
+			}
 		}
 		
-		request.setAttribute("layout", path);
-	    request.getRequestDispatcher("/JSP/CrewBoard/layout.jsp").forward(request, response);
+		request.setAttribute("layout","CrewBoard/" + path);
+	    request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}
 	
 }

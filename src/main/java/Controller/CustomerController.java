@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 
+import DAO.CustomerboardDAO;
 import DTO.CustomerboardDTO;
+import DTO.FreeBoardDTO;
 import Service.CustomerboardService;
 import Service.CustomerboardServiceImpl;
 import Utils.CustomerboardPage;
@@ -72,25 +74,19 @@ public class CustomerController extends HttpServlet {
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";
-		} else if(action.equals("/Cs_View.co")) {
-			String idx = request.getParameter("idx");
-
-			//			service.updateVisitCount(idx);
-			CustomerboardDTO dto = service.ViewPage(idx);
-
-			request.setAttribute("board", dto);
-			path = "Cs_View";
-
+			
 		} else if(action.equals("/Cs_Write.co")) {
 
 			path = "Cs_Write";
+			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
+			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			HttpSession session = request.getSession();
-			String member_id = (String) session.getAttribute("member_id");
-
+			String member_id = (String) session.getAttribute("UserId");
+			
 			CustomerboardDTO dto = new CustomerboardDTO();
 			dto.setTitle(title);
 			dto.setContent(content);
@@ -101,11 +97,78 @@ public class CustomerController extends HttpServlet {
 			if(rs == 1) {
 				response.sendRedirect("/Cs_List.co");
 				return;
+				
 			} else {
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다");
 				path = "Cs_Write";
 			}
+		} else if(action.equals("/Cs_View.co")) {
+			String idx = request.getParameter("idx");
+
+			service.updateVisitCount(idx);
+			CustomerboardDTO dto = service.ViewPage(idx);
+
+			request.setAttribute("board", dto);
+			path = "Cs_View";
+
+		} else if(action.equals("/Cs_Edit.co")) {
+			String idx = request.getParameter("idx");
+			
+			CustomerboardDTO dto = service.ViewPage(idx);
+			request.setAttribute("board", dto);
+			
+			path = "Cs_Edit";
+		} else if(action.equals("/Cs_EditProcess.co")) {
+			String idx = request.getParameter("idx");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+
+			CustomerboardDTO dto = new CustomerboardDTO();
+			dto.setIdx(idx);
+			dto.setTitle(title);
+			dto.setContent(content);
+			
+			int rs = service.updateEdit(dto);
+			
+			if(rs == 1) {
+				response.sendRedirect("Cs_View.co?idx=" + idx);
+				return;
+			} else {
+				request.setAttribute("errorMessage", "수정하기가 실패하였습니다.");
+				path = "Cs_Edit";
+			}
+			
+		} else if (action.equals("/Cs_DelectProcess.co")) {
+			HttpSession session = request.getSession();
+			String idx = request.getParameter("idx");
+			
+			CustomerboardDAO dao = new CustomerboardDAO();
+			CustomerboardDTO dto = dao.viewPage(idx);
+			
+			String member_id = session.getAttribute("UserId").toString();
+			int delResult = 0;
+			
+			if(member_id.equals(dto.getMember_id())) {
+				dto.setIdx(idx);
+				
+				delResult = service.deletePost(dto);
+				
+				if (delResult == 1) {
+					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/Cs_List.co'</script>");
+					return;
+				} else {
+					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/Cs_View.co?idx=" + idx + "'</script>");
+					return;
+				}
+			} else {
+				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Cs_View.co?idx=" + idx + "'</script>");
+				return;
+			}
 		}
+		
+		
+		
+		
 		request.setAttribute("layout", "Customerboard/" + path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}
