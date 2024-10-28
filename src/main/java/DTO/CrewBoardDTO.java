@@ -8,7 +8,9 @@ public class CrewBoardDTO {
     private String crew_name;
     private String content;
     private String member_id;
-    private java.sql.Date regidate;
+    private String ofile;
+    private String sfile;
+    private Date regidate;
     private String visitcount;
     private String prevnum;
 	private String prevtitle;
@@ -44,10 +46,22 @@ public class CrewBoardDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public java.sql.Date getRegidate() {
+	public String getOfile() {
+		return ofile;
+	}
+	public void setOfile(String ofile) {
+		this.ofile = ofile;
+	}
+	public String getSfile() {
+		return sfile;
+	}
+	public void setSfile(String sfile) {
+		this.sfile = sfile;
+	}
+	public Date getRegidate() {
 		return regidate;
 	}
-	public void setRegidate(java.sql.Date regidate) {
+	public void setRegidate(Date regidate) {
 		this.regidate = regidate;
 	}
 	public String getVisitcount() {
@@ -80,13 +94,17 @@ public class CrewBoardDTO {
 	public void setNexttitle(String nexttitle) {
 		this.nexttitle = nexttitle;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "CrewBoardDTO [idx=" + idx + ", title=" + title + ", crew_name=" + crew_name + ", content=" + content
-				+ ", member_id=" + member_id + ", regidate=" + regidate + ", visitcount=" + visitcount + ", prevnum="
-				+ prevnum + ", prevtitle=" + prevtitle + ", nextnum=" + nextnum + ", nexttitle=" + nexttitle + "]";
+				+ ", member_id=" + member_id + ", ofile=" + ofile + ", sfile=" + sfile + ", regidate=" + regidate
+				+ ", visitcount=" + visitcount + ", prevnum=" + prevnum + ", prevtitle=" + prevtitle + ", nextnum="
+				+ nextnum + ", nexttitle=" + nexttitle + "]";
 	}
-    
+	
+	
 	
 	
 	
