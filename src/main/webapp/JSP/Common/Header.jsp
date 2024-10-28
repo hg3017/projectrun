@@ -44,7 +44,7 @@ String sessionId = (String) session.getAttribute("UserId");
  		  <% 
           	if(sessionId == null || sessionId == "" ) {
           %>
-            <a class="login_btn" href="/JSP/Login/Login.jsp">로그인</a>  
+            <a class="login_btn" href="/LoginPage.lo">로그인</a>  
            <% }
           	else if (sessionId != null ) {
           	%>

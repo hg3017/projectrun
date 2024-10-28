@@ -44,11 +44,11 @@
 	  <section class="main_info">
 	  <div class="inner">
 		  <div class="crew_name">
-		  		<div id="main_tit">
-				
+		  		<div class="main_tit">
+					<a> 크루 썸네일  </a>
 					<h2> <%=dto.getName() %> </h2>
 					<!-- <img src="/resources/images/logo.png" alt=""> -->
-					<a> 크루 썸네일  </a>
+					
 				</div>
 				<% 
 					if(crewSessionId == null || crewSessionId.equals("") ) {
@@ -126,8 +126,9 @@
 		            <h2 class="main_tit">
 		              회원 목록
 		            </h2>
-	            	<!-- <button  >더 보기</button> -->
-	            	<a href="/CrewMemberList.crewMember?crewName=<%= dto.getName() %>">  더 보기 </a>
+	            	<button  onclick="location.href='/CrewMemberList.crewMember?crewName=<%= dto.getName() %>'"  >더 보기</button>
+	            	
+	            	<%-- <a href="/CrewMemberList.crewMember?crewName=<%= dto.getName() %>">  더 보기 </a> --%>
 	            	
 	            </div>
 	            
@@ -158,7 +159,8 @@
       			
       		
     </section>
-    <!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
-    <jsp:include page="/JSP/Crew/Comment.jsp" />
-	<!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
 </main>
+    <!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
+    <%-- <jsp:include page="/JSP/Crew/Comment.jsp" /> --%>
+	<!-- 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 --> 
+
