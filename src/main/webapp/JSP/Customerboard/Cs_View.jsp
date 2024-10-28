@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
@@ -8,7 +7,7 @@ function deletePost() {
     if (confirmed) {
         var form = document.writeFrm;       // 이름(name)이 "writeFrm"인 폼 선택
         form.method = "post";               // 전송 방식 
-        form.action = "DeleteProcess.jsp";  // 전송 경로
+        form.action = "/Cs_DeleteProcess.co";  // 전송 경로
         form.submit();                      // 폼값 전송
     }
 }
@@ -18,7 +17,7 @@ function deletePost() {
 	<section class="sub_visual">
         <div class="inner">
           <div class="sub_wrap">
-          	<h3>Q&amp;A</h3>
+          	<h3>Q&A</h3>
           </div>
         </div>
       </section>
@@ -30,8 +29,8 @@ function deletePost() {
 			</form>
             <div class="view_top">
             	<c:if test="${UserId eq board.member_id }">
-					<button type="button" onclick="location.href='Cs_Edit.co?idx=${board.idx}';">수정하기</button>
-					<button type="button" onclick="deletePost()">삭제하기</button>
+					<a href="/Cs_Edit.co?idx=${board.idx }">수정하기</a>
+					<a onclick="deletePost()" >삭제하기</a>
 				</c:if>
             </div>
             <div class="view_tit">

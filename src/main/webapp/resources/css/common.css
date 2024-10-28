@@ -568,6 +568,7 @@ div.file_wrap label::before {
 .point_btn4 {
   height: 50px;
   border-radius: 25px;
+  border:none;
   width: 160px;
   font-weight: 700;
   color: #fff;
