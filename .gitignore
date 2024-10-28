@@ -1,3 +1,4 @@
 ### folder
 target/
 .settings/
+.gitignore
