@@ -65,7 +65,7 @@ public class CustomerboardDAO extends JDBConnect {
 			while (rs.next()) {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
-				dto.setIdx(rs.getInt("idx"));
+				dto.setIdx(rs.getString("idx"));
 				dto.setAbleview(rs.getInt("ableview"));
 				dto.setCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
@@ -103,7 +103,7 @@ public class CustomerboardDAO extends JDBConnect {
 			while(rs.next()) {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
-				dto.setIdx(rs.getInt("idx"));
+				dto.setIdx(rs.getString("idx"));
 				dto.setAbleview(rs.getInt("ableview"));
 				dto.setCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
@@ -153,7 +153,7 @@ public class CustomerboardDAO extends JDBConnect {
 			rs = psmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setIdx(rs.getInt("idx"));
+				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
 				dto.setAbleview(rs.getInt("ableview"));
 				dto.setMember_id(rs.getString("member_id"));
@@ -175,11 +175,11 @@ public class CustomerboardDAO extends JDBConnect {
 		
 	}
 	
-	public int inserWrite(CustomerboardDTO dto) {
+	public int insertWrite(CustomerboardDTO dto) {
 		int result = 0;
-		 
+		
 		try {
-			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?,?,?)";
+			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
@@ -187,7 +187,7 @@ public class CustomerboardDAO extends JDBConnect {
 			psmt.setString(3, dto.getMember_id());
 			
 			result = psmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			System.out.println("게시물 입력 중 예외 발생");
 			e.printStackTrace();
@@ -196,17 +196,16 @@ public class CustomerboardDAO extends JDBConnect {
 	}
 	
 	public void updateVisitCount(String idx) {
-		String query = "UPDATE customerboard SET " + " visitcount=visitcount+1"  + " WHERE idx=? ";
+		String query = "UPDATE customerboard SET visitcount=visitcount+1 WHERE idx=?";
 		
 		try {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, idx);
 			psmt.executeUpdate();
 		} catch (Exception e) {
-			System.out.println("게시물 조회수 증가 중 예외 발생");
+			System.out.println("게시물 조회수 증가 중 예외발생");
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public int updateEdit(CustomerboardDTO dto) {
@@ -218,7 +217,7 @@ public class CustomerboardDAO extends JDBConnect {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setInt(3, dto.getIdx());
+			psmt.setString(3, dto.getIdx());
 			
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
@@ -235,7 +234,7 @@ public class CustomerboardDAO extends JDBConnect {
 			String query = "DELETE FROM customerboard WHERE idx=?";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setInt(1, dto.getIdx());
+			psmt.setString(1, dto.getIdx());
 			
 			result = psmt.executeUpdate();
 		} catch (Exception e) {

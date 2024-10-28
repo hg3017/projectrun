@@ -40,8 +40,7 @@
           </div>
 			<div class="btn_wrap">
 				<c:if test="${UserId eq 'admin' }">
-				<button type="button" class="write_btn" onclick="location.href='/Cs_Write.co';">글쓰기</button>
-				<!-- admin 전용 게시글 작성 -->
+				<a href="/Cs_Write.co" class="write_btn">글쓰기</a> <!-- admin 전용 게시글 작성 -->
 				</c:if>
 			</div>
         </div>
@@ -62,7 +61,7 @@
               <td>${boards.size() - status.index}</td> <!-- 테이블번호 -->
               <td>${board.category }</td> <!-- 분류 -->
               <td>${board.ableview }</td> <!-- 공개여부 -->
-              <td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 -->
+              <td><a href="Cs_View.co?idx=${board.idx }">${board.title }</a></td> <!-- 제목 -->
               <td>${board.regidate }</td> <!-- 작성일자 -->
             </tr>
           </c:forEach>
