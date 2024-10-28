@@ -71,7 +71,6 @@ public class FreeBoardController extends HttpServlet {
 		    
 		    // 3. 총 게시물 수 가져오기
 		    int totalCount = service.selectCount(map); // 총 게시물 수 계산
-		    request.setAttribute("totalCount", totalCount);
 		    
 			// 4. service 요청
 			List<FreeBoardDTO> boards = service.selectList(map);
@@ -102,6 +101,7 @@ public class FreeBoardController extends HttpServlet {
 			// 1. 받을 값 확인
 			String title = rData.get("title");
 			String content = rData.get("content");
+			String crew_name = rData.get("crew_name");
 			//String idx = request.getParameter("idx");
 			
 			HttpSession session = request.getSession();
@@ -110,6 +110,7 @@ public class FreeBoardController extends HttpServlet {
 			dto.setTitle(title);
 			dto.setContent(content);
 			dto.setMember_id(member_id);
+			dto.setCrew_name(crew_name);
 			
 			// 2. service 요청
 			int rs = service.insertWrite(dto);

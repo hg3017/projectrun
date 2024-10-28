@@ -39,8 +39,8 @@ function validateForm(form) {
 							<caption class="nohead">자유게시판 작성하기 테이블</caption>
 							<tr>
 								<th>작성자 <i class="star"></i></th>
-								<td><input type="text" name="member_id" value="${UserId }"
-									readonly></td>
+								<td><input type="text" name="crew_name" value="${CrewName }"
+									readonly /></td>
 							</tr>
 							<tr>
 								<th>제목 <i class="star"></i></th>
