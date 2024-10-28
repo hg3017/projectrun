@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import DAO.AnnouncementDAO;
 import DAO.CrewBoardDAO;
+import DTO.AnnouncementDTO;
 import DTO.CrewBoardDTO;
 import Service.CrewBoardService;
 import Service.CrewBoardServiceImpl;
@@ -95,13 +96,14 @@ public class CrewBoardController extends HttpServlet {
 //			Map<String, String> rData = FileUtils.fileUpload(request, "file");
 //			dto.setOfile(rData.get("ofile"));
 //			dto.setSfile(rData.get("sfile"));
-			
+			String crew_name = request.getParameter("crew_name");
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");
 		    
+		    dto.setCrew_name(crew_name);
 		    dto.setTitle(title);
 		    dto.setContent(content);
 		    dto.setMember_id(member_id);
@@ -165,16 +167,19 @@ public class CrewBoardController extends HttpServlet {
 				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
 				path = "Cb_Edit";
 			}
-		}else if(action.equals("/Cb_DeleteProcess.cb")){
+		} else if (action.equals("/Cb_DeleteProcess.cb")) {
+			// 1. 받을 값 확인
 			HttpSession session = request.getSession();
 			String idx = request.getParameter("idx");
-			
+
 			CrewBoardDAO dao = new CrewBoardDAO();
 			CrewBoardDTO dto = dao.pnPage(idx);
 			
+
+			// 로그인된 사용자 ID 얻기
 			String member_id = session.getAttribute("UserId").toString();
 			int delResult = 0;
-			
+
 			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
 				// 작성자가 본인이면...
 				dto.setIdx(idx);
@@ -197,7 +202,8 @@ public class CrewBoardController extends HttpServlet {
 				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Cb_View.cb?idx=" + idx + "'</script>");
 				return;
 			}
-		}else if (action.equals("/FileDown.cb")) {
+			
+		} else if (action.equals("/FileDown.cb")) {
 			FileUtils.fileDownload(request, response);
 			return;
 		}

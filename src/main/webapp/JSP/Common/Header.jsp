@@ -35,7 +35,7 @@ String sessionId = (String) session.getAttribute("UserId");
 	    	  <% 
 	          	if( sessionId != null && sessionId.equals("admin")) {
 	          %>
-	            <a class="login_btn" href="/AdminPage.lo"> 관리자 화면 </a>  
+	            <a class="login_btn" href="/AdminPage.ad"> 관리자 화면 </a>  
 	           <% }
 	          %>
     
