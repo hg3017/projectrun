@@ -21,6 +21,22 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	}
 
 	@Override
+	public int insertWrite(CrewBoardDTO dto) {
+		return dao.insertWrite(dto);
+	}
+	
+	@Override
+	public int updateEdit(CrewBoardDTO dto) {
+		return dao.updateEdit(dto); 
+	}
+	
+	@Override
+	public int deletePost(CrewBoardDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.deletePost(dto);
+	}
+	
+	@Override
 	public int selectCount(Map<String, String> map) {
 		return dao.selectCount(map);
 	}
@@ -36,10 +52,5 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 		return dao.pnPage(idx);
 	}
 
-	@Override
-	public int insertWrite(CrewBoardDTO dto) {
-		return dao.insertWrite(dto);
-	}
-	
 	
 }

@@ -29,7 +29,7 @@ function validateForm(form) {
       <section class="contents">
         <div class="inner">
           <div class="board_write">
-            <form>
+             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb"  onsubmit="return validateForm(this);">
               <fieldset>
                 <legend>게시물 작성하기</legend>
                 <h3 class="tit">크루게시판 게시물 작성하기</h3>
@@ -38,17 +38,17 @@ function validateForm(form) {
                   <caption class="nohead">게시물 작성하기 테이블</caption>
                   <tr>
                     <th>제목 <i class="star"></i></th>
-                    <td><input type="text" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
+                    <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
                   </tr>
                   <tr>
                     <th class="th_top">내용 <i class="star"></i></th>
-                    <td><textarea placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요" rows="10"></textarea></td>
+                    <td><textarea placeholder="게시물 내용을 작성해 주세요" name="content" title="게시물 내용을 작성해 주세요" rows="10"></textarea></td>
                   </tr>
                   <tr>
                     <th>첨부파일</th>
                     <td class="td_flex">
                       <div class="file_wrap">
-                        <input type="text" readonly>
+                        <input type="text"  readonly>
                         <label>
                           <input type="file" class="blind">
                           파일선택
@@ -59,8 +59,8 @@ function validateForm(form) {
                   </tr>
                 </table>
                 <div class="btn_wrap">
-                  <a class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</a>
-                  <a class="point_btn5" href="/Cb_List.cb">취소</a>s
+                  <button type="submit" class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</button>
+                  <button type="submit" class="point_btn5" href="/Cb_List.cb">취소</button>
                 </div>
               </fieldset>
             </form>

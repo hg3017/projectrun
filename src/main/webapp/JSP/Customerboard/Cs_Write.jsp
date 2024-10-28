@@ -23,12 +23,13 @@
                	<tr>
                     <th>분류 <i class="star"></i></th>
                     <td>
-                    <select>
+                    <input type="radio" name="category" value="">
+                   <!--  <select>
                     	<option name="category"></option>
                     	<option name="category">모임개설하기</option>
                     	<option name="category">모임참가하기</option>
                     	<option name="category">기타</option>
-                    </select>
+                    </select> -->
                     </td>
                   </tr>
   <!--            <tr>
