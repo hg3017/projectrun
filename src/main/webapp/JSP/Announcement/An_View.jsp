@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 
@@ -26,13 +27,13 @@ function deletePost() {
 		<div class="inner">
 			<div class="board_view">
 				<form name="writeFrm" method="post">
-    				<input type="hidden" name="idx" value="${board.idx}" />
+					<input type="hidden" name="idx" value="${board.idx}" />
 				</form>
 				<div class="view_top">
 					<c:if test="${UserId eq board.member_id }">
-						<a href="#" class="modify_btn" style="margin-right:10px;"
+						<a href="#"
 							onclick="location.href='An_Edit.an?idx=${board.idx}'; return false;">수정하기</a>
-						<a href="#" class="modify_btn" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
+						<a href="#" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
 					</c:if>
 				</div>
 				<div class="view_tit">
@@ -43,8 +44,8 @@ function deletePost() {
 					<c:if test="${empty board.content }">내용없음</c:if>
 					<c:if test="${not empty board.content }">${board.content }</c:if>
 				</div>
-						<!-- 파일 첨부 정보 -->
-				<div class="view_file">
+				<!-- 파일 첨부 정보 -->
+				<div class="view_file" align="right">
 					<h3>첨부파일</h3>
 					<c:if test="${not empty board.ofile}">
 						<a href="/FileDown.an?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
@@ -53,7 +54,8 @@ function deletePost() {
 						<span>첨부파일 없음</span>
 					</c:if>
 				</div>
-				
+				<br>
+
 				<dl class="view_paging">
 					<dt>이전글</dt>
 					<dd>
@@ -78,8 +80,8 @@ function deletePost() {
 					</dd>
 				</dl>
 				<div class="btn_wrap">
-					<a href="#" class="point_btn3"
-						onclick="location.href='/An_List.an';">목록</a>
+					<button type="button" class="point_btn3"
+						onclick="location.href='/An_List.an';">목록</button>
 				</div>
 			</div>
 		</div>

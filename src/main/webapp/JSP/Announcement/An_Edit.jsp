@@ -56,13 +56,13 @@ function validateForm(form) {  // 폼 내용 검증
 									<th>첨부파일</th>
 									<td class="td_flex">
 										<div class="file_wrap">
-											<input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
+											<input type="text" id="fileName" value="${not empty board.ofile ? board.ofile : '첨부파일 없음'}" readonly > 
 											<label>
 												<input type="file" name="file" id="fileInput" class="blind" > 파일선택
 											</label>
 										</div>
 										<p class="file_note">※ 등록 가능 확장자 :
-											pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 5MB</p>
+											pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 10MB</p>
 									</td>
 								</tr>
 							</table>

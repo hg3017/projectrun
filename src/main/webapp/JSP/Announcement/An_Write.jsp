@@ -61,7 +61,7 @@ function validateForm(form) {
 										</label>
 									</div>
 									<p class="file_note">
-										※ 등록 가능 확장자 : pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 5MB <br>
+										※ 등록 가능 확장자 : pdf,docx,pptx,xlsx,jpg,jpeg,gif,png / 최대 10MB <br>
 									</p>
 								</td>
 							</tr>

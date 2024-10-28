@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,6 @@ public class AnnouncementDAO extends JDBConnect {
 			System.out.println("게시물 수를 구하는 중 예외 발생");
 			e.printStackTrace();
 		} 
-
 		return totalCount;
 	}
 
@@ -56,7 +56,7 @@ public class AnnouncementDAO extends JDBConnect {
 		query += " LIMIT ? OFFSET ?";
 
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			int paramIndex = 1;
 			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
@@ -83,7 +83,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 조회 중 예외 발생");
 			e.printStackTrace();
-		}
+		} 
 		return amt;
 	}
 
@@ -269,14 +269,39 @@ public class AnnouncementDAO extends JDBConnect {
 		int result = 0;
 
 		try {
+			String selectQuery = "SELECT sfile FROM announcement WHERE idx=?";
+	        psmt = con.prepareStatement(selectQuery);
+	        psmt.setString(1, dto.getIdx());
+	        rs = psmt.executeQuery();
+
+	        String oldFilePath = null;
+	        if (rs.next()) {
+	            oldFilePath = System.getProperty("user.home") + "/git/ProjectRun/src/main/webapp/JSP/Upload/" + rs.getString("sfile"); // 실제 파일 경로에 맞게
+	        }
+
+	        // 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
+	        if (dto.getSfile() != null && !dto.getSfile().isEmpty() && oldFilePath != null) {
+	            File oldFile = new File(oldFilePath);
+	            if (oldFile.exists()) {
+	            	boolean deleted = oldFile.delete();
+	                System.out.println("파일 삭제 여부: " + deleted);
+	                if (!deleted) {
+	                    System.out.println("파일 삭제 실패 - 경로: " + oldFilePath);
+	                }
+	            } else {
+	                System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + oldFilePath);
+	            }
+	        }
 			// 쿼리문 템플릿
-			String query = "UPDATE announcement SET title=?, content=? WHERE idx=?";
+			String query = "UPDATE announcement SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getIdx());
+			psmt.setString(3, dto.getOfile());
+			psmt.setString(4, dto.getSfile());
+			psmt.setString(5, dto.getIdx());
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();
@@ -305,7 +330,7 @@ public class AnnouncementDAO extends JDBConnect {
 		} catch (Exception e) {
 			System.out.println("게시물 삭제 중 예외 발생");
 			e.printStackTrace();
-		}
+		} 
 
 		return result; // 결과 반환
 	}
