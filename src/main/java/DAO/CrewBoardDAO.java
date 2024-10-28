@@ -51,7 +51,7 @@ public class CrewBoardDAO extends JDBConnect{
 		 query += " LIMIT ? OFFSET ? ";
 		
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			
 			int paramIdex = 1;
 			if(map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
@@ -129,13 +129,15 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO board (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO crewboard (title, crew_name, content, member_id,ofile,sfile) VALUES (?, ?, ?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getCrew_name());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getMember_id());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 			
 			result = psmt.executeUpdate();
 		}
@@ -160,6 +162,8 @@ public class CrewBoardDAO extends JDBConnect{
 		query += "			CREW_NAME,                                         ";
 		query += "			CONTENT,                                          ";
 		query += "			REGIDATE,                                         ";
+		query += "			OFILE,                                         ";
+		query += "			SFILE,                                         ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREVNUM,          ";
 		query += "			LEAD(IDX) OVER(ORDER BY IDX) AS NEXTNUM,         ";
 		query += "			LAG(TITLE) OVER(ORDER BY IDX) AS PREVTITLE,      ";
@@ -184,6 +188,9 @@ public class CrewBoardDAO extends JDBConnect{
 				dto.setPrevtitle(rs.getString("prevtitle"));
 				dto.setNextnum(rs.getString("nextnum"));
 				dto.setNexttitle(rs.getString("nexttitle"));
+				
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
 			}
 		}
 		catch (Exception e) {
@@ -205,6 +212,47 @@ public class CrewBoardDAO extends JDBConnect{
 			System.out.println("게시물 조회수 증가 중 예외 발생");
 			e.printStackTrace();
 		}
+		
+	}
+
+	public int updateEdit(CrewBoardDTO dto) {
+		int result = 0;
+		
+		try {
+			String query = "UPDATE crewboard SET title=?, content=?, ofile=?, sfile WHERE idx=?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getTitle());
+			psmt.setString(2, dto.getContent());
+			psmt.setString(3, dto.getOfile());
+			psmt.setString(4, dto.getSfile());
+			psmt.setString(5, dto.getIdx());
+			
+			result = psmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("게시물 수정 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int deletePost(CrewBoardDTO dto) {
+		
+		int result = 0;
+		
+		try {
+			String query = "DELETE FROM crewboard WHERE idx=?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, dto.getIdx());
+			
+			result = psmt.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println("게시물 삭제 중 예외 발생");
+			e.printStackTrace();
+		}
+		return result;
 		
 	}
 
