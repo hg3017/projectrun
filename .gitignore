@@ -1,4 +1,6 @@
 ### folder
 target/
 .settings/
+### files
+.classpath
 .gitignore
