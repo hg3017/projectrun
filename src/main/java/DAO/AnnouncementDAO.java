@@ -22,7 +22,7 @@ public class AnnouncementDAO extends JDBConnect {
 		// 게시물 수를 얻어오는 쿼리문 작성
 		String query = "SELECT COUNT(*) FROM announcement";
 		if (map != null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE ? ";
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%') ";
 			// + " LIKE '%" + map.get("searchWord") + "%'";
 		}
 
