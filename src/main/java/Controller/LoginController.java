@@ -93,15 +93,7 @@ public class LoginController extends HttpServlet {
 			path = "/Login/Login";
 			
 		} 
-		else if(action.equals("/AdminPage.lo")) {		
-						
-			path = "Admin_Index";
-			
-			response.sendRedirect("/JSP/Admin/Admin_Index.jsp");
-			
-			// request.setAttribute("layout","Admin/" + path);
-			// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
-		}
+		
 		
 		request.setAttribute("layout", path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
