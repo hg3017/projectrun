@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 import DAO.CrewBoardDAO;
 import DTO.CrewBoardDTO;
 import Service.CrewBoardService;
 import Service.CrewBoardServiceImpl;
 import Service.CrewService;
 import Utils.CrewBoardPage;
+import Utils.FileUtils;
 
 
 @WebServlet("*.cb")
@@ -85,16 +87,21 @@ public class CrewBoardController extends HttpServlet {
 			request.setAttribute("board", dto);
 			
 			path = "Cb_View";
-		}else if(action.equals("/Cs_Write.cb")) {
+		}else if(action.equals("/Cb_Write.cb")) {
 			path = "Cb_Write";
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
+			CrewBoardDTO dto = new CrewBoardDTO();
+			
+//			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+//			dto.setOfile(rData.get("ofile"));
+//			dto.setSfile(rData.get("sfile"));
+			
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");
 		    
-		    CrewBoardDTO dto = new CrewBoardDTO();
 		    dto.setTitle(title);
 		    dto.setContent(content);
 		    dto.setMember_id(member_id);
@@ -110,6 +117,89 @@ public class CrewBoardController extends HttpServlet {
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다.");
 				path = "Cb_Write"; // 다시 작성 페이지로 돌아감
 			}
+		}else if(action.equals("/Cb_View.cb")) {
+			String idx = request.getParameter("idx");
+			
+			service.updateVisitCount(idx);
+			CrewBoardDTO dto = service.pnPage(idx);
+			
+			request.setAttribute("board", dto);
+			
+			path = "Cb_View";
+			
+		}else if (action.equals("/Cb_Edit.cb")) {
+			String idx = request.getParameter("idx");
+			
+			CrewBoardDTO dto = service.pnPage(idx);
+			request.setAttribute("board", dto);
+			
+			path = "Cb_Edit";
+			
+		}else if (action.equals("/Cb_EditProcess.cb")) {
+			CrewBoardDTO dto = new CrewBoardDTO();
+			
+			Map<String, String> rDate = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rDate.get("ofile"));
+			dto.setSfile(rDate.get("sfile"));
+			
+			String idx = rDate.get("idx");
+			String title = rDate.get("title");
+			String content = rDate.get("content");
+			String fileName = rDate.get("ofile");
+			String newFileName = rDate.get("sfile");
+			
+			dto.setIdx(idx);
+			dto.setTitle(title);
+			dto.setContent(content);
+			dto.setOfile(fileName);
+			dto.setSfile(newFileName);
+			
+			int rs = service.updateEdit(dto);
+			
+			if (rs == 1) {
+				// 성공 시 상세 보기 페이지로 이동
+				response.sendRedirect("/Cb_View.cb?idx=" + idx);
+				return;
+			} else {
+				// 삽입 실패
+				request.setAttribute("errorMessage", "수정하기에 실패하였습니다.");
+				path = "Cb_Edit";
+			}
+		}else if(action.equals("/Cb_DeleteProcess.cb")){
+			HttpSession session = request.getSession();
+			String idx = request.getParameter("idx");
+			
+			CrewBoardDAO dao = new CrewBoardDAO();
+			CrewBoardDTO dto = dao.pnPage(idx);
+			
+			String member_id = session.getAttribute("UserId").toString();
+			int delResult = 0;
+			
+			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
+				// 작성자가 본인이면...
+				dto.setIdx(idx);
+
+				delResult = service.deletePost(dto);
+
+				// 3. 어떻게 어디로 이동 할것인가?
+				if (delResult == 1) {
+					// 성공 시 목록 페이지로 이동
+//					session.setAttribute("message", "삭제되었습니다.");
+					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/Cb_List.cb'</script>");
+					return;
+				} else {
+					// 실패 시 이전 페이지로 이동
+					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/Cb_View.cb?idx=" + idx + "'</script>");
+					return;
+				}
+			} else {
+				// 작성자가 본인이 아닐 때 처리
+				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Cb_View.cb?idx=" + idx + "'</script>");
+				return;
+			}
+		}else if (action.equals("/FileDown.cb")) {
+			FileUtils.fileDownload(request, response);
+			return;
 		}
 		
 		request.setAttribute("layout","CrewBoard/" + path);

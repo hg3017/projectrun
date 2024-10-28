@@ -69,7 +69,6 @@ public class AnnouncementController extends HttpServlet {
 		    
 		    // 3. 총 게시물 수 가져오기
 		    int totalCount = service.selectCount(map); // 총 게시물 수 계산
-		    request.setAttribute("totalCount", totalCount);
 		    
 			// 4. service 요청
 			List<AnnouncementDTO> boards = service.selectList(map);
@@ -78,7 +77,8 @@ public class AnnouncementController extends HttpServlet {
 		    // 5. 페이징 처리
 		    int pageSize = 10; // 한 페이지에 보여줄 게시물 수
 		    int blockPage = 5; // 한 번에 보여줄 페이지 블록 수
-		    String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/An_List.an");
+		    //pagingStr 메서드를 호출할 때 searchField와 searchWord 값을 전달하여 링크에 포함
+		    String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/An_List.an", map.get("searchField"), map.get("searchWord"));
 		    request.setAttribute("pagingStr", pagingStr);
 
 			// 4. 어떻게 어디로 이동 할것인가?

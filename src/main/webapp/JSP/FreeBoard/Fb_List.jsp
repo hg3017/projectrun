@@ -52,6 +52,7 @@
 						<tr>
 							<th>NO</th>
 							<th>제목</th>
+							<th>크루명</th>
 							<th>작성자</th>
 							<th>조회수</th>
 							<th>작성일</th>
@@ -69,6 +70,7 @@
 								<td>
 									<!--제목(+ 하이퍼링크)--> <a href="Fb_View.free?idx=${board.idx }">${board.title }</a>
 								</td>
+								<td>${board.crew_name }</td>
 								<td>${board.member_id }</td>
 								<!--작성자 아이디-->
 								<td>${board.visitcount }</td>
