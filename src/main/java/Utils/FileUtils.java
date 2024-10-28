@@ -22,7 +22,8 @@ public class FileUtils {
 		
 		try {
 			//String saveDirectory = request.getServletContext().getRealPath("/Upload");
-			String saveDirectory = "/Users/lhg/git/ProjectRun/src/main/webapp/Upload";
+			//String saveDirectory = "/Users/lhg/git/ProjectRun/src/main/webapp/JSP/Upload";
+			String saveDirectory = System.getProperty("user.home") + "/git/ProjectRun/src/main/webapp/JSP/Upload";
 			System.out.println(saveDirectory);
 			
 			int maxPostSize = 1024 * 1024 * 10; // 10M
@@ -54,7 +55,9 @@ public class FileUtils {
 	}
 	
     public static void fileDownload(HttpServletRequest request, HttpServletResponse response) {
-    	String saveDirectory = request.getServletContext().getRealPath("/Upload");
+    	//String saveDirectory = request.getServletContext().getRealPath("/Upload");
+    	//String saveDirectory = "/Users/lhg/git/ProjectRun/src/main/webapp/JSP/Upload";
+    	String saveDirectory = System.getProperty("user.home") + "/git/ProjectRun/src/main/webapp/JSP/Upload";
     	
     	String saveFilename = request.getParameter("sFile");
     	String orginalFilename = request.getParameter("oFile");

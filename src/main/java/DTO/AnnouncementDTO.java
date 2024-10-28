@@ -21,19 +21,15 @@ public class AnnouncementDTO {
 	public String getOfile() {
 		return ofile;
 	}
-
 	public void setOfile(String ofile) {
 		this.ofile = ofile;
 	}
-
 	public String getSfile() {
 		return sfile;
 	}
-
 	public void setSfile(String sfile) {
 		this.sfile = sfile;
 	}
-
 	public String getIdx() {
 		return idx;
 	}
