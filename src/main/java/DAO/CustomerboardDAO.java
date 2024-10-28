@@ -177,7 +177,6 @@ public class CustomerboardDAO extends JDBConnect {
 	
 	public int inserWrite(CustomerboardDTO dto) {
 		int result = 0;
-		System.out.println("고객센터 컨트롤러 insertWrite 메서드 실행성공"); 
 		
 		try {
 			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?, ?, ?)";
@@ -185,11 +184,10 @@ public class CustomerboardDAO extends JDBConnect {
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
-			psmt.setString(3, "hong01");
-			// psmt.setString(3, dto.getMember_id());
+			psmt.setString(3, dto.getMember_id());
 			
 			result = psmt.executeUpdate();
-			
+
 		} catch (Exception e) {
 			System.out.println("게시물 입력 중 예외 발생");
 			e.printStackTrace();

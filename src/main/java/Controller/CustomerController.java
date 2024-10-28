@@ -40,6 +40,8 @@ public class CustomerController extends HttpServlet {
 	}
 
 	protected void doProcess(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=UTF-8");
+	    response.setCharacterEncoding("UTF-8");
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
@@ -80,7 +82,6 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
-			
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
@@ -92,7 +93,7 @@ public class CustomerController extends HttpServlet {
 			dto.setContent(content);
 			dto.setMember_id(member_id);
 
-			int rs = service.insertWrite(dto);
+			int rs = service.inserWrite(dto);
 
 			if(rs == 1) {
 				response.sendRedirect("/Cs_List.co");
@@ -102,6 +103,7 @@ public class CustomerController extends HttpServlet {
 				request.setAttribute("errorMessage", "게시물 작성에 실패하였습니다");
 				path = "Cs_Write";
 			}
+
 		} else if(action.equals("/Cs_View.co")) {
 			String idx = request.getParameter("idx");
 

@@ -71,22 +71,27 @@ public class LoginController extends HttpServlet {
 				// 전달받은 id, pw 값이 일치하는 경우 작동합니다. 
 				if(pw.equals(dto.getPass())){
 					session.setAttribute("UserId", id);	
-					response.sendRedirect("/JSP/Main/Main.jsp");
+					path = "Main/Main";
 				}else{
 					request.setAttribute("LoginErrMsg", "로그인 오류");
-					request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
+					path = "/Login/Login";
+//					request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
 				}
 			} 
 			// dto 값이 null 인 경우 작동합니다. 
 			else{
 				request.setAttribute("LoginErrMsg", "로그인 오류");
-				request.getRequestDispatcher("/JSP/Login/Login.jsp").forward(request, response);
+				path = "/Login/Login";
 			}
+		}
+		else if(action.equals("/LoginPage.lo")) {
+			path = "/Login/Login";
 		}
 		// Servelt 의 경로값이 /Logout.lo 인 경우 작동합니다. 해당 위치는 아직 추가 작업이 필요합니다.
 		else if(action.equals("/Logout.lo")) {
-			session.invalidate();			
-			response.sendRedirect("/JSP/Login/Login.jsp");
+			session.invalidate();
+			path = "/Login/Login";
+			
 		} 
 		else if(action.equals("/AdminPage.lo")) {		
 						
@@ -96,10 +101,10 @@ public class LoginController extends HttpServlet {
 			
 			// request.setAttribute("layout","Admin/" + path);
 			// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
-			
-			
-			
 		}
+		
+		request.setAttribute("layout", path);
+		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 		
 	}
 
