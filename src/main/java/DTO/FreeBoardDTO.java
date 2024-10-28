@@ -17,7 +17,14 @@ public class FreeBoardDTO {
     private String prevTitle;
     private String nextNum;
     private String nextTitle;
+    private String crew_name;
     
+	public String getCrew_name() {
+		return crew_name;
+	}
+	public void setCrew_name(String crew_name) {
+		this.crew_name = crew_name;
+	}
 	public String getIdx() {
 		return idx;
 	}
@@ -96,14 +103,14 @@ public class FreeBoardDTO {
 	public void setNextTitle(String nextTitle) {
 		this.nextTitle = nextTitle;
 	}
-	
 	@Override
 	public String toString() {
 		return "FreeBoardDTO [idx=" + idx + ", title=" + title + ", content=" + content + ", member_id=" + member_id
 				+ ", ofile=" + ofile + ", sfile=" + sfile + ", regidate=" + regidate + ", visitcount=" + visitcount
 				+ ", name=" + name + ", prevNum=" + prevNum + ", prevTitle=" + prevTitle + ", nextNum=" + nextNum
-				+ ", nextTitle=" + nextTitle + "]";
+				+ ", nextTitle=" + nextTitle + ", crew_name=" + crew_name + "]";
 	}
-    
+	
+	
 	
 }

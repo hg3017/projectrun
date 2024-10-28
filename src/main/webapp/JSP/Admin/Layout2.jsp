@@ -10,8 +10,8 @@
 	<!-- css 파일 연결 -->
 	<link href="/resources/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/swiper-bundle.min.css" rel="stylesheet" type="text/css">
-<!--<link href="/resources/css/sub.css" rel="stylesheet" type="text/css">
-	<link href="/resources/css/main.css" rel="stylesheet" type="text/css"> -->
+	<link href="/resources/css/sub.css" rel="stylesheet" type="text/css">
+	<link href="/resources/css/main.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/common.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/list.css" rel="stylesheet" type="text/css">
 	<link href="/resources/css/admin_main.css?v=<?php echo time(); ?>" rel="stylesheet" type="text/css">
@@ -31,7 +31,7 @@
 		<a href="#container">본문바로가기</a>
 	</div>
 	<div id="wrap">
-		<header id="header" class="admin_header">
+		<header id="header" class="admin">
 			<div class="inner">
 				<div class="header_left">
 					<div class="inner">
@@ -60,8 +60,8 @@
 							</h2>
 							<ul class="menu">
 								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원 관리</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루 관리</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">member</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">crew</a></li>
 								<li><a href="#">setting(미구현)</a></li>
 							</ul>
 						</div>
