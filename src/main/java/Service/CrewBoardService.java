@@ -13,4 +13,6 @@ public interface CrewBoardService {
 	public void updateVisitCount(String idx);
 
 	public CrewBoardDTO pnPage(String idx);
+	
+	public int insertWrite (CrewBoardDTO dto);
 }

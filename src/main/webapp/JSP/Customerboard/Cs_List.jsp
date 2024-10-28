@@ -62,7 +62,7 @@
               <td>${boards.size() - status.index}</td> <!-- 테이블번호 -->
               <td>${board.category }</td> <!-- 분류 -->
               <td>${board.ableview }</td> <!-- 공개여부 -->
-              <td><a href="Cs_View.co?idx=${board.idx }">${board.title }</a></td> <!-- 제목 -->
+              <td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 -->
               <td>${board.regidate }</td> <!-- 작성일자 -->
             </tr>
           </c:forEach>

@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/JSP/CrewBoard/IsLoggedIn.jsp"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script>
 	function deletePost() {
@@ -26,31 +27,35 @@
         <div class="inner">
           <div class="board_view">
             <div class="view_top">
-              <a href="/JSP/Main/List_boardcrew_modify.jsp" class="modify_btn">글 수정하기</a>
+             	<c:if test="${UserId eq board.member_id }">
+             		<button type="button" onclick="location.href='Cb_Edit.cb?idx=${board.idx}';">수정하기</button>
+             		<button type="button" onclick="deletePost()">삭제하기</button>
+             	</c:if>
             </div>
             <div class="view_tit">
               <h3>${board.title }</h3>
               <span class="date">${board.regidate }</span>
             </div>
             <div class="view_con">
-              <c:if test="${empty board.content }">내용없음</c:if>
               <c:if test="${not empty board.content }">${board.content }</c:if>
+              <c:if test="${empty board.content }">내용없음</c:if>
             </div>
             <dl class="view_paging">
               <dt>이전글</dt>
               <dd>
-				<c:if test="${not empty board.prevNum  }">
-					<a href="Cb_View.cb?idx=${board.prevNum }">${board.prevTitle }</a>
-				</c:if>
-				<c:if test="${empty board.prevNum }"></c:if>
+				<c:if test="${not empty board.prevnum  }"><a href="Cb_View.cb?idx=${board.prevnum }">${board.prevtitle }</a></c:if>
+				<c:if test="${empty board.prevnum }"><span>이전 글이 없습니다.</span></c:if>
 			 </dd>
             </dl>
             <dl class="view_paging">
               <dt>다음글</dt>
-              <dd><a href="#">?</a></dd>
+              <dd>
+            	<c:if test="${not empty board.nextnum}"><a href="Cb_View.cb?idx=${board.nextnum}">${board.nexttitle}</a></c:if>
+              	<c:if test="${empty board.nextnum }"><span>다음글은 없습니다</span></c:if>              
+              </dd>
             </dl>
             <div class="btn_wrap">
-              <a class="point_btn3" href="/JSP/Main/List_boardcrew.jsp">목록</a>
+              <button type="button" class="point_btn3" onclick="location.href='/Cb_List.cb';">목록</button>
             </div>
           </div>
         </div>

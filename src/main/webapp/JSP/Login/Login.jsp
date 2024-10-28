@@ -15,8 +15,8 @@
 	
 		<!-- 입력한 값을 LoginProcess.lo 에  , post 방식을 통해 전달합니다.  -->
 		<form action="LoginProcess.lo" method = "post" name = "LoginFrm" onsubmit="return validateForm(this)">
-			<label for="user_id">ID:</label>  <input type="text" name="user_id" id="user_id" class="input-field"> 
-			<label for="user_pw">Pw:</label>  <input type="password" name="user_pw" id="user_pw" class="input-field">
+			<label for="user_id">ID</label>  <input type="text" name="user_id" id="user_id" class="input-field"> 
+			<label for="user_pw">Pw</label>  <input type="password" name="user_pw" id="user_pw" class="input-field">
 			
 			<input type="submit" value="로그인" class="submit-btn">
 		</form>

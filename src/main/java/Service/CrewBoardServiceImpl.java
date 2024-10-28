@@ -35,6 +35,11 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	public CrewBoardDTO pnPage(String idx) {
 		return dao.pnPage(idx);
 	}
+
+	@Override
+	public int insertWrite(CrewBoardDTO dto) {
+		return dao.insertWrite(dto);
+	}
 	
 	
 }
