@@ -30,7 +30,7 @@ function deletePost() {
 			</form>
             <div class="view_top">
             	<c:if test="${UserId eq board.member_id }">
-					<button type="button" onclick="location.href='Cs_Edit.an?idx=${board.idx}';">수정하기</button>
+					<button type="button" onclick="location.href='Cs_Edit.co?idx=${board.idx}';">수정하기</button>
 					<button type="button" onclick="deletePost()">삭제하기</button>
 				</c:if>
             </div>
