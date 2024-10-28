@@ -11,6 +11,7 @@
 			var form = document.writeFrm;
 			form.method = "post";
 			form.action = "/Cb_DeleteProcess.cb";
+			form.submit();
 		}
 		
 	}
@@ -41,7 +42,7 @@
               <span class="date">${board.regidate }</span>
             </div>
             <div class="view_con">
-            ${board }
+
               <c:if test="${not empty board.content }">${board.content }</c:if>
               <c:if test="${empty board.content }">내용없음</c:if>
             </div>

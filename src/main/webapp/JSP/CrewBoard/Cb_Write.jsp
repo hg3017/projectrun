@@ -36,6 +36,10 @@ function validateForm(form) {
                 <p class="note"><i class="star"></i>표시는 필수 입력 사항입니다.</p>
                 <table>
                   <caption class="nohead">게시물 작성하기 테이블</caption>
+                   <!-- <tr>
+                    <th>크루명 <i class="star"></i></th>
+                    <td><input type="text" name="title" placeholder="크루명을 입력해주세요" title="크루명을 입력해주세요"></td>
+                  </tr> -->
                   <tr>
                     <th>제목 <i class="star"></i></th>
                     <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
@@ -59,8 +63,8 @@ function validateForm(form) {
                   </tr>
                 </table>
                 <div class="btn_wrap">
-                  <button type="submit" class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</button>
-                  <button type="submit" class="point_btn5" href="/Cb_List.cb">취소</button>
+                  <button type="submit" class="point_btn4">작성완료</button>
+                  <button type="button" class="point_btn5" onclick="location.href='/Cb_List.cb';">취소</button>
                 </div>
               </fieldset>
             </form>

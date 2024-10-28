@@ -4,3 +4,4 @@ target/
 ### files
 .classpath
 .gitignore.DS_Store
+pom.properties
