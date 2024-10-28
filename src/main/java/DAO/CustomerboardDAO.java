@@ -175,7 +175,7 @@ public class CustomerboardDAO extends JDBConnect {
 		
 	}
 	
-	public int inserWrite(CustomerboardDTO dto) {
+	public int insertWrite(CustomerboardDTO dto) {
 		int result = 0;
 		
 		try {

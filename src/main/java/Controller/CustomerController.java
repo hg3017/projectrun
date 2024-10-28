@@ -93,7 +93,7 @@ public class CustomerController extends HttpServlet {
 			dto.setContent(content);
 			dto.setMember_id(member_id);
 
-			int rs = service.inserWrite(dto);
+			int rs = service.insertWrite(dto);
 
 			if(rs == 1) {
 				response.sendRedirect("/Cs_List.co");

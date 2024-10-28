@@ -32,9 +32,9 @@ function deletePost() {
 				</form>
 				<div class="view_top">
 					<c:if test="${UserId eq board.member_id }">
-						<button type="button" class="modify_btn"
-							onclick="location.href='Fb_Edit.free?idx=${board.idx}';">수정하기</button>
-						<button type="button" onclick="deletePost()">삭제하기</button>
+						<a href="#"
+							onclick="location.href='Fb_Edit.free?idx=${board.idx}'; return false;">수정하기</a>
+						<a href="#" onclick="deletePost(${board.idx}); return false;">삭제하기</a>
 					</c:if>
 				</div>
 				<div class="view_tit">
@@ -45,6 +45,17 @@ function deletePost() {
 					<c:if test="${empty board.content }">내용없음</c:if>
 					<c:if test="${not empty board.content }">${board.content }</c:if>
 				</div>
+				<!-- 파일 첨부 정보 -->
+				<div class="view_file" align="right">
+					<h3>첨부파일</h3>
+					<c:if test="${not empty board.ofile}">
+						<a href="/FileDown.an?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
+					</c:if>
+					<c:if test="${empty board.ofile}">
+						<span>첨부파일 없음</span>
+					</c:if>
+				</div>
+				<br>
 				<dl class="view_paging">
 					<dt>이전글</dt>
 					<dd>

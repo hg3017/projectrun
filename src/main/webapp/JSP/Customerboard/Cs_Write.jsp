@@ -36,13 +36,15 @@
                    	</td>
                   </tr> -->
                   <tr>
-                    <th>제목 <i class="star"></i></th>
-                    <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
-                  </tr>
-                  <tr>
-                    <th class="th_top">내용 <i class="star"></i></th>
-                    <td><textarea name="content" placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요" rows="10"></textarea></td>
-                  </tr>
+					<th>제목 <i class="star"></i></th>
+					<td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
+				</tr>
+							<tr>
+								<th class="th_top">내용 <i class="star"></i></th>
+								<td>
+									<textarea name="content" placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요" rows="10"></textarea>
+								</td>
+							</tr>
                 </table>
                 <div class="btn_wrap">
                 	<button type="submit" class="point_btn4" style="border:none" onClick="locatin.href='/Cs_List.co';">작성완료</button>

@@ -20,8 +20,8 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 	}
 
 	@Override
-	public int inserWrite(CustomerboardDTO dto) {
-		return dao.inserWrite(dto);
+	public int insertWrite(CustomerboardDTO dto) {
+		return dao.insertWrite(dto);
 	}
 
 	@Override

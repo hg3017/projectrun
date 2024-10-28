@@ -8,6 +8,8 @@ public class FreeBoardDTO {
     private String title;
     private String content;
     private String member_id;
+    private String ofile;
+    private String sfile;
     private Date regidate;
     private String visitcount;
     private String name;
@@ -39,6 +41,18 @@ public class FreeBoardDTO {
 	}
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
+	}
+	public String getOfile() {
+		return ofile;
+	}
+	public void setOfile(String ofile) {
+		this.ofile = ofile;
+	}
+	public String getSfile() {
+		return sfile;
+	}
+	public void setSfile(String sfile) {
+		this.sfile = sfile;
 	}
 	public Date getRegidate() {
 		return regidate;
@@ -82,13 +96,14 @@ public class FreeBoardDTO {
 	public void setNextTitle(String nextTitle) {
 		this.nextTitle = nextTitle;
 	}
+	
 	@Override
 	public String toString() {
 		return "FreeBoardDTO [idx=" + idx + ", title=" + title + ", content=" + content + ", member_id=" + member_id
-				+ ", regidate=" + regidate + ", visitcount=" + visitcount + ", name=" + name + ", prevNum=" + prevNum
-				+ ", prevTitle=" + prevTitle + ", nextNum=" + nextNum + ", nextTitle=" + nextTitle + "]";
+				+ ", ofile=" + ofile + ", sfile=" + sfile + ", regidate=" + regidate + ", visitcount=" + visitcount
+				+ ", name=" + name + ", prevNum=" + prevNum + ", prevTitle=" + prevTitle + ", nextNum=" + nextNum
+				+ ", nextTitle=" + nextTitle + "]";
 	}
-
-
     
+	
 }
