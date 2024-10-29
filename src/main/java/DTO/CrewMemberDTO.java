@@ -55,6 +55,17 @@ public class CrewMemberDTO {
 		this.description = description;
 	}
 
+	public CrewMemberDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	// 오버라이딩된 CrewMemberDTO 생성자
+	public CrewMemberDTO(String crew_name, String member_id) {
+		super();
+		this.crew_name = crew_name;
+		this.member_id = member_id;
+	}
+
 
 	@Override
 	public String toString() {

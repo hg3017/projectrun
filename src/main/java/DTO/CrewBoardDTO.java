@@ -16,6 +16,7 @@ public class CrewBoardDTO {
 	private String prevtitle;
 	private String nextnum;
 	private String nexttitle;
+	
 	public String getIdx() {
 		return idx;
 	}

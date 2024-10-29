@@ -22,6 +22,9 @@ import Service.CrewService;
 import Utils.CrewBoardPage;
 import Utils.FileUtils;
 
+import DTO.CrewMemberDTO;
+// member_id 얻어오기 위해서 CrewMemberDTO import
+
 
 @WebServlet("*.cb")
 public class CrewBoardController extends HttpServlet {
@@ -51,6 +54,7 @@ public class CrewBoardController extends HttpServlet {
 		
 		System.out.println(action);
 		if(action.equals("/Cb_List.cb")) {
+			System.out.println("Cb_List.cb 진입성공");
 			String searchField = request.getParameter("searchField");
 			String searchWord = request.getParameter("searchWord");
 			String limitParam = request.getParameter("limit");
@@ -92,23 +96,36 @@ public class CrewBoardController extends HttpServlet {
 			path = "Cb_Write";
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
 			CrewBoardDTO dto = new CrewBoardDTO();
+			CrewMemberDTO dto2 = null;
+			// CrewMemberDTO dto2 = new CrewMemberDTO();
 			
 //			Map<String, String> rData = FileUtils.fileUpload(request, "file");
 //			dto.setOfile(rData.get("ofile"));
 //			dto.setSfile(rData.get("sfile"));
-			String crew_name = request.getParameter("crew_name");
+			// String crew_name = request.getParameter("crew_name");
+						
+			
+			
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");
+		
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");
 		    
-		    dto.setCrew_name(crew_name);
+		    dto2 = service.getCrewName(member_id);
+		    
+		    String crew_name = request.getParameter("crew_name");
+		    
+		    
+		    dto.setCrew_name(dto2.getCrew_name());
+		    // setCrew_name(crew_name);
+		    // dto.setCrew_name(crew_name);
 		    dto.setTitle(title);
 		    dto.setContent(content);
 		    dto.setMember_id(member_id);
 		    
-		    int rs = service.insertWrite(dto);
+		    int rs = service.insertWrite(dto, dto2);
 		    
 		    if (rs == 1) {
 				// 성공적으로 삽입

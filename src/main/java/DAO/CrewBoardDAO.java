@@ -1,6 +1,7 @@
 package DAO;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,15 @@ import java.util.Vector;
 
 import Common.JDBConnect;
 import DTO.CrewBoardDTO;
+import DTO.CrewMemberDTO;
+// member_id값과 crew_name이 필요해서 CrewMemberDTO import
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 
 public class CrewBoardDAO extends JDBConnect{
@@ -126,16 +136,21 @@ public class CrewBoardDAO extends JDBConnect{
 		return cb;
 	}
 	
-	public int insertWrite(CrewBoardDTO dto) { 
+	public int insertWrite(CrewBoardDTO dto, CrewMemberDTO dto2) { 
 		int result = 0;
 		
 		try {
 			String query = "INSERT INTO crewboard (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
 			
-			System.out.println("크루명 출력 : "+dto.getCrew_name());
+			System.out.println("DAO 크루명 출력 : "+dto.getCrew_name());
+			System.out.println("");
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getCrew_name());
+			
+			
+			psmt.setString(2, dto2.getCrew_name());
+			// crew_name 들어가는 부분
+// 			psmt.setString(2, dto.getCrew_name());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getMember_id());
 //			psmt.setString(5, dto.getOfile());
@@ -282,5 +297,31 @@ public class CrewBoardDAO extends JDBConnect{
 		return result;
 		
 	}
+	
+	public CrewMemberDTO getCrewName(String member_id) {
+		CrewMemberDTO crewmember = null;
+		
+		String sql = "select crew_name from crew_member where member_id = ?";
+
+		try {
+			psmt = con.prepareStatement(sql);
+			psmt.setString(1, member_id);
+			// id 값 설정
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				String crew_name = rs.getString("crew_name");
+				System.out.println("getCrewName 메서드의 crew_name: "+crew_name);
+				crewmember = new CrewMemberDTO(crew_name, member_id);
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return crewmember;
+	}
+	
+
+
 
 }
