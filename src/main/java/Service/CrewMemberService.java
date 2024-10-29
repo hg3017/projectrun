@@ -11,9 +11,7 @@ public interface CrewMemberService {
 	public List<CrewMemberDTO> selectCrewMainMemberList(String crew_name);
 	
 	public String selectCrewMemberStatus(String crew_name, String member_id);
-	
-	
-	
+		
 	public int insertCrewMember(String crew_name, String member_id);
 	
 	public int deleteCrewMember(String crew_name, String member_id);
