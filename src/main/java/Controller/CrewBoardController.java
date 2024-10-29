@@ -12,13 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.AnnouncementDAO;
 import DAO.CrewBoardDAO;
-import DTO.AnnouncementDTO;
 import DTO.CrewBoardDTO;
 import Service.CrewBoardService;
 import Service.CrewBoardServiceImpl;
-import Service.CrewService;
 import Utils.CrewBoardPage;
 import Utils.FileUtils;
 
@@ -46,6 +43,8 @@ public class CrewBoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		String path = "Cb_List";
 		
@@ -67,7 +66,6 @@ public class CrewBoardController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 			
 			int totalCount = service.selectCount(map);
-			request.setAttribute("totalCount", totalCount);
 			
 			List<CrewBoardDTO> boards = service.selectList(map);
 			request.setAttribute("boards", boards);
@@ -75,7 +73,7 @@ public class CrewBoardController extends HttpServlet {
 			int pageSize = 10;
 			int blockPage = 5;
 			
-			String pagingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.cb");
+			String pagingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.cb", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);	
 
 			path = "Cb_List";
@@ -89,16 +87,25 @@ public class CrewBoardController extends HttpServlet {
 			
 			path = "Cb_View";
 		}else if(action.equals("/Cb_Write.cb")) {
+			HttpSession session = request.getSession();
+		    String member_id = (String) session.getAttribute("UserId");
+		    
+			request.setAttribute("crewNames", service.selectCrewNames(member_id));
 			path = "Cb_Write";
-		}else if(action.equals("/Cb_WriteProcess.cb")) {
-			CrewBoardDTO dto = new CrewBoardDTO();
 			
-//			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-//			dto.setOfile(rData.get("ofile"));
-//			dto.setSfile(rData.get("sfile"));
-			String crew_name = request.getParameter("crew_name");
-			String title= request.getParameter("title");
-			String content = request.getParameter("content");
+		}else if(action.equals("/Cb_WriteProcess.cb")) {
+		CrewBoardDTO dto = new CrewBoardDTO();
+			
+
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
+
+
+			String crew_name = rData.get("crew_name");
+			String title= rData.get("title");
+			String content = rData.get("content");
+			
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");

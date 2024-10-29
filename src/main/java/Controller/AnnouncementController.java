@@ -145,6 +145,8 @@ public class AnnouncementController extends HttpServlet {
 		} else if (action.equals("/An_EditProcess.an")) {
 			AnnouncementDTO dto = new AnnouncementDTO();
 			
+			String saveDirectory = request.getServletContext().getRealPath("/JSP/Upload");
+			
 			Map<String, String> rData = FileUtils.fileUpload(request, "file");
 			dto.setOfile(rData.get("ofile"));
 			dto.setSfile(rData.get("sfile"));
@@ -163,7 +165,7 @@ public class AnnouncementController extends HttpServlet {
 			dto.setSfile(newFileName);
 			
 			// 2. service 요청
-			int rs = service.updateEdit(dto);
+			int rs = service.updateEdit(dto, saveDirectory);
 
 			// 3. 어떻게 어디로 이동 할것인가?
 			if (rs == 1) {

@@ -43,7 +43,6 @@ public class CrewMemberServiceImpl implements CrewMemberService {
 	@Override
 	public String selectCrewMemberStatus(String crew_name, String member_id) {
 		return dao.selectCrewMemberStatus(crew_name, member_id);
-		
 	}
 	
 	@Override

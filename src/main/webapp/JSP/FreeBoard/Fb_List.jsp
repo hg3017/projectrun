@@ -25,14 +25,14 @@
 								<legend>게시물 검색</legend>
 								<div class="board_search">
 									<div class="select_wrap">
-										<select name="searchField">
-											<option value="title">제목</option>
-											<option value="content">내용</option>
+										<select  name="searchField">
+											<option value="title" ${param.searchField eq 'title' ? 'selected' : ''}>제목</option>
+											<option value="content" ${param.searchField eq 'content' ? 'selected' : ''}>내용</option>
 										</select>
 									</div>
 									<div class="input_wrap">
 										<input type="search" placeholder="검색어를 입력해주세요"
-											name="searchWord" />
+											name="searchWord" value="${param.searchWord }" />
 										<button type="submit" class="search_btn"></button>
 									</div>
 								</div>
@@ -52,7 +52,6 @@
 						<tr>
 							<th>NO</th>
 							<th>제목</th>
-							<th>크루명</th>
 							<th>작성자</th>
 							<th>조회수</th>
 							<th>작성일</th>
@@ -70,7 +69,6 @@
 								<td>
 									<!--제목(+ 하이퍼링크)--> <a href="Fb_View.free?idx=${board.idx }">${board.title }</a>
 								</td>
-								<td>${board.crew_name }</td>
 								<td>${board.member_id }</td>
 								<!--작성자 아이디-->
 								<td>${board.visitcount }</td>

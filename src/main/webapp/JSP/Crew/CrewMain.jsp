@@ -15,10 +15,12 @@
 	//id 세션을 가져옴.
     String sessionId = (String) session.getAttribute("UserId");  
     // 가져온 id세션을 통해 내가 이 크루에 어떤 역할인지 확인.
-    
+        
    	String crewSessionId = (String)request.getAttribute("crewSessionId");  
    	CrewDTO dto = (CrewDTO)request.getAttribute("CrewDetail"); 
    	List<CrewMemberDTO> crewMainMemberLists =  (List<CrewMemberDTO>)request.getAttribute("crewMainMemberLists"); 
+   	
+   	System.out.println("crewSessionId : " + crewSessionId );
    	
 	/* 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 */
    	/* List<CommentDTO> commentLists = (List<CommentDTO>)request.getAttribute("CommentLists");
@@ -51,37 +53,35 @@
 					
 				</div>
 				<% 
-					if(crewSessionId == null || crewSessionId.equals("") ) {
+					if( session.getAttribute("UserId") != null) {
 					%>
 						<%
 							if( crewSessionId == null || crewSessionId.equals("")) {
 						%>
-							<button type="button" onclick="goLogin();">크루가입신청</button>
+							<button onclick="location.href='/insert.crewMember?crewName=<%= dto.getName() %>'">크루가입신청</button>
 						<% 	
-							} else {
+							} else if (crewSessionId.equals("User")) {
+								%>
+								<button onclick="location.href='/delete.crewMember?<%=dto.getName() %>'">크루탈퇴</button>
+							<% 
+							} else if (crewSessionId.equals("Refuse") ) {
+							%>
+								<p> 가입이 거절되었습니다. </p>
+							<% 
+							} else if (crewSessionId.equals("Waiting") ) {
+							%>
+								<p> 승인 대기중입니다. </p>
+							<% 
+							} else if (crewSessionId.equals("Master")) {
+							%>
+								<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
+							<% 
+							} 
+					}  else  {
 						%>
-							<button type="button" onclick="crew_regist();">크루가입신청</button>
-						<%
-							}
-						%>
-					<% 
-					} else if (crewSessionId.equals("User")) {
-					%>
-						<button type="button" onclick="crew_regist();">크루탈퇴신청</button>
-					<% 
-					} else if (crewSessionId.equals("Refuse") ) { 
-					%>
-						<p> 가입이 거절되었습니다. </p>
-					<% 
-					} else if (crewSessionId.equals("Wating") ) { 
-					%>
-						<p> 승인 대기중입니다. </p>
-					<% 
-					} else if (crewSessionId.equals("Master")) { 
-					%>
-						<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
-					<% 
-					}
+						<button onclick="location.href='href=/LoginPage.lo'">로그인</button>
+					<%
+						}
 				%>			
 				
 	          <h2> 크루 소개 </h2>

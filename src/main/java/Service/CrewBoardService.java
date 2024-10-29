@@ -13,4 +13,5 @@ public interface CrewBoardService {
 	public int selectCount(Map<String, String> map);
 	public void updateVisitCount(String idx);
 	public CrewBoardDTO pnPage(String idx);
+	public List<String> selectCrewNames(String id);
 }

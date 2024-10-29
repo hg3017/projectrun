@@ -21,6 +21,7 @@ import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 import Service.CustomerboardService;
 import Service.CustomerboardServiceImpl;
+import Utils.AnnouncementPage;
 import Utils.CustomerboardPage;
 
 @WebServlet("*.co")
@@ -67,20 +68,18 @@ public class CustomerController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 
 			int totalCount =  service.selectCount(map);
-			request.setAttribute("totalCount", totalCount);
 
 			List<CustomerboardDTO> boards = service.selectList(map);
 			request.setAttribute("boards", boards);
 
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co");
+			String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";
 			
 		} else if(action.equals("/Cs_Write.co")) {
-
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
