@@ -54,7 +54,7 @@ public class CustomerboardDAO extends JDBConnect {
 			psmt = con.prepareStatement(query);
 			
 			int paramIndex = 1;
-			if (map.get("serarchWord") != null && !map.get("searchWord").isEmpty()) {
+			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
 			}
 				psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
@@ -91,9 +91,9 @@ public class CustomerboardDAO extends JDBConnect {
 		String query = " SELECT * FROM customerboard ";
 		
 		if (map.get("serarchWord") !=null) {
-			query = " Where " + map.get("searchField") + " like contcat('%',?,'%')";
+			query = " Where " + map.get("searchField") + " like concat('%',?,'%')";
 		}
-		query += " ORDER BY idex DESC ";
+		query += " ORDER BY idx DESC ";
 		query += " LIMIT ? OFFSET ?";
 		
 		try {
