@@ -42,7 +42,10 @@
               <span class="date">${board.regidate }</span>
             </div>
             <div class="view_con">
+<<<<<<< HEAD
+=======
 
+>>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
               <c:if test="${not empty board.content }">${board.content }</c:if>
               <c:if test="${empty board.content }">내용없음</c:if>
             </div>

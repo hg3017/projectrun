@@ -16,7 +16,5 @@ public interface CrewBoardService {
 	public int selectCount(Map<String, String> map);
 	public void updateVisitCount(String idx);
 	public CrewBoardDTO pnPage(String idx);
-	public CrewMemberDTO getCrewName(String member_id);
-    // String crew_name = service.getCrewName(member_id);;
-
+	public List<String> selectCrewNames(String id);
 }

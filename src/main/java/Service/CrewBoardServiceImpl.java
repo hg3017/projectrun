@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 import DAO.CrewBoardDAO;
-import DAO.CrewMemberDAO;
-import DAO.FreeBoardDAO;
 import DTO.CrewBoardDTO;
 import DAO.CrewMemberDAO;
 import DTO.CrewMemberDTO;
@@ -61,11 +59,12 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 		return dao.pnPage(idx);
 	}
 	
-	@Override
-	public CrewMemberDTO getCrewName(String member_id) {
-		return dao.getCrewName(member_id);
-	}
 
+
+	@Override
+	public List<String> selectCrewNames(String id) {
+		return dao.selectCrewNames(id);
+	}
 
 	
 }

@@ -26,9 +26,9 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	}
 
 	@Override
-	public int updateEdit(AnnouncementDTO dto) {
+	public int updateEdit(AnnouncementDTO dto, String path) {
 		
-		return dao.updateEdit(dto);
+		return dao.updateEdit(dto, path);
 	}
 
 	@Override
