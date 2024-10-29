@@ -5,13 +5,10 @@ import java.util.Map;
 
 import DAO.CrewBoardDAO;
 import DTO.CrewBoardDTO;
-import DAO.CrewMemberDAO;
-import DTO.CrewMemberDTO;
 
 public class CrewBoardServiceImpl implements CrewBoardService{
 
 	CrewBoardDAO dao;
-	// CrewMemberDAO dao2;
 	
 	public CrewBoardServiceImpl() {
 		this.dao = new CrewBoardDAO();
@@ -22,14 +19,9 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 		return dao.selectList(map);
 	}
 
-	/*
-	 * @Override public int insertWrite(CrewBoardDTO dto) { return
-	 * dao.insertWrite(dto); }
-	 */
-	
 	@Override
-	public int insertWrite(CrewBoardDTO dto, CrewMemberDTO dto2) {
-		return dao.insertWrite(dto, dto2);
+	public int insertWrite(CrewBoardDTO dto) {
+		return dao.insertWrite(dto);
 	}
 	
 	@Override
@@ -58,8 +50,6 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	public CrewBoardDTO pnPage(String idx) {
 		return dao.pnPage(idx);
 	}
-	
-
 
 	@Override
 	public List<String> selectCrewNames(String id) {
