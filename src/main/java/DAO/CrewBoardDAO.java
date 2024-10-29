@@ -281,5 +281,26 @@ public class CrewBoardDAO extends JDBConnect{
 		return result;
 		
 	}
+	
+	public List<String> selectCrewNames(String id) {
+		List<String> list = new ArrayList<>();
+		
+		try {
+			String query = "SELECT CREW_NAME FROM CREW_MEMBER WHERE MEMBER_ID = ?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 
 }

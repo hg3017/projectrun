@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -73,7 +74,6 @@ public class FreeBoardDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx")); // 일련번호
 				dto.setTitle(rs.getString("title")); // 제목
 				dto.setContent(rs.getString("content")); // 내용
-				dto.setCrew_name(rs.getString("crew_name")); // 크루명
 				dto.setRegidate(rs.getDate("regidate")); // 작성일
 				dto.setMember_id(rs.getString("member_id")); // 작성자 아이디
 				dto.setVisitcount(rs.getString("visitcount")); // 조회수
@@ -136,15 +136,14 @@ public class FreeBoardDAO extends JDBConnect {
 
 		try {
 			// INSERT 쿼리문 작성
-			String query = "INSERT INTO freeboard (title,content,member_id,crew_name,ofile,sfile) VALUES ( ?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO freeboard (title,content,member_id,ofile,sfile) VALUES ( ?, ?, ?, ?, ?)";
 
 			psmt = con.prepareStatement(query); // 동적 쿼리
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getMember_id());
-			psmt.setString(4, dto.getCrew_name());
-			psmt.setString(5, dto.getOfile());
-			psmt.setString(6, dto.getSfile());
+			psmt.setString(4, dto.getOfile());
+			psmt.setString(5, dto.getSfile());
 
 			result = psmt.executeUpdate();
 
@@ -168,7 +167,6 @@ public class FreeBoardDAO extends JDBConnect {
 		query += "			TITLE,                                            ";
 		query += "			REGIDATE,                                         ";
 		query += "			CONTENT,                                          ";
-		query += "			CREW_NAME,                                        ";
 		query += "			OFILE,                                            ";
 		query += "			SFILE,                                            ";
 		query += "			LAG(IDX) OVER(ORDER BY IDX) AS PREV_NUM,          ";
@@ -191,7 +189,6 @@ public class FreeBoardDAO extends JDBConnect {
 				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
-				dto.setCrew_name(rs.getString("crew_name"));
 				dto.setOfile(rs.getString("ofile"));
 				dto.setSfile(rs.getString("sfile"));
 				dto.setRegidate(rs.getDate("regidate"));
@@ -231,6 +228,29 @@ public class FreeBoardDAO extends JDBConnect {
 		int result = 0;
 
 		try {
+			String selectQuery = "SELECT sfile FROM announcement WHERE idx=?";
+	        psmt = con.prepareStatement(selectQuery);
+	        psmt.setString(1, dto.getIdx());
+	        rs = psmt.executeQuery();
+
+	        String oldFilePath = null;
+	        if (rs.next()) {
+	            oldFilePath = System.getProperty("user.home") + "/Desktop/kdigital/jsp/jspws2/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/running/JSP/Upload/" + rs.getString("sfile"); // 실제 파일 경로에 맞게
+	        }
+
+	        // 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
+	        if (dto.getSfile() != null && !dto.getSfile().isEmpty() && oldFilePath != null) {
+	            File oldFile = new File(oldFilePath);
+	            if (oldFile.exists()) {
+	            	boolean deleted = oldFile.delete();
+	                System.out.println("파일 삭제 여부: " + deleted);
+	                if (!deleted) {
+	                    System.out.println("파일 삭제 실패 - 경로: " + oldFilePath);
+	                }
+	            } else {
+	                System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + oldFilePath);
+	            }
+	        }
 			// 쿼리문 템플릿
 			String query = "UPDATE freeboard SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 
