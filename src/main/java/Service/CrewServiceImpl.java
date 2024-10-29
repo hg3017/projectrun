@@ -1,9 +1,12 @@
 package Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import Common.DBConnectionPool;
 import DAO.CrewDAO;
 import DAO.CrewMemberDAO;
+import DAO.LoginDAO;
 import DTO.CrewDTO;
 import DTO.CrewMemberDTO;
 
@@ -17,7 +20,14 @@ public class CrewServiceImpl implements CrewService {
 	
 	
 	public CrewServiceImpl() {
-		this.dao = new CrewDAO();
+		try {
+        	DBConnectionPool dbConnectionPool = new DBConnectionPool();
+            this.dao = new CrewDAO(dbConnectionPool);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("DBConnectionPool 초기화 실패");
+        }
 		
 	}
 
