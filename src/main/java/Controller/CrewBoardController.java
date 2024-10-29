@@ -43,6 +43,8 @@ public class CrewBoardController extends HttpServlet {
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
+		response.setContentType("text/html; charset=UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		
 		String path = "Cb_List";
 		
@@ -93,14 +95,18 @@ public class CrewBoardController extends HttpServlet {
 			path = "Cb_Write";
 			
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
-			CrewBoardDTO dto = new CrewBoardDTO();
+		CrewBoardDTO dto = new CrewBoardDTO();
 			
-//			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-//			dto.setOfile(rData.get("ofile"));
-//			dto.setSfile(rData.get("sfile"));
+
+			Map<String, String> rData = FileUtils.fileUpload(request, "file");
+			dto.setOfile(rData.get("ofile"));
+			dto.setSfile(rData.get("sfile"));
+
+
 			String crew_name = request.getParameter("crew_name");
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");
+			
 			
 			HttpSession session = request.getSession();
 		    String member_id = (String) session.getAttribute("UserId");

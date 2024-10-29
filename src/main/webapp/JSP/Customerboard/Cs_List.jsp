@@ -47,9 +47,9 @@
         <table>
           <tr>
             <th width="10%">NO</th>
-            <th width="15%">분류</th>
+            <th width="10%">분류</th>
             <th width="10%">공개여부</th>
-            <th width="35%">제목</th>
+            <th width="40%">제목</th>
             <th width="15%">조회수</th>
             <th width="15%">작성일자</th>
           </tr>

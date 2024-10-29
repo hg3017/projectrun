@@ -29,7 +29,7 @@ function validateForm(form) {
       <section class="contents">
         <div class="inner">
           <div class="board_write">
-             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb"  onsubmit="return validateForm(this);">
+             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb" enctype="multipart/form-data"  onsubmit="return validateForm(this);">
               <fieldset>
                 <legend>게시물 작성하기</legend>
                 <h3 class="tit">크루게시판 게시물 작성하기</h3>
@@ -58,9 +58,9 @@ function validateForm(form) {
                     <th>첨부파일</th>
                     <td class="td_flex">
                       <div class="file_wrap">
-                        <input type="text"  readonly>
+                       <input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
                         <label>
-                          <input type="file" class="blind">
+                          <input type="file" name="file" id="fileInput" class="blind">
                           파일선택
                         </label>
                       </div>
