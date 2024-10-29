@@ -4,17 +4,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript">
-function validateForm(form) {
-	if(form.title.vlaue == "") {
-		aleart("제목을 입력하세요");
-		form.title.focus();
-		return false;
-	}
-	if(form.content.value == "") {
-		alert("내용을 입력하세요");
-		form.content.focus();
-		return false;
-	}
+function validateForm(form) {  
+    if (form.title.value == "") {
+        alert("제목을 입력하세요.");
+        form.title.focus();
+        return false;
+    }
+    if (form.content.value == "") {
+        alert("내용을 입력하세요.");
+        form.content.focus();
+        return false;
+    }
 }
 </script>
 
@@ -37,15 +37,13 @@ function validateForm(form) {
                 <table>
                   <caption class="nohead">게시물 작성하기 테이블</caption>
                    <tr>
-                    <th>크루명 <i class="star"></i></th>               
+                    <th>크루명 <i class="star"></i></th>
                     <td>
-                    <div class="select_wrap">
-                        <select name="crew_name">
-                        <c:forEach var="crew" items="${crewNames }">
-                         <option value="${crew }">${crew }</option>
-                         </c:forEach>
-                        </select>
-                      </div>
+                    	<select name="crew_name">
+                    	<c:forEach var="crew" items="${crewNames }">
+                    		<option value="${crew }">${crew }</option>
+                    	</c:forEach>
+                    	</select>
                     </td>
                   </tr>
                   <tr>

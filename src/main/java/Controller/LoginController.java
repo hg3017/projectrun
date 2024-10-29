@@ -23,6 +23,7 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	LoginService service;
+	
 
 	// LoginController 생성자. 컨트롤러가 생성될 때 LoginServiceImpl 객체를 생성하여 service 변수에 할당합니다.
 	public LoginController() {
