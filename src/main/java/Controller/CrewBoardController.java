@@ -103,9 +103,9 @@ public class CrewBoardController extends HttpServlet {
 			dto.setSfile(rData.get("sfile"));
 
 
-			String crew_name = request.getParameter("crew_name");
-			String title= request.getParameter("title");
-			String content = request.getParameter("content");
+			String crew_name = rData.get("crew_name");
+			String title= rData.get("title");
+			String content = rData.get("content");
 			
 			
 			HttpSession session = request.getSession();

@@ -4,17 +4,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <script type="text/javascript">
-function validateForm(form) {
-	if(form.title.vlaue == "") {
-		aleart("제목을 입력하세요");
-		form.title.focus();
-		return false;
-	}
-	if(form.content.value == "") {
-		alert("내용을 입력하세요");
-		form.content.focus();
-		return false;
-	}
+function validateForm(form) {  
+    if (form.title.value == "") {
+        alert("제목을 입력하세요.");
+        form.title.focus();
+        return false;
+    }
+    if (form.content.value == "") {
+        alert("내용을 입력하세요.");
+        form.content.focus();
+        return false;
+    }
 }
 </script>
 
