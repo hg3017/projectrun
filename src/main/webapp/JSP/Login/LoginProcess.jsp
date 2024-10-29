@@ -6,10 +6,10 @@
 String id = request.getParameter("user_id");
 String pw = request.getParameter("user_pw");
 
-LoginDAO dao = new LoginDAO();
-LoginDTO dto = dao.selectView(id);
+// LoginDAO dao = new LoginDAO();
+// LoginDTO dto = dao.selectView(id);
 
-if(dto != null) {
+/* if(dto != null) {
 	if(pw.equals(dto.getPass())){
 		session.setAttribute("UserId", id);
 		response.sendRedirect("LoginForm.jsp");
@@ -21,7 +21,7 @@ if(dto != null) {
 }else{
 	request.setAttribute("LoginErrMsg", "로그인 오류");
 	request.getRequestDispatcher("LoginForm.jsp").forward(request, response);
-}
+} */
 
 
 
