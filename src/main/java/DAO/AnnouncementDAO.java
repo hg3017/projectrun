@@ -22,8 +22,7 @@ public class AnnouncementDAO extends JDBConnect {
 		// 게시물 수를 얻어오는 쿼리문 작성
 		String query = "SELECT COUNT(*) FROM announcement";
 		if (map != null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE ? ";
-			// + " LIKE '%" + map.get("searchWord") + "%'";
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%') ";
 		}
 
 		try {
@@ -100,6 +99,7 @@ public class AnnouncementDAO extends JDBConnect {
 		}
 
 		query += " ORDER BY idx DESC ";
+		query += " LIMIT ? OFFSET ?";
 
 		try {
 			// 쿼리문 완성
@@ -154,47 +154,6 @@ public class AnnouncementDAO extends JDBConnect {
 
 		return result;
 	}
-
-//	public AnnouncementDTO selectView(String num) {
-//		AnnouncementDTO dto = new AnnouncementDTO();
-//
-//		// 쿼리문 준비
-//		String query = "SELECT a.*, M.name " + " FROM member M INNER JOIN announcement a " + " ON M.id=a.id "
-//				+ " WHERE num=?";
-//	    String query = "";
-//	    query += "SELECT A.*, M.name,                                   ";
-//	    query += "       LAG(A.num) OVER(ORDER BY A.num) AS prev_num,   ";
-//	    query += "       LEAD(A.num) OVER(ORDER BY A.num) AS next_num,  ";
-//	    query += "       LAG(A.title) OVER(ORDER BY A.num) AS prev_title,";
-//	    query += "       LEAD(A.title) OVER(ORDER BY A.num) AS next_title ";
-//	    query += "  FROM member M INNER JOIN announcement A            ";
-//	    query += "    ON M.id = A.id                                   ";
-//	    query += " WHERE A.num = ?                                     ";
-
-//	    try {
-//	        psmt = con.prepareStatement(query);
-//	        psmt.setString(1, num);
-//	        rs = psmt.executeQuery();
-//
-//	        if (rs.next()) {
-//	            // 현재 게시글 정보
-//	            dto.setNum(rs.getString("num"));
-//	            dto.setTitle(rs.getString("title"));
-//	            dto.setContent(rs.getString("content"));
-//	            dto.setPostdate(rs.getDate("postdate"));
-//	            dto.setId(rs.getString("id"));
-//	            dto.setVisitcount(rs.getString("visitcount"));
-//	            dto.setName(rs.getString("name"));
-//
-//	        }
-//	    } catch (Exception e) {
-//	        System.out.println("게시물 상세보기 중 예외 발생");
-//	        e.printStackTrace();
-//	    }
-//
-//	    return dto;
-//	}
-
 	
 	public AnnouncementDTO pnPage(String idx) {
 		AnnouncementDTO dto = new AnnouncementDTO();

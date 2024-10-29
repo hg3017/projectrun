@@ -29,7 +29,7 @@ function validateForm(form) {
       <section class="contents">
         <div class="inner">
           <div class="board_write">
-            <form name="editFrm" method="post" enctype="multipart/form-data" action="Cb_EditProcess.cb" onsubmit="return validateForm(this);">
+            <form name="editFrm" method="post" action="Cb_EditProcess.cb" enctype="multipart/form-data" onsubmit="return validateForm(this);">
             <input type="hidden" name="idx" value="${board.idx }" />
               <fieldset>
                 <legend>게시물 수정하기</legend>
@@ -40,11 +40,11 @@ function validateForm(form) {
                   <caption class="nohead">게시물 수정하기 테이블</caption>
                   <tr>
                     <th>제목<i class="star"></i></th>
-                    <td><input type="text" placeholder="제목을 입력해주세요" title="제목을 입력해주세요" value="${board.title }"></td>
+                    <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요" value="${board.title }"></td>
                   </tr>
                   <tr>
                     <th class="th_top">내용<i class="star"></i></th>
-                    <td><textarea placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요" rows="10">${board.content }</textarea></td>
+                    <td><textarea name="content" placeholder="게시물 내용을 작성해 주세요" title="게시물 내용을 작성해 주세요" rows="10">${board.content }</textarea></td>
                   </tr>
                   <tr>
                     <th>첨부파일</th>
@@ -62,8 +62,9 @@ function validateForm(form) {
                 </table>
                 </c:if>
                 <div class="btn_wrap">
-                  <a class="point_btn4" href="/JSP/Main/List_boardcrew.jsp">수정완료</a>
-                  <a class="point_btn5" href="/JSP/Main/List_boardcrew.jsp">취소</a>
+                  <button type="submit" class="point_btn4" style="border:none">수정완료</button>
+							<button type="button" class="point_btn5" 
+								onclick="location.href='/Cb_List.cb';">취소</button>
                 </div>
               </fieldset>
             </form>

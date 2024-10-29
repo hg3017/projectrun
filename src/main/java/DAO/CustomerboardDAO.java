@@ -179,12 +179,14 @@ public class CustomerboardDAO extends JDBConnect {
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?, ?, ?)";
+			String query = "INSERT INTO customerboard (title,content,member_id, category) VALUES (?, ?, ?, ?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getMember_id());
+			psmt.setString(4, dto.getCategory());
+//			psmt.setInt(5, dto.getAbleview());
 			
 			result = psmt.executeUpdate();
 

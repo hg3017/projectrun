@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%> 
 
 <script type="text/javascript">
 function validateForm(form) {  // 폼 내용 검증 
@@ -28,8 +27,7 @@ function validateForm(form) {  // 폼 내용 검증
 	<section class="contents">
 		<div class="inner">
 			<div class="board_write">
-				<form name="editFrm" method="post" enctype="multipart/form-data" action="Cs_EditProcess.co"
-					onsubmit="return validateForm(this);">
+				<form name="editFrm" method="post" action="Cs_EditProcess.co" onsubmit="return validateForm(this);">
 					<input type="hidden" name="idx" value="${board.idx}" />
 					<fieldset>
 						<legend>게시물 수정하기</legend>
@@ -53,9 +51,8 @@ function validateForm(form) {  // 폼 내용 검증
 							</table>
 						</c:if>
 						<div class="btn_wrap">
-							<button type="submit" class="point_btn4" style="border:none">수정완료</button>
-							<button type="button" class="point_btn5" 
-								onclick="location.href='/Cs_List.cs';">취소</button>
+							<button type="submit" class="point_btn4">수정완료</button>
+							<button type="button" class="point_btn5" onclick="location.href='/Cs_List.co';">취소</button>
 						</div>
 					</fieldset>
 				</form>
