@@ -99,16 +99,12 @@ public class CrewBoardController extends HttpServlet {
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
 		CrewBoardDTO dto = new CrewBoardDTO();
 			
-<<<<<<< HEAD
+
 			Map<String, String> rData = FileUtils.fileUpload(request, "file");
 			dto.setOfile(rData.get("ofile"));
 			dto.setSfile(rData.get("sfile"));
-			
-=======
-//			Map<String, String> rData = FileUtils.fileUpload(request, "file");
-//			dto.setOfile(rData.get("ofile"));
-//			dto.setSfile(rData.get("sfile"));
->>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
+
+
 			String crew_name = request.getParameter("crew_name");
 			String title= request.getParameter("title");
 			String content = request.getParameter("content");

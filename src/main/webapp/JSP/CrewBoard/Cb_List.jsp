@@ -39,11 +39,10 @@
                 </form>
               </div>
               <div class="btn_wrap">
-<<<<<<< HEAD
+
                 <c:if test="${not empty UserId }">
-=======
-                <c:if test="${not empty UserId}">
->>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
+
+
 					<a href="/Cb_Write.cb" class="write_btn">글쓰기</a>
 				</c:if>
               </div>

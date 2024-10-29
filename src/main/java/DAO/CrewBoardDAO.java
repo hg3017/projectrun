@@ -130,19 +130,17 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-<<<<<<< HEAD
+
 			String query = "INSERT INTO crewboard (title, crew_name, content, member_id, ofile, sfile) VALUES (?, ?, ?, ?, ? ,?)";
-=======
-			String query = "INSERT INTO crewboard (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
->>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
+
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getCrew_name());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getMember_id());
-//			psmt.setString(5, dto.getOfile());
-//			psmt.setString(6, dto.getSfile());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 			
 			result = psmt.executeUpdate();
 			
