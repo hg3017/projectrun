@@ -145,7 +145,7 @@ public class CrewMemberController extends HttpServlet {
 			int rs = service.deleteCrewMember(crew_name, name);
 			
 			if(rs == 1) {
-				path = "CrewView";
+				path = "CrewMemberView";
 			} else {
 				request.setAttribute("DeleteErrMsg", "회원 삭제 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
