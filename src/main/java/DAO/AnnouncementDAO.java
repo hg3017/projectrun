@@ -235,7 +235,7 @@ public class AnnouncementDAO extends JDBConnect {
 
 	        String oldFilePath = null;
 	        if (rs.next()) {
-	            oldFilePath = System.getProperty("user.home") + "/git/ProjectRun/src/main/webapp/JSP/Upload/" + rs.getString("sfile"); // 실제 파일 경로에 맞게
+	            oldFilePath = System.getProperty("user.home") + "/Desktop/kdigital/jsp/jspws2/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/running/JSP/Upload/" + rs.getString("sfile"); // 실제 파일 경로에 맞게
 	        }
 
 	        // 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제

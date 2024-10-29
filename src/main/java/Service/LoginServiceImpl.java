@@ -1,7 +1,9 @@
 package Service;
 
+import java.sql.SQLException;
 import java.util.List;
 
+import Common.DBConnectionPool;
 import DAO.LoginDAO;
 import DTO.LoginDTO;
 
@@ -13,11 +15,17 @@ public class LoginServiceImpl implements LoginService {
 
 	LoginDAO dao;
 	
-	public LoginServiceImpl() {
-		this.dao = new LoginDAO();
-	}
+    public LoginServiceImpl() {
+        try {
+        	DBConnectionPool dbConnectionPool = new DBConnectionPool();
+            this.dao = new LoginDAO(dbConnectionPool);
 
-	
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("DBConnectionPool 초기화 실패");
+        }
+    }
+
 	@Override
 	public LoginDTO selectView(String id) {
 		return dao.selectView(id);
