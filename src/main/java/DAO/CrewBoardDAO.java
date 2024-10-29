@@ -1,5 +1,6 @@
 package DAO;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -129,7 +130,7 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO crewboard (title, crew_name, content, member_id,ofile,sfile) VALUES (?, ?, ?, ?, ?, ?)";
+			String query = "INSERT INTO crewboard (title, crew_name, content, member_id, ofile, sfile) VALUES (?, ?, ?, ?, ? ,?)";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
@@ -140,6 +141,7 @@ public class CrewBoardDAO extends JDBConnect{
 			psmt.setString(6, dto.getSfile());
 			
 			result = psmt.executeUpdate();
+			
 		}
 		catch (Exception e) {
 			System.out.println("게시물 입력 중 예외 발생");
@@ -184,13 +186,15 @@ public class CrewBoardDAO extends JDBConnect{
 				dto.setCrew_name(rs.getString("crew_name"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegidate(rs.getDate("regidate"));
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
+				
 				dto.setPrevnum(rs.getString("prevnum"));
 				dto.setPrevtitle(rs.getString("prevtitle"));
+				
 				dto.setNextnum(rs.getString("nextnum"));
 				dto.setNexttitle(rs.getString("nexttitle"));
 				
-				dto.setOfile(rs.getString("ofile"));
-				dto.setSfile(rs.getString("sfile"));
 			}
 		}
 		catch (Exception e) {
@@ -219,7 +223,31 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-			String query = "UPDATE crewboard SET title=?, content=?, ofile=?, sfile WHERE idx=?";
+			String selectQuery = "SELECT sfile FROM crewboard WHERE idx=?";
+			psmt = con.prepareStatement(selectQuery);
+			psmt.setString(1, dto.getIdx());
+			rs = psmt.executeQuery();
+			
+			String oldFilePath = null;
+			if(rs.next()) {
+				oldFilePath = System.getProperty("user.home") + "/git/ProjectRun/scr/main/webapp/JSP/Upload/" + rs.getString("sfile");
+			}
+			
+			if(dto.getSfile() != null && !dto.getSfile().isEmpty() && oldFilePath != null) {
+				File oldFile = new File(oldFilePath);
+				if(oldFile.exists()) {
+					boolean deleted = oldFile.delete();
+					System.out.println("파일 삭제 여부: " + deleted);
+					if(!deleted) {
+						System.out.println("파일 삭제 실패 - 경로: " + oldFilePath);
+					}
+				}else {
+					System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + oldFilePath);
+				}
+			}
+		
+	
+			String query = "UPDATE crewboard SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
@@ -254,6 +282,27 @@ public class CrewBoardDAO extends JDBConnect{
 		}
 		return result;
 		
+	}
+	
+	public List<String> selectCrewNames(String id) {
+		List<String> list = new ArrayList<>();
+		
+		try {
+			String query = "SELECT CREW_NAME FROM CREW_MEMBER WHERE MEMBER_ID = ?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }

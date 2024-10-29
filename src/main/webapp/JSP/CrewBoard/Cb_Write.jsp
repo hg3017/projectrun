@@ -29,13 +29,25 @@ function validateForm(form) {
       <section class="contents">
         <div class="inner">
           <div class="board_write">
-             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb"  onsubmit="return validateForm(this);">
+             <form name="writeFrm" method="post" action="Cb_WriteProcess.cb" enctype="multipart/form-data"  onsubmit="return validateForm(this);">
               <fieldset>
                 <legend>게시물 작성하기</legend>
                 <h3 class="tit">크루게시판 게시물 작성하기</h3>
                 <p class="note"><i class="star"></i>표시는 필수 입력 사항입니다.</p>
                 <table>
                   <caption class="nohead">게시물 작성하기 테이블</caption>
+                   <tr>
+                    <th>크루명 <i class="star"></i></th>               
+                    <td>
+                    <div class="select_wrap">
+                        <select name="crew_name">
+                        <c:forEach var="crew" items="${crewNames }">
+                         <option value="${crew }">${crew }</option>
+                         </c:forEach>
+                        </select>
+                      </div>
+                    </td>
+                  </tr>
                   <tr>
                     <th>제목 <i class="star"></i></th>
                     <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
@@ -48,9 +60,9 @@ function validateForm(form) {
                     <th>첨부파일</th>
                     <td class="td_flex">
                       <div class="file_wrap">
-                        <input type="text"  readonly>
+                       <input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
                         <label>
-                          <input type="file" class="blind">
+                          <input type="file" name="file" id="fileInput" class="blind">
                           파일선택
                         </label>
                       </div>
@@ -59,8 +71,8 @@ function validateForm(form) {
                   </tr>
                 </table>
                 <div class="btn_wrap">
-                  <button type="submit" class="point_btn4" href="/Cb_View.cb?idx=${board.idx }">작성완료</button>
-                  <button type="submit" class="point_btn5" href="/Cb_List.cb">취소</button>
+                  <button type="submit" class="point_btn4">작성완료</button>
+                  <button type="button" class="point_btn5" onclick="location.href='/Cb_List.cb';">취소</button>
                 </div>
               </fieldset>
             </form>
