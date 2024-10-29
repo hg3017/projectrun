@@ -329,7 +329,7 @@ input[type='checkbox']:checked + label::before {
 }
 
 /* radio 공통 */
-/* .radio_wrap {
+.radio_wrap {
   display: inline-block;
 }
 input[type='radio'] + label {
@@ -349,14 +349,14 @@ input[type='radio'] + label::before {
 }
 input[type='radio']:checked + label::before {
   background: url(./assets/images/circle.svg) no-repeat 50% 50% / 12px;
-} */
+}
 
 .radio {
   display: inline-flex;
   align-items: center;
   gap: 0 5px;
   cursor: pointer;
-  vertical-align: top;
+  margin-right:3px;
 }
 .radio::before {
   content: '';
@@ -367,7 +367,7 @@ input[type='radio']:checked + label::before {
 }
 /* :has - ios 15.4부터 지원 */
 .radio:has(input[type='radio']:checked)::before {
-  background: url(/resources/images/common/circle.svg) no-repeat 50% 50% / 14px;
+  background: url(../images/common/circle.svg) no-repeat 50% 50% / 14px;
 }
 
 /* select 공통 */
@@ -568,6 +568,7 @@ div.file_wrap label::before {
 .point_btn4 {
   height: 50px;
   border-radius: 25px;
+  border:none;
   width: 160px;
   font-weight: 700;
   color: #fff;

@@ -14,7 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 
+import DAO.AnnouncementDAO;
 import DAO.CustomerboardDAO;
+import DTO.AnnouncementDTO;
 import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 import Service.CustomerboardService;
@@ -82,16 +84,21 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
+			String category = request.getParameter("category");
+			String ableview = request.getParameter("ableview");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
+//			System.out.println("ableview 출력 : "+request.getParameter("ableview"));
 
 			HttpSession session = request.getSession();
 			String member_id = (String) session.getAttribute("UserId");
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
+			dto.setAbleview(ableview);
+			dto.setCategory(category);
 			dto.setTitle(title);
-			dto.setContent(content);
 			dto.setMember_id(member_id);
+			dto.setContent(content);
 
 			int rs = service.insertWrite(dto);
 
@@ -121,11 +128,15 @@ public class CustomerController extends HttpServlet {
 			
 			path = "Cs_Edit";
 		} else if(action.equals("/Cs_EditProcess.co")) {
+			String category = request.getParameter("category");
+			String ableview = request.getParameter("ableview");
 			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			CustomerboardDTO dto = new CustomerboardDTO();
+			dto.setCategory(category);
+			dto.setAbleview(ableview);
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
@@ -140,41 +151,39 @@ public class CustomerController extends HttpServlet {
 				path = "Cs_Edit";
 			}
 			
-		} else if (action.equals("/Cs_DelectProcess.co")) {
+		} else if (action.equals("/Cs_DeleteProcess.co")) {
 			HttpSession session = request.getSession();
 			String idx = request.getParameter("idx");
-			
+
 			CustomerboardDAO dao = new CustomerboardDAO();
 			CustomerboardDTO dto = dao.viewPage(idx);
 			
+
 			String member_id = session.getAttribute("UserId").toString();
 			int delResult = 0;
-			
-			if(member_id.equals(dto.getMember_id())) {
+
+			if (member_id.equals(dto.getMember_id())) {
 				dto.setIdx(idx);
-				
+
 				delResult = service.deletePost(dto);
-				
+
 				if (delResult == 1) {
+					// 성공 시 목록 페이지로 이동
 					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/Cs_List.co'</script>");
 					return;
 				} else {
+					// 실패 시 이전 페이지로 이동
 					response.getWriter().write("<script>alert('삭제에 실패하였습니다.'); location.href = '/Cs_View.co?idx=" + idx + "'</script>");
 					return;
 				}
 			} else {
+				// 작성자가 본인이 아닐 때 처리
 				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Cs_View.co?idx=" + idx + "'</script>");
 				return;
 			}
+			
 		}
-		
-		
-		
-		
 		request.setAttribute("layout", "Customerboard/" + path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}
-
-
-
 }

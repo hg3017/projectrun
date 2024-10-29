@@ -1,20 +1,32 @@
 package DAO;
 
+import java.sql.Connection;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import Common.DBConnectionPool;
 import Common.JDBConnect;
 import DTO.AnnouncementDTO;
 import DTO.CrewDTO;
 
-public class CrewDAO extends JDBConnect {
+public class CrewDAO {
+	
+	
+	private DBConnectionPool dbConnectionPool;
+
+    // DBConnectionPool 인스턴스를 생성자로 전달
+    public CrewDAO(DBConnectionPool dbConnectionPool) {
+        this.dbConnectionPool = dbConnectionPool;
+    }
 	
 	public List<CrewDTO> selectCrewList() {
 		List<CrewDTO> crewList = new ArrayList<CrewDTO>();
 		CrewDTO crew = null;
+		Connection con = null;
+		
 		
 		String sql = "select "
 				+ "	c.idx as idx,"
@@ -25,9 +37,10 @@ public class CrewDAO extends JDBConnect {
 				+ "	crew c"
 				+ "    inner join location lo on c.location_id = lo.id";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
+			var rs = psmt.executeQuery();
 			
-			rs = psmt.executeQuery();
 			while (rs.next()) { 
                 
 				crew = new CrewDTO(); 
@@ -52,13 +65,15 @@ public class CrewDAO extends JDBConnect {
 	
 	public CrewDTO selectCrew(String name) {
 		CrewDTO crew = null;
+		Connection con = null;
 		
 		String sql = "select idx, name, location_id, description, regidate from crew where name = ?";
 		
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			psmt.setString(1, name);
-			rs = psmt.executeQuery();
+			var rs = psmt.executeQuery();
 			while (rs.next()) { 
 				crew = new CrewDTO(); 
 
@@ -80,24 +95,22 @@ public class CrewDAO extends JDBConnect {
 	
 	public int registCrew(CrewDTO dto) {
 		
-		
+		Connection con = null;
 		int rs = 0;
 		
 		String sql = "insert into crew (name, location_id, description, regidate) "
 				+ " values(?, ?, ?, ?) ";
 		
 		try {
+			con = dbConnectionPool.getConnection();
 			// JDBConnect 에서 상속받은 psmt 객체를 통해 jdbc 에 쿼리를 요청합니다. 
 			// 미리 정의한 문자열 sql 의 ? 의 자리에 id 값을 입력하고 쿼리를 작동합니다. 
-			psmt = con.prepareStatement(sql);
+			var psmt = con.prepareStatement(sql);
 			psmt.setString(1, dto.getName());
 			psmt.setString(2, dto.getLocation_id());
 			psmt.setString(3, dto.getDescripton());
 			psmt.setDate(4, java.sql.Date.valueOf(LocalDate.now()));
 
-			System.out.println("CrewDAO-registCrew");
-			System.out.println(dto);
-			
 			// 결과값이 있는 경우 1을 리턴하여 rs 의 값을1로 변경합니다. 
 			rs = psmt.executeUpdate();		
 			
@@ -114,12 +127,13 @@ public class CrewDAO extends JDBConnect {
 	
 	public int registCrewMaster(String crew_name, String member_id) {
 		int result = 0;
+		Connection con = null;
 		
-		System.out.println("registCrewMaster-Point1");
 		
 		String sql = "insert into crew_member (crew_name, member_id, status) values (?, ?, 'Master');";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);

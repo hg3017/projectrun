@@ -3,6 +3,7 @@ package Service;
 import java.util.List;
 import java.util.Map;
 
+import DTO.AnnouncementDTO;
 import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 
