@@ -66,8 +66,8 @@ public class CustomerboardDAO extends JDBConnect {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getInt("ableview"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setMember_id(rs.getString("member_id"));
@@ -94,9 +94,17 @@ public class CustomerboardDAO extends JDBConnect {
 			query = " Where " + map.get("searchField") + " like contcat('%',?,'%')";
 		}
 		query += " ORDER BY idex DESC ";
+		query += " LIMIT ? OFFSET ?";
 		
 		try {
 			psmt = con.prepareStatement(query);
+			int paramIndex = 1;
+			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+				psmt.setString(paramIndex++, map.get("searchWord"));
+
+			}
+			psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
+			psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
 			
 			rs = psmt.executeQuery();
 			
@@ -104,8 +112,8 @@ public class CustomerboardDAO extends JDBConnect {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getInt("ableview"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setMember_id(rs.getString("member_id"));
@@ -132,10 +140,10 @@ public class CustomerboardDAO extends JDBConnect {
 		query += "	FROM (													";
 		query += " 		SELECT												";
 		query += " 			IDX, 											";
-		query += " 			TITLE,											";
-		query += " 			ABLEVIEW, 										";
-		query += " 			MEMBER_ID,										";
 		query += " 			CATEGORY, 										";
+		query += " 			ABLEVIEW, 										";
+		query += " 			TITLE,											";
+		query += " 			MEMBER_ID,										";
 		query += " 			CONTENT, 										";
 		query += " 			REGIDATE,										";
 		query += " 			VISITCOUNT, 									";
@@ -154,10 +162,10 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			if(rs.next()) {
 				dto.setIdx(rs.getString("idx"));
-				dto.setTitle(rs.getString("title"));
-				dto.setAbleview(rs.getInt("ableview"));
-				dto.setMember_id(rs.getString("member_id"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
+				dto.setTitle(rs.getString("title"));
+				dto.setMember_id(rs.getString("member_id"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegidate(rs.getDate("regidate"));
 				dto.setVisitcount(rs.getInt("visitcount"));
@@ -179,14 +187,16 @@ public class CustomerboardDAO extends JDBConnect {
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO customerboard (title,content,member_id, category) VALUES (?, ?, ?, ?)";
+			String query = "INSERT INTO customerboard (category,ableview,title,member_id,content) VALUES (?, ?, ?, ?, ?)";
+			
+//			System.out.println("DAO에서 ableview 확인 : "+dto.getAbleview());
 			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getMember_id());
-			psmt.setString(4, dto.getCategory());
-//			psmt.setInt(5, dto.getAbleview());
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, dto.getAbleview());
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getMember_id());
+			psmt.setString(5, dto.getContent());
 			
 			result = psmt.executeUpdate();
 
@@ -214,12 +224,14 @@ public class CustomerboardDAO extends JDBConnect {
 		int result = 0;
 		
 		try {
-			String query = " UPDATE customerboard SET " + " title=?, content=? " + " WHERE idx=? ";
+			String query = " UPDATE customerboard SET " + " category=?, ableview=?, title=?, content=? " + " WHERE idx=? ";
 			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getIdx());
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, dto.getAbleview());
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getContent());
+			psmt.setString(5, dto.getIdx());
 			
 			result = psmt.executeUpdate();
 		} catch (Exception e) {
