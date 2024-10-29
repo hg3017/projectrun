@@ -5,6 +5,7 @@
 
 
 <main id="main_info">
+	<section class="main_report" >
 	<div id="inner">
 		<h2 class="login-title">로그인</h2>
 		
@@ -28,5 +29,6 @@
 			<a href="/JSP/Admin/Member/Member_List.adme">회원 목록</a>
 		</div>
 	</div>	
+	</section>
 </main>
 		
