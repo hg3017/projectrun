@@ -19,7 +19,7 @@ public class CrewBoardDAO extends JDBConnect{
 		
 		String query = "SELECT COUNT(*) FROM crewboard";
 		if(map !=null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			  query += " WHERE " + map.get("searchField") + " LIKE ?";
+			  query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
 		}
 		try {
 			psmt = con.prepareStatement(query);
@@ -57,10 +57,10 @@ public class CrewBoardDAO extends JDBConnect{
 			int paramIdex = 1;
 			if(map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIdex++, map.get("searchWord"));
-			}else {
+			}
 				psmt.setInt(paramIdex++, Integer.parseInt(map.get("limit")));
         		psmt.setInt(paramIdex, Integer.parseInt(map.get("offset")));  
-			}
+			
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -91,10 +91,11 @@ public class CrewBoardDAO extends JDBConnect{
 
 		// 검색 조건 추가
 		if (map.get("searchWord") != null) {
-			 query = " Where " + map.get("searchField") + " like contcat('%',?,'%')";
+			query = " Where " + map.get("searchField") + " like concat('%',?,'%') ";
 		}
 
 		query += " ORDER BY idx DESC ";
+		query += " LIMIT ? OFFSET ?";
 
 		try {
 			// 쿼리문 완성

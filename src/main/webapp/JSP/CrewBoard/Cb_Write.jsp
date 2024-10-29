@@ -36,7 +36,6 @@ function validateForm(form) {
                 <p class="note"><i class="star"></i>표시는 필수 입력 사항입니다.</p>
                 <table>
                   <caption class="nohead">게시물 작성하기 테이블</caption>
-<<<<<<< HEAD
                    <tr>
                     <th>크루명 <i class="star"></i></th>               
                     <td>
@@ -49,12 +48,6 @@ function validateForm(form) {
                       </div>
                     </td>
                   </tr>
-=======
-                   <!-- <tr>
-                    <th>크루명 <i class="star"></i></th>
-                    <td><input type="text" name="title" placeholder="크루명을 입력해주세요" title="크루명을 입력해주세요"></td>
-                  </tr> -->
->>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
                   <tr>
                     <th>제목 <i class="star"></i></th>
                     <td><input type="text" name="title" placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
