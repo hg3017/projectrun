@@ -84,15 +84,21 @@ public class CustomerController extends HttpServlet {
 		} else if(action.equals("/Cs_WriteProcess.co")) {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-
+			String ableview = request.getParameter("ableview");
+			String category = request.getParameter("category");
 			HttpSession session = request.getSession();
 			String member_id = (String) session.getAttribute("UserId");
+
+			System.out.println("ableview : "+request.getParameter("ableview"));
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
 			dto.setTitle(title);
 			dto.setContent(content);
+			dto.setAbleview(ableview);
 			dto.setMember_id(member_id);
+			dto.setCategory(category);
 
+			
 			int rs = service.insertWrite(dto);
 
 			if(rs == 1) {

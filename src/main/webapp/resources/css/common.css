@@ -329,7 +329,7 @@ input[type='checkbox']:checked + label::before {
 }
 
 /* radio 공통 */
-/* .radio_wrap {
+.radio_wrap {
   display: inline-block;
 }
 input[type='radio'] + label {
@@ -348,8 +348,9 @@ input[type='radio'] + label::before {
   border: 1px solid #999;
 }
 input[type='radio']:checked + label::before {
-  background: url(./assets/images/circle.svg) no-repeat 50% 50% / 12px;
-} */
+  /* background: url(./assets/images/circle.svg) no-repeat 50% 50% / 12px; */
+  background: url(../images/common/circle.svg) no-repeat 50% 50% / 12px;
+}
 
 .radio {
   display: inline-flex;

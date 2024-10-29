@@ -66,7 +66,7 @@ public class CustomerboardDAO extends JDBConnect {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getInt("ableview"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -104,7 +104,7 @@ public class CustomerboardDAO extends JDBConnect {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getInt("ableview"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setCategory(rs.getString("category"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
@@ -155,7 +155,7 @@ public class CustomerboardDAO extends JDBConnect {
 			if(rs.next()) {
 				dto.setIdx(rs.getString("idx"));
 				dto.setTitle(rs.getString("title"));
-				dto.setAbleview(rs.getInt("ableview"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setMember_id(rs.getString("member_id"));
 				dto.setCategory(rs.getString("category"));
 				dto.setContent(rs.getString("content"));
@@ -179,12 +179,16 @@ public class CustomerboardDAO extends JDBConnect {
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO customerboard (title,content,member_id) VALUES (?, ?, ?)";
+			String query = "INSERT INTO customerboard (category,ableview,title,member_id,content) VALUES (?, ?, ?, ?, ?)";
+			
+			System.out.println("DAO에서 ableview 확인 : "+dto.getAbleview());
 			
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getMember_id());
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, dto.getAbleview());
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getMember_id());
+			psmt.setString(5, dto.getContent());
 			
 			result = psmt.executeUpdate();
 

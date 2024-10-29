@@ -132,6 +132,7 @@ public class CrewBoardDAO extends JDBConnect{
 		try {
 			String query = "INSERT INTO crewboard (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
 			
+			System.out.println("크루명 출력 : "+dto.getCrew_name());
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getCrew_name());
