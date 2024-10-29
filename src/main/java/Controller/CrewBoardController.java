@@ -12,13 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.AnnouncementDAO;
 import DAO.CrewBoardDAO;
-import DTO.AnnouncementDTO;
 import DTO.CrewBoardDTO;
 import Service.CrewBoardService;
 import Service.CrewBoardServiceImpl;
-import Service.CrewService;
 import Utils.CrewBoardPage;
 import Utils.FileUtils;
 
@@ -96,6 +93,7 @@ public class CrewBoardController extends HttpServlet {
 		    
 			request.setAttribute("crewNames", service.selectCrewNames(member_id));
 			path = "Cb_Write";
+			
 		}else if(action.equals("/Cb_WriteProcess.cb")) {
 		CrewBoardDTO dto = new CrewBoardDTO();
 			

@@ -41,11 +41,14 @@
 >>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
         <property name="java-output-path" value="/Project/build/classes"/>
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         <property name="context-root" value="/"/>
             
 =======
                         
         
+>>>>>>> branch 'develop' of https://github.com/hg3017/ProjectRun.git
         <property name="context-root" value="/"/>
                     
     
