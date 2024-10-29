@@ -27,24 +27,13 @@
 								<th>분류 <i class="star"></i></th>
 								<td>
 									<label class="radio">
-										<input type="radio" name="category" value="모임개설하기" checked>모임개설하기
+										<input type="radio" name="category" value="개설하기" checked>개설하기
 									</label>
 									<label class="radio">
-										<input type="radio" name="category" value="모임참가하기">모임참가하기
+										<input type="radio" name="category" value="참가하기">참가하기
 									</label>
 									<label class="radio">
 										<input type="radio" name="category" value="기타">기타
-									</label>
-								</td>
-							</tr>
-							<tr>
-								<th>공개여부 <i class="star"></i></th>
-								<td>
-									<label class="radio">
-										<input type="radio" name="ableview" value="공개" checked> 공개
-									</label>
-									<label class="radio">
-										<input type="radio" name="ableview"value="비공개"> 비공개
 									</label>
 								</td>
 							</tr>

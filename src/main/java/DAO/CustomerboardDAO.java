@@ -17,7 +17,7 @@ public class CustomerboardDAO extends JDBConnect {
 		
 		String query = "SELECT COUNT(*) FROM customerboard";
 		if(map !=null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE ?";
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
 		}
 		
 		try {
@@ -27,7 +27,7 @@ public class CustomerboardDAO extends JDBConnect {
 				psmt.setString(1, "%" + map.get("searchWord") + "%");
 			}
 			
-			rs = psmt.executeQuery(query);
+			rs = psmt.executeQuery();
 			if (rs.next()) {
 				totalCount = rs.getInt(1);
 			}
@@ -51,15 +51,15 @@ public class CustomerboardDAO extends JDBConnect {
 		query += " LIMIT ? OFFSET ? ";
 		
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			
 			int paramIndex = 1;
 			if (map.get("serarchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
-			}else {
+			}
 				psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
 				psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
-			}
+			
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
@@ -98,14 +98,7 @@ public class CustomerboardDAO extends JDBConnect {
 		
 		try {
 			psmt = con.prepareStatement(query);
-			int paramIndex = 1;
-			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-				psmt.setString(paramIndex++, map.get("searchWord"));
 
-			}
-			psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
-			psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
-			
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -193,7 +186,8 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getAbleview());
+			psmt.setString(2, "공개");
+			// psmt.setString(2, dto.getAbleview());
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getMember_id());
 			psmt.setString(5, dto.getContent());
@@ -228,7 +222,7 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getAbleview());
+			psmt.setString(2, "공개");
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getContent());
 			psmt.setString(5, dto.getIdx());

@@ -139,25 +139,25 @@
             </div>
             <ul class="list">
               <li>
-                <a href="/JSP/Main/List_cs_view.jsp">
+                <a href="/Cs_List.co">
                   <p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
               <li>
-                <a href="/JSP/Main/List_cs_view.jsp">
+                <a href="/Cs_List.co">
                   <p>러닝은 처음인데 참여해도 괜찮나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
               <li>
-                <a href="/JSP/Main/List_cs_view.jsp">
+                <a href="/Cs_List.co">
                   <p>모집기간은 언제인가요? 마감된 모임은 신청할 수 없나요?</p>
                   <span class="date">2024.09.30</span>
                 </a>
               </li>
             </ul>
-            <a href="/JSP/Main/List_cs.jsp" class="more_btn">더보기</a>
+            <a href="/Cs_List.co" class="more_btn">더보기</a>
           </div>
         </div>
       </section>
