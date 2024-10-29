@@ -1,27 +1,40 @@
 package DAO;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Common.DBConnectionPool;
 import Common.JDBConnect;
 import DTO.CrewDTO;
 import DTO.CrewMemberDTO;
 
-public class CrewMemberDAO extends JDBConnect {
+public class CrewMemberDAO {
+	
+	private DBConnectionPool dbConnectionPool;
+
+    // DBConnectionPool 인스턴스를 생성자로 전달
+    public CrewMemberDAO(DBConnectionPool dbConnectionPool) {
+        this.dbConnectionPool = dbConnectionPool;
+    }
+    
+    
 	
 	public List<CrewMemberDTO> selectCrewMemberList(String crew_name) {
 		List<CrewMemberDTO> crewMemberList = new ArrayList<CrewMemberDTO>();
 		CrewMemberDTO crewMember = null;
+		Connection con = null;
 		
 		String sql = 
 				"select cm.idx, cm.crew_name, cm.member_id, cm.status, mem.member_image_idx "
 				+ "from crew_member as cm inner join member as mem on cm.member_id = mem.id "
 				+ "where cm.crew_name = ?";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			psmt.setString(1, crew_name);
-			rs = psmt.executeQuery();
+			var rs = psmt.executeQuery();
 			
 			while (rs.next()) { 
                 
@@ -49,6 +62,7 @@ public class CrewMemberDAO extends JDBConnect {
 	public List<CrewMemberDTO> selectCrewMainMemberList(String crew_name) {
 		List<CrewMemberDTO> crewMemberList = new ArrayList<CrewMemberDTO>();
 		CrewMemberDTO crewMember = null;
+		Connection con = null;
 		
 		String sql = " select"
 				+ "	cm.idx,"
@@ -66,9 +80,10 @@ public class CrewMemberDAO extends JDBConnect {
 		
 		
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			psmt.setString(1, crew_name);
-			rs = psmt.executeQuery();
+			var rs = psmt.executeQuery();
 			
 			while (rs.next()) { 
                 
@@ -98,11 +113,14 @@ public class CrewMemberDAO extends JDBConnect {
 		
 		String sql = "select status from crew_member where crew_name = ? and member_id = ?";
 		String result = "";
+		Connection con = null;
+		
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);
-			rs = psmt.executeQuery();
+			var rs = psmt.executeQuery();
 			
 			while (rs.next()) { 
 				result = rs.getString("status");
@@ -121,10 +139,12 @@ public class CrewMemberDAO extends JDBConnect {
 	public int insertCrewMember(String crew_name, String member_id) {
 		int rs = 0;
 		CrewMemberDTO crewMember = null;
+		Connection con = null;
 		
 		String sql = "insert into crew_member (crew_name, member_id, status) values (?, ?, 'Waiting');";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);
@@ -142,11 +162,13 @@ public class CrewMemberDAO extends JDBConnect {
 	
 	public int deleteCrewMember(String crew_name, String member_id) {
 		int rs = 0;
+		Connection con = null;
 		CrewMemberDTO crewMember = null;
 		
 		String sql = "delete from crew_member where member_id = ? and crew_name = ?";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);
@@ -164,11 +186,13 @@ public class CrewMemberDAO extends JDBConnect {
 	
 	public int acceptCrewMember(String crew_name, String member_id) {
 		int rs = 0;
+		Connection con = null;
 		CrewMemberDTO crewMember = null;
 		
 		String sql = "update crew_member set status = 'User' where crew_name = ? and member_id = ?";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);
@@ -187,11 +211,13 @@ public class CrewMemberDAO extends JDBConnect {
 	
 	public int refuseCrewMember(String crew_name, String member_id) {
 		int rs = 0;
+		Connection con = null;
 		CrewMemberDTO crewMember = null;
 		
 		String sql = "update crew_member set status = 'Refuse' where crew_name = ? and member_id = ?";
 		try {
-			psmt = con.prepareStatement(sql);
+			con = dbConnectionPool.getConnection();
+			var psmt = con.prepareStatement(sql);
 			
 			psmt.setString(1, crew_name);
 			psmt.setString(2, member_id);
