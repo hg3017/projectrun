@@ -85,7 +85,6 @@ public class CustomerController extends HttpServlet {
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
 			String category = request.getParameter("category");
-			String ableview = request.getParameter("ableview");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 //			System.out.println("ableview 출력 : "+request.getParameter("ableview"));
@@ -94,7 +93,6 @@ public class CustomerController extends HttpServlet {
 			String member_id = (String) session.getAttribute("UserId");
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
-			dto.setAbleview(ableview);
 			dto.setCategory(category);
 			dto.setTitle(title);
 			dto.setMember_id(member_id);
@@ -129,14 +127,12 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Edit";
 		} else if(action.equals("/Cs_EditProcess.co")) {
 			String category = request.getParameter("category");
-			String ableview = request.getParameter("ableview");
 			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			CustomerboardDTO dto = new CustomerboardDTO();
 			dto.setCategory(category);
-			dto.setAbleview(ableview);
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);

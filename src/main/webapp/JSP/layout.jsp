@@ -24,6 +24,7 @@
 	<script src="/resources/js/aos.js"></script>
 	<script src="/resources/js/ui-common.js"></script>
   	<script src="/resources/js/announcementNew.js"></script>
+  	<script src="/resources/js/customerboard.js"></script>
 </head>
 <body>
 

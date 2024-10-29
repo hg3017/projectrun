@@ -193,7 +193,8 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getAbleview());
+			psmt.setString(2, "공개");
+			// psmt.setString(2, dto.getAbleview());
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getMember_id());
 			psmt.setString(5, dto.getContent());
@@ -228,7 +229,7 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getAbleview());
+			psmt.setString(2, "공개");
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getContent());
 			psmt.setString(5, dto.getIdx());
