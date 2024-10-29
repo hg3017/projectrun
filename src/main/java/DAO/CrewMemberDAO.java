@@ -229,7 +229,6 @@ public class CrewMemberDAO {
 		} finally {
 //			close();
 		}
-		
 		return rs;			
 	}
 	

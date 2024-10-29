@@ -90,6 +90,23 @@ public class CrewMemberController extends HttpServlet {
 			} 
 			
 		}
+		// 가입 신청 로직. 
+		else if(action.equals("/insert.crewMember")) {
+			
+			String crewName = request.getParameter("crewName");
+			String sessionId = (String) session.getAttribute("UserId");  
+			
+			int rs = service.insertCrewMember(crewName, sessionId);
+
+			if(rs == 1) {
+				
+				path = "CrewView";
+			} else {
+				request.setAttribute("AcceptErrMsg", "가입 승인 오류");
+				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
+			}
+			
+		}
 		// 가입 승인 로직. 
 		else if(action.equals("/accept.crewMember")) {
 			String name = request.getParameter("name");
@@ -114,7 +131,7 @@ public class CrewMemberController extends HttpServlet {
 			int rs = service.refuseCrewMember(crew_name, name);
 						
 			if(rs == 1) {
-				response.sendRedirect("/JSP/Crew/CrewMemberView.jsp");
+				path = "CrewMemberView";
 			} else {
 				request.setAttribute("RefuseErrMsg", "가입 거절 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
@@ -128,12 +145,12 @@ public class CrewMemberController extends HttpServlet {
 			int rs = service.deleteCrewMember(crew_name, name);
 			
 			if(rs == 1) {
-				response.sendRedirect("/JSP/Crew/CrewMemberView.jsp");
+				path = "CrewView";
 			} else {
 				request.setAttribute("DeleteErrMsg", "회원 삭제 오류");
 				request.getRequestDispatcher("/JSP/Crew/CrewMemberView.jsp").forward(request, response);
 			}
-		}
+		} 
 		
 		request.setAttribute("layout","Crew/" + path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
