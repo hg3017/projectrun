@@ -28,7 +28,7 @@ public class CrewBoardDAO extends JDBConnect{
 				psmt.setString(1, "%" + map.get("searchWord") + "%");
 			}
 			
-			rs = psmt.executeQuery(query);
+			rs = psmt.executeQuery();
 			if(rs.next()) {
 				totalCount = rs.getInt(1);
 			}
@@ -54,12 +54,12 @@ public class CrewBoardDAO extends JDBConnect{
 		try {
 			psmt = con.prepareStatement(query);
 			
-			int paramIdex = 1;
+			int paramIndex = 1;
 			if(map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-				psmt.setString(paramIdex++, map.get("searchWord"));
+				psmt.setString(paramIndex++, map.get("searchWord"));
 			}
-				psmt.setInt(paramIdex++, Integer.parseInt(map.get("limit")));
-        		psmt.setInt(paramIdex, Integer.parseInt(map.get("offset")));  
+				psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
+        		psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));  
 			
 			rs = psmt.executeQuery();
 			
@@ -83,7 +83,7 @@ public class CrewBoardDAO extends JDBConnect{
 		return cb;
 	}
 
-	public List<CrewBoardDTO> selectListPage(Map<String, Object> map) {
+	public List<CrewBoardDTO> selectListPage(Map<String, String> map) {
 		List<CrewBoardDTO> cb = new Vector<CrewBoardDTO>(); // 결과(게시물 목록)를 담을 변수
 
 		// 쿼리문 템플릿
