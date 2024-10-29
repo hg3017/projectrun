@@ -130,15 +130,17 @@ public class CrewBoardDAO extends JDBConnect{
 		int result = 0;
 		
 		try {
-			String query = "INSERT INTO crewboard (title, crew_name, content, member_id) VALUES (?, ?, ?, ?)";
+
+			String query = "INSERT INTO crewboard (title, crew_name, content, member_id, ofile, sfile) VALUES (?, ?, ?, ?, ? ,?)";
+
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getCrew_name());
 			psmt.setString(3, dto.getContent());
 			psmt.setString(4, dto.getMember_id());
-//			psmt.setString(5, dto.getOfile());
-//			psmt.setString(6, dto.getSfile());
+			psmt.setString(5, dto.getOfile());
+			psmt.setString(6, dto.getSfile());
 			
 			result = psmt.executeUpdate();
 			
@@ -186,13 +188,15 @@ public class CrewBoardDAO extends JDBConnect{
 				dto.setCrew_name(rs.getString("crew_name"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegidate(rs.getDate("regidate"));
+				dto.setOfile(rs.getString("ofile"));
+				dto.setSfile(rs.getString("sfile"));
+				
 				dto.setPrevnum(rs.getString("prevnum"));
 				dto.setPrevtitle(rs.getString("prevtitle"));
+				
 				dto.setNextnum(rs.getString("nextnum"));
 				dto.setNexttitle(rs.getString("nexttitle"));
 				
-				dto.setOfile(rs.getString("ofile"));
-				dto.setSfile(rs.getString("sfile"));
 			}
 		}
 		catch (Exception e) {
@@ -280,6 +284,27 @@ public class CrewBoardDAO extends JDBConnect{
 		}
 		return result;
 		
+	}
+	
+	public List<String> selectCrewNames(String id) {
+		List<String> list = new ArrayList<>();
+		
+		try {
+			String query = "SELECT CREW_NAME FROM CREW_MEMBER WHERE MEMBER_ID = ?";
+			
+			psmt = con.prepareStatement(query);
+			psmt.setString(1, id);
+			
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				list.add(rs.getString(1));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 }
