@@ -59,10 +59,10 @@
 .list_page .contents .board_list {
   margin: 0 45px 0;
 }
-
+/* 
 .list_page .ban_box {
-  padding-top: 50px;
-}
+  padding-top: 10px;
+} */
 
 .list_page .ban_box .inner {
   max-width: 1450px;
@@ -71,7 +71,7 @@
 }
 
 .list_page .ban_box .etc {
-  margin: 0 45px 0;
+  margin: 0 20px 0;
   display: flex;
   justify-content: end;
   gap:30px;
@@ -80,6 +80,7 @@
 .list_page .ban_box .etc li {
   background: #8c5ba3;
   border-radius: 20px;
+  width:300px;
 }
 
 .list_page .ban_box .etc a {
@@ -91,7 +92,7 @@
 
 
 .list_page .ban_box .etc .etc_right {
-  background: url(../images/icon-call.png) no-repeat 20px 50% / 30px;
+  background: url(../images/icon-call.png) no-repeat 30px 50% / 30px;
 }
 
 .list_page .ban_box .etc p {

@@ -21,6 +21,7 @@ import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 import Service.CustomerboardService;
 import Service.CustomerboardServiceImpl;
+import Utils.AnnouncementPage;
 import Utils.CustomerboardPage;
 
 @WebServlet("*.co")
@@ -67,25 +68,22 @@ public class CustomerController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 
 			int totalCount =  service.selectCount(map);
-			request.setAttribute("totalCount", totalCount);
 
 			List<CustomerboardDTO> boards = service.selectList(map);
 			request.setAttribute("boards", boards);
 
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co");
+			String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";
 			
 		} else if(action.equals("/Cs_Write.co")) {
-
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
 			String category = request.getParameter("category");
-			String ableview = request.getParameter("ableview");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 //			System.out.println("ableview 출력 : "+request.getParameter("ableview"));
@@ -94,7 +92,6 @@ public class CustomerController extends HttpServlet {
 			String member_id = (String) session.getAttribute("UserId");
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
-			dto.setAbleview(ableview);
 			dto.setCategory(category);
 			dto.setTitle(title);
 			dto.setMember_id(member_id);
@@ -129,14 +126,12 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Edit";
 		} else if(action.equals("/Cs_EditProcess.co")) {
 			String category = request.getParameter("category");
-			String ableview = request.getParameter("ableview");
 			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			CustomerboardDTO dto = new CustomerboardDTO();
 			dto.setCategory(category);
-			dto.setAbleview(ableview);
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
