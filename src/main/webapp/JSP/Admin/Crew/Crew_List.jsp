@@ -3,7 +3,7 @@
 <%@page import="DAO.AdminCrewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%List<AdminCrewDTO> crews = (List<AdminCrewDTO>)request.getAttribute("crews"); %>
+<% List<AdminCrewDTO> crews = (List<AdminCrewDTO>)request.getAttribute("crews"); %>
 				<div class="contents">
 					<div class="inner">
 						<div class="board_search_wrap">
