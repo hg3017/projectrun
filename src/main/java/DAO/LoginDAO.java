@@ -22,8 +22,6 @@ public class LoginDAO {
 	        LoginDTO member = null;
 	        Connection con = null;
 	        
-	        System.out.println("LoginDAO-selectView");
-	        
 	        String sql = "SELECT id, pass FROM member WHERE id = ?";
 
 	        try {
@@ -51,4 +49,7 @@ public class LoginDAO {
 	        }
 	        return member;
 	    }
+	    
+	    
+	    
 }
