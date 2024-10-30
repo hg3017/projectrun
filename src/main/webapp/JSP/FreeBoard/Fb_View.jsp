@@ -3,6 +3,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="/JSP/FreeBoard/IsLoggedIn.jsp"%>
 
+<% String typeParam = "FreeBoard"; %>
+
 <script>
 function deletePost() {
     var confirmed = confirm("정말로 삭제하겠습니까?"); 
@@ -79,6 +81,12 @@ function deletePost() {
 						</c:if>
 					</dd>
 				</dl>
+				
+				<jsp:include page="/JSP/Common/Comment.jsp" flush="true">
+		<jsp:param value="FreeBoard" name="boardType"/>
+		<jsp:param value= "${ board.idx }" name="boardIdx"/>
+	</jsp:include> 
+				
 				<div class="btn_wrap">
 					<button type="button" class="point_btn3"
 						onclick="location.href='/Fb_List.free';">목록</button>
@@ -86,4 +94,7 @@ function deletePost() {
 			</div>
 		</div>
 	</section>
+	
+	
+	
 </main>

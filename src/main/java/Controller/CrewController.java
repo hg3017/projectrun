@@ -109,7 +109,7 @@ public class CrewController extends HttpServlet {
 			List<CrewBoardDTO> boards = CrewBoardService.selectList(map);
 			request.setAttribute("boards", boards);
 			
-			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
+//			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
 			
 			String sessionId = (String) session.getAttribute("UserId");  
 			String crewSessionId = Memberservice.selectCrewMemberStatus(crewName, sessionId);
@@ -117,7 +117,7 @@ public class CrewController extends HttpServlet {
 			request.setAttribute("CrewDetail", CrewDetail);
 			request.setAttribute("crewSessionId", crewSessionId);
 			request.setAttribute("crewMainMemberLists", crewMainMemberLists);
-			request.setAttribute("commentLists", CommentLists);
+//			request.setAttribute("commentLists", CommentLists);
 			
 			if(CrewDetail != null){
 				path= "CrewMain";
@@ -125,7 +125,7 @@ public class CrewController extends HttpServlet {
 		
 		} 
 		// 크루 생성 화면으로 이동합니다. 
-		else if(action.equals("/CrewRegistHref.crew")) {
+		else if(action.equals("/CrewRegist.crew")) {
 			
 			List<LocationDTO> locations = Locationservice.locationView();
 			

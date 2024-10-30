@@ -18,7 +18,7 @@
           <%      
           	if(sessionId != null  ) {
         %>
-          	<a class="crew_btn" href="/CrewRegistHref.crew">크루등록하기</a>
+          	<a class="crew_btn" href="/CrewRegist.crew">크루등록하기</a>
         <%
           	}
         %>
