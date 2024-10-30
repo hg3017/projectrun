@@ -45,6 +45,15 @@
               <c:if test="${not empty board.content }">${board.content }</c:if>
               <c:if test="${empty board.content }">내용없음</c:if>
             </div>
+            <div class="view_file" align="right">
+				<h3>첨부파일</h3>
+				<c:if test="${not empty board.ofile}">
+					<a href="/FileDown.cb?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
+				</c:if>
+				<c:if test="${empty board.ofile}">
+					<span>첨부파일 없음</span>
+				</c:if>
+				</div>
             <dl class="view_paging">
               <dt>이전글</dt>
               <dd>
