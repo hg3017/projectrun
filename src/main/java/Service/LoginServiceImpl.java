@@ -5,6 +5,7 @@ import java.util.List;
 
 import Common.DBConnectionPool;
 import DAO.LoginDAO;
+import DTO.CustomerboardDTO;
 import DTO.LoginDTO;
 
 
@@ -29,6 +30,11 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public LoginDTO selectView(String id) {
 		return dao.selectView(id);
+	}
+
+	@Override
+	public List<CustomerboardDTO> ViewPage() {
+		return dao.ViewPage();
 	}
 	
 }
