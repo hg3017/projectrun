@@ -96,7 +96,7 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 			<td colspan="2" align="center">
 				<button type="submit">작성 완료</button>
 				<button type="reset">다시 입력</button>
-				<button type="button" onclick="location.href='/JSP/Admin/Member/Member_List.adme';">목록 보기</button>
+				<button type="button" onclick="location.href='/Member_List.adme';">목록 보기</button>
 			</td>
 		</tr>
 	</table>

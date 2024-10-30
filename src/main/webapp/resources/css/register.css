@@ -13,3 +13,54 @@
   padding-left: 20px;
   padding-bottom: 20px;
 }
+
+/* board_list(게시물리스트), board_view(게시물보기), board_write(게시물쓰기), board_modify(게시물수정) */
+/* 게시판 리스트 */
+.board_list .btn_wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+.board_list .write_btn {
+  padding: 10px 20px;
+  border: 1px solid #333; 
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.board_list table {
+  border-top: 2px solid #8c5ba3;
+}
+.board_list th {
+  height: 100px;
+  color: #333;
+  border-bottom: 1px solid #707070;
+  font-size: 20px;
+}
+.board_list .col1 {
+  width: 120px;
+}
+.board_list .col3 {
+  width: 200px;
+}
+.board_list .col4 {
+  width: 200px;
+}
+.board_list td {
+  height: 70px;
+  text-align: center;
+  border-bottom: 1px solid #707070;
+}
+.board_list .td_left {
+  text-align: left;
+}
+.board_list td a {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.board_list .file {
+  display: inline-block;
+  padding-bottom: 3px;
+}

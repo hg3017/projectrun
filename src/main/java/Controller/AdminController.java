@@ -9,10 +9,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DTO.MemberDTO;
 import Service.MemberService;
 import Service.MemberServiceImpl;
+
+import DTO.LoginDTO;
+import Service.LoginService;
+import Service.LoginServiceImpl;
+
 
 
 // *.do 로 들어오는 모든 요청 처리
@@ -21,6 +27,7 @@ public class AdminController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	MemberService service;
+	LoginService servicelog;
 
 	public AdminController() {
 		service = new MemberServiceImpl();
@@ -42,6 +49,8 @@ public class AdminController extends HttpServlet {
 		//	System.out.println(lastSlash);
 		String action = uri.substring(lastSlash);
 		// System.out.println(action);
+		HttpSession session = request.getSession();
+		// session 사용을 위해서 추가
 		
 		// List.do로 들어온 요청 처리
 		if(action.equals("/Admin_List.ad")) {
@@ -61,7 +70,27 @@ public class AdminController extends HttpServlet {
 			request.getRequestDispatcher(path).forward(request, response);
 			// List.jsp 파일로 forward 방식으로 이동
 			
-		}else if(action.equals("/Admin_Write.ad")) {
+		}else if(action.equals("/AdminPage.ad")) {
+			System.out.println("컨트롤러 .ad AdminPage.ad 진입 완료");
+			// 받을 값 없음, service 요청할 거 없음
+			// 3. 어떻게 어디로 이동할 것인가?
+			// System.out.println("Write.do" + request.getParameter("id"));
+			// 1. 받을 값 확인
+			// System.out.println(session.getAttribute("UserId"));
+			System.out.println(session.getAttribute("UserId"));
+			// request.setAttribute("id",String(session.getAttribute("UserId")));			
+						
+			// 2. service 요청
+			// LoginDTO 의 형태를 가진 객체를 dto 의 이름으로 생성하고 그 안에 dao.selectView(id) 에서 리턴받은 값을 입력합니다.
+						
+			// dto 값이 null 이 아닌경우(리턴이 있는 경우) 작동합니다. 
+			// String sessionId = (String) session.getAttribute("UserId");  
+			//session.setAttribute("UserId", id);	
+			String path = "/JSP/Admin/Admin_Index.jsp";
+			request.getRequestDispatcher(path).forward(request, response);
+			
+		}
+		else if(action.equals("/Admin_Write.ad")) {
 			// System.out.println(action);
 			System.out.println("write : "+ request.getParameter("name"));
 			// 받을 값 없음, service 요청할 거 없음
@@ -148,13 +177,6 @@ public class AdminController extends HttpServlet {
 			
 			String path = "Admin_List.jsp";
 			response.sendRedirect(path);
-		}else if(action.equals("/Admin_Test01.ad")) {
-			String path = "/Admin_Test01.jsp";
-//			String path = "/JSP/Admin/Admin_Test01.jsp";
-			response.sendRedirect(path);
-		}else if(action.equals("/Admin_Index.ad")) {
-			String path = "/JSP/Admin/Admin_Index.jsp";
-			response.sendRedirect(path);
 		} else if(action.equals("/AdminPage.ad")) {		
 					
 		//path = "Admin_Index";
@@ -164,6 +186,8 @@ public class AdminController extends HttpServlet {
 		//request.getRequestDispatcher("/JSP/Admin/Admin_Index.jsp").forward(request, response);;
 		// request.setAttribute("layout","Admin/" + path);
 		// request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
+		
+		return;
 		}
 		
 	}
