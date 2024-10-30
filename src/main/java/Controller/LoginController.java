@@ -94,6 +94,12 @@ public class LoginController extends HttpServlet {
 			path = "/Login/Login";
 			
 		} 
+		else if (action.equals("/Main.lo")) {
+			// qna 조회
+			request.setAttribute("qnaList", "");
+			
+			path = "/Main/Main";
+		}
 		
 		
 		request.setAttribute("layout", path);
