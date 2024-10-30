@@ -62,14 +62,51 @@
 			       </tr>
                 </c:if>
                 <c:forEach var="board" items="${boards }" varStatus="status">
-                	<tr align="center">
-                		<td>${boards.size() - status.index}</td>
-                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
-                		<td>${board.member_id }</td>
-                		<td>${board.crew_name }</td>
-                		<td>${board.regidate }</td>
-                		<td>${board.visitcount }</td>
-                	</tr>
+                	
+                	<c:choose> 
+	                	<c:when test="${empty crewName or crewName eq '' }" >
+	                		<tr align="center">
+		                		<td>${boards.size() - status.index}</td>
+		                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
+		                		<td>${board.member_id }</td>
+		                		<td>${board.crew_name }</td>
+		                		<td>${board.regidate }</td>
+		                		<td>${board.visitcount }</td>
+		                	</tr>
+	                	
+	                	</c:when>
+	                	
+	                	<c:when test="${board.crew_name eq crewName}"> 
+	                		<tr align="center">
+		                		<td>${boards.size() - status.index}</td>
+		                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
+		                		<td>${board.member_id }</td>
+		                		<td>${board.crew_name }</td>
+		                		<td>${board.regidate }</td>
+		                		<td>${board.visitcount }</td>
+	                		</tr>
+                		</c:when>
+                		
+                		
+                	</c:choose>
+                	<%-- <c:choose> 
+                		<c:when test="${crewName eq null } or ${crewName eq '' } ">
+                			
+                		</c:when>
+                		
+                		<c:when test="${board.crew_name eq crewName}"> 
+	                		<tr align="center">
+		                		<td>${boards.size() - status.index}</td>
+		                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
+		                		<td>${board.member_id }</td>
+		                		<td>${board.crew_name }</td>
+		                		<td>${board.regidate }</td>
+		                		<td>${board.visitcount }</td>
+	                		</tr>
+                		</c:when>
+                	</c:choose> --%>
+                	
+                	
                 </c:forEach>
             </table>
             <div class="board_pagination">
