@@ -1,7 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,18 +15,21 @@ import javax.servlet.http.HttpSession;
 import DAO.CrewDAO;
 import DTO.AnnouncementDTO;
 import DTO.CommentDTO;
+import DTO.CrewBoardDTO;
 import DTO.CrewDTO;
 import DTO.CrewMemberDTO;
 import DTO.LocationDTO;
 import Service.CommentService;
 import Service.CommentServiceImpl;
+import Service.CrewBoardServiceImpl;
 import Service.CrewMemberService;
 import Service.CrewMemberServiceImpl;
 import Service.CrewService;
 import Service.CrewServiceImpl;
 import Service.LocationService;
 import Service.LocationServiceImpl;
-
+import Service.CrewBoardService;
+import Service.CrewBoardServiceImpl;
 
 
 // @WebServlet. 요청값이 .lo 로 끝나는 경우 해당 컨트롤러를 찾아 작동합니다. 
@@ -36,6 +41,7 @@ public class CrewController extends HttpServlet {
 	CrewMemberService Memberservice;
 	LocationService Locationservice;
 	CommentService Commentservice;
+	CrewBoardService CrewBoardService;
 	
 	// LoginController 생성자. 컨트롤러가 생성될 때 LoginServiceImpl 객체를 생성하여 service 변수에 할당합니다.
 	public CrewController() {
@@ -43,6 +49,7 @@ public class CrewController extends HttpServlet {
 		Memberservice = new CrewMemberServiceImpl();
 		Locationservice = new LocationServiceImpl();
 		Commentservice = new CommentServiceImpl();
+		CrewBoardService = new CrewBoardServiceImpl();
 	}
 
 	// GET 방식으로 데이터를 받은 경우 작동합니다.
@@ -82,6 +89,26 @@ public class CrewController extends HttpServlet {
 			String crewName = request.getParameter("crewName");
 			CrewDTO CrewDetail = service.selectCrew(crewName);
 			List<CrewMemberDTO> crewMainMemberLists = Memberservice.selectCrewMainMemberList(crewName);
+			
+			String searchField = request.getParameter("searchField");
+			String searchWord = request.getParameter("searchWord");
+			String limitParam = request.getParameter("limit");
+			String pageNumParam = request.getParameter("pageNum");
+			
+			int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10;
+			int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1;
+			int offset = (pageNum - 1) * limit;
+			
+			Map<String, String> map = new HashMap<>();
+			map.put("searchField", (searchField != null) ? searchField : "");
+			map.put("searchWord", (searchWord != null) ? searchWord : "");
+			map.put("limit", String.valueOf(limit));
+			map.put("offset", String.valueOf(offset));
+			
+			
+			List<CrewBoardDTO> boards = CrewBoardService.selectList(map);
+			request.setAttribute("boards", boards);
+			
 			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
 			
 			String sessionId = (String) session.getAttribute("UserId");  
