@@ -66,8 +66,8 @@ public class CustomerboardDAO extends JDBConnect {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getString("ableview"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setMember_id(rs.getString("member_id"));
@@ -93,28 +93,20 @@ public class CustomerboardDAO extends JDBConnect {
 		if (map.get("serarchWord") !=null) {
 			query = " Where " + map.get("searchField") + " like concat('%',?,'%')";
 		}
-<<<<<<< HEAD
-		query += " ORDER BY idex DESC ";
-		
-		try {
-			psmt = con.prepareStatement(query);
-			
-=======
 		query += " ORDER BY idx DESC ";
 		query += " LIMIT ? OFFSET ?";
 		
 		try {
 			psmt = con.prepareStatement(query);
 
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
 				CustomerboardDTO dto = new CustomerboardDTO();
 				
 				dto.setIdx(rs.getString("idx"));
-				dto.setAbleview(rs.getString("ableview"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setMember_id(rs.getString("member_id"));
@@ -141,10 +133,10 @@ public class CustomerboardDAO extends JDBConnect {
 		query += "	FROM (													";
 		query += " 		SELECT												";
 		query += " 			IDX, 											";
-		query += " 			TITLE,											";
-		query += " 			ABLEVIEW, 										";
-		query += " 			MEMBER_ID,										";
 		query += " 			CATEGORY, 										";
+		query += " 			ABLEVIEW, 										";
+		query += " 			TITLE,											";
+		query += " 			MEMBER_ID,										";
 		query += " 			CONTENT, 										";
 		query += " 			REGIDATE,										";
 		query += " 			VISITCOUNT, 									";
@@ -163,10 +155,10 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			if(rs.next()) {
 				dto.setIdx(rs.getString("idx"));
-				dto.setTitle(rs.getString("title"));
-				dto.setAbleview(rs.getString("ableview"));
-				dto.setMember_id(rs.getString("member_id"));
 				dto.setCategory(rs.getString("category"));
+				dto.setAbleview(rs.getString("ableview"));
+				dto.setTitle(rs.getString("title"));
+				dto.setMember_id(rs.getString("member_id"));
 				dto.setContent(rs.getString("content"));
 				dto.setRegidate(rs.getDate("regidate"));
 				dto.setVisitcount(rs.getInt("visitcount"));
@@ -190,7 +182,7 @@ public class CustomerboardDAO extends JDBConnect {
 		try {
 			String query = "INSERT INTO customerboard (category,ableview,title,member_id,content) VALUES (?, ?, ?, ?, ?)";
 			
-			System.out.println("DAO에서 ableview 확인 : "+dto.getAbleview());
+//			System.out.println("DAO에서 ableview 확인 : "+dto.getAbleview());
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
@@ -226,20 +218,14 @@ public class CustomerboardDAO extends JDBConnect {
 		int result = 0;
 		
 		try {
-			String query = " UPDATE customerboard SET " + " title=?, content=? " + " WHERE idx=? ";
+			String query = " UPDATE customerboard SET " + " category=?, ableview=?, title=?, content=? " + " WHERE idx=? ";
 			
 			psmt = con.prepareStatement(query);
-<<<<<<< HEAD
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getIdx());
-=======
 			psmt.setString(1, dto.getCategory());
 			psmt.setString(2, "공개");
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getContent());
 			psmt.setString(5, dto.getIdx());
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			
 			result = psmt.executeUpdate();
 		} catch (Exception e) {

@@ -1,15 +1,9 @@
 ### folder
-/target/
+target/
 .settings/
+bin/
 ### files
 .classpath
-<<<<<<< HEAD
-.gitignore.DS_Store
-pom.properties
-/bin/
-=======
 .gitignore
 .DS_Store
 pom.properties
-bin/
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a

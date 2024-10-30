@@ -83,31 +83,20 @@ public class CustomerController extends HttpServlet {
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
-<<<<<<< HEAD
-=======
 			String category = request.getParameter("category");
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
-			String ableview = request.getParameter("ableview");
-			String category = request.getParameter("category");
+//			System.out.println("ableview 출력 : "+request.getParameter("ableview"));
+
 			HttpSession session = request.getSession();
 			String member_id = (String) session.getAttribute("UserId");
-
-			System.out.println("ableview : "+request.getParameter("ableview"));
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
-<<<<<<< HEAD
-=======
 			dto.setCategory(category);
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			dto.setTitle(title);
-			dto.setContent(content);
-			dto.setAbleview(ableview);
 			dto.setMember_id(member_id);
-			dto.setCategory(category);
+			dto.setContent(content);
 
-			
 			int rs = service.insertWrite(dto);
 
 			if(rs == 1) {
@@ -136,19 +125,13 @@ public class CustomerController extends HttpServlet {
 			
 			path = "Cs_Edit";
 		} else if(action.equals("/Cs_EditProcess.co")) {
-<<<<<<< HEAD
-=======
 			String category = request.getParameter("category");
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			CustomerboardDTO dto = new CustomerboardDTO();
-<<<<<<< HEAD
-=======
 			dto.setCategory(category);
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);
