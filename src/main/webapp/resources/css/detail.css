@@ -1,55 +1,82 @@
 @charset "UTF-8";
+
 .page {
-  padding: 0 0 500px;
+    padding: 200px;
+    /* margin: 0 auto; */
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    display: flex;
 }
 
-.page .contents .inner {
-  max-width: 1440px;
-  padding: 0 340px;
+
+.page .main_write {
+  position: relative;
+  margin-top: 150px;
+  padding: 0 530px;
+}
+.page .main_write .inner {
+  text-align: left;
   margin: 0 auto;
 }
 
-.page .sub_tit h2 {
+.page .head_wrap h2 {
   font-size: 40px;
   font-weight: 700;
   padding-left: 35px;
 }
 
-
-
-.page .sub_tit {
-  position: relative;
-  margin-top: 150px;
-  padding: 0 530px;
-}
-.page .sub_tit .inner {
-  text-align: left;
-  margin: 0 auto;
-}l
-
-.page .contents {
+.page .input_wrap {
   padding: 20px ;
 }
 
+.page .input_wrap .inner {
+  max-width: 1440px;
+  padding: 0 340px;
+  margin: 0 auto;
+}
 .page .view_head {
   padding-bottom: 20px;
   border-bottom: 1px solid rgb(107, 98, 98);
 }
-.page .txt_wrap {
+.page .wr1 {
   display: flex;
   gap: 40px;
   position: relative;
   left: 30px;
   padding-bottom: 10px;
 }
-.page .txt_wrap p {
+.page .wr2 {
+  display: flex;
+  gap: 40px;
+  position: relative;
+  left: 30px;
+  padding-bottom: 10px;
+}
+.page .wr3 {
+  display: flex;
+  gap: 40px;
+  position: relative;
+  left: 30px;
+  padding-bottom: 10px;
+}
+
+.page .wr1 p {
+  font-size: 18px;
+  font-weight: bold;
+}
+.page .wr2 p {
+  font-size: 18px;
+  font-weight: bold;
+}
+.page .wr3 p {
   font-size: 18px;
   font-weight: bold;
 }
 
 
-
-.page .txt_wrap .location::after {
+.page .wr3 .location::after {
   position: absolute;
   content: '';
   width: 25px;
@@ -57,7 +84,7 @@
   left:-30px;
   background: url(/resources/images/location-on-map-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
-.page .txt_wrap .clock::after {
+.page .wr4 .clock::after {
   position: absolute;
   content: '';
   width: 25px;
@@ -65,7 +92,7 @@
   left:-30px;
   background: url(/resources/images/clock-0300-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
-.page .txt_wrap .cal::after {
+.page .wr5 .cal::after {
   position: absolute;
   content: '';
   width: 25px;
@@ -73,24 +100,25 @@
   left:-30px;
   background: url(/resources/images/calendar-svgrepo-com.svg) no-repeat 0 0 / 100%;
 }
-.page .txt_wrap .btxt {
+.page .wr4 .btxt {
   margin-left: 35px;
 }
-.page .txt_wrap .ctxt {
+.page .wr5 .ctxt {
   margin-left: 17px;
 }
-.page .txt_wrap .dtxt {
+
+/* .page .txt_wrap .dtxt {
   margin-left: -2px;
 }
 .page .txt_wrap .etxt {
   margin-left: 36px;
-}
+} */
 
-.page .view_con {
+/* .page .view_con {
   padding: 50px 0 500px;
-}
+} */
 
-.page .btn3_wrap {
+.page .btn_wrap2 {
   height: 60px;
   border-radius: 30px;
   width: 185px;
@@ -102,12 +130,12 @@
   display: inline-flex;
   gap: 0 10px;
 }
-.page .btn3_wrap::before {
+.page .btn_wrap2::before {
   content: '';
   width: 18px;
   height: 15px;
   background: url(/resources/images/icon_list.svg) no-repeat left top / 100%;
 }
-.page .btn3_wrap a {
+.page .btn_wrap2 a {
   color: #fff;
 }

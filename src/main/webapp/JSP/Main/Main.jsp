@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <main id="container">
 	<section class="main_visual">
 		<h2 class="blind">메인슬라이더</h2>

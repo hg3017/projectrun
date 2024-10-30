@@ -1,4 +1,8 @@
 @charset "UTF-8";
+
+.main_write {
+  padding-bottom: 50px;
+}
 .main_write .inner {
   padding-top: 150px;
 }
@@ -51,6 +55,9 @@
   text-align: center;
 }
 .btn_wrap2 a {
-  border: 1px solid black;
-  border-radius: 5px;
+    border-radius: 10px;
+    color: #fff;
+    background: purple;
+    border: none;
+    padding: 10px;
 }

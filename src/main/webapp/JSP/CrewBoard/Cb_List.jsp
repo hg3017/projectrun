@@ -38,10 +38,7 @@
                 </form>
               </div>
               <div class="btn_wrap">
-
                 <c:if test="${not empty UserId }">
-
-
 					<a href="/Cb_Write.cb" class="write_btn">글쓰기</a>
 				</c:if>
               </div>
@@ -50,7 +47,7 @@
               <caption class="nohead">공지사항 테이블</caption>
               
                 <tr>
-                  <th>No</th>
+                  <!-- <th>No</th> -->
                   <th>제목</th>
                   <th>작성자</th>
                   <th>크루명</th>
@@ -69,7 +66,7 @@
                 	<c:choose> 
 	                	<c:when test="${empty crewName or crewName eq '' }" >
 	                		<tr align="center">
-		                		<td>${boards.size() - status.index}</td>
+		                		<%-- <td>${boards.size() - status.index}</td> --%>
 		                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
 		                		<td>${board.member_id }</td>
 		                		<td>${board.crew_name }</td>
@@ -81,7 +78,7 @@
 	                	
 	                	<c:when test="${board.crew_name eq crewName}"> 
 	                		<tr align="center">
-		                		<td>${boards.size() - status.index}</td>
+		                		<%-- <td>${boards.size() - status.index}</td> --%>
 		                		<td><a href="Cb_View.cb?idx=${board.idx }">${board.title }</a></td> <!-- 제목 --></td>
 		                		<td>${board.member_id }</td>
 		                		<td>${board.crew_name }</td>
