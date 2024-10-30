@@ -47,13 +47,22 @@ public class AnnouncementDAO extends JDBConnect {
 	public List<AnnouncementDTO> selectList(Map<String, String> map) {
 		List<AnnouncementDTO> amt = new ArrayList<AnnouncementDTO>();
 
-		String query = "SELECT * FROM announcement";
+		String query = "";
+		query += "SELECT a.* ";
+		query += "  FROM (";
+		query += "		  SELECT @rownum:=@rownum+1 no";
+		query += "			   , b.*";
+		query += "			FROM ANNOUNCEMENT b";
+		query += "		   WHERE (@rownum:=0)=0";
+		
 		if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
+			query += " 		 AND " + map.get("searchField") + " LIKE CONCAT('%',?,'%')";
 		}
+		
+		query += "		 ) a";
 		query += " ORDER BY idx DESC ";
 		query += " LIMIT ? OFFSET ?";
-
+		
 		try {
 			psmt = con.prepareStatement(query);
 			int paramIndex = 1;
@@ -69,14 +78,15 @@ public class AnnouncementDAO extends JDBConnect {
 			while (rs.next()) { // 결과를 순화하며...
 				// 한 행(게시물 하나)의 내용을 DTO에 저장
 				AnnouncementDTO dto = new AnnouncementDTO();
-
+				
 				dto.setIdx(rs.getString("idx")); // 일련번호
 				dto.setTitle(rs.getString("title")); // 제목
 				dto.setContent(rs.getString("content")); // 내용
 				dto.setRegidate(rs.getDate("regidate")); // 작성일
 				dto.setMember_id(rs.getString("member_id")); // 작성자 아이디
 				dto.setVisitcount(rs.getString("visitcount")); // 조회수
-
+				dto.setNo(rs.getInt("no")); 
+				
 				amt.add(dto); // 결과 목록에 저장
 			}
 		} catch (Exception e) {
