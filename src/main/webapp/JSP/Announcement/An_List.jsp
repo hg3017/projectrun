@@ -14,7 +14,7 @@
 		<div class="inner">
 			<div class="m_wrap">
 				<p>
-					<a href="JSP/Main/Main.jsp">HOME</a><span></span>공지사항
+					<a href="/">HOME</a><span></span>공지사항
 				</p>
 			</div>
 			<div class="board_list">
