@@ -1,6 +1,7 @@
 package Service;
 
 import java.util.List;
+import java.util.Map;
 
 import DAO.MemberDAO;
 import DTO.MemberDTO;
@@ -25,6 +26,12 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
+	public List<MemberDTO> selectList(Map<String, String> map) {
+		return dao.selectList(map);
+		// dao 객체의 메서드 selectList()의 값을 반환한다.
+	}
+	
+	@Override
 	public int insertWrite(MemberDTO dto) {
 		return dao.insertWrite(dto);
 	}
@@ -44,4 +51,16 @@ public class MemberServiceImpl implements MemberService{
 		
 		return this.dao.delete(id);
 	}
+	
+	@Override
+	public int selectCnt() {
+		return this.dao.selectCnt();
+	}
+	
+	@Override
+	public int selectCount(Map<String, String> map) {
+	    return dao.selectCount(map);
+	}
+	
+	
 }
