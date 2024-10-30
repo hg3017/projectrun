@@ -255,6 +255,8 @@ button:hover {
     font-weight: bold;
 }
 
+
+
 .notice td {
     background-color: #fff;
 }
@@ -280,3 +282,8 @@ button:hover {
 .links a:hover {
     text-decoration: underline;
 }
+
+
+.crew_picture tr {
+	border-bottom: 1px soild black; 
+	}
