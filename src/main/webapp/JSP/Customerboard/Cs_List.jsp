@@ -101,7 +101,7 @@
 		<div class="inner">
 			<div class="m_wrap">
 				<p>
-					<a href="/JSP/Main/Main.jsp">HOME</a><span></span>고객센터
+					<a href="/">HOME</a><span></span>고객센터
 				</p>
 			</div>
 
