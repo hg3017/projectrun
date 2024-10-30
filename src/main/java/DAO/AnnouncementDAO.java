@@ -242,6 +242,8 @@ public class AnnouncementDAO extends JDBConnect {
 	        psmt = con.prepareStatement(selectQuery);
 	        psmt.setString(1, dto.getIdx());
 	        rs = psmt.executeQuery();
+	        
+	        // 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
 	        if(rs.next()) {
 	        	if (dto.getSfile() != null && !dto.getSfile().isEmpty() && path != null) {
 	        		File oldFile = new File(path + File.separator + rs.getString(1));
@@ -253,7 +255,6 @@ public class AnnouncementDAO extends JDBConnect {
 	        			}
 	        		} else {
 	        			System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + path);
-	        			// 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
 	        		}
 	        	}
 	        	

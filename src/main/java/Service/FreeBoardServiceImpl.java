@@ -28,9 +28,9 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	}
 
 	@Override
-	public int updateEdit(FreeBoardDTO dto) {
+	public int updateEdit(FreeBoardDTO dto, String path) {
 		
-		return dao.updateEdit(dto);
+		return dao.updateEdit(dto, path);
 	}
 
 	@Override
