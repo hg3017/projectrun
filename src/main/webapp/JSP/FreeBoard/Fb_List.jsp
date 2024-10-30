@@ -64,7 +64,7 @@
 
 						<c:forEach var="board" items="${boards }" varStatus="status">
 							<tr align="center">
-								<td>${boards.no}</td>
+								<td>${board.no}</td>
 								<!--게시물 번호-->
 								<td>
 									<!--제목(+ 하이퍼링크)--> <a href="Fb_View.free?idx=${board.idx }">${board.title }</a>

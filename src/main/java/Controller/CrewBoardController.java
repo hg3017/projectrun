@@ -152,6 +152,8 @@ public class CrewBoardController extends HttpServlet {
 		}else if (action.equals("/Cb_EditProcess.cb")) {
 			CrewBoardDTO dto = new CrewBoardDTO();
 			
+			String saveDirectory = request.getServletContext().getRealPath("/JSP/Upload");
+			
 			Map<String, String> rDate = FileUtils.fileUpload(request, "file");
 			dto.setOfile(rDate.get("ofile"));
 			dto.setSfile(rDate.get("sfile"));
@@ -168,7 +170,7 @@ public class CrewBoardController extends HttpServlet {
 			dto.setOfile(fileName);
 			dto.setSfile(newFileName);
 			
-			int rs = service.updateEdit(dto);
+			int rs = service.updateEdit(dto, saveDirectory);
 			
 			if (rs == 1) {
 				// 성공 시 상세 보기 페이지로 이동

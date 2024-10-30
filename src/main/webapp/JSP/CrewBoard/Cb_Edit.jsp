@@ -53,7 +53,7 @@ function validateForm(form) {
                       <div class="file_wrap">
                         <input type="text" id="fileName" value="${not empty board.ofile ? board.ofile : '첨부파일 없음'}" readonly>
                         <label>
-                          <input type="file" class="blind">
+                          <input name="file" id="fileInput" type="file" class="blind">
                           파일선택
                         </label>
                       </div>

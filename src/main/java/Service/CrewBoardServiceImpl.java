@@ -25,8 +25,8 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	}
 	
 	@Override
-	public int updateEdit(CrewBoardDTO dto) {
-		return dao.updateEdit(dto); 
+	public int updateEdit(CrewBoardDTO dto, String path) {
+		return dao.updateEdit(dto, path); 
 	}
 	
 	@Override
@@ -55,6 +55,8 @@ public class CrewBoardServiceImpl implements CrewBoardService{
 	public List<String> selectCrewNames(String id) {
 		return dao.selectCrewNames(id);
 	}
+
+	
 
 	
 }

@@ -222,7 +222,7 @@ public class CrewBoardDAO extends JDBConnect{
 		
 	}
 
-	public int updateEdit(CrewBoardDTO dto) {
+	public int updateEdit(CrewBoardDTO dto, String path) {
 		int result = 0;
 		
 		try {
@@ -231,24 +231,22 @@ public class CrewBoardDAO extends JDBConnect{
 			psmt.setString(1, dto.getIdx());
 			rs = psmt.executeQuery();
 			
-			String oldFilePath = null;
-			if(rs.next()) {
-				oldFilePath = System.getProperty("user.home") + "/git/ProjectRun/scr/main/webapp/JSP/Upload/" + rs.getString("sfile");
-			}
 			
-			if(dto.getSfile() != null && !dto.getSfile().isEmpty() && oldFilePath != null) {
-				File oldFile = new File(oldFilePath);
-				if(oldFile.exists()) {
-					boolean deleted = oldFile.delete();
-					System.out.println("파일 삭제 여부: " + deleted);
-					if(!deleted) {
-						System.out.println("파일 삭제 실패 - 경로: " + oldFilePath);
-					}
-				}else {
-					System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + oldFilePath);
-				}
-			}
-		
+			if(rs.next()) {
+	        	if (dto.getSfile() != null && !dto.getSfile().isEmpty() && path != null) {
+	        		File oldFile = new File(path + File.separator + rs.getString(1));
+	        		if (oldFile.exists()) {
+	        			boolean deleted = oldFile.delete();
+	        			System.out.println("파일 삭제 여부: " + deleted);
+	        			if (!deleted) {
+	        				System.out.println("파일 삭제 실패 - 경로: " + path);
+	        			}
+	        		} else {
+	        			System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + path);
+	        		}
+	        	}
+	        	
+	        }
 	
 			String query = "UPDATE crewboard SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
 			
