@@ -63,7 +63,7 @@
 
 						<c:forEach var="board" items="${boards }" varStatus="status">
 							<tr align="center">
-								<td>${boards.size() - status.index}</td>
+								<td>${board.no }</td>
 								<!--게시물 번호-->
 								<td>
 									<!--제목(+ 하이퍼링크)--> <a href="An_View.an?idx=${board.idx }">${board.title }</a>

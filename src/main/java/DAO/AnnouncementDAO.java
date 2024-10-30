@@ -47,13 +47,22 @@ public class AnnouncementDAO extends JDBConnect {
 	public List<AnnouncementDTO> selectList(Map<String, String> map) {
 		List<AnnouncementDTO> amt = new ArrayList<AnnouncementDTO>();
 
-		String query = "SELECT * FROM announcement";
+		String query = "";
+		query += "SELECT a.* ";
+		query += "  FROM (";
+		query += "		  SELECT @rownum:=@rownum+1 no";
+		query += "			   , b.*";
+		query += "			FROM ANNOUNCEMENT b";
+		query += "		   WHERE (@rownum:=0)=0";
+		
 		if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
+			query += " 		 AND " + map.get("searchField") + " LIKE CONCAT('%',?,'%')";
 		}
+		
+		query += "		 ) a";
 		query += " ORDER BY idx DESC ";
 		query += " LIMIT ? OFFSET ?";
-
+		
 		try {
 			psmt = con.prepareStatement(query);
 			int paramIndex = 1;
@@ -69,14 +78,15 @@ public class AnnouncementDAO extends JDBConnect {
 			while (rs.next()) { // 결과를 순화하며...
 				// 한 행(게시물 하나)의 내용을 DTO에 저장
 				AnnouncementDTO dto = new AnnouncementDTO();
-
+				
 				dto.setIdx(rs.getString("idx")); // 일련번호
 				dto.setTitle(rs.getString("title")); // 제목
 				dto.setContent(rs.getString("content")); // 내용
 				dto.setRegidate(rs.getDate("regidate")); // 작성일
 				dto.setMember_id(rs.getString("member_id")); // 작성자 아이디
 				dto.setVisitcount(rs.getString("visitcount")); // 조회수
-
+				dto.setNo(rs.getInt("no")); 
+				
 				amt.add(dto); // 결과 목록에 저장
 			}
 		} catch (Exception e) {
@@ -232,6 +242,8 @@ public class AnnouncementDAO extends JDBConnect {
 	        psmt = con.prepareStatement(selectQuery);
 	        psmt.setString(1, dto.getIdx());
 	        rs = psmt.executeQuery();
+	        
+	        // 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
 	        if(rs.next()) {
 	        	if (dto.getSfile() != null && !dto.getSfile().isEmpty() && path != null) {
 	        		File oldFile = new File(path + File.separator + rs.getString(1));
@@ -243,7 +255,6 @@ public class AnnouncementDAO extends JDBConnect {
 	        			}
 	        		} else {
 	        			System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + path);
-	        			// 2. 새로운 파일이 업로드되었는지 확인 후 기존 파일 삭제
 	        		}
 	        	}
 	        	
