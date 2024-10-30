@@ -139,20 +139,20 @@ body, html {
 }
 
 /* 메인 컨테이너 */
-#container {
+.crew_page {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+	padding-top: 100px;
 }
 
 
-.main_tit {
+.crew_page .main_tit {
 	display: flex;
 	justify-content: center;
 }
 
 /* 크루 정보 섹션 */
-.main_info .inner {
+.crew_page .main_info .inner {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -161,11 +161,11 @@ body, html {
   	flex-flow: row wrap;
 }
 
-.crew_name {
+.crew_page .crew_name {
     text-align: center;
     margin-bottom: 20px;
 }
-.crew_tit {
+.crew_page .crew_tit {
     font-size: 24px;
     color: #333;
     padding-left: 17px; 
@@ -173,63 +173,71 @@ body, html {
 	
 }
 
-.main_tit {
-	
-	border: 1px solid red;
+.crew_page .main_tit {
+	padding-bottom: 5px;
+	margin-left: 20px;
 }
-.main_tit a {
-	padding-bottom: 50px;
+
+.crew_page .crew_h2 {
+	margin-right: 1070px;
+	width: 300px;
+}
+.crew_page .crew_img {
+	display:flex;
+	padding-left:20px;
+}
+.crew_page .crew_cont {
+	text-align:left;
+	padding-left:20px;
 }
 
 
-.crew_h2 {
-	margin-right: 940px; 
-}
 
-.crew_name p {
+.crew_page .crew_name p {
     font-size: 1em;
     color: #666;
     margin-top: 10px;
 }
 
 /* 버튼 스타일 */
-.crew_login {
-    margin-left: 1010px;
+.crew_page .crew_login {
+   margin-left: 790px;
 }
 
-button {
-    padding: 10px 20px;
+.crew_page button {
+    padding: 10px 0;
     color: #fff;
     background-color: #8c5ba3;
     border: none;
     border-radius: 4px;
     font-size: 1em;
     cursor: pointer;
+    width: 100px;
     transition: background-color 0.3s;
 }
 
-button:hover {
+.crew_page button:hover {
     background-color: #0056b3;
 }
 
 /* 크루 활동 섹션 */
-.section_left, .section_right {
+.crew_page .section_left, .section_right {
     padding: 20px;
 }
 
-.board_more {
+.crew_page .board_more {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
 }
 
-.board_more h2 {
+.crew_page .board_more h2 {
     font-size: 1.5em;
     color: #333;
 }
 
-.board_more button {
+.crew_page .board_more button {
     font-size: 0.9em;
     padding: 8px 12px;
 }

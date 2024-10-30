@@ -42,20 +42,19 @@
 	}
 </script>
 
-<main id="container">
+<main id="container" class="crew_page">
 
 	  <section class="main_info">
 	  <div class="inner">
 		  <div class="crew_name">
-		 
-		  		
+		 	<div class="crew_login">
 				<% 
 					if( session.getAttribute("UserId") != null) {
 					%>
 						<%
 							if( crewSessionId == null || crewSessionId.equals("")) {
 						%>
-							<button onclick="location.href='/insert.crewMember?crewName=<%= dto.getName() %>'">크루가입신청</button>
+							<button onclick="location.href='/insert.crewMember?crewName=<%= dto.getName() %>'">크루<br>가입 신청</button>
 						<% 	
 							} else if (crewSessionId.equals("User")) {
 								%>
@@ -71,25 +70,23 @@
 							<% 
 							} else if (crewSessionId.equals("Master")) {
 							%>
-								<button type="button" onclick="crew_regist();">크루 해체 신청 </button>
+								<button type="button" onclick="crew_regist();">크루<br>해체 신청 </button>
 							<% 
 							} 
 					}  else  {
 						%>
-						<div class="crew_login">
-						
 						<button onclick="location.href='href=/LoginPage.lo'">로그인</button>
-						</div>
 					<%
 						}
-				%>			
+				%>
+				</div>			
 				 <h2 class="crew_tit"> 크루 소개 </h2>
 				<div class="main_tit">
 					<h2 class="crew_h2"> <%=dto.getName() %> </h2>
 					<!-- <img src="/resources/images/logo.png" alt=""> -->
 				</div>
-				<a> 크루 썸네일  </a>
-	          <p> 
+				<a class="crew_img"> 크루 썸네일  </a>
+	          <p class="crew_cont"> 
 	            <%=dto.getDescripton() %>
 	          </p> 
 	        </div>

@@ -1,6 +1,7 @@
 package Utils;
 
-public class CustomerboardPage {
+public class MemberPage {
+
 	public static String pagingStr(int totalCount, int pageSize, int blockPage, int pageNum, String reqUrl,String searchField, String searchWord) {
 	    String pagingStr = "";
 		

@@ -74,7 +74,7 @@ public class CustomerController extends HttpServlet {
 
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
+			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";
@@ -176,8 +176,18 @@ public class CustomerController extends HttpServlet {
 				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Cs_View.co?idx=" + idx + "'</script>");
 				return;
 			}
-			
 		}
+		
+		else if (action.equals("/Main.co")) {
+			// qna 조회
+			String idx = request.getParameter("idx");
+			
+			CustomerboardDTO dto = service.ViewPage(idx);
+			request.setAttribute("board", dto);
+			
+			path = "/Main/Main";
+		}
+		
 		request.setAttribute("layout", "Customerboard/" + path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}

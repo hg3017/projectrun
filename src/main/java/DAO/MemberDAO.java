@@ -1,8 +1,14 @@
 package DAO;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Vector;
 
 import javax.servlet.ServletContext;
 
@@ -49,6 +55,138 @@ public class MemberDAO extends JDBConnect{
 		
 		return members;
 	}
+	
+	// 검색 조건에 맞는 게시물의 개수를 반환합니다.
+	public int selectCount(Map<String, String> map) {
+		int totalCount = 0; // 결과(게시물 수)를 담을 변수
+
+		// 게시물 수를 얻어오는 쿼리문 작성
+		String query = "SELECT COUNT(*) FROM member";
+		if (map != null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%') ";
+		}
+
+		try {
+			psmt = con.prepareStatement(query); // 쿼리문 생성
+
+			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+				psmt.setString(1, "%" + map.get("searchWord") + "%");
+			}
+
+			rs = psmt.executeQuery(); // 쿼리 실행
+			if (rs.next()) { // 커서를 첫 번째 행으로 이동
+				totalCount = rs.getInt(1); // 첫 번째 칼럼 값을 가져옴
+			}
+
+		} catch (Exception e) {
+			System.out.println("게시물 수를 구하는 중 예외 발생");
+			e.printStackTrace();
+		} 
+		return totalCount;
+	}
+	
+	public List<MemberDTO> selectList(Map<String, String> map){
+		List<MemberDTO> mbt = new ArrayList<MemberDTO>();
+		
+		// String query = "select idx, id, pass, name, grade, nickname, location, phone_number, regidate, editdate, member_image_idx from member order by regidate desc";
+		String query = "SELECT * FROM member";
+
+		if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
+		}
+		query += " ORDER BY idx DESC ";
+		query += " LIMIT ? OFFSET ?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+			int paramIndex = 1;
+			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
+				psmt.setString(paramIndex++, map.get("searchWord"));
+
+			}
+			psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
+			psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
+
+			rs = psmt.executeQuery(); // 쿼리 실행			
+			while(rs.next()){
+				MemberDTO dto = new MemberDTO();
+
+				dto.setIdx(rs.getInt("idx"));
+				dto.setId(rs.getString("id")); // 일련번호
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				dto.setGrade(rs.getInt("grade"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setLocation(rs.getString("location"));
+				dto.setPhone_number(rs.getString("phone_number"));
+				dto.setRegidate(rs.getString("regidate"));
+				dto.setEditdate(rs.getString("editdate"));
+				dto.setMember_image_idx(rs.getInt("member_image_idx"));
+
+				System.out.println(dto);
+				
+				mbt.add(dto);
+			}	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("멤버 조회 중 예외 발생");
+			e.printStackTrace();
+		} 	
+		
+		// 목록 반환
+		return mbt;
+	}
+	
+	// 검색 조건에 맞는 게시물 목록을 반환합니다(페이징 기능 지원).
+	public List<MemberDTO> selectListPage(Map<String, String> map) {
+		List<MemberDTO> mbt = new Vector<MemberDTO>(); // 결과(게시물 목록)를 담을 변수
+
+		// 쿼리문 템플릿
+		String query = " SELECT * FROM member ";
+
+		// 검색 조건 추가
+		if (map.get("searchWord") != null) {
+			query = " Where " + map.get("searchField") + " like concat('%',?,'%') ";
+		}
+
+		query += " ORDER BY idx DESC ";
+		query += " LIMIT ? OFFSET ?";
+
+		try {
+			// 쿼리문 완성
+			psmt = con.prepareStatement(query);
+
+			// 쿼리문 실행
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				// 한 행(게시물 하나)의 데이터를 DTO에 저장
+				MemberDTO dto = new MemberDTO();
+				dto.setIdx(rs.getInt("idx"));
+				dto.setId(rs.getString("id")); // 일련번호
+				dto.setPass(rs.getString("pass"));
+				dto.setName(rs.getString("name"));
+				dto.setGrade(rs.getInt("grade"));
+				dto.setNickname(rs.getString("nickname"));
+				dto.setLocation(rs.getString("location"));
+				dto.setPhone_number(rs.getString("phone_number"));
+				dto.setRegidate(rs.getString("regidate"));
+				dto.setEditdate(rs.getString("editdate"));
+				dto.setMember_image_idx(rs.getInt("member_image_idx"));
+
+				// 반환할 결과 목록에 게시물 추가
+				mbt.add(dto);
+			}
+		} catch (Exception e) {
+			System.out.println("게시물 조회 중 예외 발생");
+			e.printStackTrace();
+		}
+
+		// 목록 반환
+		return mbt;
+	}
+	
+	
 
 	// 현재 사용 안하는 중
 	public int insertWrite(String id, String pass, String name, int grade, String nickname, String location, String phone_number) {
@@ -185,5 +323,42 @@ public class MemberDAO extends JDBConnect{
 		// finally { close(); }		
 		return rs;
 	}
+	
+	public int selectCnt() {
+	    int count = 0;
+
+	    PreparedStatement pstmt = null;
+	 
+	    try {
+			
+	        StringBuffer sql = new StringBuffer();
+	        sql.append("SELECT COUNT(id) FROM member");
+	        pstmt = con.prepareStatement(sql.toString());
+	        rs = pstmt.executeQuery();
+	        int index = 0;
+	        if (rs.next()) {
+	            count = rs.getInt(++index);
+	        }
+	        System.out.println("member 개수 : "+count);
+	    } catch (SQLException e) {
+	        // TODO Auto-generated catch block
+	        e.printStackTrace();
+	    } finally {
+	        try {
+	            if (rs != null)
+	                rs.close();
+	            if (pstmt != null)
+	                pstmt.close();
+	            if (con != null)
+	                con.close();
+	        } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	    }
+	    return count;
+	}
+	
+
 
 }

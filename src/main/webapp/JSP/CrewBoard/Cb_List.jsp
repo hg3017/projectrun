@@ -13,7 +13,7 @@
       <section class="contents">
         <div class="inner">
           <div class="m_wrap">
-            <p><a href="/JSP/Main/Main.jsp">HOME</a><span></span>크루게시판</p>
+            <p><a href="/JSP/Index.jsp">HOME</a><span></span>크루게시판</p>
           </div>
           <div class="board_list">
             <div class="list_wrap">

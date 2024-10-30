@@ -16,11 +16,11 @@
 	position: unset;
 }
 #header .inner {
-	all:unset;
+/* 	all:unset; */
 }
 
 #header.admin_header >.inner {
-	width: 1720px;
+	width: auto;
 	display: flex;
 	flex-direction:row;
 }
@@ -50,7 +50,7 @@
 }
 
 .header_right {
-	
+	width : 1500px;
 	padding: 40px 0;
 	padding-left:30px;
 	padding-right: 100px;
@@ -58,10 +58,22 @@
 .header_right .inner {
 	all:unset;
 }
+.header_right .inner {
+	display: flex;
+	/* flex-direction: row; */
+	justify-content: space-between;
+}
 .header_right .inner p {
 	font-size : 25px;
 	line-height : 18px;
 	color : #fff;
+}
+.header_right .inner a {
+	
+	font-size : 20px;
+	color : #fff;
+	justify-content: right;
+	justify-self:right;
 }
 #container_wrapper {
 	border-left : 50px solid #A4B7D1;

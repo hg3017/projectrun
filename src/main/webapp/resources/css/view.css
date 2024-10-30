@@ -94,13 +94,12 @@
     position: static;
     font-weight: 700;
     background: plum;
-    display: inline-flex;
     border-radius: 15px;
     padding: 5px;
     font-size: 14px;
     color: #fff;
     margin-right: 170px;
-     width: 75px;
+    width: 100px;
     height: 30px;
   }
   
@@ -120,8 +119,8 @@
   }
 
   .filter_container .social_tab li.active a {
-    color: aqua;
-    font-size: 700;
+    color: #fff;
+    font-weight: bold;
   }
   /* .filter_container .social_tab li.active a {
     color: #0459fb;

@@ -1,9 +1,9 @@
 ### folder
 target/
 .settings/
+bin/
 ### files
 .classpath
 .gitignore
 .DS_Store
 pom.properties
-bin/
