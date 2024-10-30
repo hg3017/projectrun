@@ -74,7 +74,7 @@ public class CustomerController extends HttpServlet {
 
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
+			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";

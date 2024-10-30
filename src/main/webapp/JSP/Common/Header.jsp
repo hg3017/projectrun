@@ -11,7 +11,7 @@ String sessionId = (String) session.getAttribute("UserId");
 
   <div class="inner">
     <h1 class="logo">
-      <a href="/JSP/Main/Main.jsp">
+      <a href="/JSP/Index.jsp">
         <img src="/resources/images/logo.png" alt="러닝메이트">
         <span class="blind">러닝메이트</span>
       </a>

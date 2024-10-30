@@ -49,6 +49,11 @@ public class CustomerboardServiceImpl implements CustomerboardService {
 		dao.updateVisitCount(idx);
 		
 	}
+
+	@Override
+	public List<CustomerboardDTO> seleList(String idx) {
+		return dao.selectList(idx);
+	}
 	
 	
 }
