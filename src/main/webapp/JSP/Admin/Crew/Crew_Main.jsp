@@ -46,6 +46,7 @@
 				<div class="header_right">
 					<div class=inner>
 						<p>For a day when everyone runs happy</p>
+						<a href="/">메인 페이지 이동</a>
 					</div>
 				</div>
 			</div> 
