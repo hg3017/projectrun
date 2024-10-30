@@ -3,4 +3,7 @@ target/
 .settings/
 ### files
 .classpath
-.gitignore.DS_Store
+.gitignore
+.DS_Store
+pom.properties
+bin/
