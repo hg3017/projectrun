@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.FreeBoardDAO;
+import DTO.CommentDTO;
 import DTO.FreeBoardDTO;
+import Service.CommentService;
+import Service.CommentServiceImpl;
 import Service.FreeBoardService;
 import Service.FreeBoardServiceImpl;
 import Utils.FileUtils;
@@ -25,9 +28,11 @@ public class FreeBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	FreeBoardService service;
+	CommentService commenService;
 
 	public FreeBoardController() {
 		service = new FreeBoardServiceImpl();
+		commenService = new CommentServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -127,12 +132,18 @@ public class FreeBoardController extends HttpServlet {
 		} else if (action.equals("/Fb_View.free")) {
 			
 			String idx = request.getParameter("idx");  // 일련번호 받기 
+			String boardType = "FreeBoard";
 
 			service.updateVisitCount(idx);                 // 조회수 증가 
 			FreeBoardDTO dto = service.pnPage(idx);     // 게시물 가져오기 
+			
+			List<CommentDTO> CommentLists = commenService.commentView(boardType, idx); 
+			
+			
 
 			request.setAttribute("board", dto);
-		
+			request.setAttribute("commentLists", CommentLists);
+			
 			path = "Fb_View";
 
 		} else if (action.equals("/Fb_Edit.free")) {
