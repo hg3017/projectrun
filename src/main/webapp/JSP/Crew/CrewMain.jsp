@@ -153,6 +153,7 @@
 				    </thead>
 				    <tbody>
 				        <c:forEach var="crewMainMember" items="${crewMainMemberLists}">
+				        
 				            <tr>
 				                <td>사진: ${crewMainMember.member_image}</td>
 				                <td>이름: ${crewMainMember.member_id}</td>	

@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.gson.Gson;
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo.Location;
 
 import DAO.LoginDAO;
@@ -55,17 +57,21 @@ public class CommentController extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		// Servelt 의 경로값이 /LoginProcess.lo 인 경우 작동합니다. 
-		if(action.equals("/commentProcess.comment")) {
+		if(action.equals("/commentInsert.comment")) {
 			// 1. 받을 값 확인
 			String member_id = request.getParameter("member_id");
 			String content = request.getParameter("content");
-			String crew_name = request.getParameter("crew_name");
+			String boardType = request.getParameter("boardType");
+			String boardIdx = request.getParameter("boardIdx");
+			
+			System.out.println("boardType" + boardType);
+			System.out.println("boardIdx" + boardIdx);
 			
 			CommentDTO dto = new CommentDTO();
 			dto.setMember_id(request.getParameter("member_id"));
 			dto.setContent(request.getParameter("content"));
-			dto.setCrew_name(request.getParameter("crew_name"));
-			
+			dto.setBoard_type(request.getParameter("boardType"));
+			dto.setBoard_idx(request.getParameter("boardIdx"));
 			
 			// 2. service 요청
 			int result = 0;
@@ -77,13 +83,29 @@ public class CommentController extends HttpServlet {
 				response.setContentType("text/html; charset=UTF-8");
 			    response.getWriter().println("<script type='text/javascript'>");
 			    response.getWriter().println("alert('댓글 작성이 완료되었습니다.');");
-			    response.getWriter().println("window.location.href = '/CrewMainProcess.crew?crewName=" + crew_name + "';");
+			    response.getWriter().println("window.location.href = document.referrer;");
 			    response.getWriter().println("</script>");
 				
-			} 
+			} 	
+		} else if(action.equals("/commentList.comment")) {
 			
-		}
-		
+			String boardType = request.getParameter("boardType");
+			String boardIdx = request.getParameter("boardIdx");
+			
+			
+			System.out.println("commentList.comment : boardType " + boardType);
+			System.out.println("commentList.comment : boardIdx " + boardIdx);
+			
+			List<CommentDTO> CommentLists = service.commentView(boardType, boardIdx);
+			
+			System.out.println(CommentLists); 
+			
+			request.setAttribute("commentLists", CommentLists);
+			
+//			response.setContentType("application/json; charset=UTF-8");
+//		    PrintWriter out = response.getWriter();
+//		    out.print(new Gson().toJson(CommentLists));
+//		    out.flush();
+		}	
 	}
-
 }
