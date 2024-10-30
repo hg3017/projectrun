@@ -1,7 +1,9 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import DTO.MemberDTO;
 import Service.MemberService;
 import Service.MemberServiceImpl;
+import Utils.MemberPage;
 
 
 // *.adme 로 들어오는 모든 요청 처리
@@ -46,13 +49,41 @@ public class AdminMemberController extends HttpServlet {
 		// 만일 요청 값이 Member_List라면 중괄호 안의 코드 실행
 			System.out.println("List.adme 접속 성공");
 			// System.out.println("Member List");
-			// 1. 받을 값을 확인
-
-			// 2. 어떤 service 요청
-			List<MemberDTO> members = service.selectList();
+			// 1. 받을 값 확인
+			String searchField = request.getParameter("searchField"); // 검색 필드 (예: 제목, 내용 등)
+			String searchWord = request.getParameter("searchWord"); // 검색어
+			String limitParam = request.getParameter("limit"); // 페이징 처리를 위한 limit
+			//String offsetParam = request.getParameter("offset");
+			String pageNumParam = request.getParameter("pageNum");
+			
+		    int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10; // 기본 페이지 크기
+		    int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1; // 기본 페이지 번호
+		    int offset = (pageNum - 1) * limit; // 오프셋 계산
+			
+		    Map<String, String> map = new HashMap<>();
+		    map.put("searchField", (searchField != null) ? searchField : "");
+		    map.put("searchWord", (searchWord != null) ? searchWord : "");
+		    map.put("limit", String.valueOf(limit));
+		    map.put("offset", String.valueOf(offset));
+		    
+		    // 3. 총 게시물 수 가져오기
+		    int totalCount = service.selectCount(map); // 총 게시물 수 계산
+		    System.out.println("총 게시물 수 : "+totalCount);
+		    
+			// 4. service 요청
+			List<MemberDTO> members = service.selectList(map);
 			request.setAttribute("members", members);
-			// System.out.println(request.getAttribute("members"));
-			System.out.println("members set 성공");
+			// request 객체에 members 리스트 저장
+			System.out.println(members);
+
+		    // 5. 페이징 처리
+		    int pageSize = 10; // 한 페이지에 보여줄 게시물 수
+		    int blockPage = 5; // 한 번에 보여줄 페이지 블록 수
+		    //pagingStr 메서드를 호출할 때 searchField와 searchWord 값을 전달하여 링크에 포함
+		    String pagingStr = MemberPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Member_List.adme", map.get("searchField"), map.get("searchWord"));
+		    request.setAttribute("pagingStr", pagingStr);
+
+
 			// 3. 어떻게 어디로 이동할 것인가?
 			// 어느 파일로 send redirect, forward 두가지 방식 중에 어떤걸로 이동할 것인가?
 			path = "Member_List";
