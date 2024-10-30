@@ -39,11 +39,13 @@ function validateForm(form) {
                    <tr>
                     <th>크루명 <i class="star"></i></th>
                     <td>
+                     <div class="select_wrap">
                     	<select name="crew_name">
                     	<c:forEach var="crew" items="${crewNames }">
                     		<option value="${crew }">${crew }</option>
                     	</c:forEach>
                     	</select>
+                    </div>
                     </td>
                   </tr>
                   <tr>

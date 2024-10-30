@@ -6,7 +6,7 @@ public class CrewBoardPage {
 		String pagingStr = "";
 		
 		
-		int totalPages = (int)(Math.ceil((totalCount / (double)pageSize)));
+		int totalPages = (int)(Math.ceil(((double)totalCount /pageSize)));
 		
 		int pageTemp = (((pageNum - 1) / blockPage) * blockPage) + 1;
 		
@@ -19,7 +19,7 @@ public class CrewBoardPage {
 			if(pageNum == pageTemp) {
 				pagingStr += String.format("<span class=\"num active\">%s</span>&nbsp;&nbsp;", pageTemp);
 			}else {
-				pagingStr += String.format("<a class=\"num\" href=\"%s?pageNum=%s&searchField=%s&searchWord=%s\">%s</a>", reqUrl,pageTemp, pageTemp, searchWord, searchField, pageTemp);
+				pagingStr += String.format("<a class=\"num\" href=\"%s?pageNum=%s&searchField=%s&searchWord=%s\">%s</a>", reqUrl,pageTemp, searchField, searchWord, pageTemp);
 			}
 			pageTemp++;
 			blockCount++;

@@ -32,7 +32,8 @@
 	} */
 	
    	/* 테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트 */
-   	
+   	int count = 0;
+
 %>
 
 <script type="text/javascript">
@@ -98,27 +99,37 @@
 		            <h2 class="main_tit">
 		              크루 활동
 		            </h2>
-	            	<button >더 보기</button>
+		            
+	            	<button onclick="location.href='href=/Cb_List.cb?crewName=<%= dto.getName() %>'">더 보기</button>
 	            </div>
 		  		
 			  <div class="crew_picture">
 	
-		          <a href="#" class="picture_list">
-					<img src="" alt="" class="on" title="">
-		          </a>
-		
-		          <a href="#" class="picture_list">
-					<img src="" alt="" class="on" title="">
-		          </a>
-		
-		          <a href="#" class="picture_list">
-					<img src="" alt="" class="on" title="">
-		          </a>
-		
-		          <a href="#" class="picture_list">
-					<img src="" alt="" class="on" title="">
-		          </a>
-	      </div>	
+	 			<table>
+				
+                
+				<c:forEach var="board" items="${boards }" varStatus="status">
+						<c:if test="${board.crew_name eq CrewDetail.name }"> 
+						<% 
+			                count++; // count 증가
+			                if (count > 3) { // count가 3 이상이면 반복 종료
+			                    break;
+			                }
+			            %>
+						
+						   	<tr align="center" onclick="location.href='Cb_View.cb?idx=${board.idx}'" style="cursor: pointer;">
+		                		<td>${board.title }</td> <!-- 제목 --></td>
+		                		<td>${board.member_id }</td>
+		                		<td>${board.crew_name }</td>
+		                		<td>${board.regidate }</td>
+	                		</tr>
+	                		
+                		</c:if>
+				</c:forEach>
+	
+	
+		        </table>
+	      	</div>	
 		</div> <!-- Section left 마지막  -->
 	        <div class="section_right">
 	            
