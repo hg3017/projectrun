@@ -66,7 +66,6 @@ public class CrewBoardController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 			
 			int totalCount = service.selectCount(map);
-			request.setAttribute("totalCount", totalCount);
 			
 			List<CrewBoardDTO> boards = service.selectList(map);
 			request.setAttribute("boards", boards);
@@ -74,7 +73,7 @@ public class CrewBoardController extends HttpServlet {
 			int pageSize = 10;
 			int blockPage = 5;
 			
-			String pagingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.cb");
+			String pagingStr = CrewBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cb_List.cb", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);	
 
 			path = "Cb_List";

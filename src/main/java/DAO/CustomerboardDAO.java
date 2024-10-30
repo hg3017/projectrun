@@ -17,7 +17,7 @@ public class CustomerboardDAO extends JDBConnect {
 		
 		String query = "SELECT COUNT(*) FROM customerboard";
 		if(map !=null && map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
-			query += " WHERE " + map.get("searchField") + " LIKE ?";
+			query += " WHERE " + map.get("searchField") + " LIKE concat('%',?,'%')";
 		}
 		
 		try {
@@ -27,7 +27,7 @@ public class CustomerboardDAO extends JDBConnect {
 				psmt.setString(1, "%" + map.get("searchWord") + "%");
 			}
 			
-			rs = psmt.executeQuery(query);
+			rs = psmt.executeQuery();
 			if (rs.next()) {
 				totalCount = rs.getInt(1);
 			}
@@ -51,15 +51,15 @@ public class CustomerboardDAO extends JDBConnect {
 		query += " LIMIT ? OFFSET ? ";
 		
 		try {
-			psmt = con.prepareStatement(query.toString());
+			psmt = con.prepareStatement(query);
 			
 			int paramIndex = 1;
-			if (map.get("serarchWord") != null && !map.get("searchWord").isEmpty()) {
+			if (map.get("searchWord") != null && !map.get("searchWord").isEmpty()) {
 				psmt.setString(paramIndex++, map.get("searchWord"));
-			}else {
+			}
 				psmt.setInt(paramIndex++, Integer.parseInt(map.get("limit")));
 				psmt.setInt(paramIndex, Integer.parseInt(map.get("offset")));
-			}
+			
 			rs = psmt.executeQuery();
 			
 			while (rs.next()) {
@@ -91,13 +91,22 @@ public class CustomerboardDAO extends JDBConnect {
 		String query = " SELECT * FROM customerboard ";
 		
 		if (map.get("serarchWord") !=null) {
-			query = " Where " + map.get("searchField") + " like contcat('%',?,'%')";
+			query = " Where " + map.get("searchField") + " like concat('%',?,'%')";
 		}
+<<<<<<< HEAD
 		query += " ORDER BY idex DESC ";
 		
 		try {
 			psmt = con.prepareStatement(query);
 			
+=======
+		query += " ORDER BY idx DESC ";
+		query += " LIMIT ? OFFSET ?";
+		
+		try {
+			psmt = con.prepareStatement(query);
+
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			rs = psmt.executeQuery();
 			
 			while(rs.next()) {
@@ -185,7 +194,8 @@ public class CustomerboardDAO extends JDBConnect {
 			
 			psmt = con.prepareStatement(query);
 			psmt.setString(1, dto.getCategory());
-			psmt.setString(2, dto.getAbleview());
+			psmt.setString(2, "공개");
+			// psmt.setString(2, dto.getAbleview());
 			psmt.setString(3, dto.getTitle());
 			psmt.setString(4, dto.getMember_id());
 			psmt.setString(5, dto.getContent());
@@ -219,9 +229,17 @@ public class CustomerboardDAO extends JDBConnect {
 			String query = " UPDATE customerboard SET " + " title=?, content=? " + " WHERE idx=? ";
 			
 			psmt = con.prepareStatement(query);
+<<<<<<< HEAD
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getContent());
 			psmt.setString(3, dto.getIdx());
+=======
+			psmt.setString(1, dto.getCategory());
+			psmt.setString(2, "공개");
+			psmt.setString(3, dto.getTitle());
+			psmt.setString(4, dto.getContent());
+			psmt.setString(5, dto.getIdx());
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			
 			result = psmt.executeUpdate();
 		} catch (Exception e) {

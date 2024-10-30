@@ -21,6 +21,7 @@ import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 import Service.CustomerboardService;
 import Service.CustomerboardServiceImpl;
+import Utils.AnnouncementPage;
 import Utils.CustomerboardPage;
 
 @WebServlet("*.co")
@@ -67,23 +68,25 @@ public class CustomerController extends HttpServlet {
 			map.put("offset", String.valueOf(offset));
 
 			int totalCount =  service.selectCount(map);
-			request.setAttribute("totalCount", totalCount);
 
 			List<CustomerboardDTO> boards = service.selectList(map);
 			request.setAttribute("boards", boards);
 
 			int pageSize = 10;
 			int blockPage = 5;
-			String pagingStr = CustomerboardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co");
+			String pagingStr = AnnouncementPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Cs_List.co", map.get("searchField"), map.get("searchWord"));
 			request.setAttribute("pagingStr", pagingStr);
 
 			path = "Cs_List";
 			
 		} else if(action.equals("/Cs_Write.co")) {
-
 			path = "Cs_Write";
 			
 		} else if(action.equals("/Cs_WriteProcess.co")) {
+<<<<<<< HEAD
+=======
+			String category = request.getParameter("category");
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 			String ableview = request.getParameter("ableview");
@@ -94,6 +97,10 @@ public class CustomerController extends HttpServlet {
 			System.out.println("ableview : "+request.getParameter("ableview"));
 			
 			CustomerboardDTO dto = new CustomerboardDTO();
+<<<<<<< HEAD
+=======
+			dto.setCategory(category);
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			dto.setTitle(title);
 			dto.setContent(content);
 			dto.setAbleview(ableview);
@@ -129,11 +136,19 @@ public class CustomerController extends HttpServlet {
 			
 			path = "Cs_Edit";
 		} else if(action.equals("/Cs_EditProcess.co")) {
+<<<<<<< HEAD
+=======
+			String category = request.getParameter("category");
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			String idx = request.getParameter("idx");
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
 			CustomerboardDTO dto = new CustomerboardDTO();
+<<<<<<< HEAD
+=======
+			dto.setCategory(category);
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 			dto.setIdx(idx);
 			dto.setTitle(title);
 			dto.setContent(content);

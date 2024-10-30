@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <script type="text/javascript">
+<<<<<<< HEAD
 function validateForm(form) {  // 폼 내용 검증 
     if (form.title.value == "") {
         alert("제목을 입력하세요.");
@@ -14,6 +15,25 @@ function validateForm(form) {  // 폼 내용 검증
         return false;
     }
 }
+=======
+	function validateForm(form) { // 폼 내용 검증 
+		if (form.category.value == "") {
+			alert("분류를 선택하세요.");
+			form.category.focus();
+			return false;
+		}
+		if (form.title.value == "") {
+			alert("제목을 입력하세요.");
+			form.title.focus();
+			return false;
+		}
+		if (form.content.value == "") {
+			alert("내용을 입력하세요.");
+			form.content.focus();
+			return false;
+		}
+	}
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 </script>
 
 <main id="container" class="sub_container list_page">
@@ -37,6 +57,23 @@ function validateForm(form) {  // 폼 내용 검증
 							<table>
 								<caption class="nohead">게시물 수정하기 테이블</caption>
 								<tr>
+<<<<<<< HEAD
+=======
+									<th>분류 <i class="star"></i></th>
+									<td>
+										<label class="radio">
+											<input type="radio" name="category" value="개설하기">개설하기
+										</label>
+										<label class="radio">
+											<input type="radio" name="category" value="참가하기">참가하기
+										</label>
+										<label class="radio">
+											<input type="radio" name="category" value="기타">기타
+										</label>
+									</td>
+								</tr>
+								<tr>
+>>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 									<th>제목<i class="star"></i></th>
 									<td><input type="text" name="title"
 										placeholder="제목을 입력해주세요" title="제목을 입력해주세요"

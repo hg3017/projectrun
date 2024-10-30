@@ -130,8 +130,8 @@
   .main_report .social_tab a {
     font-weight: 600;
   }
-
-
+  
+ 
   @media (max-width:1200px) {
     .main_report .inner {
       padding-top: 150px;
