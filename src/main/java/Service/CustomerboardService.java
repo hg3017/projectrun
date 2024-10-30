@@ -8,7 +8,6 @@ import DTO.CustomerboardDTO;
 import DTO.FreeBoardDTO;
 
 public interface CustomerboardService {
-	public List<CustomerboardDTO> seleList(String idx);
 	public List<CustomerboardDTO> selectList(Map<String, String> map);
 	public int insertWrite(CustomerboardDTO dto);
 	public int updateEdit(CustomerboardDTO dto);

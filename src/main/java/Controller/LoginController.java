@@ -1,7 +1,6 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import DAO.LoginDAO;
 import DTO.LoginDTO;
 import Service.LoginService;
 import Service.LoginServiceImpl;
@@ -72,7 +70,8 @@ public class LoginController extends HttpServlet {
 				// 전달받은 id, pw 값이 일치하는 경우 작동합니다. 
 				if(pw.equals(dto.getPass())){
 					session.setAttribute("UserId", id);	
-					path = "Main/Main";
+					response.sendRedirect("/");
+					return;
 				}else{
 					request.setAttribute("LoginErrMsg", "로그인 오류");
 					path = "/Login/Login";
@@ -92,13 +91,21 @@ public class LoginController extends HttpServlet {
 		else if(action.equals("/Logout.lo")) {
 			session.invalidate();
 			path = "/Login/Login";
+		
 			
+			request.setAttribute("layout", path);
+			request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
+
 		} 
+		else if (action.equals("/Main.lo")) {
+			request.setAttribute("board", service.ViewPage());
+			
+			path = "/Main/Main";
+		}
 		
 		
 		request.setAttribute("layout", path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 		
 	}
-
 }

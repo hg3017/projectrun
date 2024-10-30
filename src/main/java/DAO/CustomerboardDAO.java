@@ -40,26 +40,6 @@ public class CustomerboardDAO extends JDBConnect {
 		
 	}
 	
-	public List<CustomerboardDTO> selectList(String idx) {
-		List<CustomerboardDTO> bbs = new ArrayList<CustomerboardDTO>();
-		String sql = "SELECT num, title, content,id,postdate,visitcount FROM BOARD";
-		try {
-			stmt = con.createStatement();
-			rs = stmt.executeQuery(sql);
-			while(rs.next()) {
-				CustomerboardDTO dto = new CustomerboardDTO();
-				dto.setIdx(rs.getString("idx"));
-				dto.setTitle(rs.getString("title"));
-				dto.setRegidate(rs.getDate("regidate"));
-				bbs.add(dto);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return bbs;
-	}
-	
-	
 	public List<CustomerboardDTO> selectList(Map<String, String> map) {
 		List<CustomerboardDTO> cs = new ArrayList<CustomerboardDTO>();
 		

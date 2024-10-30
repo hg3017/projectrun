@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <main id="container">
@@ -109,11 +109,20 @@
 					<h2>Q&A</h2>
 				</div>
 				<table class="list">
-					${test01}
-					<tr>
-					<td><a href="Cs_View.co?idx=${board.idx }">${board.title }</a></td>
-					<td><span class="date">${board.regidate }</span></td>
-					</tr>
+					<c:forEach var="board" items="${board}" varStatus="status">
+						<!-- 등록된 게시물이 있을 때 -->
+						<tr class="board_tr" style="border-bottom: 1px solid #000;">
+							<td style="gap: 20px; display: flex; padding: 12px;
+								justify-content: space-between;	align-items: flex-end;
+								text-align: end; font-size: 16px;">
+								<a href="Cs_View.co?idx=${board.idx }">
+									<p style=" display: -webkit-box; -webkit-box-orient: vertical; 
+										-webkit-line-clamp: 1; overflow: hidden;">${board.title }</p>
+								</a>
+								<span class="date">${board.regidate }</span>
+							</td> <!-- 제목 -->	<!-- 작성일자 -->
+						</tr>
+					</c:forEach>
 					<tr>
 					</tr>
 					<!-- <li>
