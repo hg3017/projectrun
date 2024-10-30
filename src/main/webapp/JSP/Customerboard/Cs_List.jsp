@@ -4,7 +4,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <main id="container" class="sub_container list_page">
-<<<<<<< HEAD
   <section class="sub_visual">
     <div class="inner">
       <div class="sub_wrap">

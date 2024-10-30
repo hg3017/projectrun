@@ -55,6 +55,11 @@ public class CrewBoardController extends HttpServlet {
 			String limitParam = request.getParameter("limit");
 			String pageNumParam = request.getParameter("pageNum");
 			
+			// 테스트 
+			String crewName = request.getParameter("crewName");
+			request.setAttribute("crewName", crewName);
+			// 테스트 
+			
 			int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10;
 			int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1;
 			int offset = (pageNum - 1) * limit;
