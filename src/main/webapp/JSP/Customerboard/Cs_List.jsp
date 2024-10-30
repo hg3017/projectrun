@@ -89,7 +89,6 @@
     	</div>
     </div>
   </section>
-=======
 	<section class="sub_visual">
 		<div class="inner">
 			<div class="sub_wrap">
@@ -101,7 +100,7 @@
 		<div class="inner">
 			<div class="m_wrap">
 				<p>
-					<a href="/JSP/Main/Main.jsp">HOME</a><span></span>고객센터
+					<a href="/">HOME</a><span></span>고객센터
 				</p>
 			</div>
 
@@ -176,5 +175,4 @@
 			</div>
 		</div>
 	</section>
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 </main>

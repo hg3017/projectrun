@@ -14,7 +14,7 @@
 		<div class="inner">
 			<div class="m_wrap">
 				<p>
-					<a href="JSP/Main/Main.jsp">HOME</a><span></span>자유게시판
+					<a href="/">HOME</a><span></span>자유게시판
 				</p>
 			</div>
 			<div class="board_list">
@@ -64,7 +64,7 @@
 
 						<c:forEach var="board" items="${boards }" varStatus="status">
 							<tr align="center">
-								<td>${boards.size() - status.index}</td>
+								<td>${board.no}</td>
 								<!--게시물 번호-->
 								<td>
 									<!--제목(+ 하이퍼링크)--> <a href="Fb_View.free?idx=${board.idx }">${board.title }</a>
