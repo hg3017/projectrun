@@ -38,10 +38,7 @@
                 </form>
               </div>
               <div class="btn_wrap">
-
                 <c:if test="${not empty UserId }">
-
-
 					<a href="/Cb_Write.cb" class="write_btn">글쓰기</a>
 				</c:if>
               </div>

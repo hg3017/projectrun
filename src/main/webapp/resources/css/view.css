@@ -136,6 +136,10 @@
     .main_report .inner {
       padding-top: 150px;
     }
+    
+    .main_report .txt_wrap p {
+    	padding-right: 130px;
+    }
   }
 
   @media (max-width:767px) {
@@ -158,6 +162,10 @@
 
     .all_view li {
       height: 230px;
+    }
+    
+     .main_report .txt_wrap p {
+    	padding-right: 100px;
     }
   }
 
