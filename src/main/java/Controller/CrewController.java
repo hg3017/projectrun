@@ -109,7 +109,7 @@ public class CrewController extends HttpServlet {
 			List<CrewBoardDTO> boards = CrewBoardService.selectList(map);
 			request.setAttribute("boards", boards);
 			
-			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
+//			List<CommentDTO> CommentLists = Commentservice.commentView(crewName);
 			
 			String sessionId = (String) session.getAttribute("UserId");  
 			String crewSessionId = Memberservice.selectCrewMemberStatus(crewName, sessionId);
@@ -117,7 +117,7 @@ public class CrewController extends HttpServlet {
 			request.setAttribute("CrewDetail", CrewDetail);
 			request.setAttribute("crewSessionId", crewSessionId);
 			request.setAttribute("crewMainMemberLists", crewMainMemberLists);
-			request.setAttribute("commentLists", CommentLists);
+//			request.setAttribute("commentLists", CommentLists);
 			
 			if(CrewDetail != null){
 				path= "CrewMain";

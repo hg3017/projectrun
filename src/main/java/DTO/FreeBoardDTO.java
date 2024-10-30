@@ -17,7 +17,14 @@ public class FreeBoardDTO {
     private String prevTitle;
     private String nextNum;
     private String nextTitle;
+    private int no;
     
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
+	}
 	public String getIdx() {
 		return idx;
 	}

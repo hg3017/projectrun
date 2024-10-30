@@ -20,13 +20,12 @@ public class CommentServiceImpl implements CommentService {
 
 	
 	@Override
-	public List<CommentDTO> commentView(String crew_name) {
-		return dao.commentView(crew_name);
+	public List<CommentDTO> commentView(String board_type, String board_idx) {
+		return dao.commentView(board_type, board_idx);
 	}
 	
 	@Override
 	public int insertComment(CommentDTO dto) {
-		System.out.println("CommentServiceImpl-insertComment");
 		return dao.insertComment(dto);
 	}
 	

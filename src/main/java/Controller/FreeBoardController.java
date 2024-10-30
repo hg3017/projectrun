@@ -13,7 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.FreeBoardDAO;
+import DTO.CommentDTO;
 import DTO.FreeBoardDTO;
+import Service.CommentService;
+import Service.CommentServiceImpl;
 import Service.FreeBoardService;
 import Service.FreeBoardServiceImpl;
 import Utils.FileUtils;
@@ -25,9 +28,11 @@ public class FreeBoardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	FreeBoardService service;
+	CommentService commenService;
 
 	public FreeBoardController() {
 		service = new FreeBoardServiceImpl();
+		commenService = new CommentServiceImpl();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -79,7 +84,7 @@ public class FreeBoardController extends HttpServlet {
 		    // 5. 페이징 처리
 		    int pageSize = 10; // 한 페이지에 보여줄 게시물 수
 		    int blockPage = 5; // 한 번에 보여줄 페이지 블록 수
-		    String pagingStr = FreeBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Fb_List.free");
+		    String pagingStr = FreeBoardPage.pagingStr(totalCount, pageSize, blockPage, pageNum, request.getContextPath() + "/Fb_List.free", map.get("searchField"), map.get("searchWord"));
 		    request.setAttribute("pagingStr", pagingStr);
 
 			// 4. 어떻게 어디로 이동 할것인가?
@@ -127,12 +132,18 @@ public class FreeBoardController extends HttpServlet {
 		} else if (action.equals("/Fb_View.free")) {
 			
 			String idx = request.getParameter("idx");  // 일련번호 받기 
+			String boardType = "FreeBoard";
 
 			service.updateVisitCount(idx);                 // 조회수 증가 
 			FreeBoardDTO dto = service.pnPage(idx);     // 게시물 가져오기 
+			
+			List<CommentDTO> CommentLists = commenService.commentView(boardType, idx); 
+			
+			
 
 			request.setAttribute("board", dto);
-		
+			request.setAttribute("commentLists", CommentLists);
+			
 			path = "Fb_View";
 
 		} else if (action.equals("/Fb_Edit.free")) {
@@ -146,6 +157,8 @@ public class FreeBoardController extends HttpServlet {
 			
 		} else if (action.equals("/Fb_EditProcess.free")) {
 			FreeBoardDTO dto = new FreeBoardDTO();
+			
+			String saveDirectory = request.getServletContext().getRealPath("/JSP/Upload");
 			
 			Map<String, String> rData = FileUtils.fileUpload(request, "file");
 			dto.setOfile(rData.get("ofile"));
@@ -166,7 +179,7 @@ public class FreeBoardController extends HttpServlet {
 			
 			
 			// 2. service 요청
-			int rs = service.updateEdit(dto);
+			int rs = service.updateEdit(dto, saveDirectory);
 
 			// 3. 어떻게 어디로 이동 할것인가?
 			if (rs == 1) {
@@ -211,7 +224,13 @@ public class FreeBoardController extends HttpServlet {
 				response.getWriter().write("<script>alert('본인만 삭제할 수 있습니다.'); location.href = '/Fb_View.free?idx=" + idx + "'</script>");
 				return;
 			}
+			
+		} else if (action.equals("/FileDown.an")) {
+			FileUtils.fileDownload(request, response);
+			return;
+		
 		}
+		
 		request.setAttribute("layout", "FreeBoard/" + path);
 		request.getRequestDispatcher("/JSP/layout.jsp").forward(request, response);
 	}
