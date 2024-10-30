@@ -110,14 +110,12 @@
 				</div>
 				<table class="list">
 					${test01}
-					<c:forEach var="main" items="${mains}" varStatus="status">
 					<tr>
-					<td><a href="Cs_View.co?idx=${main.idx }">${main.title }</a></td>
-					<td><span class="date">${main.rigedate }</span></td>
+					<td><a href="Cs_View.co?idx=${board.idx }">${board.title }</a></td>
+					<td><span class="date">${board.regidate }</span></td>
 					</tr>
 					<tr>
 					</tr>
-					</c:forEach>
 					<!-- <li>
 					<a href="/Cs_List.co">
 					<p>모임 시간 외에 뒤풀이나 번개가 있나요?</p>
