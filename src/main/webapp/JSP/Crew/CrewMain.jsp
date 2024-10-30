@@ -47,12 +47,8 @@
 	  <section class="main_info">
 	  <div class="inner">
 		  <div class="crew_name">
-		  		<div class="main_tit">
-					<a> 크루 썸네일  </a>
-					<h2> <%=dto.getName() %> </h2>
-					<!-- <img src="/resources/images/logo.png" alt=""> -->
-					
-				</div>
+		 
+		  		
 				<% 
 					if( session.getAttribute("UserId") != null) {
 					%>
@@ -80,12 +76,19 @@
 							} 
 					}  else  {
 						%>
+						<div class="crew_login">
+						
 						<button onclick="location.href='href=/LoginPage.lo'">로그인</button>
+						</div>
 					<%
 						}
 				%>			
-				
-	          <h2> 크루 소개 </h2>
+				 <h2 class="crew_tit"> 크루 소개 </h2>
+				<div class="main_tit">
+					<h2 class="crew_h2"> <%=dto.getName() %> </h2>
+					<!-- <img src="/resources/images/logo.png" alt=""> -->
+				</div>
+				<a> 크루 썸네일  </a>
 	          <p> 
 	            <%=dto.getDescripton() %>
 	          </p> 
@@ -106,6 +109,14 @@
 			  <div class="crew_picture">
 	
 	 			<table>
+			           <thead>
+				        <tr class="crew_head">
+				            <th> 제목 </th>
+				            <th> 작성자 </th>
+				            <th> 크루명 </th>
+				            <th> 작성일 </th>
+				        </tr>
+				      </thead>
 				
                 
 				<c:forEach var="board" items="${boards }" varStatus="status">
@@ -117,7 +128,7 @@
 			                }
 			            %>
 						
-						   	<tr align="center" onclick="location.href='Cb_View.cb?idx=${board.idx}'" style="cursor: pointer;">
+						   	<tr class="crew_bo" align="center" onclick="location.href='Cb_View.cb?idx=${board.idx}'" style="cursor: pointer;">
 		                		<td>${board.title }</td> <!-- 제목 --></td>
 		                		<td>${board.member_id }</td>
 		                		<td>${board.crew_name }</td>

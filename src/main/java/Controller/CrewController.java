@@ -125,7 +125,7 @@ public class CrewController extends HttpServlet {
 		
 		} 
 		// 크루 생성 화면으로 이동합니다. 
-		else if(action.equals("/CrewRegistHref.crew")) {
+		else if(action.equals("/CrewRegist.crew")) {
 			
 			List<LocationDTO> locations = Locationservice.locationView();
 			
