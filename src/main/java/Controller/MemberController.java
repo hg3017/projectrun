@@ -84,7 +84,7 @@ public class MemberController extends HttpServlet {
 			// String형 변수 name를 선언하고 request 객체의 pass 속성의 값을 저장한다.
 			// System.out.print(id + "," + pass + "," + name);
 			// int grade = Integer.parseInt(request.getParameter("grade"));
-			int grade = 1;
+			int grade = 01;
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
 			String phone_number =request.getParameter("phone_number");

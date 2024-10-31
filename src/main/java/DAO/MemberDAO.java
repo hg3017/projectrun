@@ -199,7 +199,7 @@ public class MemberDAO extends JDBConnect{
 			psmt.setString(1, id);
 			psmt.setString(2, pass);
 			psmt.setString(3, name);
-			grade = 1; // 테스트용 코드
+			grade = 01; // 테스트용 코드
 			psmt.setInt(4, grade);
 			psmt.setString(5, nickname);
 			psmt.setString(6, location);
@@ -226,9 +226,9 @@ public class MemberDAO extends JDBConnect{
 			psmt.setString(1, dto.getId());
 			psmt.setString(2, dto.getPass());
 			psmt.setString(3, dto.getName());
-			// psmt.setInt(4, dto.getGrade());
-			int number1 = 1;
+			int number1 = 01;
 			psmt.setInt(4, number1);
+			// psmt.setInt(4, dto.getGrade());
 			psmt.setString(5, dto.getNickname());
 			psmt.setString(6, dto.getLocation());
 			psmt.setString(7, dto.getPhone_number());
@@ -295,8 +295,10 @@ public class MemberDAO extends JDBConnect{
 			psmt.setString(4, dto.getNickname());
 			psmt.setString(5, dto.getLocation());
 			psmt.setString(6, dto.getPhone_number());
-			psmt.setString(7, dto.getDescription ());
-			psmt.setInt(8, dto.getMember_image_idx ());
+			psmt.setString(7, dto.getDescription());
+			//psmt.setInt(8, dto.getMember_image_idx());
+			int member_image_idx=0;
+			psmt.setInt(8,member_image_idx);
 			psmt.setString(9, dto.getId());
 
 			rs = psmt.executeUpdate();

@@ -70,7 +70,7 @@ public class RegisterController extends HttpServlet {
 			String pass = request.getParameter("pass");
 			String name = request.getParameter("name");
 			// int grade = Integer.parseInt(request.getParameter("grade"));
-			int grade = 1;
+			int grade = 01;
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
 			String phone_number = request.getParameter("phone_number");

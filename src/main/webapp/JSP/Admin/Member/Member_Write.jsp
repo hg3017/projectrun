@@ -24,10 +24,10 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 										<td>NAME</td>
 										<td><input type="text" name="name" style="width: 90%;" /></td>
 									</tr>
-									<tr>
+<!-- 									<tr>
 										<td>GRADE</td>
 										<td><input type="text" name="grade" style="width: 90%;" /></td>
-									</tr>
+									</tr> -->
 									<tr>
 										<td>NICKNAME</td>
 										<td><input type="text" name="nickname"
