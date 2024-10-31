@@ -33,6 +33,7 @@
 	<div id="wrap">
 		<header id="header" class="admin_header">
 			<div class="inner">
+				<div class="header_wrap" style="display: flex;">
 				<div class="header_left">
 					<div class="inner">
 						<a href="/JSP/Admin/Admin_Index.jsp"> <img
@@ -49,6 +50,7 @@
 						<a href="/">메인 페이지 이동</a>
 					</div>
 				</div>
+				</div>
 			</div> 
 		</header>
 		<main id="container">
@@ -61,17 +63,17 @@
 							</h2>
 							<ul class="menu">
 								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원 관리</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루 관리</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원관리</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루관리</a></li>
 								<li><a href="#">setting(미구현)</a></li>
 							</ul>
 						</div>
 					</aside> 
 				</div>
 				<div class="contents">
-					<div class="inner">
-						</h2>running mate 크루 관리 페이지입니다. <br>
-						<a href="/JSP/Admin/Crew/Crew_List.adcr">crew 목록 이동</a>
+					<div class="inner" style="padding: 30px 50px;">
+						<h2 style="font-size: 30px;font-weight: 600;">running mate 크루 관리 페이지입니다.</h2> <br>
+						<a href="/JSP/Admin/Crew/Crew_List.adcr" style="font-size: 20px;font-weight: 550;">crew 목록 이동</a>
 					</div>
 				</div>
 			</div>

@@ -26,7 +26,7 @@ style="padding: 200px;text-align: left;justify-content: center;
 							</div>
 							<div class="wr3" style="padding-bottom:10px">
 								<p class="location" style="padding-bottom:5px">활동지역</p>
-								<div class="select_wrap">
+								<div class="select_wrap" style="border: 1px solid;">
 								<select id="lo" name="lo" size="1">
 									<c:forEach var="location" items="${locations }"
 										varStatus="status">
