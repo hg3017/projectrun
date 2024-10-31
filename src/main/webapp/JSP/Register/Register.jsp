@@ -11,11 +11,11 @@
 			</div>
 		</div>
 	</section>
-	<section class="contents">
-		<div class="board_list">
-			<div class="inner">
+	<section class="contents rg">
+		<div class="board_list rg">
+			<div class="inner rg">
 				<form name="writeFrm" method="post" action="RegisterProcess.regi">
-					<table border="1" width="80%">
+					<table border="1">
 						<tr>
 							<td>아이디</td>
 							<td><input type="text" name="id" style="width: 90%;" /></td>
@@ -65,8 +65,8 @@
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<button type="submit">작성 완료</button>
-								<button type="reset">다시 입력</button>
+								<button type="submit" class="write_btn">작성 완료</button>
+								<button type="reset" class="write_btn">다시 입력</button>
 							</td>
 						</tr>
 					</table>

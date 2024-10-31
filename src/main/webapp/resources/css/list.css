@@ -32,8 +32,17 @@
   padding: 30px 0;
   background: #fff;
 }
+.list_page .contents.rg {
+  padding: 100px 0;
+  background: #fff;
+}
 .list_page .contents .inner {
   max-width: 1450px;
+  margin: 0 auto;
+  position: relative;
+}
+.list_page .contents .inner.rg {
+  max-width: 1000px;
   margin: 0 auto;
   position: relative;
 }
@@ -59,6 +68,15 @@
 
 .list_page .contents .board_list {
   margin: 0 45px 0;
+}
+.list_page .contents .board_list.rg {
+  margin: 0 auto;
+}
+.list_page .board_list.rg .write_btn{
+	background: #8c5ba3;
+	color: #fff;
+    border-radius: 10px;
+    border: none;
 }
 
 .list_page .ban_box {
