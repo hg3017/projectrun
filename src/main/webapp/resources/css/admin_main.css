@@ -15,9 +15,9 @@
 	background: #104474;
 	position: unset;
 }
-#header .inner {
-/* 	all:unset; */
-}
+/* #header .inner {
+	all:unset;
+} */
 
 #header.admin_header >.inner {
 	width: auto;
@@ -106,10 +106,10 @@
 	width : 380px;
 }
 
-.side_menu .menu_inner {
-	/* padding-right : 50px; */
+/* .side_menu .menu_inner {
+	padding-right : 50px;
 }
-
+ */
 /* .side_menu .menu_inner .menu li {
 	width : 150px;
 } */
@@ -153,7 +153,7 @@
 
 /* 가로 길이를 정하고 maring : 0 auto; 한다. */
 #container .contents .inner .board_search_wrap_admin form {
-	max-width : 1200px;
+	max-width: 1200px;
 	margin : 0 auto;
 }
 
@@ -176,12 +176,12 @@
 	height: 50px;
 	font-size: 15px;
 }
-.board_list_admin table tr {
+/* .board_list_admin table tr {
 	
 }
 .board_list_admin table th {
 	
-}
+} */
 
 #footer {
 	width: 1720px;
@@ -189,5 +189,4 @@
 	display: flex;
 	flex-direction: row;
 }
-
 
