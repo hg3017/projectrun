@@ -73,8 +73,8 @@ if(!UserId.equals(admin)){
 							</h2>
 							<ul class="menu">
 								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원 관리</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루 관리</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원관리</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루관리</a></li>
 								<li><a href="#">setting(미구현)</a></li>
 							</ul>
 						</div>

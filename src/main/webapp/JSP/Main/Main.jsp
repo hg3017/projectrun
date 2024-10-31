@@ -9,14 +9,14 @@
 		<div class="inner">
 			<div class="head_wrap">
 				<h2 class="main_tit">러닝크루</h2>
-				<a class="crew_btn" href="/JSP/Main/Crew_write.jsp" style="background: #8c5ba3;">크루등록하기</a>
+				<a class="crew_btn" href="/CrewRegist.crew" style="background: #8c5ba3;">크루등록하기</a>
 			</div>
 			<p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
 			<div class="swiper_wrap">
 				<div class="swiper">
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
@@ -29,7 +29,7 @@
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew2.jpg" alt="">
 								</div>
@@ -42,7 +42,7 @@
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew2.jpg" alt="">
 								</div>
@@ -55,7 +55,7 @@
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew2.jpg" alt="">
 								</div>
@@ -68,7 +68,7 @@
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew2.jpg" alt="">
 								</div>
@@ -81,7 +81,7 @@
 							</a>
 						</div>
 						<div class="swiper-slide">
-							<a href="/JSP/Main/Crew_view.jsp">
+							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
 									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
