@@ -11,7 +11,7 @@ style="padding: 200px;text-align: left;justify-content: center;
 				<h2 class="main_tit" style="font-size: 25px;font-weight: 700;">크루 등록</h2>
 				<p class="tit">크루 정보를 입력해주세요.</p>
 			</div>
-			<form action="/CrewRegist.crew" method="post" name="RegisterFrm"
+			<form action="/CrewRegistto.crew" method="post" name="RegisterFrm"
 				onsubmit="return validateForm(this)">
 				<div class="input_wrap">
 					<div class="inner">
