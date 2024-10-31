@@ -9,19 +9,20 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 %>
 					<div class="contents">
 						<div class="inner">
+						<div class="mv_page">
 							<form name="writeFrm" method="post"
 								action="Member_WriteProcess.adme">
 								<table border="1" width="80%">
 									<tr>
-										<td width="10%">ID</td>
+										<td class="mv_td" width="15%" align="center">ID</td>
 										<td align="center"><%=member.getId()%></td>
 									</tr>
 									<tr>
-										<td width="10%">PASS</td>
+										<td class="mv_td" width="15%" align="center">PASS</td>
 										<td align="center"><%=member.getPass()%></td>
 									</tr>
 									<tr>
-										<td width="10%">NAME</td>
+										<td class="mv_td" width="15%" align="center">NAME</td>
 										<td align="center"><%=member.getName()%></td>
 									</tr>
 <%-- 									<tr>
@@ -29,37 +30,40 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 										<td align="center"><%=member.getGrade()%></td>
 									</tr> --%>
 									<tr>
-										<td width="10%">NICKNAME</td>
+										<td class="mv_td" width="15%" align="center">NICKNAME</td>
 										<td align="center"><%=member.getNickname()%></td>
 									</tr>
 									<tr>
-										<td width="10%">LOCATION</td>
+										<td class="mv_td" width="15%" align="center">LOCATION</td>
 										<td align="center"><%=member.getLocation()%></td>
 									</tr>
 									<tr>
-										<td width="10%">PHONE_NUMBER</td>
+										<td class="mv_td" width="15%" align="center">PHONE_NUMBER</td>
 										<td align="center"><%=member.getPhone_number()%></td>
 									</tr>
 									<tr>
-										<td width="10%">REGIDATE</td>
+										<td class="mv_td" width="15%" align="center">REGIDATE</td>
 										<td align="center"><%=member.getRegidate()%></td>
 									</tr>
 									<tr>
-										<td width="10%">EDITDATE</td>
+										<td class="mv_td" width="15%" align="center">EDITDATE</td>
 										<td align="center"><%=member.getEditdate()%></td>
 									</tr>									<tr>
-										<td width="10%">DESCRIPTION</td>
+										<td class="mv_td" width="15%" align="center">DESCRIPTION</td>
 										<td align="center"><%=member.getDescription()%></td>
 									</tr>
-									<tr>
-										<td colspan="2" align="center"><a
-											href="/JSP/Admin/Member/Member_List.adme">[List]</a> <a
-											href="/JSP/Admin/Member/Member_Edit.adme?id=<%=member.getId()%>">[Edit]</a>
-											<a
-											href="/JSP/Admin/Member/Member_DeleteProcess.adme?id=<%=member.getId()%>">[Delete]</a>
+									<tr height="70px;">
+										<td colspan="2" style="font-size:18px;font-weight: bold;"align="center">
+										<a
+											href="/JSP/Admin/Member/Member_List.adme">List</a>
+										<a
+											href="/JSP/Admin/Member/Member_Edit.adme?id=<%=member.getId()%>">Edit</a>
+										<a
+											href="/JSP/Admin/Member/Member_DeleteProcess.adme?id=<%=member.getId()%>">Delete</a>
 										</td>
 									</tr>
 								</table>
 							</form>
+							</div>
 						</div>
 					</div>

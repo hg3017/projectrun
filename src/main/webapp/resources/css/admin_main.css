@@ -90,7 +90,18 @@
 }
 
 .contents .inner {
-	width : 100%;
+	max-width: 1500px;
+    margin: 0 auto;
+}
+.mv_page {
+    padding: 50px 0;
+}
+.mv_page tr {
+	height : 42px;
+}
+.mv_page .mv_td {
+	background:#8c5ba3;
+	color:#fff;
 }
 
 .side_menu {
