@@ -10,7 +10,8 @@
 			</div>
 		</div>
 	</section>
-	<section class="contents">
+	<section class="contents" style="
+    background: #fff;">
 		<div class="inner">
 			<div class="m_wrap">
 				<p>

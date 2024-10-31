@@ -63,7 +63,6 @@
 						<td>${member.editdate}</td>
 					</tr>
 				</c:forEach>
-
 				<tr style="height: 50px;font-size:18px;font-weight: bold;"align="center">
 					<td colspan="10"><a href="/Member_Write.adme">회원가입</a></td>
 				</tr>
