@@ -30,17 +30,19 @@ function sendDelete(memberId, crewName) {
 }
 
 </script>
-<main id="container">
-	<section class="main_info">
+<main id="container" class="cview" style=" padding:250px 0 400px;backgorund:#fff;border-radius:0;box-shadow:none;">
+<div class="inner" style="max-width: 800px;margin: 0 auto;	">
+	<section class="m_info" style="height: 150px;">
+		<div class="inner">
 			<table class="notice">
 				<thead>
 				<tr>
-					<th> 사진 </th>
-					<th> 이름 </th>
-					<th> 소개 </th>
+					<th  style="color:#fff;"> 사진 </th>
+					<th  style="color:#fff;"> 이름 </th>
+					<th  style="color:#fff;"> 소개 </th>
 					 <c:if test = "${ crewSessionId eq 'Master'}" >
-					 <th > 상태  </th>
-					 <th colspan='2'> 처리 </th>
+					 <th  style="color:#fff;" > 상태  </th>
+					 <th colspan='2'  style="color:#fff;"> 처리 </th>
 					 </c:if>
 				</tr>
 				</thead>
@@ -71,5 +73,7 @@ function sendDelete(memberId, crewName) {
 
              </tbody>
             </table>
+            </div>
             </section>
+            </div>
 </main>
