@@ -25,12 +25,9 @@
 							<caption class="nohead">게시물 작성하기 테이블</caption>
 							<tr>
 								<th>분류 <i class="star"></i></th>
-								<td><label class="radio"><input type="radio"
-										name="category" value="cs" checked>모임개설하기</label>
-									<label class="radio"><input type="radio" name="category"
-										value="cv">모임참가하기</label>
-										<label class="radio"><input
-										type="radio" name="category" value="cl">기타</label></td>
+								<td><label class="radio"><input type="radio" name="category" value="개설하기" checked>개설하기</label>
+									<label class="radio"><input type="radio" name="category" value="참가하기">참가하기</label>
+										<label class="radio"><input type="radio" name="category" value="기타">기타</label></td>
 							</tr>
 							<tr>
 								<th>제목 <i class="star"></i></th>

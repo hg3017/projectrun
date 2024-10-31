@@ -102,7 +102,7 @@
 
 .side_menu .menu_inner ul >li {
  	width : 380px;
- 	padding : 20px 60px 30px;
+ 	padding: 20px 60px 5px;
 }
 
 .side_menu .menu_inner ul >li >a {
@@ -130,9 +130,9 @@
 }
 
 /* 위아래 패딩을 준다. */
-#container .contents .inner .board_list_admin {
-	padding : 50px 0;
-}
+/* #container .contents .inner .board_list_admin {
+	padding: 15px 0;
+} */
 
 /* 가로 길이를 정하고 margin : 0 auto; 한다. */
 #container .contents .inner table {
