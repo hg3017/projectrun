@@ -33,13 +33,6 @@
 										type="radio" name="category" value="cl">기타</label></td>
 							</tr>
 							<tr>
-								<th>공개여부 <i class="star"></i></th>
-								<td><label class="radio"><input type="radio"
-										name="ableview" value="공개" checked> 공개</label> <label
-									class="radio"><input type="radio" name="ableview"
-										value="비공개"> 비공개</label></td>
-							</tr>
-							<tr>
 								<th>제목 <i class="star"></i></th>
 								<td><input type="text" name="title"
 									placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>
