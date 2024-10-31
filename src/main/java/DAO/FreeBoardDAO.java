@@ -239,7 +239,7 @@ public class FreeBoardDAO extends JDBConnect {
 		int result = 0;
 
 		try {
-			String selectQuery = "SELECT sfile FROM announcement WHERE idx=?";
+			String selectQuery = "SELECT sfile FROM freeboard WHERE idx=?";
 	        psmt = con.prepareStatement(selectQuery);
 	        psmt.setString(1, dto.getIdx());
 	        rs = psmt.executeQuery();
