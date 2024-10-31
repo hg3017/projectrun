@@ -139,7 +139,7 @@ public class CrewController extends HttpServlet {
 			
 		} 
 		// 입력한 크루를 등록합니다. 
-		else if(action.equals("/CrewRegist.crew")) {
+		else if(action.equals("/CrewRegistto.crew")) {
 			CrewDTO dto = new CrewDTO();
 			
 			dto.setName(request.getParameter("name"));
