@@ -2,7 +2,7 @@
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script type="text/javascript">
-function validateForm(form) {  
+function validateForm(form) {  // 폼 내용 검증 제목.이나 내용이 비어 있으면 알림을 표시하고, 빈 필드로 포커스를 이동해 사용자 편의성
     if (form.title.value == "") {
         alert("제목을 입력하세요.");
         form.title.focus();
@@ -55,9 +55,9 @@ function validateForm(form) {
 								<th>첨부파일</th>
 								<td class="td_flex">
 									<div class="file_wrap">
-										<input type="text" id="fileName" placeholder="첨부파일 없음" readonly > 
+										<input type="text" id="fileName" placeholder="첨부파일 없음" readonly >  <!-- 선택한 파일의 이름을 fileName 필드에 표시 -->
 										<label>
-											<input type="file" name="file" id="fileInput" class="blind" > 파일선택
+											<input type="file" name="file" id="fileInput" class="blind" > 파일선택  <!-- fileInput으로 파일을 입력받음 -->
 										</label>
 									</div>
 									<p class="file_note">

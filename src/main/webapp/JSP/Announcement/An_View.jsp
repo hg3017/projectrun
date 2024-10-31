@@ -47,7 +47,7 @@ function deletePost() {
 				<!-- 파일 첨부 정보 -->
 				<div class="view_file" align="right">
 					<h3>첨부파일</h3>
-					<c:if test="${not empty board.ofile}">
+					<c:if test="${not empty board.ofile}"> <!-- 첨부파일 이름을 표시하고 다운로드 링크를 제공 -->
 						<a href="/FileDown.an?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
 					</c:if>
 					<c:if test="${empty board.ofile}">
@@ -87,17 +87,3 @@ function deletePost() {
 		</div>
 	</section>
 </main>
-
-<%-- 	<table border="1" style="width: 100%;">
-		<tr>
-			<td>댓글 작성자 : ${board.id }</td>
-			<td rowspan="2">
-				<button id="btnSave" type="button">확인</button>
-			</td>
-		</tr>
-		<tr>
-			<td><textarea rows="5" cols="80" placeholder="내용을 입력하세요"
-					id="content"></textarea></td>
-		</tr>
-	</table> --%>
-
