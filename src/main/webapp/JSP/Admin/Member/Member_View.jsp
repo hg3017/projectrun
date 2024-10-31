@@ -60,7 +60,6 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 										</td>
 									</tr>
 								</table>
-								<%=member.getId()%>
 							</form>
 						</div>
 					</div>
