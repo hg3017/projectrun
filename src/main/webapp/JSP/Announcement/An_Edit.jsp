@@ -3,7 +3,7 @@
 <%@ include file="/JSP/Announcement/IsLoggedIn.jsp"%> 
 
 <script type="text/javascript">
-function validateForm(form) {  // 폼 내용 검증 
+function validateForm(form) {  // 폼 내용 검증 제목.이나 내용이 비어 있으면 알림을 표시하고, 빈 필드로 포커스를 이동해 사용자 편의성
     if (form.title.value == "") {
         alert("제목을 입력하세요.");
         form.title.focus();
@@ -29,7 +29,7 @@ function validateForm(form) {  // 폼 내용 검증
 		<div class="inner">
 			<div class="board_write">
 				<form name="editFrm" method="post" enctype="multipart/form-data" action="An_EditProcess.an"
-					onsubmit="return validateForm(this);">
+					onsubmit="return validateForm(this);"> <!-- 자바스크립트 validateForm() 함수를 호출하여 폼 데이터가 유효한지 확인 -->
 					<input type="hidden" name="idx" value="${board.idx }" />
 					<fieldset>
 						<legend>공지사항 수정하기</legend>
