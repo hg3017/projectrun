@@ -56,22 +56,22 @@
 				<div class="side_menu">
 					<aside class="menu_wrap">
 						<div class="menu_inner">
-							<h2>
+							<h2 style="font-size: 30px; font-weight: 600;">
 								<span class="blind">administer</span>
 							</h2>
 							<ul class="menu">
 								<li><a href="#">dashboard(미구현)</a></li>
-								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원 관리</a></li>
-								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루 관리</a></li>
+								<li><a href="/JSP/Admin/Member/Member_Index.jsp">회원관리</a></li>
+								<li><a href="/JSP/Admin/Crew/Crew_Index.jsp">크루관리</a></li>
 								<li><a href="#">setting(미구현)</a></li>
 							</ul>
 						</div>
 					</aside> 
 				</div>
 				<div class="contents">
-					<div class="inner">
-						<h2>running mate 회원 관리 페이지 입니다.</h2>
-						<a href="/JSP/Admin/Member/Member_List.adme">회원 목록으로 이동</a>
+					<div class="inner" style="padding: 30px 50px;">
+						<h2 style="font-size: 30px;font-weight: 600;">running mate 회원 관리 페이지입니다.</h2><br>
+						<a href="/JSP/Admin/Member/Member_List.adme" style="font-size: 20px;font-weight: 550;">회원 목록으로 이동</a>
 					</div>
 				</div>
 			</div>
