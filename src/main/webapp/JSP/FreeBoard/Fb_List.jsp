@@ -6,7 +6,7 @@
 	<section class="sub_visual">
 		<div class="inner">
 			<div class="sub_wrap">
-				<h3>자유게시판</h3>
+				<h3>게시판 <span></span> 자유</h3>
 			</div>
 		</div>
 	</section>

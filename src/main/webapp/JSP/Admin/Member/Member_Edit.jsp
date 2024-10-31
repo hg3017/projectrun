@@ -44,12 +44,12 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 				<input type="text" name="name" style="width: 90%;" value="<%=member.getName() %>" />
 			</td>
 		</tr>
-		<tr>
+<%-- 		<tr>
 			<td>GRADE</td>
 			<td>
 				<input type="text" name="grade" style="width: 90%;" value="<%=member.getGrade() %>" />
 			</td>
-		</tr>
+		</tr> --%>
 		<tr>
 			<td>NICKNAME</td>
 			<td>
@@ -86,12 +86,12 @@ MemberDTO member = (MemberDTO)request.getAttribute("member");
 				<%=member.getEditdate() %>
 			</td>
 		</tr>
-		<tr>
+<%-- 		<tr>
 			<td>MEMBER_IMAGE_IDX</td>
 			<td>
 				<input type="text" name="member_image_idx" style="width: 90%;" value="<%=member.getMember_image_idx() %>" />
 			</td>
-		</tr>
+		</tr> --%>
 		<tr>
 			<td colspan="2" align="center">
 				<button type="submit">작성 완료</button>

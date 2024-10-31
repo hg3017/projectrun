@@ -22,9 +22,9 @@ import Utils.FileUtils;
 @WebServlet("*.an")
 public class AnnouncementController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	AnnouncementService service;
-
+	//공지사항 관련 비즈니스 로직을 수행하기 위해
+	AnnouncementService service; 
+	//인터페이스를 구현한 객체를 초기화
 	public AnnouncementController() {
 		service = new AnnouncementServiceImpl();
 	}
@@ -43,10 +43,11 @@ public class AnnouncementController extends HttpServlet {
 			throws ServletException, IOException {
 	    response.setContentType("text/html; charset=UTF-8");
 	    response.setCharacterEncoding("UTF-8");
+	    //URI 처리: 요청 URI에서 마지막 경로를 추출하여 action 변수에 저장
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
-		
+		//기본경로
 		String path = "An_List";
 		
 		if (action.equals("/An_List.an")) {
@@ -54,8 +55,7 @@ public class AnnouncementController extends HttpServlet {
 			String searchField = request.getParameter("searchField"); // 검색 필드 (예: 제목, 내용 등)
 			String searchWord = request.getParameter("searchWord"); // 검색어
 			String limitParam = request.getParameter("limit"); // 페이징 처리를 위한 limit
-			//String offsetParam = request.getParameter("offset");
-			String pageNumParam = request.getParameter("pageNum");
+			String pageNumParam = request.getParameter("pageNum");// 페이지 번호
 			
 		    int limit = (limitParam != null) ? Integer.parseInt(limitParam) : 10; // 기본 페이지 크기
 		    int pageNum = (pageNumParam != null) ? Integer.parseInt(pageNumParam) : 1; // 기본 페이지 번호

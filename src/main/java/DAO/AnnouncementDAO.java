@@ -41,6 +41,7 @@ public class AnnouncementDAO extends JDBConnect {
 			System.out.println("게시물 수를 구하는 중 예외 발생");
 			e.printStackTrace();
 		} 
+		
 		return totalCount;
 	}
 
@@ -255,7 +256,7 @@ public class AnnouncementDAO extends JDBConnect {
 	        			}
 	        		} else {
 	        			System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + path);
-	        		}
+	        		} 
 	        	}
 	        	
 	        }

@@ -6,29 +6,23 @@
   --gray-500: #1f1f1f;
   --gray-600: #000;
 }
-#wrap {
-  height: 1500px;
-}
+
 #header.admin_header {
 	width:100%;
 	height:100px;
 	background: #104474;
 	position: unset;
 }
-/* #header .inner {
-	all:unset;
-} */
-
 #header.admin_header >.inner {
 	width: auto;
 	display: flex;
 	flex-direction:row;
-}
 
+}
 .header_left {
 	width: 380px;
 	height: 100px;
-	padding: 10px 50px;
+	padding: 15px 50px;
 	background : #194E84;
 }
 .header_left .inner {
@@ -45,15 +39,14 @@
 .header_left .inner h2 {
 	padding-left : 10px;
 	font-size : 30px;
+	font-weight: bold;
 	line-height: 60px;
 	color: #fff;
 }
 
 .header_right {
 	width : 1500px;
-	padding: 40px 0;
-	padding-left:30px;
-	padding-right: 100px;
+	padding:40px 50px;
 }
 .header_right .inner {
 	all:unset;
@@ -65,11 +58,12 @@
 }
 .header_right .inner p {
 	font-size : 25px;
+	font-weight: bold;
 	line-height : 18px;
 	color : #fff;
 }
 .header_right .inner a {
-	
+	font-weight: bold;
 	font-size : 20px;
 	color : #fff;
 	justify-content: right;
@@ -82,7 +76,7 @@
 }
 
 #container {
-	width: 1810px;
+	/* width: 1810px; */
 /* 	margin: 0 auto; */
 	display: flex;
 	flex-direction:row;
@@ -101,18 +95,11 @@
 
 .side_menu {
 	/* height : 100%; */
-	height : 900px;
+	height : 800px;
 	background:#A4B7D1;
 	width : 380px;
 }
 
-/* .side_menu .menu_inner {
-	padding-right : 50px;
-}
- */
-/* .side_menu .menu_inner .menu li {
-	width : 150px;
-} */
 .side_menu .menu_inner ul >li {
  	width : 380px;
  	padding : 20px 60px 30px;
@@ -125,21 +112,6 @@
 .board_search_wrap_admin {
 	width : 500px;
 }
-
-/* position relative, position absolute로 설정하는 법 */
-/* #container .contents {
-	position: relative;
-}
-
-.contents >.inner {
-	content: '';
-  position: absolute;
-  top: 100px;
-  left: 70px;
-  width: 600px;
-  height: 200px; 
-  z-index: 200;	
-} */
 
 /* section 개념으로 나누어야 될거같다. */
 #container .contents {
@@ -168,20 +140,12 @@
 	margin : 0 auto;
 }
 
-.board_list_admin table thead >tr {
-	border-top: 2px solid black;
-/* } */
 .board_list_admin table thead >th {
+	border-top: 2px solid black;
 	width :160px;
 	height: 50px;
 	font-size: 15px;
 }
-/* .board_list_admin table tr {
-	
-}
-.board_list_admin table th {
-	
-} */
 
 #footer {
 	width: 1720px;
@@ -189,4 +153,3 @@
 	display: flex;
 	flex-direction: row;
 }
-

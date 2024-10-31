@@ -24,10 +24,10 @@ List<MemberDTO> members = (List<MemberDTO>) request.getAttribute("members");
 										<td width="10%">NAME</td>
 										<td align="center"><%=member.getName()%></td>
 									</tr>
-									<tr>
+<%-- 									<tr>
 										<td width="10%">GRADE</td>
 										<td align="center"><%=member.getGrade()%></td>
-									</tr>
+									</tr> --%>
 									<tr>
 										<td width="10%">NICKNAME</td>
 										<td align="center"><%=member.getNickname()%></td>
