@@ -6,6 +6,7 @@
 <% List<AdminCrewDTO> crews = (List<AdminCrewDTO>)request.getAttribute("crews"); %>
 				<div class="contents">
 					<div class="inner">
+					<div class="board_contents">
 						<div class="board_search_wrap" style="background:none;">
 							<form style="padding-left: 80px;">
 								<fieldset style="display: flex;gap:10px;">
@@ -54,6 +55,7 @@
 										<td colspan="5"><a href="/JSP/Admin/Crew/Crew_Write.adcr">회원가입</a></td>
 									</tr>
 								</table>
+						</div>
 						</div>
 					</div>
 				</div>
