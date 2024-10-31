@@ -6,35 +6,38 @@
 	<div class="inner">
 		<div class="board_search_wrap_admin">
 			<form>
-				<fieldset>
+				<fieldset style="display: flex; gap:20px; padding-left: 110px;">
 					<legend>게시물 검색</legend>
-					<div class="board_search_admin">
+					<div class="board_search">
+					<div class="select_wrap"  style="width: 110px;text-align: center; height: 50px;">
 						<select>
 							<option>아이디</option>
 							<option>닉네임</option>
 							<option>지역</option>
 						</select>
 					</div>
+
 					<div class="input_wrap_admin">
-						<input type="search" placeholder="검색어를 입력해주세요" title="검색어를 입력해주세요">
-						<button type="submit" class="search_btn">
-							<span class="blind">게시물 검색</span>
-						</button>
+						<input type="search" placeholder="검색어를 입력해주세요" title="검색어를 입력해주세요" >
+							<button type="submit" class="search_btn">
+								<span class="blind">게시물 검색</span>
+							</button>
 					</div>
+				</div>
 				</fieldset>
 			</form>
 		</div>
 		<div class="board_list_admin">
 			<table border="1" width="80%">
-				<tr>
-					<th width="11%">NUMBER</th>
+				<tr class="ad_list" style="background: #8c5ba3; height: 50px; color: #fff;">
+					<th width="11%">NO</th>
 					<th width="11%">ID</th>
 					<th width="11%">PASS</th>
 					<th width="11%">NAME</th>
 					<th width="11%">GRADE</th>
-					<th width="11%">NICKNAME</th>
+					<th width="16%">NICKNAME</th>
 					<th width="11%">LOCATION</th>
-					<th width="12%">PHONE_NUMBER</th>
+					<th width="16%">PHONE_NUMBER</th>
 					<th width="11%">REGIDATE</th>
 					<th width="11%">EDITDATE</th>
 				</tr>
@@ -61,8 +64,8 @@
 					</tr>
 				</c:forEach>
 
-				<tr>
-					<td colspan="4"><a href="/Member_Write.adme">[회원 가입]</a></td>
+				<tr style="height: 50px;font-size:18px;font-weight: bold;"align="center">
+					<td colspan="10"><a href="/Member_Write.adme">회원 가입</a></td>
 				</tr>
 			</table>
 			<div class="board_pagination">
