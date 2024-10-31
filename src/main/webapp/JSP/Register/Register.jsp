@@ -49,7 +49,7 @@
 							<td>지역</td>
 							<td>
 							<div class="select_wrap">
-							<select id="lo" name="lo" size="1">
+							<select id="location" name="location" size="1">
 									<c:forEach var="location" items="${locations}"
 										varStatus="status">
 										<option value=${location.id}>${location.name}</option>

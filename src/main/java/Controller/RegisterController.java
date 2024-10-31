@@ -63,6 +63,7 @@ public class RegisterController extends HttpServlet {
 
 		}else if(action.equals("/RegisterProcess.regi")) {
 			System.out.println("RegisterProcess.regi 접속 성공");
+			System.out.println(request.getParameter("location"));
 			// 1. 받을 값을 확인
 			String id = request.getParameter("id");
 			// String형 변수 id를 선언하고 request 객체의 id 속성의 값을 저장한다.

@@ -227,7 +227,8 @@ public class MemberDAO extends JDBConnect{
 			psmt.setString(2, dto.getPass());
 			psmt.setString(3, dto.getName());
 			// psmt.setInt(4, dto.getGrade());
-			dto.setGrade(1);
+			int number1 = 1;
+			psmt.setInt(4, number1);
 			psmt.setString(5, dto.getNickname());
 			psmt.setString(6, dto.getLocation());
 			psmt.setString(7, dto.getPhone_number());
