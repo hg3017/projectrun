@@ -68,7 +68,8 @@ public class RegisterController extends HttpServlet {
 			// String형 변수 id를 선언하고 request 객체의 id 속성의 값을 저장한다.
 			String pass = request.getParameter("pass");
 			String name = request.getParameter("name");
-			int grade = Integer.parseInt(request.getParameter("grade"));
+			// int grade = Integer.parseInt(request.getParameter("grade"));
+			int grade = 1;
 			String nickname = request.getParameter("nickname");
 			String location = request.getParameter("location");
 			String phone_number = request.getParameter("phone_number");

@@ -28,10 +28,10 @@
 							<td>이름</td>
 							<td><input type="text" name="name" style="width: 90%;" /></td>
 						</tr>
-						<tr>
+<!-- 						<tr>
 							<td>등급</td>
 							<td><input type="text" name="grade" style="width: 90%;" /></td>
-						</tr>
+						</tr> -->
 						<tr>
 							<td>닉네임</td>
 							<td><input type="text" name="nickname" style="width: 90%;" /></td>
