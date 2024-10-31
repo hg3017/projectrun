@@ -260,15 +260,26 @@ public class FreeBoardDAO extends JDBConnect {
 	        	
 	        }
 			// 쿼리문 템플릿
-			String query = "UPDATE freeboard SET title=?, content=?, ofile=?, sfile=? WHERE idx=?";
+			String query = "UPDATE freeboard SET title=?, content=? ";
+			if(dto.getOfile() != null) {
+				query += ", ofile=?, sfile=? ";
+			}
+			query += "WHERE idx=?";
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getTitle());
-			psmt.setString(2, dto.getContent());
-			psmt.setString(3, dto.getOfile());
-			psmt.setString(4, dto.getSfile());
-			psmt.setString(5, dto.getIdx());
+			if(dto.getOfile() != null) {
+				
+				psmt.setString(1, dto.getTitle());
+				psmt.setString(2, dto.getContent());
+				psmt.setString(3, dto.getOfile());
+				psmt.setString(4, dto.getSfile());
+				psmt.setString(5, dto.getIdx());
+			} else {
+				psmt.setString(1, dto.getTitle());
+				psmt.setString(2, dto.getContent());
+				psmt.setString(3, dto.getIdx());
+			}
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();
