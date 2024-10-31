@@ -32,8 +32,8 @@
 			</form>
             <div class="view_top">
              	<c:if test="${UserId eq board.member_id }">
-             		<button type="button" onclick="location.href='Cb_Edit.cb?idx=${board.idx}';">수정하기</button>
-             		<button type="button" onclick="deletePost()">삭제하기</button>
+             		<a href='Cb_Edit.cb?idx=${board.idx}';">수정하기</a>
+             		<a onclick="deletePost()">삭제하기</a>
              	</c:if>
             </div>
             <div class="view_tit">
