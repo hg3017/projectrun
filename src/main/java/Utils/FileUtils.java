@@ -105,5 +105,25 @@ public class FileUtils {
 			map.put(key, val);
 		}
 	}
+	
+	public static void fileDelete(HttpServletRequest request, String sfile) {
+		try {
+			String path = request.getServletContext().getRealPath("/JSP/Upload");
+			
+			File file = new File(path + File.separator + sfile);
+			if (file.exists()) {
+				boolean deleted = file.delete();
+				System.out.println("파일 삭제 여부: " + deleted);
+				if (!deleted) {
+					System.out.println("파일 삭제 실패 - 경로: " + path);
+				}
+			} else {
+				System.out.println("삭제할 파일이 존재하지 않습니다 - 경로: " + path);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 }

@@ -283,7 +283,7 @@ public class AnnouncementDAO extends JDBConnect {
 	}
 
 	// 지정한 게시물을 삭제합니다.
-	public int deletePost(AnnouncementDTO dto) {
+	public int deletePost(String idx) {
 		int result = 0;
 
 		try {
@@ -292,7 +292,7 @@ public class AnnouncementDAO extends JDBConnect {
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getIdx());
+			psmt.setString(1, idx);
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();

@@ -32,8 +32,8 @@ public class AnnouncementServiceImpl implements AnnouncementService{
 	}
 
 	@Override
-	public int deletePost(AnnouncementDTO dto) {
-		return dao.deletePost(dto);
+	public int deletePost(String idx) {
+		return dao.deletePost(idx);
 	}
 
 	@Override
