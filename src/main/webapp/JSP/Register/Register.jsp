@@ -28,10 +28,10 @@
 							<td>이름</td>
 							<td><input type="text" name="name" style="width: 90%;" /></td>
 						</tr>
-						<tr>
+<!-- 						<tr>
 							<td>등급</td>
 							<td><input type="text" name="grade" style="width: 90%;" /></td>
-						</tr>
+						</tr> -->
 						<tr>
 							<td>닉네임</td>
 							<td><input type="text" name="nickname" style="width: 90%;" /></td>
@@ -49,7 +49,7 @@
 							<td>지역</td>
 							<td>
 							<div class="select_wrap">
-							<select id="lo" name="lo" size="1">
+							<select id="location" name="location" size="1">
 									<c:forEach var="location" items="${locations}"
 										varStatus="status">
 										<option value=${location.id}>${location.name}</option>
