@@ -193,12 +193,13 @@ public class AnnouncementController extends HttpServlet {
 
 			if (member_id.equals(dto.getMember_id())) { // 작성자가 본인인지 확인
 				// 작성자가 본인이면...
-				dto.setIdx(idx);
+				//dto.setIdx(idx);
 
-				delResult = service.deletePost(dto);
+				delResult = service.deletePost(idx);
 
 				// 3. 어떻게 어디로 이동 할것인가?
 				if (delResult == 1) {
+					FileUtils.fileDelete(request, dto.getSfile());
 					// 성공 시 목록 페이지로 이동
 //					session.setAttribute("message", "삭제되었습니다.");
 					response.getWriter().write("<script>alert('삭제되었습니다.'); location.href = '/An_List.an'</script>");

@@ -34,8 +34,8 @@ public class FreeBoardServiceImpl implements FreeBoardService{
 	}
 
 	@Override
-	public int deletePost(FreeBoardDTO dto) {
-		return dao.deletePost(dto);
+	public int deletePost(String idx) {
+		return dao.deletePost(idx);
 	}
 
 	@Override

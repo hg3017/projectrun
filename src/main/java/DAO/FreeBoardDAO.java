@@ -233,7 +233,6 @@ public class FreeBoardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 	}
-
 	// 지정한 게시물을 수정합니다.
 	public int updateEdit(FreeBoardDTO dto, String path) {
 		int result = 0;
@@ -282,7 +281,7 @@ public class FreeBoardDAO extends JDBConnect {
 	}
 
 	// 지정한 게시물을 삭제합니다.
-	public int deletePost(FreeBoardDTO dto) {
+	public int deletePost(String idx) {
 		int result = 0;
 
 		try {
@@ -291,7 +290,7 @@ public class FreeBoardDAO extends JDBConnect {
 
 			// 쿼리문 완성
 			psmt = con.prepareStatement(query);
-			psmt.setString(1, dto.getIdx());
+			psmt.setString(1, idx);
 
 			// 쿼리문 실행
 			result = psmt.executeUpdate();
