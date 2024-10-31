@@ -233,7 +233,6 @@ public class FreeBoardDAO extends JDBConnect {
 			e.printStackTrace();
 		}
 	}
-
 	// 지정한 게시물을 수정합니다.
 	public int updateEdit(FreeBoardDTO dto, String path) {
 		int result = 0;
