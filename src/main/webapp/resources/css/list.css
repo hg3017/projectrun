@@ -30,6 +30,7 @@
 
 .list_page .contents {
   padding: 30px 0;
+  background: #fff;
 }
 .list_page .contents .inner {
   max-width: 1450px;
@@ -80,7 +81,6 @@
 .list_page .ban_box .etc li {
   background: #8c5ba3;
   border-radius: 20px;
-  width:300px;
 }
 
 .list_page .ban_box .etc a {

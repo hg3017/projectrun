@@ -18,7 +18,7 @@ function deletePost() {
 
 </script>
 
-<main id="container" class="sub_container list_page">
+<main id="container" class="sub_container list_page" style="background: #fff;">
 	<section class="sub_visual">
 		<div class="inner">
 			<div class="sub_wrap">
@@ -26,9 +26,11 @@ function deletePost() {
 			</div>
 		</div>
 	</section>
-	<section class="contents">
+	<section class="contents" >
 		<div class="inner">
 			<div class="board_view">
+			<div class="bWrite" style="padding-bottom: 80px;">
+			
 				<form name="writeFrm" method="post">
 					<input type="hidden" name="idx" value="${board.idx}" />
 				</form>
@@ -81,6 +83,7 @@ function deletePost() {
 						</c:if>
 					</dd>
 				</dl>
+			</div>
 				
 				<jsp:include page="/JSP/Common/Comment.jsp" flush="true">
 		<jsp:param value="FreeBoard" name="boardType"/>
@@ -94,7 +97,4 @@ function deletePost() {
 			</div>
 		</div>
 	</section>
-	
-	
-	
 </main>

@@ -31,7 +31,7 @@
 						<div class="swiper-slide">
 							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
-									<img src="/resources/images/main_crew2.jpg" alt="">
+									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
 								<div class="txt_wrap">
 									<h3>서울/경기</h3>
@@ -44,7 +44,7 @@
 						<div class="swiper-slide">
 							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
-									<img src="/resources/images/main_crew2.jpg" alt="">
+									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
 								<div class="txt_wrap">
 									<h3>서울/경기</h3>
@@ -57,7 +57,7 @@
 						<div class="swiper-slide">
 							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
-									<img src="/resources/images/main_crew2.jpg" alt="">
+									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
 								<div class="txt_wrap">
 									<h3>서울/경기</h3>
@@ -70,7 +70,7 @@
 						<div class="swiper-slide">
 							<a href="/CrewListProcess.crew">
 								<div class="img_wrap">
-									<img src="/resources/images/main_crew2.jpg" alt="">
+									<img src="/resources/images/main_crew1.jpg" alt="">
 								</div>
 								<div class="txt_wrap">
 									<h3>서울/경기</h3>

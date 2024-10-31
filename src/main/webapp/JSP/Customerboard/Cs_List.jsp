@@ -39,12 +39,12 @@
 							</fieldset>
 						</form>
 					</div>
-					<div class="btn_wrap">
+<%-- 					<div class="btn_wrap">
 						<c:if test="${UserId eq 'admin' }">
 							<a href="/Cs_Write.co" class="write_btn">글쓰기</a>
 							<!-- admin 전용 게시글 작성 -->
 						</c:if>
-					</div>
+					</div> --%>
 				</div>
 				<table>
 					<tr>
@@ -79,6 +79,9 @@
 		<div class="inner">
 			<div class="etc">
 				<ul class="etc">
+					<c:if test="${not empty UserId}">
+					<li><a href="/Cs_Write.co" class="etc_left"><p>1:1 상담하기</p></a></li>
+					</c:if>
 					<li>
 						<a href="#" class="etc_right">
 							<p>전화 문의하기<span></span>TEL : 02-1234-5678</p>
