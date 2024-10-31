@@ -9,7 +9,9 @@
 		<div class="inner">
 			<div class="head_wrap">
 				<h2 class="main_tit">러닝크루</h2>
+				<c:if test="${not empty UserId}">
 				<a class="crew_btn" href="/CrewRegist.crew" style="background: #8c5ba3;">크루등록하기</a>
+				</c:if>
 			</div>
 			<p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
 			<div class="swiper_wrap">

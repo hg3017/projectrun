@@ -83,7 +83,7 @@
 					<li><a href="/Cs_Write.co" class="etc_left"><p>1:1 상담하기</p></a></li>
 					</c:if>
 					<li>
-						<a href="#" class="etc_right">
+						<a class="etc_right">
 							<p>전화 문의하기<span></span>TEL : 02-1234-5678</p>
 						</a>
 					</li>

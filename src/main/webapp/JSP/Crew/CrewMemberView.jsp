@@ -50,7 +50,7 @@ function sendDelete(memberId, crewName) {
 				<tbody>
 				
 				<c:forEach var="crewMember" items="${crewMemberLists }" >
-					<tr>
+					<tr style="height:70px;">
 						<td> 사진 ${crewMember.member_image } </td>
 		                <td> 이름 ${crewMember.member_id } </td>
 		                <td> 소개 ${crewMember.description } </td>
