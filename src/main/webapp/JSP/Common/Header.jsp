@@ -18,7 +18,7 @@ String sessionId = (String) session.getAttribute("UserId");
     </h1>
     <nav class="gnb_wrap">
       <ul class="gnb">
-        <li> <a href="CrewListProcess.crew">지역크루</a> </li>
+        <li> <a href="/CrewListProcess.crew">지역크루</a> </li>
         <li>
           <a href="#">게시판</a>
           <ul class="depth2">
@@ -65,11 +65,11 @@ String sessionId = (String) session.getAttribute("UserId");
     <div class="menu_inner">
       <h2><span class="blind">러닝크루</span></h2>
       <ul class="menu">
-        <li><a href="/JSP/Main/Crew_view.jsp">지역크루</a></li>
+        <li><a href="/CrewListProcess.crew">지역크루</a></li>
           <li>
             <a href="#">게시판</a>
             <ul class="depth2">
-              <li><a href="/JSP/Main/List_boardcrew.jsp">크루게시판</a></li>
+              <li><a href="/Cb_List.cb">크루게시판</a></li>
               <li><a href="/Fb_List.free">자유게시판</a></li>
             </ul>
           </li>

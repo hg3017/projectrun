@@ -34,6 +34,7 @@ function sendDelete(memberId, crewName) {
 <div class="inner" style="max-width: 800px;margin: 0 auto;	">
 	<section class="m_info" style="height: 150px;">
 		<div class="inner">
+		<div class="n_info">
 			<table class="notice">
 				<thead>
 				<tr>
@@ -42,7 +43,7 @@ function sendDelete(memberId, crewName) {
 					<th  style="color:#fff;"> 소개 </th>
 					 <c:if test = "${ crewSessionId eq 'Master'}" >
 					 <th  style="color:#fff;" > 상태  </th>
-					 <th colspan='2'  style="color:#fff;"> 처리 </th>
+					 <th colspan='1'  style="color:#fff;"> 처리 </th>
 					 </c:if>
 				</tr>
 				</thead>
@@ -59,8 +60,10 @@ function sendDelete(memberId, crewName) {
 		                <td> 상태 ${crewMember.status} </td>
 					                 
 	                 		<c:if test="${crewMember.status eq 'Waiting'}">
-	 							<td> <input type="button" value="승인" class="btn" onclick="sendAccept('${crewMember.member_id}','${crewMember.crew_name}');">  </td>
-				                <td> <input type="button" value="거부" class="btn" onclick="sendRefuse('${crewMember.member_id}', '${crewMember.crew_name}');"> </td>
+	                 			<td>
+	 							<input type="button" value="승인" class="btn" onclick="sendAccept('${crewMember.member_id}','${crewMember.crew_name}');"> 
+				                <input type="button" value="거부" class="btn" onclick="sendRefuse('${crewMember.member_id}', '${crewMember.crew_name}');">
+				                </td>
 							</c:if>
 							
 							<c:if test="${crewMember.status eq 'User'}">
@@ -73,6 +76,7 @@ function sendDelete(memberId, crewName) {
 
              </tbody>
             </table>
+            </div>
             </div>
             </section>
             </div>

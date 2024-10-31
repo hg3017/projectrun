@@ -88,7 +88,6 @@ body, html {
 .notice th, .notice td {
     padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
 .notice thead {
@@ -109,6 +108,11 @@ body, html {
     height: 50px;
     border-radius: 50%;
     object-fit: cover;
+}
+
+.n_info {
+    border: 1px solid #ddd;
+    border-radius: 10px;
 }
 
 /* 버튼 스타일 */
