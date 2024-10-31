@@ -4,53 +4,14 @@
 <%@page import="java.util.List"%>  
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	
+<link href="/resources/css/Comment.css" rel="stylesheet" type="text/css">
+
 	
 <% 
 	String sessionId = (String)session.getAttribute("UserId");  
 	String boardType = request.getParameter("boardType");
 	String boardIdx = request.getParameter("boardIdx");	
 %>	
-	
-<script type="text/JavaScript">
-<%-- 
-function loadComments() {
-    
-	 var boardType = "<%= boardType %>";
-	 var boardIdx = "<%= boardIdx %>";
-	
-    /*
-    	alert(boardType);
-    	alert(boardIdx);
-     */
-    $.ajax({
-        type: "POST",
-        url: "/commentList.comment",
-        data: {
-            boardType: boardType,
-            boardIdx: boardIdx
-        },
-        dataType: "json",
-        success: function(response) {
-        	alert("요청이 성공적으로 처리되었습니다!");
-            
-        },
-        error: function(xhr, status, error) {
-            alert("댓글을 불러오는데 실패했습니다.");
-        }
-    });
-}
-
-jQuery(document).ready(function() {
-	loadComments();
-	
-}); --%>
-
-</script>
-
-	  
-
-
             <table class="notice">
 		    <thead>
 		        <tr>
@@ -68,8 +29,9 @@ jQuery(document).ready(function() {
 		        </c:forEach>
 		    </tbody>
 		    
-		    
-		    <%
+		</table>
+		
+		<%
 		   		if( sessionId != null ) {
 		    %>
 		    
@@ -86,5 +48,3 @@ jQuery(document).ready(function() {
 		    <%
 		   		}
 		    %>
-		    
-		</table>

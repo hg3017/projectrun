@@ -11,6 +11,7 @@
 								<fieldset>
 									<legend>게시물 검색</legend>
 									<div class="board_search">
+									
 										<select>
 											<option>아이디</option>
 											<option>닉네임</option>
