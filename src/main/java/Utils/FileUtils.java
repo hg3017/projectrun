@@ -100,7 +100,7 @@ public class FileUtils {
     }
 	
 	public static void setParamData(MultipartRequest mr, Map<String, String> map) {
-		@SuppressWarnings("unchecked")
+		// @SuppressWarnings("unchecked")
 		Enumeration<String> em = mr.getParameterNames();
 		while (em.hasMoreElements()) {
 			String key = em.nextElement();

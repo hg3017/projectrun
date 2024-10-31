@@ -62,7 +62,7 @@
 				</c:forEach>
 
 				<tr>
-					<td colspan="4"><a href="Member_Write.jsp">[회원 가입]</a></td>
+					<td colspan="4"><a href="/Member_Write.adme">[회원 가입]</a></td>
 				</tr>
 			</table>
 			<div class="board_pagination">

@@ -25,36 +25,14 @@
 							<caption class="nohead">게시물 작성하기 테이블</caption>
 							<tr>
 								<th>분류 <i class="star"></i></th>
-<<<<<<< HEAD
 								<td><label class="radio"><input type="radio"
-										name="category" value="cs" checked>모임개설하기</label> <label
-									class="radio"><input type="radio" name="category"
-										value="cv">모임참가하기</label> <label class="radio"><input
+										name="category" value="cs" checked>모임개설하기</label>
+									<label class="radio"><input type="radio" name="category"
+										value="cv">모임참가하기</label>
+										<label class="radio"><input
 										type="radio" name="category" value="cl">기타</label></td>
 							</tr>
 							<tr>
-								<th>공개여부 <i class="star"></i></th>
-								<td><label class="radio"><input type="radio"
-										name="ableview" value="공개" checked> 공개</label> <label
-									class="radio"><input type="radio" name="ableview"
-										value="비공개"> 비공개</label></td>
-							</tr>
-							<tr>
-=======
-								<td>
-									<label class="radio">
-										<input type="radio" name="category" value="개설하기" checked>개설하기
-									</label>
-									<label class="radio">
-										<input type="radio" name="category" value="참가하기">참가하기
-									</label>
-									<label class="radio">
-										<input type="radio" name="category" value="기타">기타
-									</label>
-								</td>
-							</tr>
-							<tr>
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 								<th>제목 <i class="star"></i></th>
 								<td><input type="text" name="title"
 									placeholder="제목을 입력해주세요" title="제목을 입력해주세요"></td>

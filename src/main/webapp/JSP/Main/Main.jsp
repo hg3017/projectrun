@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <main id="container">
 	<section class="main_visual">
 		<h2 class="blind">메인슬라이더</h2>
@@ -10,7 +9,7 @@
 		<div class="inner">
 			<div class="head_wrap">
 				<h2 class="main_tit">러닝크루</h2>
-				<a class="crew_btn" href="/JSP/Main/Crew_write.jsp">크루등록하기</a>
+				<a class="crew_btn" href="/JSP/Main/Crew_write.jsp" style="background: #8c5ba3;">크루등록하기</a>
 			</div>
 			<p class="tit">전국 각지에 흩어진 러닝크루들을 소개합니다.</p>
 			<div class="swiper_wrap">

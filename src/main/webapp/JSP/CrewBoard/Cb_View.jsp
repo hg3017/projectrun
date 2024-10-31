@@ -32,8 +32,8 @@
 			</form>
             <div class="view_top">
              	<c:if test="${UserId eq board.member_id }">
-             		<button type="button" onclick="location.href='Cb_Edit.cb?idx=${board.idx}';">수정하기</button>
-             		<button type="button" onclick="deletePost()">삭제하기</button>
+             		<a href='Cb_Edit.cb?idx=${board.idx}';">수정하기</a>
+             		<a onclick="deletePost()">삭제하기</a>
              	</c:if>
             </div>
             <div class="view_tit">
@@ -45,6 +45,15 @@
               <c:if test="${not empty board.content }">${board.content }</c:if>
               <c:if test="${empty board.content }">내용없음</c:if>
             </div>
+            <div class="view_file" align="right">
+				<h3>첨부파일</h3>
+				<c:if test="${not empty board.ofile}">
+					<a href="/FileDown.cb?sFile=${board.sfile}&oFile=${board.ofile}">${board.ofile}</a>
+				</c:if>
+				<c:if test="${empty board.ofile}">
+					<span>첨부파일 없음</span>
+				</c:if>
+				</div>
             <dl class="view_paging">
               <dt>이전글</dt>
               <dd>
