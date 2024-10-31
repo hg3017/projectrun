@@ -13,12 +13,13 @@
 	background: #104474;
 	position: unset;
 }
+
 #header.admin_header >.inner {
 	width: auto;
 	display: flex;
 	flex-direction:row;
-}
 
+}
 .header_left {
 	width: 380px;
 	height: 100px;
@@ -116,7 +117,6 @@
 /* section 개념으로 나누어야 될거같다. */
 #container .contents {
 	width : 100%;
-	padding: 30px 50px;
 }
 
 /* 위아래 패딩을 준다. */
@@ -126,7 +126,7 @@
 
 /* 가로 길이를 정하고 maring : 0 auto; 한다. */
 #container .contents .inner .board_search_wrap_admin form {
-	max-width : 1200px;
+	max-width: 1200px;
 	margin : 0 auto;
 }
 

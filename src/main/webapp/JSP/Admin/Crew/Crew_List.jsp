@@ -8,7 +8,7 @@
 					<div class="inner">
 					<div class="board_contents">
 						<div class="board_search_wrap" style="background:none;">
-							<form style="padding-left: 80px;">
+							<form style="padding-left: 130px;">
 								<fieldset style="display: flex;gap:10px;">
 									<legend>게시물 검색</legend>
 									<div class="board_search">

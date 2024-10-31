@@ -71,7 +71,7 @@
 					</aside> 
 				</div>
 				<div class="contents">
-					<div class="inner">
+					<div class="inner" style="padding: 30px 50px;">
 						<h2 style="font-size: 30px;font-weight: 600;">running mate 크루 관리 페이지입니다.</h2> <br>
 						<a href="/JSP/Admin/Crew/Crew_List.adcr" style="font-size: 20px;font-weight: 550;">crew 목록 이동</a>
 					</div>
