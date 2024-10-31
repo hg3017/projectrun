@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DTO.LoginDTO;
 import DTO.MemberDTO;
 import Service.MemberService;
 import Service.MemberServiceImpl;
@@ -74,7 +75,7 @@ public class AdminMemberController extends HttpServlet {
 			List<MemberDTO> members = service.selectList(map);
 			request.setAttribute("members", members);
 			// request 객체에 members 리스트 저장
-			System.out.println(members);
+			// System.out.println(members);
 
 		    // 5. 페이징 처리
 		    int pageSize = 10; // 한 페이지에 보여줄 게시물 수
@@ -89,7 +90,15 @@ public class AdminMemberController extends HttpServlet {
 			path = "Member_List";
 			// path = "/JSP/Admin/Member/Member_List.jsp";
 			
-		}else if(action.equals("/Member_Write.adme")) {
+		}else if(action.equals("/Admin_Index.adme")) {
+			System.out.println("write : "+ request.getParameter("name"));
+			path = "Member_Write";
+			// path = "/JSP/Admin/Member/Member_Write.jsp";
+			
+		}
+		
+		
+		else if(action.equals("/Member_Write.adme")) {
 			System.out.println("write : "+ request.getParameter("name"));
 			path = "Member_Write";
 			// path = "/JSP/Admin/Member/Member_Write.jsp";
@@ -177,6 +186,7 @@ public class AdminMemberController extends HttpServlet {
 		//layout 속성에 "Member/"+path값 저장
 		request.getRequestDispatcher("/JSP/Admin/Layout.jsp").forward(request, response);
 		// forward 방식으로 request 객체에 저장된 값을 전달해서 이동
+		return;
 		}
 		
 	}

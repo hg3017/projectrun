@@ -89,7 +89,6 @@
     	</div>
     </div>
   </section>
-=======
 	<section class="sub_visual">
 		<div class="inner">
 			<div class="sub_wrap">
@@ -176,5 +175,4 @@
 			</div>
 		</div>
 	</section>
->>>>>>> a73b2d139cba5ba9659bb036e5eda41195ce700a
 </main>

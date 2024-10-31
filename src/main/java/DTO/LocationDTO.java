@@ -27,6 +27,11 @@ public class LocationDTO {
 		this.detail = detail;
 	}
 	
+	public LocationDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	
 	@Override
 	public String toString() {

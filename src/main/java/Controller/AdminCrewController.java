@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DTO.AdminCrewDTO;
 import DTO.MemberDTO;
@@ -40,6 +41,8 @@ public class AdminCrewController extends HttpServlet {
 		String uri = request.getRequestURI();
 		int lastSlash = uri.lastIndexOf("/");
 		String action = uri.substring(lastSlash);
+		HttpSession session = request.getSession();
+		// session 사용을 위해서 추가
 		String path="Crew";
 		boolean forward_ok = true;
 		
@@ -126,6 +129,7 @@ public class AdminCrewController extends HttpServlet {
 			forward_ok = false;
 			path = "/JSP/Admin/Crew/Crew_List.adcr";
 			response.sendRedirect(path);
+			return;
 		}
 		
 		
@@ -135,6 +139,7 @@ public class AdminCrewController extends HttpServlet {
 		// request 객체의 layout 속성에 "Crew/"+path값 저장
 		request.getRequestDispatcher("/JSP/Admin/Layout.jsp").forward(request, response);
 		// forward 방식으로 request 객체에 저장된 값을 전달해서 이동
+		return;
 		}
 		
 	}
